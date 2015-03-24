@@ -1,0 +1,133 @@
+\documentclass[a4paper,12pt,normalheadings,footexclude,headinclude,liststotoc,nochapterprefix,onecolumn,oneside,parskip,pointlessnumbers]{scrreprt}
+
+\usepackage[latin1]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{setspace,natbib}
+\usepackage{abstract,amsmath,amssymb}
+\usepackage[notindex,nottoc]{tocbibind}  %Inhaltsverzeichnisse erstellen
+\usepackage[labelsep=space,justification=centering]{caption}
+%\usepackage[Sonny]{fncychap.sty}
+\setlength{\parindent}{0pt}
+\newcommand{\url}{\;}
+
+\topmargin -0.9cm
+\textheight 24cm
+\textwidth 14cm
+\oddsidemargin 1.5cm
+\footskip 1cm
+
+\onehalfspacing        % anderthalbzeilig
+
+\renewcommand{\sectionmark}[1]{\markright{\footnotesize \sffamily\slshape \thesection\ #1}}
+
+%Kopfzeilendefinition
+\usepackage[fit]{truncate}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\cfoot{}
+\lhead{\slshape\leftmark}
+\rhead{\thepage}       % Eintrag rechts oben in Kopfzeile
+
+%Kopfzeilendefinition bei neuem Kapitel
+\makeatletter
+\renewcommand\ps@plain{
+ \renewcommand\@oddfoot{}  %leere Fusszeile
+  \let\@evenfoot\@oddfoot
+  \renewcommand\@oddhead{\hfil \normalfont \textrm{\thepage}}
+  \let\@evenhead\@oddhead}
+\makeatother
+
+%Spaltendefinition f\"{u}r Tabellen
+\usepackage{array}
+
+%Formelnummerierung
+\makeatletter
+\@removefromreset{equation}{chapter}
+\makeatother
+\renewcommand*{\theequation}{\arabic{equation}}
+
+%Tabellennummerierung
+\makeatletter
+\@removefromreset{table}{chapter}
+\makeatother
+\renewcommand*{\thetable}{\arabic{table}}
+
+%Abbildungsnummerierung
+\makeatletter
+\@removefromreset{figure}{chapter}
+\makeatother
+\renewcommand*{\thefigure}{\arabic{figure}}
+
+
+\begin{document}
+
+\pagenumbering{roman}  %r\"{o}mische Seitennummerierung
+%Titelseite
+\begin{titlepage}
+  \centering
+  {\Huge{\bf Thema} \\
+        {\bf Thema}\\[7mm]
+        {\bf Thema}} \\[4cm]
+  {\huge Diplomarbeit} \\[1cm]
+  {\Large zur Erlangung des Grades \\
+  eines Diplom-\"{O}konomen/einer Diplom-\"{O}konomin} \\[8mm]
+  {\Large der Wirtschaftswissenschaftlichen Fakult\"{a}t \\
+  der Leibniz Universit\"{a}t Hannover} \\[2cm]
+  {\Large vorgelegt von} \\[8mm]
+  {\Large\bf Vorname Nachname} \\[5mm]
+  {\Large geb. am Datum in Ort } \\[2mm]
+  {\Large (Matrikel-Nr. )} \\[2cm]
+  {\Large\bf Erstpr\"{u}fer: Prof. Dr. Stefan Helber} \\[6mm]
+  {\Large Hannover, den }
+\end{titlepage}
+
+
+% Inhaltsverzeichnis
+\tableofcontents
+
+%Tabellenverzeichnis
+\listoftables
+
+%Abbildungsverzeichnis
+\listoffigures
+
+
+
+\newpage
+\pagenumbering{arabic}   %ab hier arabische Seitenzahlen beginnend mit 1
+
+\include{Kapitel_1/Kapitel_1}
+%\include{Kapitel_2/Kapitel_2}
+%\include{Kapitel_3/Kapitel_3}
+%\include{Kapitel_4/Kapitel_4}
+%\include{Kapitel_5/Kapitel_5}
+
+
+%Anhang
+\begin{appendix}
+\include{Anhang/Anhang}
+\end{appendix}
+
+%Literaturverzeichnis
+\bibliographystyle{Prod_Seminar}
+\bibliography{Literatur}
+
+%Selbstst\"{a}ndigkeitserkl\"{a}rung
+\newpage
+\thispagestyle{empty}
+\begin{center}
+  \vspace*{\stretch{1.5}}
+  {\Large\bf Erkl\"{a}rung} \\[2.5cm]
+\end{center}
+\begin{flushleft}
+  Hiermit versichere ich, dass ich die vorliegende Arbeit selbstst\"{a}ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel
+  benutzt habe, dass alle Stellen der Arbeit, die w\"{o}rtlich oder sinngem\"{a}{\ss} aus anderen Quellen \"{u}bernommen wurden, als solche kenntlich gemacht
+  sind und dass die Arbeit in gleicher oder \"{a}hnlicher Form noch keiner Pr\"{u}fungsbeh\"{o}rde vorgelegt wurde.\\[3cm]
+  Hannover, den
+  \vspace*{\stretch{1.5}}
+\end{flushleft}
+
+
+\end{document}
