@@ -1,6 +1,6 @@
 \documentclass[a4paper,12pt,normalheadings,footexclude,headinclude,liststotoc,nochapterprefix,onecolumn,oneside,parskip,pointlessnumbers]{scrreprt}
 
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{graphicx}
@@ -88,64 +88,40 @@
 %Titelseite
 \begin{titlepage}
   \centering
-  {\Huge{\bf Heuristische Lösungsverfahren für} \\
-        {\bf das ressourcenbeschränkte}\\[7mm]
-        {\bf Projektplanungsproblem}} \\[4cm]
-  {\huge Bachelorarbeit} \\[1cm]
+  {\Huge{\bf Auftragsannahme- und}}\\[0.5cm]
+    {\Huge{\bf Lagerhaltungsentscheidungen}}\\[0.5cm]
+  {\Huge{\bf bei auftragsbezogenen}} \\[0.5cm]
+    {\Huge{\bf Instandhaltungsprozessen}} \\[3cm]
+  {\huge Masterarbeit} \\[1cm]
   {\Large zur Erlangung des akademischen Grades \\
-  \glqq Bachelor of Science (B.Sc.)\grqq\;im Studiengang Wirtschaftswissenschaft} \\[8mm]
+  \glqq Master of Science (M.Sc.)\grqq\;im Studiengang Wirtschaftswissenschaft} \\[8mm]
   {\Large der Wirtschaftswissenschaftlichen Fakult\"{a}t \\
   der Leibniz Universit\"{a}t Hannover} \\[2cm]
   {\Large vorgelegt von} \\[8mm]
   {\Large\bf Robert Matern} \\[5mm]
-  {\Large geb. am 7. März 1987 in Tschimkent } \\[2mm]
+  {\Large geb. am 7. MÃ¤rz 1987 in Tschimkent } \\[2mm]
   {\Large (Matrikel-Nr. 2798160)} \\[2cm]
   {\Large\bf Erstpr\"{u}fer: Prof. Dr. Stefan Helber} \\[6mm]
-  {\Large Hannover, den 17. September 2014}
+  {\Large Hannover, den 11. September 2015}
 \end{titlepage}
 \newpage
-\thispagestyle{empty} 
-{\Large\bf Sperrvermerk} \\[5mm]
 
-Veröffentlichungen über den Inhalt der Arbeit sind nur mit schriftlicher Genehmigung der Volkswagen AG zugelassen.
-
-Die Ergebnisse, Meinungen und Schlüsse dieser Abschlussarbeit sind nicht notwendigerweise die der Volkswagen AG.
-
-Die vorliegende Arbeit ist nur den Mitarbeitern des Volkswagen Konzerns, den Korrektoren sowie den Mitgliedern des Prüfungsausschusses zugänglich zu machen.
-
-Eine Veröffentlichung oder Weitergabe der Bachelorarbeit, außer zur Bewertung im Rahmen der Studienprüfung, außerhalb der Volkswagen AG ist nicht erlaubt.
-
-Hannover, den 17. September 2014
-
-
-%\chapter*{Vorwort}
-%\markboth{???}{}
+\chapter*{Vorwort}
+\markboth{???}{}
 
 
 % Inhaltsverzeichnis
 \tableofcontents
 
-%Abkürzungsverzeichnis
-\chapter*{Abkürzungsverzeichnis}
-\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+%AbkÃ¼rzungsverzeichnis
+\chapter*{AbkÃ¼rzungsverzeichnis}
+\addcontentsline{toc}{chapter}{AbkÃ¼rzungsverzeichnis}
 \begin{table}[h!]
     \vspace*{-3mm}
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
     \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
- BF & Backward-Forward(-Methode)/ Rückwärts-Vorwärts(-Methode)\\
-EM& Elektromagnetische Metaheuristik\\
-          GA	   & Genetischer Algorithmus\\
-GRASP & Greedy Randomized Adaptive Search Procedures\\
-MLFT & Minimum Latest Finish Time/ minimal-spätester Fertigungszeit \\
 OR		    & Operations Research\\
-PNV & Pfadneuverknüpfung\\
-PSPLIB & Project Scheduling Problem Library\\
- RBRS & Regret-Based Biased Random Sampling \\
-   RCPSP      & Resource-Constrained Project Scheduling \\
-     SA	    & Simulated Annealing\\
-SGS & Schedule Generation Scheme\\
-SS           & Scatter Search\\
 	\end{tabular}
 \end{table}
 
@@ -157,111 +133,7 @@ SS           & Scatter Search\\
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
     \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-$\alpha$& Dämpfungsfaktor\\
-$\beta$ & Ausmaß der Verzerrung\\
-$\delta$& Dimension des Lösungsraums\\
-$\Delta$ &Differenzwert\\
-$\rho$ &Wert des Bedauerns für einen Arbeitsgang $j$\\
-$\Theta$ & Temperatur beim Verfahren des Simulated Annealing\\
-$\psi(j)$ & Wahrscheinlichkeit einer Auswahl eines ungeplanten Arbeitsgangs $j$\\
-$\omega_{j_{r}j_{r+1}}$ & Anzahl von Lösungen einer aktuellen Population, bei dem Arbeits-\\
-& gang $j$ in eine Liste aufgenommen wird, nachdem der Arbeits-\\
-& gang $i$ gelistet wurde\\
-$A(j)$& Menge von Vorgängern, bevor der Arbeitsgang $j$ in die Liste $L$\\
-&aufgenommen wurde\\
-    $\mathcal{A}$ & Menge an Vorrangsbeziehungen\\
-$\mathcal{B}$& Teilmenge einer Lösungsmenge\\
-$Block_{j}$& Menge von Arbeitsgängen, die zeitgleich mit dem Arbeitsgang $j$\\
-&geplant werden\\
-$C$& Menge an Paaren von Vorrangsbeziehungen von Arbeitsgang $j$\\
-$d_{j}$	& Dauer von Arbeitsgang $j$\\
-     $\mathcal{D}_{n}$	& Menge an Arbeitsgängen, die zum Zeitpunkt $t_{n}$ in den Planungs-\\
-&prozess überführt werden sollen\\
-$\mathcal{E}$ & Pool mit Lösungen\\
-$EFT_{j}$	& Frühester Fertigstellungszeitpunkt von Arbeitsgang $j$\\
-$f(y)$  & Funktionswert von Punkt $y$\\   
-$First$& Frühestmögliche Position in einem $Block_{j}$\\
-  $FT_{j}$	& Fertigstellungszeitpunkt von Arbeitsgang $j$\\ 
-
-	\end{tabular}
-\end{table}
-\begin{table}[h!]
-    \vspace*{-3mm}
-    \hspace*{2mm}
-  \renewcommand{\arraystretch}{1,5}
-    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-$G_{S}$& Richtungsgraph der Planung $S$\\
-%$H$&\\
-$i$	& Vorgänger von Arbeitsgang $j$\\
-$I$ & Menge an Iterationen\\
-$j$	& Arbeitsgang\\
-$k_{jr}$	& Belastung von Ressourcen $r$ bei Durchführung von Arbeitsgang $j$\\ 
-$K_{r}$	& Kapazität von Ressourcen $r$\\
-$KA_{i}$ & Vektor der Kraftausprägung vom Punkt $y_{i}$\\
-$L$ & Ablauffolge/ Vorgangsliste\\
-$Last$& Spätestmögliche Position in einem $Block_{j}$\\
-$LFT_{j}$	& Spätester Fertigstellungszeitpunkt von Arbeitsgang $j$\\
-$\mathcal{L}_{t}$& Menge von Arbeitsgängen $j$, die zum Zeitpunkt $t$ starten\\
-& können, ohne Verletzung der Reihenfolgerestriktionen\\ 
-$m$ & Vorherige Iteration\\
-$n$ & Iteration\\
-$N(\cdot)$ & Nachbarschaft von Punkt $y$ oder Liste $L$\\
-$\mathcal{N}_{n}$ & Menge an Arbeitsgängen, die sich zum Zeitpunkt $t_{n}$ im Planungs-\\
-&prozess befinden\\
-$p$ & Zufallswert\\
-$P$ & Wahrscheinlichkeit\\
-$\mathcal{P}_{j}$	& Menge der Vorgänger von Arbeitsgang $j$\\
-$q_{i}$ & Ladung von Punkt $i$\\
-$q_{ij}$ & Ladung in Relation der Entfernung zwischen Punkt $i$ und $j$\\
-$r$	& Erneuerbare Ressource\\
-%$R$&\\
-$RefSet$ & Referenzmenge\\
-$\mathcal{R}$	& Menge der erneuerbaren Ressourcen\\
-$S_{j}$ & Geplante Startzeit von Arbeitstang $j$\\
-$S(L)$& Aktive Planung bzw. Lösung anhand Liste $L$\\
-$\mathcal{S}_{t}$	& Menge der Arbeitsgänge, die zum Zeitpunkt $t$ bearbeitet werden\\
-& bzw. bereits eingeplant wurden\\
-$Shift_{ij}$& Bewegung des Arbeitsgangs $i$, nachdem Arbeitsgang $j$ gemeinsam\\
-& mit allen Nachfolgern geplant wurde
-	\end{tabular}
-\end{table}
-\begin{table}[h!]
-    \vspace*{-3mm}
-    \hspace*{2mm}
-  \renewcommand{\arraystretch}{1,5}
-    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-$t$	& Zeitpunkt/ Periode\\
-$t_{n,m}$ & Zeitpunkt nach Iteration $n,m$\\
-$\mathcal{T}$	& Menge an Perioden mit $t,\tau = 1,...,T$\\ 
-$TS(L)$ &Tabu-Status für eine Planung $S(L)$\\
-   $\mathcal{U}$	& Menge an nicht-erledigten Arbeitsgängen \\
-  $v(\cdot)$ & Prioritätswert von Arbeitsgang $j,i$\\
- $\mathcal{V}_{n}$	& Menge an Arbeitsgängen, die bis zum Zeitpunkt $t_{n}$ im Plan-\\
-&ungsprozess bereits eingeplant wurden\\
-$w$& Populationsgröße\\
-$x_{jt}$ & Binäre Entscheidungsvariable, ob Arbeitsgang $j$ in Periode $t$\\
-&beendet wird\\
-$y$ & Punkt im Lösungsraum\\
-$z$& Vorbestimmte Anzahl von Punkten\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-&\\
-
+.. & ...\\
 	\end{tabular}
 \end{table}
 
@@ -290,48 +162,48 @@ $z$& Vorbestimmte Anzahl von Punkten\\
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% EINLEITUNG %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Einleitung in die ressourcenbeschränkte Projektplanung}
-\markboth{Einleitung in die ressourcenbeschränkte Projektplanung}{}
-Die Projektarbeit spielt über mehrere Dekaden eine wichtige Rolle bei der Aufgabenabwicklung in Wirtschaft und Verwaltung.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. VI} Dabei wird unter dem Begriff Projekt verstanden:
+\chapter{Einleitung in die ressourcenbeschrÃ¤nkte Projektplanung}
+\markboth{Einleitung in die ressourcenbeschrÃ¤nkte Projektplanung}{}
+Die Projektarbeit spielt Ã¼ber mehrere Dekaden eine wichtige Rolle bei der Aufgabenabwicklung in Wirtschaft und Verwaltung.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. VI} Dabei wird unter dem Begriff Projekt verstanden:
 \begingroup
 \renewcommand*{\addvspace}[1]{}
 \begin{mydef}
-\glqq Ein Projekt ist eine zeitlich befristete, relativ innovative und risikobehaftete Aufgabe von erheblicher Komplexität, die aufgrund ihrer Schwierigkeit und Bedeutung meist ein gesondertes Projektmanagement erfordert.\grqq\footnote{Vgl. \cite{projektdef}}
+\glqq Ein Projekt ist eine zeitlich befristete, relativ innovative und risikobehaftete Aufgabe von erheblicher KomplexitÃ¤t, die aufgrund ihrer Schwierigkeit und Bedeutung meist ein gesondertes Projektmanagement erfordert.\grqq\footnote{Vgl. \cite{projektdef}}
 \end{mydef}
 \endgroup
-Nach dieser Definition geht eine zeitliche Restriktion mit einem Projekt einher. Durch das Zerlegen des Projekts in einzelne Arbeitsgänge wird versucht die Komplexität zu reduzieren und eine geordnete Abfolge der Arbeitsgänge zu erstellen, um das Projektziel zu erreichen.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. 4} Projektziele können unterschiedlich kategorisiert werden, z. B. in Sach-, Termin- oder Kostenziele.\footnote{Vgl. \cite{felkai2011analysieren}, S. 52}
+Nach dieser Definition geht eine zeitliche Restriktion mit einem Projekt einher. Durch das Zerlegen des Projekts in einzelne ArbeitsgÃ¤nge wird versucht die KomplexitÃ¤t zu reduzieren und eine geordnete Abfolge der ArbeitsgÃ¤nge zu erstellen, um das Projektziel zu erreichen.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. 4} Projektziele kÃ¶nnen unterschiedlich kategorisiert werden, z. B. in Sach-, Termin- oder Kostenziele.\footnote{Vgl. \cite{felkai2011analysieren}, S. 52}
 
-Ein Arbeitsgang eines Projekts hat nach DIN 69900 einen definierten Anfang sowie ein definiertes Ende und dient für das Projekt als Ablaufelement zur Beschreibung eines bestimmten Geschehens.\footnote{Vgl. \cite{69900D}, S. 15} Trotz der Zerlegung besitzen die einzelnen Arbeitsgänge des Projekts eine Beziehung, mit der die Reihenfolge der Ablauffolge bestimmbar ist.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 6-7} %D. h. es können nur Arbeitsgänge abgeschlossen werden, wenn deren notwendigen Vorgänge bereits abgeschlossen wurden. Ein einfaches Beispiel wäre die sogenannte Hochzeit in der Automobilherstellung. Sobald Karosserie und Motor eines Fahrzeugs hergestellt wurden, können diese zwei Elemente in einem nachfolgenden Prozess verbunden werden.
+Ein Arbeitsgang eines Projekts hat nach DIN 69900 einen definierten Anfang sowie ein definiertes Ende und dient fÃ¼r das Projekt als Ablaufelement zur Beschreibung eines bestimmten Geschehens.\footnote{Vgl. \cite{69900D}, S. 15} Trotz der Zerlegung besitzen die einzelnen ArbeitsgÃ¤nge des Projekts eine Beziehung, mit der die Reihenfolge der Ablauffolge bestimmbar ist.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 6-7} %D. h. es kÃ¶nnen nur ArbeitsgÃ¤nge abgeschlossen werden, wenn deren notwendigen VorgÃ¤nge bereits abgeschlossen wurden. Ein einfaches Beispiel wÃ¤re die sogenannte Hochzeit in der Automobilherstellung. Sobald Karosserie und Motor eines Fahrzeugs hergestellt wurden, kÃ¶nnen diese zwei Elemente in einem nachfolgenden Prozess verbunden werden.
 Ein Arbeitsgang ist i. d. R. verbunden mit dem Einsatz von Ressourcen, welche wiederum mit Kosten verbunden sind. Dementsprechend versucht ein effizientes Projektmanagement, neben der Einhaltung des Projektziels, auch den Einsatz der Ressourcen zu minimieren.\footnote{Vgl. \cite{bartels2009projektplanung}, S. 11-12}
 \begingroup
 \renewcommand*{\addvspace}[1]{}
 \begin{mydef}
-\glqq Allgemein bezeichnet der Begriff Projektmanagement alle leitenden und administrativen Aktivitäten, die zur Durchführung eines Projektes notwendig sind. Es beschreibt die Gesamtheit von Führungsaufgaben, -organi\-sation, -techniken und -mitteln zur zielorientierten Durchführung großer Vorhaben.\grqq\footnote{Vgl. \cite{hering2014projektmanagement}, S. 1-3; in Anlehnung an DIN 69901 und ISO 21500:2012-09}
+\glqq Allgemein bezeichnet der Begriff Projektmanagement alle leitenden und administrativen AktivitÃ¤ten, die zur DurchfÃ¼hrung eines Projektes notwendig sind. Es beschreibt die Gesamtheit von FÃ¼hrungsaufgaben, -organi\-sation, -techniken und -mitteln zur zielorientierten DurchfÃ¼hrung groÃŸer Vorhaben.\grqq\footnote{Vgl. \cite{hering2014projektmanagement}, S. 1-3; in Anlehnung an DIN 69901 und ISO 21500:2012-09}
 \end{mydef}
 \endgroup
-Eine Möglichkeit, das Projektziel unter minimaler Ressourcenverwendung zu erreichen, ist die effiziente Planung der Ablauffolge der Arbeitsgänge eines Projekts.\footnote{Vgl. \cite{bartels2009projektplanung}, S. 11-12} Damit ist es möglich, mehrere Projekte bei einer gegebenen Zeitvorgabe unter Einhaltung von Ressourcenrestriktionen fertigzustellen bzw. bei konstanter Ressourcenkapazität ein Projekt in kürzerer Zeit abzuschließen. Dadurch hat die Projektplanung besondere Bedeutung in dem Projektmanagement.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. VI\label{zum}}%Beispielweise kann ein Automobilhersteller durch Optimierung des Produktentstehungsprozess durch effizienteres planen seiner vorhandenen Ressourcen in einer vordefinierten Zeit mehrere Fahrzeuge entwickeln, als wenn das Unternehmen keine effiziente Projektplanung verfolgt. 
+Eine MÃ¶glichkeit, das Projektziel unter minimaler Ressourcenverwendung zu erreichen, ist die effiziente Planung der Ablauffolge der ArbeitsgÃ¤nge eines Projekts.\footnote{Vgl. \cite{bartels2009projektplanung}, S. 11-12} Damit ist es mÃ¶glich, mehrere Projekte bei einer gegebenen Zeitvorgabe unter Einhaltung von Ressourcenrestriktionen fertigzustellen bzw. bei konstanter RessourcenkapazitÃ¤t ein Projekt in kÃ¼rzerer Zeit abzuschlieÃŸen. Dadurch hat die Projektplanung besondere Bedeutung in dem Projektmanagement.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. VI\label{zum}}%Beispielweise kann ein Automobilhersteller durch Optimierung des Produktentstehungsprozess durch effizienteres planen seiner vorhandenen Ressourcen in einer vordefinierten Zeit mehrere Fahrzeuge entwickeln, als wenn das Unternehmen keine effiziente Projektplanung verfolgt. 
 \begingroup
 \renewcommand*{\addvspace}[1]{}
 \begin{mydef}
-\glqq Projektplanung ist die Planung aller Arbeitsgänge eines Projekts durch Zuweisung eines Startzeitpunktes, so dass die Zeitbeziehung zwischen den Vorgängen eingehalten und knappe Ressourcenkapazitäten nicht überschritten werden.\grqq\footref{zum}
+\glqq Projektplanung ist die Planung aller ArbeitsgÃ¤nge eines Projekts durch Zuweisung eines Startzeitpunktes, so dass die Zeitbeziehung zwischen den VorgÃ¤ngen eingehalten und knappe RessourcenkapazitÃ¤ten nicht Ã¼berschritten werden.\grqq\footref{zum}
 \end{mydef}
 \endgroup
-Eine effiziente Projektplanung reduziert die gesamte Fertigstellungsdauer eines Projekts und gestaltet den Verbrauch der zur Verfügung stehenden Ressourcen über die Laufzeit des Projekts wirkungsvoll. Somit handelt es sich um ein mathematisches Optimierungsproblem, bei dem für ein Projekt die Ressourcenbeschränkung über die Laufzeit einzuhalten ist und die Fertigstellungszeit minimiert werden soll.
-Für das ressourcenbeschränkte Projektplanungsproblem gibt es Verfahren der exakten und heuristischen Lösung. In der Praxis wird i. d. R. auf Heuristiken zurückgegriffen,\footnote{Vgl. \cite{herroelen2005project}, S. 420} worauf auch die vorliegende Arbeit ihren Fokus legt.\footnote{Vgl. Kapitel \ref{notwendig}}
-%Eine typische Ressource für die Projektplanung ist Zeit, da lt. Definition ein Projekt zeitlich befristet ist, aber auch andere Ressourcen sind für die Planung von Projekten erforderlich.
+Eine effiziente Projektplanung reduziert die gesamte Fertigstellungsdauer eines Projekts und gestaltet den Verbrauch der zur VerfÃ¼gung stehenden Ressourcen Ã¼ber die Laufzeit des Projekts wirkungsvoll. Somit handelt es sich um ein mathematisches Optimierungsproblem, bei dem fÃ¼r ein Projekt die RessourcenbeschrÃ¤nkung Ã¼ber die Laufzeit einzuhalten ist und die Fertigstellungszeit minimiert werden soll.
+FÃ¼r das ressourcenbeschrÃ¤nkte Projektplanungsproblem gibt es Verfahren der exakten und heuristischen LÃ¶sung. In der Praxis wird i. d. R. auf Heuristiken zurÃ¼ckgegriffen,\footnote{Vgl. \cite{herroelen2005project}, S. 420} worauf auch die vorliegende Arbeit ihren Fokus legt.\footnote{Vgl. Kapitel \ref{notwendig}}
+%Eine typische Ressource fÃ¼r die Projektplanung ist Zeit, da lt. Definition ein Projekt zeitlich befristet ist, aber auch andere Ressourcen sind fÃ¼r die Planung von Projekten erforderlich.
 
-Das Projektmanagement in der Automobilindustrie benötigt aufgrund eines hohen Komplexitätsgrades eine effiziente Projektplanung.\footnote{Vgl. \cite{luhrig2006risikomanagement1}, S. 26} Dabei gibt es verschiedene Lösungserfahren für das ressourcenbeschränkte Projektplanungsproblem mit unterschiedlicher Lösungsgüte. Ziel der vorliegenden Arbeit ist es, einen Beitrag für die Erforschung des ressourcenbeschränkten Projektplanungsproblems zu leisten. Dies erfolgt durch ausführliches Beschreiben von vier Heuristiken zum Lösen des ressourcenbeschränkten Projektplanungsproblems in Kapitel \ref{Hauptteil}, damit diese Ausführungen in einer späterer Entwicklung eines effizienten Lösungsansatz überführt werden können. Zu diesem Zweck wird in Kapitel \ref{Grundlagen} zunächst das ressourcenbeschränkte Projektplanungsproblem näher betrachtet sowie die Grundlagen der Heuristiken. 
+Das Projektmanagement in der Automobilindustrie benÃ¶tigt aufgrund eines hohen KomplexitÃ¤tsgrades eine effiziente Projektplanung.\footnote{Vgl. \cite{luhrig2006risikomanagement1}, S. 26} Dabei gibt es verschiedene LÃ¶sungserfahren fÃ¼r das ressourcenbeschrÃ¤nkte Projektplanungsproblem mit unterschiedlicher LÃ¶sungsgÃ¼te. Ziel der vorliegenden Arbeit ist es, einen Beitrag fÃ¼r die Erforschung des ressourcenbeschrÃ¤nkten Projektplanungsproblems zu leisten. Dies erfolgt durch ausfÃ¼hrliches Beschreiben von vier Heuristiken zum LÃ¶sen des ressourcenbeschrÃ¤nkten Projektplanungsproblems in Kapitel \ref{Hauptteil}, damit diese AusfÃ¼hrungen in einer spÃ¤terer Entwicklung eines effizienten LÃ¶sungsansatz Ã¼berfÃ¼hrt werden kÃ¶nnen. Zu diesem Zweck wird in Kapitel \ref{Grundlagen} zunÃ¤chst das ressourcenbeschrÃ¤nkte Projektplanungsproblem nÃ¤her betrachtet sowie die Grundlagen der Heuristiken. 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Grundlagen
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Das Grundmodell der ressourcenbeschränkten Projektplanung} \label{Grundlagen}
-\markboth{Das Grundmodell der ressourcenbeschränkten Projektplanung}{}
+\chapter{Das Grundmodell der ressourcenbeschrÃ¤nkten Projektplanung} \label{Grundlagen}
+\markboth{Das Grundmodell der ressourcenbeschrÃ¤nkten Projektplanung}{}
 \section{Mathematische Modellformulierung}
-Zur Sicherstellung des Planungserfolgs mittels Terminierung eines Projekts muss neben der Reihenfolgerestriktion auch der Ressourcenbedarf der unterschiedlichen Arbeitsgänge sichergestellt werden, da Projekte meist ein beschränktes Ressourcenkontingent haben.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 11} Mit der Einhaltung des Ressourcenbedarfs ist es für das Projekt möglich, alle in Bearbeitung befindlichen Arbeitsgänge auszuführen und damit das Projekt abzuschließen. Ressourcen können über das ganze Projekt limitiert sein, wie bspw. das Projektbudget, oder können nach einer bestimmten Anzahl von Perioden erneuert werden.\footnote{Vgl. \cite{neumann2003project}, S. 21-22} Erneuerbaren Ressourcen können bspw. die Produktionskapazität einer Maschine oder der Personaleinsatz für das Projekt sein. In dieser Arbeit wird der Fokus auf erneuerbare Ressourcen gelegt.
+Zur Sicherstellung des Planungserfolgs mittels Terminierung eines Projekts muss neben der Reihenfolgerestriktion auch der Ressourcenbedarf der unterschiedlichen ArbeitsgÃ¤nge sichergestellt werden, da Projekte meist ein beschrÃ¤nktes Ressourcenkontingent haben.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 11} Mit der Einhaltung des Ressourcenbedarfs ist es fÃ¼r das Projekt mÃ¶glich, alle in Bearbeitung befindlichen ArbeitsgÃ¤nge auszufÃ¼hren und damit das Projekt abzuschlieÃŸen. Ressourcen kÃ¶nnen Ã¼ber das ganze Projekt limitiert sein, wie bspw. das Projektbudget, oder kÃ¶nnen nach einer bestimmten Anzahl von Perioden erneuert werden.\footnote{Vgl. \cite{neumann2003project}, S. 21-22} Erneuerbaren Ressourcen kÃ¶nnen bspw. die ProduktionskapazitÃ¤t einer Maschine oder der Personaleinsatz fÃ¼r das Projekt sein. In dieser Arbeit wird der Fokus auf erneuerbare Ressourcen gelegt.
 
-Zur Lösung des ressourcenbeschränkten Projektplanungsproblems kann das Modell \textit{Resource-Constrained Project Scheduling Problem (RCPSP)} genutzt werden. Das Modell RCPSP legt durch Festlegung der Aktivitätsstartzeitpunkte unter Einhaltung der Startzeitpunkt- bzw. der Vorrangsbedingung der einzelnen Arbeitsgänge sowie der Kapazitätsbeschränkung der erneuerbaren Ressourcen den Projektgrundablauf zur Zielerreichung der Minimierung der Projektdauer fest.\footnote{Vgl. \cite{demeulemeester2011robust}, S. 23} Die Zielfunktion des RCPSP zur Minimierung der Projektdauer ist weit verbreitet,\footnote{Vgl. \cite{drexl1997neuere}, S. 98} aber auch andere Ausprägungen sind möglich.\footnote{Vgl. \cite{talbot1982resource}, S. 1200}
+Zur LÃ¶sung des ressourcenbeschrÃ¤nkten Projektplanungsproblems kann das Modell \textit{Resource-Constrained Project Scheduling Problem (RCPSP)} genutzt werden. Das Modell RCPSP legt durch Festlegung der AktivitÃ¤tsstartzeitpunkte unter Einhaltung der Startzeitpunkt- bzw. der Vorrangsbedingung der einzelnen ArbeitsgÃ¤nge sowie der KapazitÃ¤tsbeschrÃ¤nkung der erneuerbaren Ressourcen den Projektgrundablauf zur Zielerreichung der Minimierung der Projektdauer fest.\footnote{Vgl. \cite{demeulemeester2011robust}, S. 23} Die Zielfunktion des RCPSP zur Minimierung der Projektdauer ist weit verbreitet,\footnote{Vgl. \cite{drexl1997neuere}, S. 98} aber auch andere AusprÃ¤gungen sind mÃ¶glich.\footnote{Vgl. \cite{talbot1982resource}, S. 1200}
 
 Nachfolgend wird das deterministische RCPSP in diskreter Zeit formuliert.\footnote{Vgl. \cite{klein2000resource}, S. 79-80; Modell und Notation wurde dem Modell von \cite{kellenbrink2014einfuhrung}, S. 14-15, entnommen.} Da es sich um eine mathematische Modellformulierung in diskreter Zeit handelt, sind die Zeiteinheiten gleich den Perioden $t, \tau$.
 
@@ -353,8 +225,8 @@ $t,\tau \in \mathcal{T}$	& Perioden mit $t,\tau = 1,...,T$\\
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-$EFT_{j}$	& Frühester Fertigstellungszeitpunkt von Arbeitsgang $j$\\
-$LFT_{j}$	& Spätester Fertigstellungszeitpunkt von Arbeitsgang $j$\\
+$EFT_{j}$	& FrÃ¼hester Fertigstellungszeitpunkt von Arbeitsgang $j$\\
+$LFT_{j}$	& SpÃ¤tester Fertigstellungszeitpunkt von Arbeitsgang $j$\\
 	\end{tabular}
 \end{table}
 
@@ -385,13 +257,13 @@ unter Beachtung der Restriktionen
 x_{jt} \in \{0,1\}
 \hfill   j \in \mathcal{J};\; t \in \{EFT_{j},...,LFT_{j}\}\end{multline}\vspace{-6.0ex}
 
-Ein Projekt hat $J$ unterschiedliche Arbeitsgänge. Jeder Arbeitsgang $j$ hat eine definierte Menge von zu erledigenden Vorgängerarbeitsgängen $i \in \mathcal{P}_{j}$ und die Arbeitsgänge müssen zur Fertigstellung des Projekts topologisch abgearbeitet werden. D. h. der Vorgänger $i$ hat stets eine kleinere Ordnungszahl als sein Nachfolger $j\;(i<j)$ und muss für den weiteren Projektverlauf beendet sein. Die Bearbeitungsdauer eines Arbeitsgangs $j$ wird mit dem Parameter $d_{j}$ festgelegt.  Bei dem RCPSP in diskreter Zeit wird die Annahme getroffen, dass die Dauer ganzzahlig ist. Der Startzeitpunkt des Projekts ist $t = 0$ und erstreckt sich über einen Gesamtzeitraum von $T$ Perioden. Um die Reihenfolgebedingungen einzuhalten, werden einem Projekt die zwei Dummy-Arbeitsgänge \glqq Beginn\grqq\;($j=1$) und \glqq Ende\grqq\;($j=J$) hinzugefügt, welche mit einer Dauer von $0$ Zeiteinheiten bewertet werden.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. 66} Die benötigten Kapazitäten der erneuerbaren Ressource $r$ bei Durchführung von Arbeitsgang $j$ wird durch $k_{jr}$ definiert. Die Ressourcen $r \in \mathcal{R}$ sind in einer Periode innerhalb des Umfangs ihrer Kapazität $K_{r}$ nutzbar. Da es sich um erneuerbare Ressourcen handelt, sind diese zu jeder neuen Periode in vollem Umfang erneut nutzbar, wobei nichtverbrauchte Ressourcen nicht auf nachfolgende Perioden übertragbar sind.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 12} Der Modellformulierung in diskreter Zeit wird die binäre Entscheidungsvariable $x_{jt}$ hinzugefügt, damit der Fertigstellungszeitpunkt der einzelnen Arbeitsgänge $j$  festgelegt werden kann.\footnote{Vgl. \cite{pritsker1969multiproject}, S. 94} %Die Binärvariable $x_{jt}$ wird für den Zeitraum vom frühesten Fertigstellungszeitpunkt $EFT_{j}$ bis zum spätesten Fertigstellungszeitpunkt $LFT_{j}$ vom jeweiligen Arbeitsgang $j$ definiert.
+Ein Projekt hat $J$ unterschiedliche ArbeitsgÃ¤nge. Jeder Arbeitsgang $j$ hat eine definierte Menge von zu erledigenden VorgÃ¤ngerarbeitsgÃ¤ngen $i \in \mathcal{P}_{j}$ und die ArbeitsgÃ¤nge mÃ¼ssen zur Fertigstellung des Projekts topologisch abgearbeitet werden. D. h. der VorgÃ¤nger $i$ hat stets eine kleinere Ordnungszahl als sein Nachfolger $j\;(i<j)$ und muss fÃ¼r den weiteren Projektverlauf beendet sein. Die Bearbeitungsdauer eines Arbeitsgangs $j$ wird mit dem Parameter $d_{j}$ festgelegt.  Bei dem RCPSP in diskreter Zeit wird die Annahme getroffen, dass die Dauer ganzzahlig ist. Der Startzeitpunkt des Projekts ist $t = 0$ und erstreckt sich Ã¼ber einen Gesamtzeitraum von $T$ Perioden. Um die Reihenfolgebedingungen einzuhalten, werden einem Projekt die zwei Dummy-ArbeitsgÃ¤nge \glqq Beginn\grqq\;($j=1$) und \glqq Ende\grqq\;($j=J$) hinzugefÃ¼gt, welche mit einer Dauer von $0$ Zeiteinheiten bewertet werden.\footnote{Vgl. \cite{zimmermann2006projektplanung}, S. 66} Die benÃ¶tigten KapazitÃ¤ten der erneuerbaren Ressource $r$ bei DurchfÃ¼hrung von Arbeitsgang $j$ wird durch $k_{jr}$ definiert. Die Ressourcen $r \in \mathcal{R}$ sind in einer Periode innerhalb des Umfangs ihrer KapazitÃ¤t $K_{r}$ nutzbar. Da es sich um erneuerbare Ressourcen handelt, sind diese zu jeder neuen Periode in vollem Umfang erneut nutzbar, wobei nichtverbrauchte Ressourcen nicht auf nachfolgende Perioden Ã¼bertragbar sind.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 12} Der Modellformulierung in diskreter Zeit wird die binÃ¤re Entscheidungsvariable $x_{jt}$ hinzugefÃ¼gt, damit der Fertigstellungszeitpunkt der einzelnen ArbeitsgÃ¤nge $j$  festgelegt werden kann.\footnote{Vgl. \cite{pritsker1969multiproject}, S. 94} %Die BinÃ¤rvariable $x_{jt}$ wird fÃ¼r den Zeitraum vom frÃ¼hesten Fertigstellungszeitpunkt $EFT_{j}$ bis zum spÃ¤testen Fertigstellungszeitpunkt $LFT_{j}$ vom jeweiligen Arbeitsgang $j$ definiert.
 
-Mit der Zielfunktion \eqref{Ziel} wird der Fertigstellungszeitpunkt des Projekts minimiert. Die Nebenbedingung \eqref{N1} sorgt dafür, dass ein Arbeitsgang $j$ nur jeweils zwischen dem frühesten und dem spätesten Fertigstellungszeitpunkt einmalig durchgeführt wird. Die Reihenfolgerestriktion wird mit der Nebenbedingung \eqref{N2} eingehalten. Sie stellt sicher, dass jeder Vorgänger $i \in \mathcal{P}_{j}$ beendet ist, bevor der Arbeitsgang $j$ startet.
-Der Parameter $K_{r}$ legt die Kapazitätsgrenze für eine erneuerbare Ressource $r$ je Periode $t$ fest und mit der Nebenbedingung \eqref{N3} wird diese zum einen formal dargestellt und zum anderen wird der Ressourcenverzehr während der gesamten Bearbeitungsdauer der Fertigstellung beachtet.
-Mit der Nebenbedingung \eqref{N4} wird die Binärvariable $x_{jt}$ für den Zeitraum $t = \{EFT_{j},...,LFT_{j}\}$ definiert, da aufgrund der Reihenfolgebeziehung \eqref{N2} der jeweils betrachtete Arbeitsgang nur in diesem Zeitraum fertiggestellt werden kann. Die gemischt-ganzzahlige Modellformulierung lässt sich durch Standard-Lösungsverfahren exakt lösen.\footnote{z. B. mittels eines Branch-and-Bound-Verfahrens, Vgl. \cite{kellenbrink2014einfuhrung}, S. 14}
+Mit der Zielfunktion \eqref{Ziel} wird der Fertigstellungszeitpunkt des Projekts minimiert. Die Nebenbedingung \eqref{N1} sorgt dafÃ¼r, dass ein Arbeitsgang $j$ nur jeweils zwischen dem frÃ¼hesten und dem spÃ¤testen Fertigstellungszeitpunkt einmalig durchgefÃ¼hrt wird. Die Reihenfolgerestriktion wird mit der Nebenbedingung \eqref{N2} eingehalten. Sie stellt sicher, dass jeder VorgÃ¤nger $i \in \mathcal{P}_{j}$ beendet ist, bevor der Arbeitsgang $j$ startet.
+Der Parameter $K_{r}$ legt die KapazitÃ¤tsgrenze fÃ¼r eine erneuerbare Ressource $r$ je Periode $t$ fest und mit der Nebenbedingung \eqref{N3} wird diese zum einen formal dargestellt und zum anderen wird der Ressourcenverzehr wÃ¤hrend der gesamten Bearbeitungsdauer der Fertigstellung beachtet.
+Mit der Nebenbedingung \eqref{N4} wird die BinÃ¤rvariable $x_{jt}$ fÃ¼r den Zeitraum $t = \{EFT_{j},...,LFT_{j}\}$ definiert, da aufgrund der Reihenfolgebeziehung \eqref{N2} der jeweils betrachtete Arbeitsgang nur in diesem Zeitraum fertiggestellt werden kann. Die gemischt-ganzzahlige Modellformulierung lÃ¤sst sich durch Standard-LÃ¶sungsverfahren exakt lÃ¶sen.\footnote{z. B. mittels eines Branch-and-Bound-Verfahrens, Vgl. \cite{kellenbrink2014einfuhrung}, S. 14}
 
-Bei der Modellformulierung in stetiger Zeit wird die reellwertige Entscheidungsvariable $FT_{j}$, die den Fertigstellungszeitpunkt vom Arbeitsgang $j$ beschreibt,\footnote{Vgl. \cite{talbot1982resource}, S. 1200} und die Menge $\mathcal{S}_{t}$ der bis zum Zeitpunkt $t$ bearbeiteten Arbeitsgänge definiert.\footnote{Vgl. \cite{projektpl2006zimme}, S. 124 und S. 207; Modell und Notation wurde \cite{kellenbrink2014einfuhrung}, S. 13, entnommen.} Durch die Annahme, dass die Bearbeitungsdauer $d_{j}$ nur ganzzahlige Werte annimmt, wird der Ablauf des Projekts ebenfalls eine ganzzahlige Lösung sein.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 14}
+Bei der Modellformulierung in stetiger Zeit wird die reellwertige Entscheidungsvariable $FT_{j}$, die den Fertigstellungszeitpunkt vom Arbeitsgang $j$ beschreibt,\footnote{Vgl. \cite{talbot1982resource}, S. 1200} und die Menge $\mathcal{S}_{t}$ der bis zum Zeitpunkt $t$ bearbeiteten ArbeitsgÃ¤nge definiert.\footnote{Vgl. \cite{projektpl2006zimme}, S. 124 und S. 207; Modell und Notation wurde \cite{kellenbrink2014einfuhrung}, S. 13, entnommen.} Durch die Annahme, dass die Bearbeitungsdauer $d_{j}$ nur ganzzahlige Werte annimmt, wird der Ablauf des Projekts ebenfalls eine ganzzahlige LÃ¶sung sein.\footnote{Vgl. \cite{kellenbrink2014einfuhrung}, S. 14}
 
 \textbf{Indizes und (geordnete) Mengen}
 \begin{table}[h!]
@@ -399,10 +271,10 @@ Bei der Modellformulierung in stetiger Zeit wird die reellwertige Entscheidungsv
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-     $j,i \in \mathcal{J}$	& topologisch sortierte Arbeitsgänge mit $i = 1,...,J$\\
-$j \in \mathcal{S}_{t}$	& Menge der Arbeitsgänge, die zum Zeitpunkt $t$ bearbeitet werden;\\
+     $j,i \in \mathcal{J}$	& topologisch sortierte ArbeitsgÃ¤nge mit $i = 1,...,J$\\
+$j \in \mathcal{S}_{t}$	& Menge der ArbeitsgÃ¤nge, die zum Zeitpunkt $t$ bearbeitet werden;\\
 & wobei $\mathcal{S}_ {t}:= \{ j \; \vert \; (FT_{j}-d_{j})\leq t \leq FT_{j}\}$\\
-$i \in \mathcal{P}_{j}$	& Menge der Vorgänger von Arbeitsgang $j$\\
+$i \in \mathcal{P}_{j}$	& Menge der VorgÃ¤nger von Arbeitsgang $j$\\
 $r \in \mathcal{R}$	& Menge der erneuerbaren Ressourcen\\
 $t \in [0,T]$	& Zeitpunkt\\ 
 	\end{tabular}
@@ -415,8 +287,8 @@ $t \in [0,T]$	& Zeitpunkt\\
   \renewcommand{\arraystretch}{1,5}
    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
      $d_{j}$	& Dauer von Arbeitsgang $j$\\ 
-$k_{jr}$	& Belastung von Ressourcen $r$ bei Durchführung von Arbeitsgang $j$\\ 
-$K_{r}$	& Kapazität von Ressourcen $r$\\
+$k_{jr}$	& Belastung von Ressourcen $r$ bei DurchfÃ¼hrung von Arbeitsgang $j$\\ 
+$K_{r}$	& KapazitÃ¤t von Ressourcen $r$\\
 	\end{tabular}
 \end{table}
 
@@ -448,49 +320,49 @@ FT_{j} \geq 0
 \hfill   j \in \mathcal{J}
 \end{multline}\vspace{-3.0ex}
 
-Die Zielfunktion \eqref{Ziel2} minimiert die Fertigstellungszeit des gesamten Projekts. Die Nebenbedingung \eqref{N12} sichert, dass kein Arbeitsgang $j$ beendet werden kann, wenn nicht alle vorherigen Arbeitsgänge $i \in \mathcal{P}_{i}$ zuvor beendet wurden. Durch Einhaltung der Nebenbedingung \eqref{N32} wird sichergestellt, dass die Kapazitätsrestriktionen der Ressource $r$ für die bisher erledigten Arbeitsgänge $j \in \mathcal{S}_{t}$ innerhalb der Periode {t} erfolgt und die Nebenbedingung \eqref{N42} ist die Nichtnegativitätsbedingung für die Entscheidungsvariable $FT_{j}$.
+Die Zielfunktion \eqref{Ziel2} minimiert die Fertigstellungszeit des gesamten Projekts. Die Nebenbedingung \eqref{N12} sichert, dass kein Arbeitsgang $j$ beendet werden kann, wenn nicht alle vorherigen ArbeitsgÃ¤nge $i \in \mathcal{P}_{i}$ zuvor beendet wurden. Durch Einhaltung der Nebenbedingung \eqref{N32} wird sichergestellt, dass die KapazitÃ¤tsrestriktionen der Ressource $r$ fÃ¼r die bisher erledigten ArbeitsgÃ¤nge $j \in \mathcal{S}_{t}$ innerhalb der Periode {t} erfolgt und die Nebenbedingung \eqref{N42} ist die NichtnegativitÃ¤tsbedingung fÃ¼r die Entscheidungsvariable $FT_{j}$.
 %In dem Klassifizierungsschema von \cite{herroelen1999classification} wurde das Modell RCPSP als $m,1\mid cpm\mid C_{max}$ kategorisiert. Dies bedeutet, das Problem hat $m$ erneuerbare Ressourcen
 
-Beide mathematischen Modellformulierungen sind für das Grundverständnis zum Lösen des ressourcenbeschränkten Projektplanungsproblems mittels der nachfolgend in Kapitel \ref{Hauptteil} beschriebenen Heuristiken notwendig, weshalb sie in diesem Kapitel beschrieben sind.
+Beide mathematischen Modellformulierungen sind fÃ¼r das GrundverstÃ¤ndnis zum LÃ¶sen des ressourcenbeschrÃ¤nkten Projektplanungsproblems mittels der nachfolgend in Kapitel \ref{Hauptteil} beschriebenen Heuristiken notwendig, weshalb sie in diesem Kapitel beschrieben sind.
 
 
-\section{Notwendigkeit einer Heuristik zum Lösen des RCPSP}\label{notwendig}
-Das Modell RCPSP wurde als $\mathcal{NP}$-Schwer befunden\footnote{Vgl. \cite{blazewicz1983scheduling}, S. 21} und somit ist kein deterministischer Algorithmus bekannt, der das Problem in polynomialer Zeit löst.\footnote{Vgl. \cite{garey1979computers}, S. 109} In dieser Arbeit werden heuristische Lösungsverfahren betrachtet. %die lt. Definition in vertretbarer Zeit eine brauchbare Lösung für das Problem bestimmen.
-Durch Abweichung der Forderung eine optimale Lösung zu berechnen und durch kleine Änderungen der Lösungsanforderungen werden gewaltige Komplexitäts\-sprünge durch Heuristiken ermöglicht. Damit werden in vertretbarer Zeit gute Lösungen generiert oder es wird u. U. auch die Möglichkeit geschaffen die Problemstellung exakt zu lösen.\footnote{Vgl. \cite{Hromkovic:2014aa}, S. 12}
+\section{Notwendigkeit einer Heuristik zum LÃ¶sen des RCPSP}\label{notwendig}
+Das Modell RCPSP wurde als $\mathcal{NP}$-Schwer befunden\footnote{Vgl. \cite{blazewicz1983scheduling}, S. 21} und somit ist kein deterministischer Algorithmus bekannt, der das Problem in polynomialer Zeit lÃ¶st.\footnote{Vgl. \cite{garey1979computers}, S. 109} In dieser Arbeit werden heuristische LÃ¶sungsverfahren betrachtet. %die lt. Definition in vertretbarer Zeit eine brauchbare LÃ¶sung fÃ¼r das Problem bestimmen.
+Durch Abweichung der Forderung eine optimale LÃ¶sung zu berechnen und durch kleine Ã„nderungen der LÃ¶sungsanforderungen werden gewaltige KomplexitÃ¤ts\-sprÃ¼nge durch Heuristiken ermÃ¶glicht. Damit werden in vertretbarer Zeit gute LÃ¶sungen generiert oder es wird u. U. auch die MÃ¶glichkeit geschaffen die Problemstellung exakt zu lÃ¶sen.\footnote{Vgl. \cite{Hromkovic:2014aa}, S. 12}
 
-Einen Überblick über Lösungsansätze für das RCPSP liefern \cite{demeulemeester2002project}, \cite{herroelen2005project} sowie \cite{kolisch2006experimental}. %Bei den Heuristiken kommen vermehrt Verfahren der Prioritätsregeln, verkürzten Branch-And-Bound-Verfahren, Konzept auf der Basis disjunkter Pfeile und Metaheuristiken zum Einsatz.\footnote{Vgl. \cite{kolisch2001integrated}, S. 256-257}
+Einen Ãœberblick Ã¼ber LÃ¶sungsansÃ¤tze fÃ¼r das RCPSP liefern \cite{demeulemeester2002project}, \cite{herroelen2005project} sowie \cite{kolisch2006experimental}. %Bei den Heuristiken kommen vermehrt Verfahren der PrioritÃ¤tsregeln, verkÃ¼rzten Branch-And-Bound-Verfahren, Konzept auf der Basis disjunkter Pfeile und Metaheuristiken zum Einsatz.\footnote{Vgl. \cite{kolisch2001integrated}, S. 256-257}
 
-\citeauthor{demeulemeester2011robust} (2011, S. 31) vertreten die Ansicht, dass für das Projektplanungsproblem die Metaheuristiken die besten computergeschützen Lösungen -- zumindest für die frühen Fälle der Project Scheduling Problem Library (PSPLIB) -- liefern.
-Die Vermischung aus Konzepten von unterschiedlichen Metaheuristiken, wie Scatter Search\footnote{siehe Kapitel \ref{debels1}} und generische populations-basierte Evolutionssuche (auch bekannt unter dem Begriff des genetischen Algorithmus),\footnote{siehe Kapitel \ref{kochetov}} zu einer hybriden Metaheuristik könnte daher erfolgversprechend zum Lösen des RCPSP sein.\footnote{Vgl. \cite{demeulemeester2011robust}, S. 31-32\label{demeulemeester}}
-Aufgabe der Forschung bzgl. des ressourcenbeschränkten Projektplanungsproblems ist es, eine hybride Metaheuristik zu entwickeln, die effizienter arbeitet als die bisher entwickelten Metaheuristiken. Zzt. weichen die heutigen hybriden Metaheuristiken durchschnittlich zwischen 25-30\% von der durch die Methode des kritischen Pfads ermittelten Projektfertigstellungsdauer als untere Grenzschranke ab.\footref{demeulemeester}
+\citeauthor{demeulemeester2011robust} (2011, S. 31) vertreten die Ansicht, dass fÃ¼r das Projektplanungsproblem die Metaheuristiken die besten computergeschÃ¼tzen LÃ¶sungen -- zumindest fÃ¼r die frÃ¼hen FÃ¤lle der Project Scheduling Problem Library (PSPLIB) -- liefern.
+Die Vermischung aus Konzepten von unterschiedlichen Metaheuristiken, wie Scatter Search\footnote{siehe Kapitel \ref{debels1}} und generische populations-basierte Evolutionssuche (auch bekannt unter dem Begriff des genetischen Algorithmus),\footnote{siehe Kapitel \ref{kochetov}} zu einer hybriden Metaheuristik kÃ¶nnte daher erfolgversprechend zum LÃ¶sen des RCPSP sein.\footnote{Vgl. \cite{demeulemeester2011robust}, S. 31-32\label{demeulemeester}}
+Aufgabe der Forschung bzgl. des ressourcenbeschrÃ¤nkten Projektplanungsproblems ist es, eine hybride Metaheuristik zu entwickeln, die effizienter arbeitet als die bisher entwickelten Metaheuristiken. Zzt. weichen die heutigen hybriden Metaheuristiken durchschnittlich zwischen 25-30\% von der durch die Methode des kritischen Pfads ermittelten Projektfertigstellungsdauer als untere Grenzschranke ab.\footref{demeulemeester}
 
-\cite{trautmann2009resource} testeten unterschiedliche Projektplanungssoftwares und kamen zu dem Ergebnis, dass zzt. keines der Softwarepakete mit den aktuell modernsten Heuristiken der neueren Literaturveröffentlichungen wettbewerbsfähig sind.\footref{demeulemeester} Daher sollte bei der weiteren Entwicklung von Projektplanungssoftware die Aufnahme von modernen hybriden Metaheuristiken vorgenommen werden. Daher ist es zielführend, die hybriden Metaheuristiken für das RCPSP weiterzuentwickeln, damit diese das effizientere Arbeiten der Projektplanungssoftwarepakete für Standardproblemstellungen der Projektplanung gewährleisten.
-
-
+\cite{trautmann2009resource} testeten unterschiedliche Projektplanungssoftwares und kamen zu dem Ergebnis, dass zzt. keines der Softwarepakete mit den aktuell modernsten Heuristiken der neueren LiteraturverÃ¶ffentlichungen wettbewerbsfÃ¤hig sind.\footref{demeulemeester} Daher sollte bei der weiteren Entwicklung von Projektplanungssoftware die Aufnahme von modernen hybriden Metaheuristiken vorgenommen werden. Daher ist es zielfÃ¼hrend, die hybriden Metaheuristiken fÃ¼r das RCPSP weiterzuentwickeln, damit diese das effizientere Arbeiten der Projektplanungssoftwarepakete fÃ¼r Standardproblemstellungen der Projektplanung gewÃ¤hrleisten.
 
 
 
-\section{Eröffnungsverfahren zur Bestimmung der Ablauffolge einer Projektplanung} \label{SGS}
-Durch Auflistung aller Arbeitsgänge nach ihren möglichen Start- bzw. Anfangszeitpunkten $S_{j}$ wird eine Ablauffolge bzw. Vorgangsliste $L=(j_{1},j_{2},...,j_{n})$ der für das Projekt benötigten Arbeitsgänge erstellt, wobei diese Liste $L$ die topologische Reihenfolge der Arbeitsgänge beachten muss.\footnote{Vgl. \cite{brucker2006complex}, S. 122-123\label{complex}} Es handelt sich somit um eine erste zulässige Lösung. Ein Beispiel für eine Ablaufbeziehung eines Projekts mit zehn Arbeitsgängen liefert Abbildung \ref{Pfad} und eine dazugehörige Ablauffolge des Projekts liefert Abbildung \ref{SGSBild}.
+
+
+\section{ErÃ¶ffnungsverfahren zur Bestimmung der Ablauffolge einer Projektplanung} \label{SGS}
+Durch Auflistung aller ArbeitsgÃ¤nge nach ihren mÃ¶glichen Start- bzw. Anfangszeitpunkten $S_{j}$ wird eine Ablauffolge bzw. Vorgangsliste $L=(j_{1},j_{2},...,j_{n})$ der fÃ¼r das Projekt benÃ¶tigten ArbeitsgÃ¤nge erstellt, wobei diese Liste $L$ die topologische Reihenfolge der ArbeitsgÃ¤nge beachten muss.\footnote{Vgl. \cite{brucker2006complex}, S. 122-123\label{complex}} Es handelt sich somit um eine erste zulÃ¤ssige LÃ¶sung. Ein Beispiel fÃ¼r eine Ablaufbeziehung eines Projekts mit zehn ArbeitsgÃ¤ngen liefert Abbildung \ref{Pfad} und eine dazugehÃ¶rige Ablauffolge des Projekts liefert Abbildung \ref{SGSBild}.
 
 \begin{figure}[h!]
   \begin{center}
 \includegraphics[width=1.00\textwidth, keepaspectratio, page=1]{Bilder/Pfadgraf.pdf}
- \caption{Möglicher Aufbau einer Reihenfolgebeziehung eines Projekts}\label{Pfad}
+ \caption{MÃ¶glicher Aufbau einer Reihenfolgebeziehung eines Projekts}\label{Pfad}
   \end{center}
 \end{figure}
 \begin{figure}[h!]
   \begin{center}
 \includegraphics[width=1.00\textwidth, keepaspectratio, page=1]{Bilder/SGS.pdf}
- \caption{Mögliche Ablauffolge eines Projekts}\label{SGSBild}
+ \caption{MÃ¶gliche Ablauffolge eines Projekts}\label{SGSBild}
    {\footnotesize  \textbf{In Anlehnung an:} \cite{bouleimen2003new}, S. 271}
   \end{center}
 \end{figure}
-Das aus der engl. Literatur stammende \textit{Schedule Generation Schema (SGS)} liefert gute Ergebnisse für eine nach frühestmöglich sortierten Arbeitsgängen geordnete Ablauffolge eines Projekts.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33}
+Das aus der engl. Literatur stammende \textit{Schedule Generation Schema (SGS)} liefert gute Ergebnisse fÃ¼r eine nach frÃ¼hestmÃ¶glich sortierten ArbeitsgÃ¤ngen geordnete Ablauffolge eines Projekts.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33}
 
 
-Das aktivitätsorientierte \textbf{serielle SGS} plant bei jeder Iteration einen Arbeitsgang in eine mögliche Arbeitsfolge frühestmöglich ein.\footnote{Vgl. \cite{brucker2006complex}, S. 146-147\label{dingeskrichen}} Dabei müssen die zeitgleich ablaufenden Vorgänge unabhängig voneinander sein, die für den Arbeitsgang notwendigen Ressourcen $k_{jr}$ müssen vorhanden sein und die notwendigen Vorgänger müssen abgeschlossen sein. Für dieses Schema sind zwei disjunkte Mengen formuliert:\footref{dingeskrichen} Zum einen die Menge an bereits eingeplanten Arbeitsgängen $\mathcal{V}_{n}$ zum Zeitpunkt $t_{n}$ und zum anderen die Menge an Arbeitsgängen $\mathcal{D}_{n}$, welche zum Zeitpunkt $t_{n}$ in die Planung überführt werden sollen. Dabei beschreibt der Parameter $t_{n}$ den Zeitpunkt nach $n$ Iterationen. Anders formuliert bedeutet dies, dass jeder Arbeitsgang $j$ mit der frühesten Startzeit $S_{j}$ in die Ablauffolge $L$ geplant wird, sofern die Vorgänger $i \in \mathcal{P}_{j}$ vom betrachteten Arbeitsgang $j$ bereits %mit deren frühestmöglichen Startzeitpunkt durch hinzufügen%
-in die Ablauffolge $L$ eingeplant wurden. Zur Auswahl der möglichen Arbeitsgänge sollte eine Prioritätsregelung angewendet werden.\footnote{Vgl. \cite{hartmann1998competitive}, S. 741-742\label{hartmann}} Abbildung \ref{umsortiert} zeigt den ersten Schritt der Umsortierung des Projekts durch Verschiebung des Arbeitsgangs $j_{7}$ zur frühesten Startzeit $S_{j}$. Dabei wird in diesem Fall als Prioritätsregel der Wert der spätesten Fertigstellungszeit $LFT_{j}$ verwendet.\footref{hartmann} Es handelt sich bei diesem Schritt um einen left-shift eines Arbeitsgangs $j$.\footnote{Vgl. \cite{kolisch1996serial}, S. 325-326}\\
+Das aktivitÃ¤tsorientierte \textbf{serielle SGS} plant bei jeder Iteration einen Arbeitsgang in eine mÃ¶gliche Arbeitsfolge frÃ¼hestmÃ¶glich ein.\footnote{Vgl. \cite{brucker2006complex}, S. 146-147\label{dingeskrichen}} Dabei mÃ¼ssen die zeitgleich ablaufenden VorgÃ¤nge unabhÃ¤ngig voneinander sein, die fÃ¼r den Arbeitsgang notwendigen Ressourcen $k_{jr}$ mÃ¼ssen vorhanden sein und die notwendigen VorgÃ¤nger mÃ¼ssen abgeschlossen sein. FÃ¼r dieses Schema sind zwei disjunkte Mengen formuliert:\footref{dingeskrichen} Zum einen die Menge an bereits eingeplanten ArbeitsgÃ¤ngen $\mathcal{V}_{n}$ zum Zeitpunkt $t_{n}$ und zum anderen die Menge an ArbeitsgÃ¤ngen $\mathcal{D}_{n}$, welche zum Zeitpunkt $t_{n}$ in die Planung Ã¼berfÃ¼hrt werden sollen. Dabei beschreibt der Parameter $t_{n}$ den Zeitpunkt nach $n$ Iterationen. Anders formuliert bedeutet dies, dass jeder Arbeitsgang $j$ mit der frÃ¼hesten Startzeit $S_{j}$ in die Ablauffolge $L$ geplant wird, sofern die VorgÃ¤nger $i \in \mathcal{P}_{j}$ vom betrachteten Arbeitsgang $j$ bereits %mit deren frÃ¼hestmÃ¶glichen Startzeitpunkt durch hinzufÃ¼gen%
+in die Ablauffolge $L$ eingeplant wurden. Zur Auswahl der mÃ¶glichen ArbeitsgÃ¤nge sollte eine PrioritÃ¤tsregelung angewendet werden.\footnote{Vgl. \cite{hartmann1998competitive}, S. 741-742\label{hartmann}} Abbildung \ref{umsortiert} zeigt den ersten Schritt der Umsortierung des Projekts durch Verschiebung des Arbeitsgangs $j_{7}$ zur frÃ¼hesten Startzeit $S_{j}$. Dabei wird in diesem Fall als PrioritÃ¤tsregel der Wert der spÃ¤testen Fertigstellungszeit $LFT_{j}$ verwendet.\footref{hartmann} Es handelt sich bei diesem Schritt um einen left-shift eines Arbeitsgangs $j$.\footnote{Vgl. \cite{kolisch1996serial}, S. 325-326}\\
 
 \begin{figure}[h!]
   \begin{center}
@@ -500,8 +372,8 @@ in die Ablauffolge $L$ eingeplant wurden. Zur Auswahl der möglichen Arbeitsgänge
   \end{center}
 \end{figure}
 
-Nachdem eine Periode verstrichen ist bzw. eine weitere Iteration des SGS erfolgt ist, werden alle erneuerbaren Ressourcen erneuert.\footnote{Vgl. \cite{bouleimen2003new}, S. 271-272} Als Ergebnis dieses iterativen Planungsverfahrens ergibt sich ein aktiver Ablaufplan $S(L)$.\footnote{Vgl. \cite{kolisch1996serial}, S. 325-326} \cite{brucker2006complex} sind der Auffassung, dass für ein RCPSP mit einer regulären Zielfunktionswert eine nach den frühestmöglichen Startzeitpunkten sortierte Ablauffolge eine optimale Lösung darstellt.\footnote{Vgl. \cite{brucker2006complex}, S. 123-124\label{heida}} Dies wird bewiesen durch Formulierung einer Lösung mit Fertigstellungszeit $FT_{J}$ eines Projektes %mit topologisch sortierten Arbeitsgängen
-sowie der Formulierung der alternativen Lösung mit Fertigstellungszeit $FT'_{J}$, die zusätzlich nach den frühestmöglichen Startzeitpunkten sortiert sind. Dann gilt $FT'_{j} \leq FT_{j}$ für jeden Arbeitsgang $j$.\footref{heida} Abbildung \ref{umsortiert2} zeigt eine nach dem seriellen SGS sortierte Ablauffolge eines Projekts.\\
+Nachdem eine Periode verstrichen ist bzw. eine weitere Iteration des SGS erfolgt ist, werden alle erneuerbaren Ressourcen erneuert.\footnote{Vgl. \cite{bouleimen2003new}, S. 271-272} Als Ergebnis dieses iterativen Planungsverfahrens ergibt sich ein aktiver Ablaufplan $S(L)$.\footnote{Vgl. \cite{kolisch1996serial}, S. 325-326} \cite{brucker2006complex} sind der Auffassung, dass fÃ¼r ein RCPSP mit einer regulÃ¤ren Zielfunktionswert eine nach den frÃ¼hestmÃ¶glichen Startzeitpunkten sortierte Ablauffolge eine optimale LÃ¶sung darstellt.\footnote{Vgl. \cite{brucker2006complex}, S. 123-124\label{heida}} Dies wird bewiesen durch Formulierung einer LÃ¶sung mit Fertigstellungszeit $FT_{J}$ eines Projektes %mit topologisch sortierten ArbeitsgÃ¤ngen
+sowie der Formulierung der alternativen LÃ¶sung mit Fertigstellungszeit $FT'_{J}$, die zusÃ¤tzlich nach den frÃ¼hestmÃ¶glichen Startzeitpunkten sortiert sind. Dann gilt $FT'_{j} \leq FT_{j}$ fÃ¼r jeden Arbeitsgang $j$.\footref{heida} Abbildung \ref{umsortiert2} zeigt eine nach dem seriellen SGS sortierte Ablauffolge eines Projekts.\\
 
 \begin{figure}[h!]
   \begin{center}
@@ -511,7 +383,7 @@ sowie der Formulierung der alternativen Lösung mit Fertigstellungszeit $FT'_{J}$
   \end{center}
 \end{figure}
 
-Bei dem zeit-orientierten \textbf{parallelen SGS} wird bei jeder Iteration eine Menge von bisher nicht-geplanten Arbeitsgängen geplant.\footnote{Vgl. \cite{tormos2003efficient}, S. 1073} Eine Iteration $n$ ist verbunden mit einem Zeitpunkt $t_{n}$, bei dem gilt $t_{m}<t_{n}$ für $m<n$. Der Parameter $m$ steht für die Iteration vor der Iteration $n$. Des Weiteren werden drei disjunkte Mengen formuliert. $\mathcal{D}_{n}$ steht für die Menge an Arbeitsgängen, die zum Zeitpunkt $t_{n}$ zur Entscheidung stehen, $\mathcal{N}_{n}$ für die Menge an Arbeitsgängen, die sich zum Zeitpunkt $t_{n}$ in Bearbeitung befinden, und der Parameter $\mathcal{V}_{n}$ für die Menge an Arbeitsgängen, die bereits bis zum Zeitpunkt $t_{n}$ abgeschlossen wurden. Bei jeder Iteration $n$ wird anhand der Mengen untersucht, welche Arbeitsgänge $i \in\mathcal{D}_{n}$ zum Zeitpunkt $t_{n}$ mit deren bestimmtem Ressourcenbedarf $k_{jr}$ verplant werden können. Die Ablauffolge ist generiert bei $\mathcal{V}_{n}\cup\mathcal{N}_{n}$. Abbildung \ref{umsortiert3} zeigt anhand des eingeführten Beispiels eine durch das parallele SGS generierte Ablauffolge.
+Bei dem zeit-orientierten \textbf{parallelen SGS} wird bei jeder Iteration eine Menge von bisher nicht-geplanten ArbeitsgÃ¤ngen geplant.\footnote{Vgl. \cite{tormos2003efficient}, S. 1073} Eine Iteration $n$ ist verbunden mit einem Zeitpunkt $t_{n}$, bei dem gilt $t_{m}<t_{n}$ fÃ¼r $m<n$. Der Parameter $m$ steht fÃ¼r die Iteration vor der Iteration $n$. Des Weiteren werden drei disjunkte Mengen formuliert. $\mathcal{D}_{n}$ steht fÃ¼r die Menge an ArbeitsgÃ¤ngen, die zum Zeitpunkt $t_{n}$ zur Entscheidung stehen, $\mathcal{N}_{n}$ fÃ¼r die Menge an ArbeitsgÃ¤ngen, die sich zum Zeitpunkt $t_{n}$ in Bearbeitung befinden, und der Parameter $\mathcal{V}_{n}$ fÃ¼r die Menge an ArbeitsgÃ¤ngen, die bereits bis zum Zeitpunkt $t_{n}$ abgeschlossen wurden. Bei jeder Iteration $n$ wird anhand der Mengen untersucht, welche ArbeitsgÃ¤nge $i \in\mathcal{D}_{n}$ zum Zeitpunkt $t_{n}$ mit deren bestimmtem Ressourcenbedarf $k_{jr}$ verplant werden kÃ¶nnen. Die Ablauffolge ist generiert bei $\mathcal{V}_{n}\cup\mathcal{N}_{n}$. Abbildung \ref{umsortiert3} zeigt anhand des eingefÃ¼hrten Beispiels eine durch das parallele SGS generierte Ablauffolge.
 \begin{figure}[h!]
   \begin{center}
 \includegraphics[width=1.00\textwidth, keepaspectratio, page=1]{Bilder/SGS4.pdf}
@@ -520,30 +392,30 @@ Bei dem zeit-orientierten \textbf{parallelen SGS} wird bei jeder Iteration eine 
   \end{center}
 \end{figure}
 
-Das parallele SGS generiert non-delay und das serielle SGS aktive Ablaufplanungen.\footnote{Vgl. \cite{kolisch1996serial}, S. 325-326\label{1996}} Bei non-delay Ablaufplanungen geht unter Einhaltung der Vorrangsrestriktionen eine frühere Planung eines Arbeitsgangs mit der Verschiebung eines anderen Arbeitsgangs zu einem späteren Startzeitpunkt einher. Bei aktiven Ablaufplänen können Arbeitsgänge nicht durch neuen left-shift früher geplant werden, auch wenn mindestens ein Zwischenplan unzulässig ist. Alle nachfolgenden Heuristiken nutzen zur Bestimmung der Ablauffolge die Verfahren des SGS. Darauf aufbauend erfolgt durch verschiedene Verfahren eine Reoptimierung der Ausgangslösung. Bei der Bewertung der Heuristiken mit Integration des parallelen SGS muss beachtet werden, dass bei einer Untersuchung von \cite{kolisch1996serial} die generierten non-delay Ablaufpläne nur 59.7\% der optimalen Lösungen enthielten und diese Heuristiken dementsprechend eine verzerrte Lösungsgüte vermitteln könnten.\footnote{Vgl. \cite{hartmann1999project}, S. 65}
-%Die sogenannte Fitness des Individuum ist bei dem RCPSP die durch die Planung des Projekts generierte Bearbeitungsdauer aller Aktivitäten $j$.\footnote{Vgl. \cite{hartmann1998competitive}, S. 735}
+Das parallele SGS generiert non-delay und das serielle SGS aktive Ablaufplanungen.\footnote{Vgl. \cite{kolisch1996serial}, S. 325-326\label{1996}} Bei non-delay Ablaufplanungen geht unter Einhaltung der Vorrangsrestriktionen eine frÃ¼here Planung eines Arbeitsgangs mit der Verschiebung eines anderen Arbeitsgangs zu einem spÃ¤teren Startzeitpunkt einher. Bei aktiven AblaufplÃ¤nen kÃ¶nnen ArbeitsgÃ¤nge nicht durch neuen left-shift frÃ¼her geplant werden, auch wenn mindestens ein Zwischenplan unzulÃ¤ssig ist. Alle nachfolgenden Heuristiken nutzen zur Bestimmung der Ablauffolge die Verfahren des SGS. Darauf aufbauend erfolgt durch verschiedene Verfahren eine Reoptimierung der AusgangslÃ¶sung. Bei der Bewertung der Heuristiken mit Integration des parallelen SGS muss beachtet werden, dass bei einer Untersuchung von \cite{kolisch1996serial} die generierten non-delay AblaufplÃ¤ne nur 59.7\% der optimalen LÃ¶sungen enthielten und diese Heuristiken dementsprechend eine verzerrte LÃ¶sungsgÃ¼te vermitteln kÃ¶nnten.\footnote{Vgl. \cite{hartmann1999project}, S. 65}
+%Die sogenannte Fitness des Individuum ist bei dem RCPSP die durch die Planung des Projekts generierte Bearbeitungsdauer aller AktivitÃ¤ten $j$.\footnote{Vgl. \cite{hartmann1998competitive}, S. 735}
 
-Zur Entwicklung neuer möglicher Ablaufplanungen anhand der Eröffnungsverfahren gibt es verschiedene Rekombinationsverfahren, bei denen ermittelte Ablauffolgen eines Projekts neu sortiert werden. %Diese drei Verfahren sind analog der allgemeinen Crossover-Techniken von \cite{reeves1995genetic}.
-Im nachfolgenden Kapitel werden verschiedene neu entwickelte Rekombinationsverfahren (Crossover) näher betrachtet und die dazugehörigen Heuristiken aufgeführt.
+Zur Entwicklung neuer mÃ¶glicher Ablaufplanungen anhand der ErÃ¶ffnungsverfahren gibt es verschiedene Rekombinationsverfahren, bei denen ermittelte Ablauffolgen eines Projekts neu sortiert werden. %Diese drei Verfahren sind analog der allgemeinen Crossover-Techniken von \cite{reeves1995genetic}.
+Im nachfolgenden Kapitel werden verschiedene neu entwickelte Rekombinationsverfahren (Crossover) nÃ¤her betrachtet und die dazugehÃ¶rigen Heuristiken aufgefÃ¼hrt.
 
 
-%Die in Kapitel \ref{Hauptteil} detailliert aufgeführten Heuristiken nutzen das SGS zur Bestimmung der Lösungen und im Zuge der Beschreibung der Heuristik des Kapitels \ref{SGS} wird auf dieses Schema näher eingegangen.
+%Die in Kapitel \ref{Hauptteil} detailliert aufgefÃ¼hrten Heuristiken nutzen das SGS zur Bestimmung der LÃ¶sungen und im Zuge der Beschreibung der Heuristik des Kapitels \ref{SGS} wird auf dieses Schema nÃ¤her eingegangen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Hauptteil
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Heuristische Lösungsverfahren für das RCPSP} \label{Hauptteil}
-\markboth{Heuristische Lösungsverfahren für das RCPSP}{} 
-\section{Verfahren der simulierten Abkühlung}\label{bouleimen}
+\chapter{Heuristische LÃ¶sungsverfahren fÃ¼r das RCPSP} \label{Hauptteil}
+\markboth{Heuristische LÃ¶sungsverfahren fÃ¼r das RCPSP}{} 
+\section{Verfahren der simulierten AbkÃ¼hlung}\label{bouleimen}
 
-Aufbauend auf einem angepassten Algorithmus zum sogenannten \textit{Simulated Annealing (SA)} wurde eine Heuristik von \cite{bouleimen2003new} entwickelt. Der SA-Algorithmus basiert in seiner ursprünglichen Form auf einem iterativen Verfahren zur Generierung von Nachbarlösungen und der Suche des globalen Minimums. Dabei wird der Lösungsraum durchsucht, indem kontrolliert schlechte Nachbarlösungen vom lokalen Minimum akzeptiert werden. Durch das Durchsuchen des Lösungsraums erfolgt eine Verbesserung des Zielfunktionswerts.\footnote{Vgl. \cite{bouleimen2003new}, S. 270\label{boulemen}} Das Verfahren soll für jede Iteration die Menge $N(y)$ generieren, die eine Menge der Nachbarn $y'$ vom Punkt $y$ beschreibt und in jeder Iteration einen Nachbarn $y'$ von der Nachbarschaft $N(y)$ vom Punkt $y$ auswählt. Eine aktuelle Lösung des Punkts $y$ wird durch den Zielfunktionswert $f(y)$ charakterisiert und entspricht der Projektfertigungsdauer der generierten Ablauffolge bzw. Lösung $y$.
+Aufbauend auf einem angepassten Algorithmus zum sogenannten \textit{Simulated Annealing (SA)} wurde eine Heuristik von \cite{bouleimen2003new} entwickelt. Der SA-Algorithmus basiert in seiner ursprÃ¼nglichen Form auf einem iterativen Verfahren zur Generierung von NachbarlÃ¶sungen und der Suche des globalen Minimums. Dabei wird der LÃ¶sungsraum durchsucht, indem kontrolliert schlechte NachbarlÃ¶sungen vom lokalen Minimum akzeptiert werden. Durch das Durchsuchen des LÃ¶sungsraums erfolgt eine Verbesserung des Zielfunktionswerts.\footnote{Vgl. \cite{bouleimen2003new}, S. 270\label{boulemen}} Das Verfahren soll fÃ¼r jede Iteration die Menge $N(y)$ generieren, die eine Menge der Nachbarn $y'$ vom Punkt $y$ beschreibt und in jeder Iteration einen Nachbarn $y'$ von der Nachbarschaft $N(y)$ vom Punkt $y$ auswÃ¤hlt. Eine aktuelle LÃ¶sung des Punkts $y$ wird durch den Zielfunktionswert $f(y)$ charakterisiert und entspricht der Projektfertigungsdauer der generierten Ablauffolge bzw. LÃ¶sung $y$.
 
 Aufbauend auf den speziellen Eigenschaften %und basierend auf der Ablauffolge\footnote{Vgl. \cite{boctor1996resource}, S. 349-352}
-haben \cite{bouleimen2003new} den neuen Lösungsansatz der SA entwickelt. Die Heuristik hat als Lösungsansatz die einfache Gestaltung und den schnellen Vergleich der Nachbarschaftslösungen. Bei der Ermittlung der Ablauffolge von $y_{0}$ handelt es sich um das in Kapitel \ref{SGS} beschriebene serielle SGS mit der Prioritätsregel der geringsten Bearbeitungsdauer der Arbeitsgänge (SPT-Heuristik). Als untere Schranke wird die Projektfertigstellungsdauer anhand des kritischen Pfads gewählt (CP-Wert).
+haben \cite{bouleimen2003new} den neuen LÃ¶sungsansatz der SA entwickelt. Die Heuristik hat als LÃ¶sungsansatz die einfache Gestaltung und den schnellen Vergleich der NachbarschaftslÃ¶sungen. Bei der Ermittlung der Ablauffolge von $y_{0}$ handelt es sich um das in Kapitel \ref{SGS} beschriebene serielle SGS mit der PrioritÃ¤tsregel der geringsten Bearbeitungsdauer der ArbeitsgÃ¤nge (SPT-Heuristik). Als untere Schranke wird die Projektfertigstellungsdauer anhand des kritischen Pfads gewÃ¤hlt (CP-Wert).
 
 \begin{algorithm}[H]
-\textbf{Algorithmus der simulierten Abkühlung}\\
+\textbf{Algorithmus der simulierten AbkÃ¼hlung}\\
 \Ein{Projektdaten, CP-Wert}
 berechne $y_{0}$ und $f(y_{0})${ mit der SPT-Heuristik\\
 speicher $y_{0}=y_{best}$; $f(y_{0})=f_{best}$; Ablauffolge von $y_{0}=$ aktuelle Liste,  $f(y_{0})=f_{aktuelle}$\\
@@ -552,7 +424,7 @@ speicher $y_{0}=y_{best}$; $f(y_{0})=f_{best}$; Ablauffolge von $y_{0}=$ aktuell
 $\Theta= \Theta_{0max}$\\
 $N_{n}=N_{0}$\\
 \Fuer{I Iteration}{$N_{n}=N_{n}(1+h_{n})$\\
-\Fuer{$N_{p}$ Nachbarn}{erstelle einen Nachbarn $y'$ von der aktuellen Lösung $y_{aktuell}$\\
+\Fuer{$N_{p}$ Nachbarn}{erstelle einen Nachbarn $y'$ von der aktuellen LÃ¶sung $y_{aktuell}$\\
 berechne $f(y')$\\
 berechne $\Delta =f(y')-f(y)$\\
 \uWenn{$\Delta<0$}{$y'=y_{aktuell},f(y')=f_{aktuell}$\\
@@ -561,49 +433,49 @@ berechne $\Delta =f(y')-f(y)$\\
 {\footnotesize \textbf{Quelle:} \cite{bouleimen2003new}, S. 273}
 \end{algorithm}
 
-In der Heuristik wird ein neues Abkühlungsschema im Verfahren des simulierten Abkühlens integriert. Es ist lt. den Autoren eine effiziente Suchstrategie für das RCPSP durch Integration von problemabhängigen Parametern. Die Suche nach neuen Lösungen erfolgt anhand multipler Abkühlungsketten und der Neustart des Verfahrens erfolgt bei jedem Zeitpunkt von einer anderen als der ursprünglichen Lösung. Dabei erhöhen sich in jeder Iteration $n$ die Lösungen bei jeder Prüfung stufenweise um $N_{n}=N_{n}(1+h_{n})$. Der Parameter $h$ steht dabei für die Länge der Iteration. Dadurch ist es möglich die Suche weiter auf die Nachbarschaft der guten Lösung auszuweiten.
+In der Heuristik wird ein neues AbkÃ¼hlungsschema im Verfahren des simulierten AbkÃ¼hlens integriert. Es ist lt. den Autoren eine effiziente Suchstrategie fÃ¼r das RCPSP durch Integration von problemabhÃ¤ngigen Parametern. Die Suche nach neuen LÃ¶sungen erfolgt anhand multipler AbkÃ¼hlungsketten und der Neustart des Verfahrens erfolgt bei jedem Zeitpunkt von einer anderen als der ursprÃ¼nglichen LÃ¶sung. Dabei erhÃ¶hen sich in jeder Iteration $n$ die LÃ¶sungen bei jeder PrÃ¼fung stufenweise um $N_{n}=N_{n}(1+h_{n})$. Der Parameter $h$ steht dabei fÃ¼r die LÃ¤nge der Iteration. Dadurch ist es mÃ¶glich die Suche weiter auf die Nachbarschaft der guten LÃ¶sung auszuweiten.
 
 
-Für die Nachbarn $N_{p}$ wird eine Nachbarlösung $y'$ der aktuellen Lösung $y_{aktuell}$ gewählt und anhand des Zielfunktionswerts der aktuellen Lösung und der Nachbarlösung der Differenzwert $\Delta$ gebildet. Dieser Wert wird verwendet, um eine bessere Nachbarschaftslösung zu bestimmen und wird wie folgt berechnet:
-%Dies erfolgt indem zwischen dem Zielfunktionswert der Nachbarlösungen $y'$ und dem Zielfunktionswert  der aktuellen Lösung $y$ die Differenz gebildet wird:
+FÃ¼r die Nachbarn $N_{p}$ wird eine NachbarlÃ¶sung $y'$ der aktuellen LÃ¶sung $y_{aktuell}$ gewÃ¤hlt und anhand des Zielfunktionswerts der aktuellen LÃ¶sung und der NachbarlÃ¶sung der Differenzwert $\Delta$ gebildet. Dieser Wert wird verwendet, um eine bessere NachbarschaftslÃ¶sung zu bestimmen und wird wie folgt berechnet:
+%Dies erfolgt indem zwischen dem Zielfunktionswert der NachbarlÃ¶sungen $y'$ und dem Zielfunktionswert  der aktuellen LÃ¶sung $y$ die Differenz gebildet wird:
 \begin{eqnarray} \label{differenz}
 \Delta =f(y')-f(y)\hfill 
 \end{eqnarray}
-Mit der Gleichung \eqref{differenz} kann für das Minimierungsproblem der Wert einer besseren Nachbarschaftslösung bestimmt werden, wenn gilt $\Delta\le0$, und dementsprechend kann die derzeitige Lösung $y$ mit dem Nachbarlösung $y'$ ersetzt werden.\footnote{Vgl. \cite{bouleimen2003new}, S. 270} Damit wird ebenfalls der Zielfunktionswert der Nachbarschaftslösung $f(y')$ als $f_{aktuell}$ gespeichert. Anders ausgedrückt bedeutet dies, dass die ermittelte Nachbarschaftslösung eine bessere Lösung darstellt und dementsprechend ist diese Ablauffolge der Nachbarlösung in der Projektfertigstellungsdauer kürzer.
+Mit der Gleichung \eqref{differenz} kann fÃ¼r das Minimierungsproblem der Wert einer besseren NachbarschaftslÃ¶sung bestimmt werden, wenn gilt $\Delta\le0$, und dementsprechend kann die derzeitige LÃ¶sung $y$ mit dem NachbarlÃ¶sung $y'$ ersetzt werden.\footnote{Vgl. \cite{bouleimen2003new}, S. 270} Damit wird ebenfalls der Zielfunktionswert der NachbarschaftslÃ¶sung $f(y')$ als $f_{aktuell}$ gespeichert. Anders ausgedrÃ¼ckt bedeutet dies, dass die ermittelte NachbarschaftslÃ¶sung eine bessere LÃ¶sung darstellt und dementsprechend ist diese Ablauffolge der NachbarlÃ¶sung in der Projektfertigstellungsdauer kÃ¼rzer.
 
-Sofern die Nachbarlösung eine Ablauffolge mit längerer Projektfertigstellungsdauer hat, wird $y'$ mit einer Wahrscheinlichkeit von $P=\exp^{(-\Delta/\Theta)}$ zufällig akzeptiert, wobei dies mit einer zufälligen Lösung $y_{zufall}\in [0,1]$ und dem Verhältnis $P>y_{zufall}$ geschieht. Je kleiner der Differenzwert $\Delta$ ist, desto höher ist die akzeptierte Wahrscheinlichkeit. Der Parameter $\Theta$ gibt dabei die Temperatur an. Ein höherer Wert der Temperatur gibt eine höhere akzeptierte Wahrscheinlichkeit an. Mit dem Parameter $\Theta$ wird das spezifische Schema der Abkühlung kontrolliert. Durch die zufällige Auswahl anderer Lösungen und der damit angestoßenen Suche nach Nachbarschaften versucht das Verfahren bessere Lösungen zu generieren. Der Anfangswert der Temperatur ist $\Theta_{0}$ und dieser Parameter muss eine ausreichende Größe zur Annahme irgendeiner neuen Nachbarlösung aufweisen.
-
-
-Nach Festlegung der aktuellen Parameter $y_{best}$ und $f_{best}$ erfolgt in der nächsten Iteration $n \in I$ die Reduzierung der Temperatur $\Theta$ durch den Dämpfungsfaktor $\alpha\;(0<\alpha<1)$ mit der Gleichung $\Theta_{n}=\alpha^{n}\Theta_{0}$. Dadurch wird in jeder Iteration bei konstantem Differenzwert $\Delta$ die Wahrscheinlichkeit der Annahme von $y_{zufall}$ reduziert. Damit wird der Effekt des Abkühlens nachempfunden und eine konstante Anzahl von Nachbarlösungen $N_{sol}$ erstellt. Der Prozess ist in der Literatur unter dem Begriff der \glqq Abkühlungs- oder Markovketten\grqq\;bekannt.
-%D. h. für die alle Aktivitäten werden die Startzeiten zugewiesen. Starten tut das Projekt mit der Planung des ersten Arbeitsgangs. Sofern die Zeitdauer für die Aktivitäten fix sind, werden für die bisher ungeplanten Vorgänge bzw. Aktivitäten anhand der Reihenfolge der Arbeitsgangs die Werte für $EFT_{j}\;\forall j \in \mathcal{J}$ bestimmt. Der erste Arbeitsgang ist die Dummyaktivität und diese hat einen Startzeitpunkt $EFT_{j}=0$. Hier muss beachtet werden, dass kein Arbeitsgang $j$ mit seiner spezifischen $EFT_{j}$ geplant werden kann, solange nicht die Startzeitpunkte der Vorgänger $i \in \mathcal{P}_{j}$ bestimmt wurden. In der Arbeit von \cite{bouleimen2003new} wird ein serielles SGS mit halbaktiver Planung\footnote{Vgl. \cite{sprecher1995semi}, S. ??? \label{semi}} generiert. Anhand der aktuellen Arbeitsgangs mit möglicher Reihenfolge der Aktivitäten des Projekts wird eine zufällige Auswahl von Aktivitäten vollzogen. Nach dieser Auswahl erfolgt eine Berechnung der Position anhand des spätesten Vorgängers und frühsten Nachfolgers. Zwischen diesem Zeitkorridor kann der Arbeitsgang eine neue zufällige Position einnehmen, solange die Reihenfolgerestriktion eingehalten bleibt. Sobald eine neue Reihenfolge durch Änderung der Position eines Arbeitsgangs vollzogen wurde, muss die Arbeitsgangs aktualisiert werden. Abbildung \ref{???} zeigt anhand des Beispiels aus Kapitel \ref{SGS} eine mögliche Umsortierung der Arbeitsgangs. Dieser zyklische Umsortierung hat eine hohe Priorität bei der halbaktiven Planung und zum Erreichen einer möglichst guten Planungsqualität.\footref{semi}
+Sofern die NachbarlÃ¶sung eine Ablauffolge mit lÃ¤ngerer Projektfertigstellungsdauer hat, wird $y'$ mit einer Wahrscheinlichkeit von $P=\exp^{(-\Delta/\Theta)}$ zufÃ¤llig akzeptiert, wobei dies mit einer zufÃ¤lligen LÃ¶sung $y_{zufall}\in [0,1]$ und dem VerhÃ¤ltnis $P>y_{zufall}$ geschieht. Je kleiner der Differenzwert $\Delta$ ist, desto hÃ¶her ist die akzeptierte Wahrscheinlichkeit. Der Parameter $\Theta$ gibt dabei die Temperatur an. Ein hÃ¶herer Wert der Temperatur gibt eine hÃ¶here akzeptierte Wahrscheinlichkeit an. Mit dem Parameter $\Theta$ wird das spezifische Schema der AbkÃ¼hlung kontrolliert. Durch die zufÃ¤llige Auswahl anderer LÃ¶sungen und der damit angestoÃŸenen Suche nach Nachbarschaften versucht das Verfahren bessere LÃ¶sungen zu generieren. Der Anfangswert der Temperatur ist $\Theta_{0}$ und dieser Parameter muss eine ausreichende GrÃ¶ÃŸe zur Annahme irgendeiner neuen NachbarlÃ¶sung aufweisen.
 
 
-
-Der Prozess wird beendet, sobald der Zielfunktionswert $f_{best}$ den CP-Werts erreicht, da die Ablauffolge den Wert der Projektfertigstellungsdauer des kritischen Pfads angenommen hat. Am Ende des Algorithmus wurde die Nachbarschaft der besten Lösung erkundet. Als mögliche Stoppkriterien kann beim SA-Algorithmus lt. den Autoren eine bestimmte Rechenzeit, eine Anzahl an generierten Nachbarn oder auch jede andere Art von objektiven Werten hinterlegt werden. Dabei merken die Autoren an, dass die erlaubte Rechenzeit im Verhältnis zur Größe des Projekts und damit zur Anzahl von Lösungen stehen muss, damit eine gute Lösung generiert wird.
+Nach Festlegung der aktuellen Parameter $y_{best}$ und $f_{best}$ erfolgt in der nÃ¤chsten Iteration $n \in I$ die Reduzierung der Temperatur $\Theta$ durch den DÃ¤mpfungsfaktor $\alpha\;(0<\alpha<1)$ mit der Gleichung $\Theta_{n}=\alpha^{n}\Theta_{0}$. Dadurch wird in jeder Iteration bei konstantem Differenzwert $\Delta$ die Wahrscheinlichkeit der Annahme von $y_{zufall}$ reduziert. Damit wird der Effekt des AbkÃ¼hlens nachempfunden und eine konstante Anzahl von NachbarlÃ¶sungen $N_{sol}$ erstellt. Der Prozess ist in der Literatur unter dem Begriff der \glqq AbkÃ¼hlungs- oder Markovketten\grqq\;bekannt.
+%D. h. fÃ¼r die alle AktivitÃ¤ten werden die Startzeiten zugewiesen. Starten tut das Projekt mit der Planung des ersten Arbeitsgangs. Sofern die Zeitdauer fÃ¼r die AktivitÃ¤ten fix sind, werden fÃ¼r die bisher ungeplanten VorgÃ¤nge bzw. AktivitÃ¤ten anhand der Reihenfolge der Arbeitsgangs die Werte fÃ¼r $EFT_{j}\;\forall j \in \mathcal{J}$ bestimmt. Der erste Arbeitsgang ist die DummyaktivitÃ¤t und diese hat einen Startzeitpunkt $EFT_{j}=0$. Hier muss beachtet werden, dass kein Arbeitsgang $j$ mit seiner spezifischen $EFT_{j}$ geplant werden kann, solange nicht die Startzeitpunkte der VorgÃ¤nger $i \in \mathcal{P}_{j}$ bestimmt wurden. In der Arbeit von \cite{bouleimen2003new} wird ein serielles SGS mit halbaktiver Planung\footnote{Vgl. \cite{sprecher1995semi}, S. ??? \label{semi}} generiert. Anhand der aktuellen Arbeitsgangs mit mÃ¶glicher Reihenfolge der AktivitÃ¤ten des Projekts wird eine zufÃ¤llige Auswahl von AktivitÃ¤ten vollzogen. Nach dieser Auswahl erfolgt eine Berechnung der Position anhand des spÃ¤testen VorgÃ¤ngers und frÃ¼hsten Nachfolgers. Zwischen diesem Zeitkorridor kann der Arbeitsgang eine neue zufÃ¤llige Position einnehmen, solange die Reihenfolgerestriktion eingehalten bleibt. Sobald eine neue Reihenfolge durch Ã„nderung der Position eines Arbeitsgangs vollzogen wurde, muss die Arbeitsgangs aktualisiert werden. Abbildung \ref{???} zeigt anhand des Beispiels aus Kapitel \ref{SGS} eine mÃ¶gliche Umsortierung der Arbeitsgangs. Dieser zyklische Umsortierung hat eine hohe PrioritÃ¤t bei der halbaktiven Planung und zum Erreichen einer mÃ¶glichst guten PlanungsqualitÃ¤t.\footref{semi}
 
 
 
+Der Prozess wird beendet, sobald der Zielfunktionswert $f_{best}$ den CP-Werts erreicht, da die Ablauffolge den Wert der Projektfertigstellungsdauer des kritischen Pfads angenommen hat. Am Ende des Algorithmus wurde die Nachbarschaft der besten LÃ¶sung erkundet. Als mÃ¶gliche Stoppkriterien kann beim SA-Algorithmus lt. den Autoren eine bestimmte Rechenzeit, eine Anzahl an generierten Nachbarn oder auch jede andere Art von objektiven Werten hinterlegt werden. Dabei merken die Autoren an, dass die erlaubte Rechenzeit im VerhÃ¤ltnis zur GrÃ¶ÃŸe des Projekts und damit zur Anzahl von LÃ¶sungen stehen muss, damit eine gute LÃ¶sung generiert wird.
 
-\section{Hybride Heuristikantastung mit selektiver Rückwärts-Vorwärts-Planung} \label{tormos}
 
-Die hier beschriebene Heuristik nutzt eine \textit{Rückwärts-Vorwärts-Methode (engl. Backward-Forward (BF))} und die Zufallstestprozedur des \textit{Regret Biased Random Sampling (RBRS)}. Der Ansatz der in diesem Kapitel beschriebenen Heuristik sowie die nachfolgenden Aussagen wurden der Arbeit von \cite{tormos2003efficient} entnommen, sofern keine anderweitigen Verweise angegeben wurden. Die Heuristik nutzt ebenfalls das SGS zur Ermittlung einer Ablauffolge in einem mehrstufigen Verfahren. Empfohlen wurde der Ansatz eines mehrstufigen SGS von \cite{li1992iterative}. %und zur Anwendung wurde dieser durch \cite{ozdamar1996note}, \cite{lova2000multicriteria} und \cite{tormos2001competitive} gebracht. Aufbauen darauf kann die Zufallsprozedur des RBRS erfolgen
 
-%Das Verfahren ist relativ erfolgversprechende bei der Auswahl von Aktivitäten aus der Menge $D$ der nicht-erledigten Aktivitäten.\footnote{????}
 
-Das Verfahren des RBRS kann als eine Zuordnung angesehen werden, welches bei jedem Schritt des SGS für jeden bisher ungeplanten Arbeitsgang $i \in\mathcal{U}$ eine Wahrscheinlichkeit $\psi(j)$ wählt ($\psi$:$j$$\in$$\mathcal{U}$$\rightarrow$$[0...1]$; $\sum_{j \in \mathcal{U}}\psi(j)=1)$. D. h. bei der Zufallstestprozedur wird jedem nicht-erledigten Arbeitsgang eine Wahrscheinlichkeit $\psi(j)$ zugeteilt, die besagt, mit welcher Wahrscheinlichkeit der betrachtete Arbeitsgang ausgewählt wird. Die ermittelte Reihenfolge der Vorgänge unterscheidet sich bei jedem Durchgang, aber die beste Lösung wird am Ende der Heuristik generiert. Der parametrisch zugeordnete Wahrscheinlichkeitswert $\psi(j)$ wird berechnet durch:
+\section{Hybride Heuristikantastung mit selektiver RÃ¼ckwÃ¤rts-VorwÃ¤rts-Planung} \label{tormos}
+
+Die hier beschriebene Heuristik nutzt eine \textit{RÃ¼ckwÃ¤rts-VorwÃ¤rts-Methode (engl. Backward-Forward (BF))} und die Zufallstestprozedur des \textit{Regret Biased Random Sampling (RBRS)}. Der Ansatz der in diesem Kapitel beschriebenen Heuristik sowie die nachfolgenden Aussagen wurden der Arbeit von \cite{tormos2003efficient} entnommen, sofern keine anderweitigen Verweise angegeben wurden. Die Heuristik nutzt ebenfalls das SGS zur Ermittlung einer Ablauffolge in einem mehrstufigen Verfahren. Empfohlen wurde der Ansatz eines mehrstufigen SGS von \cite{li1992iterative}. %und zur Anwendung wurde dieser durch \cite{ozdamar1996note}, \cite{lova2000multicriteria} und \cite{tormos2001competitive} gebracht. Aufbauen darauf kann die Zufallsprozedur des RBRS erfolgen
+
+%Das Verfahren ist relativ erfolgversprechende bei der Auswahl von AktivitÃ¤ten aus der Menge $D$ der nicht-erledigten AktivitÃ¤ten.\footnote{????}
+
+Das Verfahren des RBRS kann als eine Zuordnung angesehen werden, welches bei jedem Schritt des SGS fÃ¼r jeden bisher ungeplanten Arbeitsgang $i \in\mathcal{U}$ eine Wahrscheinlichkeit $\psi(j)$ wÃ¤hlt ($\psi$:$j$$\in$$\mathcal{U}$$\rightarrow$$[0...1]$; $\sum_{j \in \mathcal{U}}\psi(j)=1)$. D. h. bei der Zufallstestprozedur wird jedem nicht-erledigten Arbeitsgang eine Wahrscheinlichkeit $\psi(j)$ zugeteilt, die besagt, mit welcher Wahrscheinlichkeit der betrachtete Arbeitsgang ausgewÃ¤hlt wird. Die ermittelte Reihenfolge der VorgÃ¤nge unterscheidet sich bei jedem Durchgang, aber die beste LÃ¶sung wird am Ende der Heuristik generiert. Der parametrisch zugeordnete Wahrscheinlichkeitswert $\psi(j)$ wird berechnet durch:
 \begin{eqnarray} \label{psi}
 \psi(j) = \frac{(\rho_{j}+1)^{\beta}}{\sum_{i \in \mathcal{U}}(\rho_{i}+1)^{\beta}}\hfill  
 \end{eqnarray}
 %mit dem Parameter
 
-Der Parameter $\beta$ beschreibt das Ausmaß der Verzerrung. Bei $\beta=0$ besteht eine Verzerrung des Wahrscheinlichkeitswerts $\psi(j)$ und es wird eine zufällige Auswahl der möglichen Arbeitsgänge durchgeführt.
+Der Parameter $\beta$ beschreibt das AusmaÃŸ der Verzerrung. Bei $\beta=0$ besteht eine Verzerrung des Wahrscheinlichkeitswerts $\psi(j)$ und es wird eine zufÃ¤llige Auswahl der mÃ¶glichen ArbeitsgÃ¤nge durchgefÃ¼hrt.
 \begin{eqnarray} \label{rho}
 \rho_{j} = \max_{i \in \mathcal{U}} v(i) - v(j)\hfill  
 \end{eqnarray}
-Die Gleichung \eqref{rho} bestimmt den Wert des Bedauerns $\rho_{j}$ für jeden Arbeitsgang in $\mathcal{U}$, indem der Prioritätswert $v(j)$ für den betrachteten Arbeitsgang $j$ vom schlechtesten Prioritätswert von allen Arbeitsgängen aus $\mathcal{U}$ abgezogen wird. %Dieser Parameter wird zur Ermittlung der Gleichung \eqref{psi} benötigt.
-Weiter wird der Gleichung \eqref{psi} beim Parameter $\rho_{j}$ die Konstante $1$ hinzugerechnet. Damit ist immer die Wahrscheinlichkeit eines Arbeitsgangs $j$ aus $\mathcal{U}$ größer als $0$ und dementsprechend bleibt dieser in jeder Planung der Population wählbar.
+Die Gleichung \eqref{rho} bestimmt den Wert des Bedauerns $\rho_{j}$ fÃ¼r jeden Arbeitsgang in $\mathcal{U}$, indem der PrioritÃ¤tswert $v(j)$ fÃ¼r den betrachteten Arbeitsgang $j$ vom schlechtesten PrioritÃ¤tswert von allen ArbeitsgÃ¤ngen aus $\mathcal{U}$ abgezogen wird. %Dieser Parameter wird zur Ermittlung der Gleichung \eqref{psi} benÃ¶tigt.
+Weiter wird der Gleichung \eqref{psi} beim Parameter $\rho_{j}$ die Konstante $1$ hinzugerechnet. Damit ist immer die Wahrscheinlichkeit eines Arbeitsgangs $j$ aus $\mathcal{U}$ grÃ¶ÃŸer als $0$ und dementsprechend bleibt dieser in jeder Planung der Population wÃ¤hlbar.
 
-%Darauf aufbauen darauf die BF-Methode, bei der zwischen vorwärts- und rückwärtsgerichteter Planung gewechselt wird. 
+%Darauf aufbauen darauf die BF-Methode, bei der zwischen vorwÃ¤rts- und rÃ¼ckwÃ¤rtsgerichteter Planung gewechselt wird. 
 
 \begin{algorithm}[H]
 \textbf{Hybride Heuristikantastung + selektive BF-Methode}\\
@@ -621,43 +493,43 @@ $Plan=Plan+1$}}}
 {\Aus{Finale Planung: ($S_{best0}, S_{best1},... ,S_{bestn+1}$)}}
 {\footnotesize \textbf{Quelle:} \cite{tormos2003efficient}}
 \end{algorithm}
-Aufbauend auf der Eigenschaft des RBRS konstruierten \cite{tormos2003efficient} den Algorithmus der hybriden Heuristikauswahl inkl. einer selektiven Rückwärts-Vorwärts-Planung.
+Aufbauend auf der Eigenschaft des RBRS konstruierten \cite{tormos2003efficient} den Algorithmus der hybriden Heuristikauswahl inkl. einer selektiven RÃ¼ckwÃ¤rts-VorwÃ¤rts-Planung.
 
-Der Algorithmus generiert mögliche Lösungen bis dieser entweder eine Begrenzung der CPU-Zeit ($Zeitgrenze$) oder die Menge an Planungserstellung ($\#Plan\-gren\-ze$) erreicht hat. Als Prioritätsregel zum Ziel der Minimierung der Projektdauer wird der minimal-späteste Fertigstellungszeit (engl. minimum latest finish time (MLFT)) verwendet.\footnote{Vgl. \citeauthor{kolisch1996adaptive}\label{unddasnoch}, 1996, S. 27-29; \cite{schirmer1998adaptive}} Die Vorteile dieser Prioritätsregel liegen lt. \cite{tormos2003efficient} einerseits an dem niedrigen Rechenaufwand und andererseits an dem über die Anzahl der Iterationen konstant bleibenden Wert.
+Der Algorithmus generiert mÃ¶gliche LÃ¶sungen bis dieser entweder eine Begrenzung der CPU-Zeit ($Zeitgrenze$) oder die Menge an Planungserstellung ($\#Plan\-gren\-ze$) erreicht hat. Als PrioritÃ¤tsregel zum Ziel der Minimierung der Projektdauer wird der minimal-spÃ¤teste Fertigstellungszeit (engl. minimum latest finish time (MLFT)) verwendet.\footnote{Vgl. \citeauthor{kolisch1996adaptive}\label{unddasnoch}, 1996, S. 27-29; \cite{schirmer1998adaptive}} Die Vorteile dieser PrioritÃ¤tsregel liegen lt. \cite{tormos2003efficient} einerseits an dem niedrigen Rechenaufwand und andererseits an dem Ã¼ber die Anzahl der Iterationen konstant bleibenden Wert.
 
-Zu Beginn des Algorithmus wird die Startzeit festgelegt sowie der Iterationszähler ($Plan$) für die Planung und die kumulierte Summe der Fertigstellungszeit ($Sum\_FT_{J}$) auf den Wert $0$ gesetzt. Des Weiteren wird für jeden Arbeitsgang $j$ der späteste Fertigstellungszeit ($LFT_{j}$) berechnet. Dieser wird als jeweiliger Prioritätswert für das RBRS verwendet.
+Zu Beginn des Algorithmus wird die Startzeit festgelegt sowie der IterationszÃ¤hler ($Plan$) fÃ¼r die Planung und die kumulierte Summe der Fertigstellungszeit ($Sum\_FT_{J}$) auf den Wert $0$ gesetzt. Des Weiteren wird fÃ¼r jeden Arbeitsgang $j$ der spÃ¤teste Fertigstellungszeit ($LFT_{j}$) berechnet. Dieser wird als jeweiliger PrioritÃ¤tswert fÃ¼r das RBRS verwendet.
 
-Im Anschluss erfolgt die Schleife zur Ermittlung einer Planung unter Abhängigkeit der Abbruchkriterien. Für eine Iteration wird der Fertigstellungszeitpunkt $FT_{J}$ des Projekts mit Hilfe des RBRS durch Anwendung beider Verfahren des SGS mit der $MLFT$-Prio\-ri\-täts\-regel und dem parametrisch zugeordneten Wahrscheinlichkeitswert $\psi(i)$ mit einem $\beta$-Satz bis 1 berechnet.\footref{unddasnoch} Das SGS erfolgt als mehrstufiges Verfahren, bei dem eine Hälfte der Planungen durch das serielle Schema und die andere Hälfte durch das parallele Schema geplant wird.\footnote{Vgl. \cite{tormos2001competitive}, S.68}
-Bei dem SGS wird ein Arbeitsgang $j$ bei jeder Iteration zu einer geordneten Ablauffolge $L$ mit den geplanten Fertigstellungszeitpunkten $FT_{j}$ und den Startzeitpunkten $S_{j}$ überführt. Anhand der Ablauffolge $L$ lässt sich die Projektfertigstellungszeit $FT_{J}$ entnehmen.\footnote{Vgl. Kapitel \ref{SGS}} Anschließend wird bei der Iteration der ermittelte Fertigstellungszeitpunkt $FT_{J}$ der Summe aller Fertigstellungszeitpunkte ($Sum\_F_{n+1}$) hinzugefügt und der Zähler für die Anzahl an Planungen ($Plan$) und Durchführungen des RBRS ($\#RBRS$) um 1 erweitert.
+Im Anschluss erfolgt die Schleife zur Ermittlung einer Planung unter AbhÃ¤ngigkeit der Abbruchkriterien. FÃ¼r eine Iteration wird der Fertigstellungszeitpunkt $FT_{J}$ des Projekts mit Hilfe des RBRS durch Anwendung beider Verfahren des SGS mit der $MLFT$-Prio\-ri\-tÃ¤ts\-regel und dem parametrisch zugeordneten Wahrscheinlichkeitswert $\psi(i)$ mit einem $\beta$-Satz bis 1 berechnet.\footref{unddasnoch} Das SGS erfolgt als mehrstufiges Verfahren, bei dem eine HÃ¤lfte der Planungen durch das serielle Schema und die andere HÃ¤lfte durch das parallele Schema geplant wird.\footnote{Vgl. \cite{tormos2001competitive}, S.68}
+Bei dem SGS wird ein Arbeitsgang $j$ bei jeder Iteration zu einer geordneten Ablauffolge $L$ mit den geplanten Fertigstellungszeitpunkten $FT_{j}$ und den Startzeitpunkten $S_{j}$ Ã¼berfÃ¼hrt. Anhand der Ablauffolge $L$ lÃ¤sst sich die Projektfertigstellungszeit $FT_{J}$ entnehmen.\footnote{Vgl. Kapitel \ref{SGS}} AnschlieÃŸend wird bei der Iteration der ermittelte Fertigstellungszeitpunkt $FT_{J}$ der Summe aller Fertigstellungszeitpunkte ($Sum\_F_{n+1}$) hinzugefÃ¼gt und der ZÃ¤hler fÃ¼r die Anzahl an Planungen ($Plan$) und DurchfÃ¼hrungen des RBRS ($\#RBRS$) um 1 erweitert.
 
-Im nächsten Teil der Schleife wird geprüft, ob der durch das RBRS berechnete Fertigstellungszeitpunkt $FT_{J}$ kleiner gleich der durchschnittlichen Fertigstellungszeit ($Sum\_FT_{J}/\#RBRS$) ist. Sofern dies zutrifft, wird der Fertigstellungszeitpunkt der Planung $FT'_{J}$ durch einen \textit{BF-Durch\-lauf} generiert. Dabei durchläuft die Rückwärtsplanung, die durch den ersten Schritt der Schleife generierte Ablauffolge und erstellt eine Teilplanung für jeden Arbeitsgang $j$. Bei der Teilplanung wird der Arbeitsgang $j$ im Intervall $[S_{j},\min_{(i, j) \in \mathcal{A}}S'_{i}]$ zum spätesten Startzeitpunkt unter Einhaltung der Vorrangs- und Ressourcenrestriktionen umsortiert. Dabei beschreibt die Menge $\mathcal{A}$ die Menge an Vorrangsbeziehungen und $S'_{i}$ die geplante Startzeit des Arbeitsgangs $i$ in der rückwärtsgerichteten Teilplanung. Aufbauend darauf, erfolgt im Weiteren die Vorwärtsplanung, die anhand der neuen Ablauffolge der Rückwärtsplanung die Arbeitsgänge $j$ in aufsteigender Sortierungsreihenfolge umsortiert. Die Arbeitsgänge $j$ werden in Abhängigkeit der Ressourcenkapazität zum frühesten Startzeitpunkt im Intervall $[\max_{(i,j) \in \mathcal{A}}FT'_{i},FT_{j}]$ umgeplant. Dabei ist $FT'_{i}$ die Fertigstellungszeit des Arbeitsgangs $i$ in der vorwärtsgerichteten Teilplanung. Mit Abschluss dieser Planung ist der Fertigstellungszeitpunkt $FT'_{J}$ durch die BF-Methode berechnet.
+Im nÃ¤chsten Teil der Schleife wird geprÃ¼ft, ob der durch das RBRS berechnete Fertigstellungszeitpunkt $FT_{J}$ kleiner gleich der durchschnittlichen Fertigstellungszeit ($Sum\_FT_{J}/\#RBRS$) ist. Sofern dies zutrifft, wird der Fertigstellungszeitpunkt der Planung $FT'_{J}$ durch einen \textit{BF-Durch\-lauf} generiert. Dabei durchlÃ¤uft die RÃ¼ckwÃ¤rtsplanung, die durch den ersten Schritt der Schleife generierte Ablauffolge und erstellt eine Teilplanung fÃ¼r jeden Arbeitsgang $j$. Bei der Teilplanung wird der Arbeitsgang $j$ im Intervall $[S_{j},\min_{(i, j) \in \mathcal{A}}S'_{i}]$ zum spÃ¤testen Startzeitpunkt unter Einhaltung der Vorrangs- und Ressourcenrestriktionen umsortiert. Dabei beschreibt die Menge $\mathcal{A}$ die Menge an Vorrangsbeziehungen und $S'_{i}$ die geplante Startzeit des Arbeitsgangs $i$ in der rÃ¼ckwÃ¤rtsgerichteten Teilplanung. Aufbauend darauf, erfolgt im Weiteren die VorwÃ¤rtsplanung, die anhand der neuen Ablauffolge der RÃ¼ckwÃ¤rtsplanung die ArbeitsgÃ¤nge $j$ in aufsteigender Sortierungsreihenfolge umsortiert. Die ArbeitsgÃ¤nge $j$ werden in AbhÃ¤ngigkeit der RessourcenkapazitÃ¤t zum frÃ¼hesten Startzeitpunkt im Intervall $[\max_{(i,j) \in \mathcal{A}}FT'_{i},FT_{j}]$ umgeplant. Dabei ist $FT'_{i}$ die Fertigstellungszeit des Arbeitsgangs $i$ in der vorwÃ¤rtsgerichteten Teilplanung. Mit Abschluss dieser Planung ist der Fertigstellungszeitpunkt $FT'_{J}$ durch die BF-Methode berechnet.
 
-Falls der Fertigstellungszeitpunkt $FT'_{J}$ kleiner als der bisherige Fertigstellungszeitpunkt $FT_{J}$ ist, wird ein weiterer BF-Durchlauf durchgeführt und im Anschluss der Zähler der Planungen um 1 erweitert. Nach Ende der Prozedur kann die beste Ablauffolge (Output) mit den besten Startzeitpunkten für alle Arbeitsgänge beschrieben werden.
-
-
-
-
-
-\section{Evolutionäre Lokalsuche aufgrund Variablennachbarschaft} \label{kochetov}
-Bei dem Verfahren der Evolutionären Lokalsuche aufgrund Variablennachbarschaft handelt es sich um einen genetischen Algorithmus, bei dem in jedem Durchlauf eine Population an Individuen bzw. lokalen Optima generiert wird. Der Algorithmus wurde der Arbeit von \cite{kochetov2003evolutionary} entnommen.
+Falls der Fertigstellungszeitpunkt $FT'_{J}$ kleiner als der bisherige Fertigstellungszeitpunkt $FT_{J}$ ist, wird ein weiterer BF-Durchlauf durchgefÃ¼hrt und im Anschluss der ZÃ¤hler der Planungen um 1 erweitert. Nach Ende der Prozedur kann die beste Ablauffolge (Output) mit den besten Startzeitpunkten fÃ¼r alle ArbeitsgÃ¤nge beschrieben werden.
 
 
 
 
 
-Genetische Algorithmen (GA) gehören zu den evolutionären Algorithmen. % und kommen oftmals bei kombinatorischen Optimierungsproblemen zum Einsatz.\footnote{Vgl. \cite{gerdes2004evolutionare}, S. 1-4}
-Es sind populations-basierte Metaheuristiken, die nicht nur mit einer einzelnen Lösung arbeiten, sondern mit einer Menge von Lösungen,\footnote{Vgl. \cite{talbi2009metaheuristics}, S. 25}. Der Ansatz geht auf die Arbeit von \cite{holland1975adaptation} zurück. Da es sich hier ebenfalls um einen heuristischen Lösungsansatz handelt, sind die ermittelten Lösungen eines genetischen Algorithmus meist ebenfalls nur eine gute Lösung des betrachteten Problems in einer akzeptablen Rechenzeit.
+\section{EvolutionÃ¤re Lokalsuche aufgrund Variablennachbarschaft} \label{kochetov}
+Bei dem Verfahren der EvolutionÃ¤ren Lokalsuche aufgrund Variablennachbarschaft handelt es sich um einen genetischen Algorithmus, bei dem in jedem Durchlauf eine Population an Individuen bzw. lokalen Optima generiert wird. Der Algorithmus wurde der Arbeit von \cite{kochetov2003evolutionary} entnommen.
 
-Ein Individuum repräsentiert eine zulässige Lösung in dem Verfahren der GA\footnote{Vgl. \cite{mitchell1998introduction}, S. 6} und solch ein Individuum wird einem sogenannten Chromosom gleichgesetzt\footnote{Vgl. \cite{nissen1997einfuhrung}, S. 13}, das üblicherweise als Zeichen- bzw. Zahlenkette dargestellt wird.\footnote{Vgl. \cite{gerdes2004evolutionare}, S. 37} Damit kann ein Individuum beim Projektplanungsproblem als Ablauffolge angesehen werden, welche aus einer Sequenz aller Arbeitsgänge eines Projekts in deren topologischer Reihenfolge bestehen.\footnote{Vgl. \cite{hartmann1998competitive}, S. 735} Eine Gruppe von Lösungen bzw. Individuen ist eine Population.\footnote{Vgl. \cite{koch2014gene}, S. 60} Für das Projektplanungsproblem sollte das Individuum bzw. das Chromosom den eindeutigen Ablaufplan eines Projektes repräsentieren.\footnote{Vgl. \cite{kellenbink2014genetischer}, S. 77} 
 
-Das Verfahren nutzt ebenfalls die Erstellung einer Ablauffolge zum Lösen des RCPSP. Es wird über das SGS für eine beliebige Liste $L$ eine aktive Planung erstellt, die eine optimale Planung lt. Kapitel \ref{SGS} darstellt. Die Autoren definierten zur Lösung eines RCPSP durch ihre Heuristik einen $Block_{j}$ des Arbeitsgangs $j$, der einer Menge von Arbeitsgängen entspricht, die zeitgleich mit dem Arbeitsgang $j$ geplant werden können. Der $Block_{j} := \varnothing$, wenn er mindestens einen Vorgänger $i$ vom Arbeitsgang $j$ enthält.
+
+
+
+Genetische Algorithmen (GA) gehÃ¶ren zu den evolutionÃ¤ren Algorithmen. % und kommen oftmals bei kombinatorischen Optimierungsproblemen zum Einsatz.\footnote{Vgl. \cite{gerdes2004evolutionare}, S. 1-4}
+Es sind populations-basierte Metaheuristiken, die nicht nur mit einer einzelnen LÃ¶sung arbeiten, sondern mit einer Menge von LÃ¶sungen,\footnote{Vgl. \cite{talbi2009metaheuristics}, S. 25}. Der Ansatz geht auf die Arbeit von \cite{holland1975adaptation} zurÃ¼ck. Da es sich hier ebenfalls um einen heuristischen LÃ¶sungsansatz handelt, sind die ermittelten LÃ¶sungen eines genetischen Algorithmus meist ebenfalls nur eine gute LÃ¶sung des betrachteten Problems in einer akzeptablen Rechenzeit.
+
+Ein Individuum reprÃ¤sentiert eine zulÃ¤ssige LÃ¶sung in dem Verfahren der GA\footnote{Vgl. \cite{mitchell1998introduction}, S. 6} und solch ein Individuum wird einem sogenannten Chromosom gleichgesetzt\footnote{Vgl. \cite{nissen1997einfuhrung}, S. 13}, das Ã¼blicherweise als Zeichen- bzw. Zahlenkette dargestellt wird.\footnote{Vgl. \cite{gerdes2004evolutionare}, S. 37} Damit kann ein Individuum beim Projektplanungsproblem als Ablauffolge angesehen werden, welche aus einer Sequenz aller ArbeitsgÃ¤nge eines Projekts in deren topologischer Reihenfolge bestehen.\footnote{Vgl. \cite{hartmann1998competitive}, S. 735} Eine Gruppe von LÃ¶sungen bzw. Individuen ist eine Population.\footnote{Vgl. \cite{koch2014gene}, S. 60} FÃ¼r das Projektplanungsproblem sollte das Individuum bzw. das Chromosom den eindeutigen Ablaufplan eines Projektes reprÃ¤sentieren.\footnote{Vgl. \cite{kellenbink2014genetischer}, S. 77} 
+
+Das Verfahren nutzt ebenfalls die Erstellung einer Ablauffolge zum LÃ¶sen des RCPSP. Es wird Ã¼ber das SGS fÃ¼r eine beliebige Liste $L$ eine aktive Planung erstellt, die eine optimale Planung lt. Kapitel \ref{SGS} darstellt. Die Autoren definierten zur LÃ¶sung eines RCPSP durch ihre Heuristik einen $Block_{j}$ des Arbeitsgangs $j$, der einer Menge von ArbeitsgÃ¤ngen entspricht, die zeitgleich mit dem Arbeitsgang $j$ geplant werden kÃ¶nnen. Der $Block_{j} := \varnothing$, wenn er mindestens einen VorgÃ¤nger $i$ vom Arbeitsgang $j$ enthÃ¤lt.
 \begin{eqnarray} \label{block}
 Block_{j} & = &  \{ i \in J \vert S_{i}+d_{i} \in [ S_{j}, S_{j} + d_{j} ]\}\cup\{i\in J  \vert S_{i}\in  [ S_{j}, S_{j} + d_{j} ]\} \;\;
 \end{eqnarray}
 
-Die Ermittlung der Ablauffolge $L'$ der Nachbarschaft $N_{1}(L)$ der ursprünglichen Ablauffolge $L$ für jeden Arbeitsgang $j$ eines nichtleeren Blocks erfolgt in vier Teilschritten. Dafür wird ein sogenanntes Ergebnisnetzwerk genutzt. Lt. den Autoren ist das Ergebnisnetzwerk eines Arbeitsgangs $j$ das Maximum infolge der Integration eines Teilgraphen in den Richtungsgraph $G_{S}$, welches ein Netzwerk verbunden mit dem Arbeitsgang $j$ ist. Dabei ist der Richtungsgraph $G_{S}$ für eine Planung definiert als $G_{S}(V,H)$, mit $V=H$ und $H=\{ (i,j)\vert S_{i}+p_{i}=S_{j}, i \in \mathcal{P}_{j}\}$.
+Die Ermittlung der Ablauffolge $L'$ der Nachbarschaft $N_{1}(L)$ der ursprÃ¼nglichen Ablauffolge $L$ fÃ¼r jeden Arbeitsgang $j$ eines nichtleeren Blocks erfolgt in vier Teilschritten. DafÃ¼r wird ein sogenanntes Ergebnisnetzwerk genutzt. Lt. den Autoren ist das Ergebnisnetzwerk eines Arbeitsgangs $j$ das Maximum infolge der Integration eines Teilgraphen in den Richtungsgraph $G_{S}$, welches ein Netzwerk verbunden mit dem Arbeitsgang $j$ ist. Dabei ist der Richtungsgraph $G_{S}$ fÃ¼r eine Planung definiert als $G_{S}(V,H)$, mit $V=H$ und $H=\{ (i,j)\vert S_{i}+p_{i}=S_{j}, i \in \mathcal{P}_{j}\}$.
 
-Im ersten Schritt werden für eine Liste $L$ die Positionen $First$ und $Last$ der Arbeitsgänge ermittelt. Bei dem Wert $First$ handelt es sich um die frühestmögliche Position in einem $Block_{j}$ des jeweiligen Arbeitsgangs $j$ und bei dem Wert $Last$ um die spätestmögliche Position der zwei Werte $Last_{1}$ und $Last_{2}$ eines Arbeitsgangs $j$ der gesamten Arbeitsgänge im $Block_{j}$. Im zweiten Schritt wird für den Arbeitsgang $First-1$ über eine Teilplanung die frühestmögliche Position in der Liste $L$ anhand des seriellen SGS ermittelt. Im nächsten Schritt wird die Teilplanung durch Planung der nächsten Arbeitsgänge $Last-First+1$ der Liste $L$ via parallelem SGS erweitert. Aufgrund dieser Vorgehensweise ist zu einem jeden Zeitpunkt $t$ der Projektplanung eine  entsprechende Menge $\mathcal{L}_{t}$ vorhanden, die die Menge an möglichen Arbeitsgängen, die zu diesem Zeitpunkt $t$ geplant werden können, beschreibt. Die Autoren formulieren zur Bestimmung der Teilmenge der Arbeitsgänge $\mathcal{L}_{t}$, welche in einer Iteration geplant werden sollen, ein multi-dimensionales Knapsack-Problem.
+Im ersten Schritt werden fÃ¼r eine Liste $L$ die Positionen $First$ und $Last$ der ArbeitsgÃ¤nge ermittelt. Bei dem Wert $First$ handelt es sich um die frÃ¼hestmÃ¶gliche Position in einem $Block_{j}$ des jeweiligen Arbeitsgangs $j$ und bei dem Wert $Last$ um die spÃ¤testmÃ¶gliche Position der zwei Werte $Last_{1}$ und $Last_{2}$ eines Arbeitsgangs $j$ der gesamten ArbeitsgÃ¤nge im $Block_{j}$. Im zweiten Schritt wird fÃ¼r den Arbeitsgang $First-1$ Ã¼ber eine Teilplanung die frÃ¼hestmÃ¶gliche Position in der Liste $L$ anhand des seriellen SGS ermittelt. Im nÃ¤chsten Schritt wird die Teilplanung durch Planung der nÃ¤chsten ArbeitsgÃ¤nge $Last-First+1$ der Liste $L$ via parallelem SGS erweitert. Aufgrund dieser Vorgehensweise ist zu einem jeden Zeitpunkt $t$ der Projektplanung eine  entsprechende Menge $\mathcal{L}_{t}$ vorhanden, die die Menge an mÃ¶glichen ArbeitsgÃ¤ngen, die zu diesem Zeitpunkt $t$ geplant werden kÃ¶nnen, beschreibt. Die Autoren formulieren zur Bestimmung der Teilmenge der ArbeitsgÃ¤nge $\mathcal{L}_{t}$, welche in einer Iteration geplant werden sollen, ein multi-dimensionales Knapsack-Problem.
 
 \textbf{Formulierung eines multi-dimensionales Knapsack-Problems}\footnote{Vgl. \cite{valls2004population}, S. 310}
 \begin{eqnarray} 
@@ -673,29 +545,29 @@ x_{j} \in \{0,1\}
 \hfill
 \end{multline}\vspace{-3.0ex}
 
-Dabei beschreibt $\mathcal{R}$ die Menge an erneuerbaren Ressourcen. Das multidimensionale Knapsack-Problem hat als Zielfunktion die Maximierung der Ressourcenverwendung bei jeder Teilplanung der Arbeitsgänge aus der Menge $\mathcal{L}_{t}$. Dabei muss die Nebenbedingung der Einhaltung der verbleibenden Kapazitäten des $r$-ten Ressourcentyps bei dem Zeitpunkt $t$ berücksichtigt werden. Zum Lösen des Problems verwenden die Autoren das Verfahren der Greedy Randomized Adaptive Search Procedures (GRASP) von \cite{feo1995greedy}. Dadurch ist es möglich, zum Zeitpunkt $t$ jeden Arbeitsgang der Teilmenge in die Teilplanung zu integrieren. 
+Dabei beschreibt $\mathcal{R}$ die Menge an erneuerbaren Ressourcen. Das multidimensionale Knapsack-Problem hat als Zielfunktion die Maximierung der Ressourcenverwendung bei jeder Teilplanung der ArbeitsgÃ¤nge aus der Menge $\mathcal{L}_{t}$. Dabei muss die Nebenbedingung der Einhaltung der verbleibenden KapazitÃ¤ten des $r$-ten Ressourcentyps bei dem Zeitpunkt $t$ berÃ¼cksichtigt werden. Zum LÃ¶sen des Problems verwenden die Autoren das Verfahren der Greedy Randomized Adaptive Search Procedures (GRASP) von \cite{feo1995greedy}. Dadurch ist es mÃ¶glich, zum Zeitpunkt $t$ jeden Arbeitsgang der Teilmenge in die Teilplanung zu integrieren. 
 
-Bei der allgemeinen Formulierung wird in jeder Iteration des GRASP eine Konstruktionsphase und eine Phase der lokalen Suche durchgeführt.\footnote{Vgl. \cite{resende2014grasp}, S. 6; \cite{feo1989probabilistic}, S. 68-70} In der Konstruktionsphase werden durch Anwenden der Randomisierung in mehreren Durchläufen unterschiedliche Lösungen erstellt. Anhand einer Lösung wird eine Kandidatenmenge bestimmt und deren Zuwachskosten bewertet. Solange diese Kandidatenmenge Elemente enthält, wird eine Liste mit Elementen mit den geringsten Zuwachskosten erstellt. Von dieser Liste wird dann ein zufälliger Wert gewählt und in der Lösung berücksichtigt. Anschließend wird die Kandidatenmenge aktualisiert und die Zuwachskosten der Kandidaten aus dieser Menge neu bewertet. Nach Abschluss der Prozedur ist eine Lösung konstruiert. Sofern die Lösung möglich ist, wird die Nachbarschaft erforscht bis ein lokales Minimum durch die Phase der lokalen Suche gefunden wurde. Falls diese Lösung nicht möglich ist, sieht der Algorithmus entweder die Möglichkeit der Verwerfung der erstellten Lösung vor oder durch die Integration einer Reparaturheuristik die Erhaltung dieser Lösung. Nach Ende aller Iterationen kann die beste Lösung wiedergegeben werden. Abschließend sollte durch das Verfahren des GRASP das multi-dimensionale Knapsack-Problem gelöst sein. 
+Bei der allgemeinen Formulierung wird in jeder Iteration des GRASP eine Konstruktionsphase und eine Phase der lokalen Suche durchgefÃ¼hrt.\footnote{Vgl. \cite{resende2014grasp}, S. 6; \cite{feo1989probabilistic}, S. 68-70} In der Konstruktionsphase werden durch Anwenden der Randomisierung in mehreren DurchlÃ¤ufen unterschiedliche LÃ¶sungen erstellt. Anhand einer LÃ¶sung wird eine Kandidatenmenge bestimmt und deren Zuwachskosten bewertet. Solange diese Kandidatenmenge Elemente enthÃ¤lt, wird eine Liste mit Elementen mit den geringsten Zuwachskosten erstellt. Von dieser Liste wird dann ein zufÃ¤lliger Wert gewÃ¤hlt und in der LÃ¶sung berÃ¼cksichtigt. AnschlieÃŸend wird die Kandidatenmenge aktualisiert und die Zuwachskosten der Kandidaten aus dieser Menge neu bewertet. Nach Abschluss der Prozedur ist eine LÃ¶sung konstruiert. Sofern die LÃ¶sung mÃ¶glich ist, wird die Nachbarschaft erforscht bis ein lokales Minimum durch die Phase der lokalen Suche gefunden wurde. Falls diese LÃ¶sung nicht mÃ¶glich ist, sieht der Algorithmus entweder die MÃ¶glichkeit der Verwerfung der erstellten LÃ¶sung vor oder durch die Integration einer Reparaturheuristik die Erhaltung dieser LÃ¶sung. Nach Ende aller Iterationen kann die beste LÃ¶sung wiedergegeben werden. AbschlieÃŸend sollte durch das Verfahren des GRASP das multi-dimensionale Knapsack-Problem gelÃ¶st sein. 
 
-Im letzten Schritt wird die neue Ablauffolge $L'$ konstruiert. Dies erfolgt durch Setzen von $L'=L$ in der ersten $First-1$ Position und dadurch, dass die nächsten $Last-First+1$ Arbeitsgänge mit ihrer Startzeit in der Liste $L'$ in nicht-abnehmender Reihenfolge in die Teilplanung integriert werden. Anschließend wird anhand der Ablauffolge der Liste $L$ die Ablauffolge der Liste $L'$ vervollständigt. Für die weitere Nachbarschaft $N_{2}(L)$ erfolgt dieses Verfahren analog. Dafür wird die aktuelle aktive Planung in eine rechte aktive Planung umgeändert.
+Im letzten Schritt wird die neue Ablauffolge $L'$ konstruiert. Dies erfolgt durch Setzen von $L'=L$ in der ersten $First-1$ Position und dadurch, dass die nÃ¤chsten $Last-First+1$ ArbeitsgÃ¤nge mit ihrer Startzeit in der Liste $L'$ in nicht-abnehmender Reihenfolge in die Teilplanung integriert werden. AnschlieÃŸend wird anhand der Ablauffolge der Liste $L$ die Ablauffolge der Liste $L'$ vervollstÃ¤ndigt. FÃ¼r die weitere Nachbarschaft $N_{2}(L)$ erfolgt dieses Verfahren analog. DafÃ¼r wird die aktuelle aktive Planung in eine rechte aktive Planung umgeÃ¤ndert.
 
-Weiter nutzt dieses Verfahren die Randomisierung der Nachbarschaften. Damit werden die Versuche je Iteration reduziert. D. h., es wird jedem Element einer Nachbarschaft eine Wahrscheinlichkeit $P\leq1$ hinterlegt. Anschließend wird eine Tabu-Liste generiert. Mit der Summe aller Startzeitpunkte der Arbeitsgänge $j$ einer Lösung $L$ wird der Tabu-Status $TS(L)$ für eine Planung berechnet und damit die Länge einer Planung $S(L)$.
+Weiter nutzt dieses Verfahren die Randomisierung der Nachbarschaften. Damit werden die Versuche je Iteration reduziert. D. h., es wird jedem Element einer Nachbarschaft eine Wahrscheinlichkeit $P\leq1$ hinterlegt. AnschlieÃŸend wird eine Tabu-Liste generiert. Mit der Summe aller Startzeitpunkte der ArbeitsgÃ¤nge $j$ einer LÃ¶sung $L$ wird der Tabu-Status $TS(L)$ fÃ¼r eine Planung berechnet und damit die LÃ¤nge einer Planung $S(L)$.
 \begin{eqnarray} 
 TS(L)=\sum^{n}_{j=1}S_{j}
 \hfill
 \end{eqnarray}
 
-Das Verfahren nutzt als Crossover Operator die Strategie der \textit{Pfadneuverknüpfung (PNV)} von \cite{glover1999tabu}. Mit der Strategie werden die Verbindungen von guten Lösungen erkundet.\footnote{Vgl. \cite{glover2000fundamentals}, S. 7-13} Dafür wird der Parameter $Shift_{ij}(L)$ eingeführt. Die Autoren nutzen diesen Parameter, um die Bewegung des Arbeitsgangs $i$ aufzuzeigen, gleich nachdem Arbeitsgang $j$ gemeinsam mit allen Nachfolgern in die Liste $L$ geplant wird. Dabei wird die Vorrangsbeziehung durch die Menge von Paaren $C=\{(i,j)\}$ beschrieben, die für den Arbeitsgang $j$ jeweils die Vorgänger $i$ aufzeigt.
+Das Verfahren nutzt als Crossover Operator die Strategie der \textit{PfadneuverknÃ¼pfung (PNV)} von \cite{glover1999tabu}. Mit der Strategie werden die Verbindungen von guten LÃ¶sungen erkundet.\footnote{Vgl. \cite{glover2000fundamentals}, S. 7-13} DafÃ¼r wird der Parameter $Shift_{ij}(L)$ eingefÃ¼hrt. Die Autoren nutzen diesen Parameter, um die Bewegung des Arbeitsgangs $i$ aufzuzeigen, gleich nachdem Arbeitsgang $j$ gemeinsam mit allen Nachfolgern in die Liste $L$ geplant wird. Dabei wird die Vorrangsbeziehung durch die Menge von Paaren $C=\{(i,j)\}$ beschrieben, die fÃ¼r den Arbeitsgang $j$ jeweils die VorgÃ¤nger $i$ aufzeigt.
 
 $Shift_{ij}(L):$
 \begin{eqnarray} 
 L=(...i...t_{1}...t_{m}...j...)\rightarrow L'=(...jit_{1}...t_{m}...), \;
 \hfill (i,t_{1}),...,(i,t_{m})\in C
 \end{eqnarray}%Let L and L' be two solutions. We construct a path L=L_{0},...,L_{k}=L', L_{i}=Shift_{pq}(L_{i-1})
-Wenn $L$ und $L'$ zwei Lösungen sind, dann lässt sich ein Pfad $L=L_{0},...,L_{k}=L', L_{i}=Shift_{pq}(L_{i-1})$ konstruieren. Der Parameter $A(j)$ beschreibt die Menge von Vorgängen bevor der Arbeitsgang $j$ in die Ablauffolge $L$ aufgenommen wurde. Analog bildet dies die Menge $A'(j)$ der Ablauffolge $L'$. Die Reihenfolgerestriktion für einen Arbeitsgang $j$ ist dann erfüllt, wenn Folglich gilt: $A'(j)\subseteq A(j)$. Die Pfadkonstruktion transformiert die Arbeitsgänge der Menge $J$ der Liste $L$ nacheinander in eine neue Liste $L'$, in Abhängigkeit ihrer Mächtigkeit und in abnehmender Sortierungsreihenfolge.
+Wenn $L$ und $L'$ zwei LÃ¶sungen sind, dann lÃ¤sst sich ein Pfad $L=L_{0},...,L_{k}=L', L_{i}=Shift_{pq}(L_{i-1})$ konstruieren. Der Parameter $A(j)$ beschreibt die Menge von VorgÃ¤ngen bevor der Arbeitsgang $j$ in die Ablauffolge $L$ aufgenommen wurde. Analog bildet dies die Menge $A'(j)$ der Ablauffolge $L'$. Die Reihenfolgerestriktion fÃ¼r einen Arbeitsgang $j$ ist dann erfÃ¼llt, wenn Folglich gilt: $A'(j)\subseteq A(j)$. Die Pfadkonstruktion transformiert die ArbeitsgÃ¤nge der Menge $J$ der Liste $L$ nacheinander in eine neue Liste $L'$, in AbhÃ¤ngigkeit ihrer MÃ¤chtigkeit und in abnehmender Sortierungsreihenfolge.
 
 
-Die Ermittlung von neuen Regionen des möglichen Lösungsraums durch Erstellung von neuen Populationen soll das Ende der Evolution sein. Es sollte eine möglichst entfernte neue Population bestimmt werden. Die Autoren haben dafür ein Traveling-Salesman-Problem mit einer Vorrangsbeziehung konstruiert.
+Die Ermittlung von neuen Regionen des mÃ¶glichen LÃ¶sungsraums durch Erstellung von neuen Populationen soll das Ende der Evolution sein. Es sollte eine mÃ¶glichst entfernte neue Population bestimmt werden. Die Autoren haben dafÃ¼r ein Traveling-Salesman-Problem mit einer Vorrangsbeziehung konstruiert.
 \begin{eqnarray} 
 \min\sum \omega_{j_{r}j_{r+1}}
 \end{eqnarray}
@@ -705,80 +577,80 @@ unter Beachtung der Restriktionen
 \hfill
 \end{multline}\vspace{-3.0ex}
 
-Mit der Zielfunktion wird die Entfernung zwischen der neuen Lösung und der Lösung der alten Population minimiert. Der Parameter $\omega_{ij}$ ist dabei eine Anzahl von Lösungen einer aktuellen Population, bei dem der Arbeitsgang $j$ in die Liste aufgenommen ist, gleich nachdem der Arbeitsgang $i$ gelistet wird. Auch hier wird der GRASP-Algorithmus zum Lösen des Problems genutzt.
+Mit der Zielfunktion wird die Entfernung zwischen der neuen LÃ¶sung und der LÃ¶sung der alten Population minimiert. Der Parameter $\omega_{ij}$ ist dabei eine Anzahl von LÃ¶sungen einer aktuellen Population, bei dem der Arbeitsgang $j$ in die Liste aufgenommen ist, gleich nachdem der Arbeitsgang $i$ gelistet wird. Auch hier wird der GRASP-Algorithmus zum LÃ¶sen des Problems genutzt.
 
 
 
 
 \section{Hybride elektromagnetische Metaheuristik} \label{debels1}
-Die nachfolgenden Erklärungen zu den Heuristiken sind der Arbeit von \cite{debels2006hybrid} entnommen (dementsprechend beruhen sämtliche Aussagen auf dieser Arbeit, sofern keine anderen Verweise angegeben wurden). Die Heuristik bietet lt. den Autoren eine gute Annäherung an die optimale Lösung für relativ große Fälle des ressourcenbeschränkten Projektplanungsproblems. Das Verfahren kombiniert den \textit{Scatter Search (SS)}, bei dem es sich um einen Sonderfall des populations-basierten, evolutionären Algorithmus handelt sowie eine neu entwickelte heuristische Methode der Optimierung von ungekoppelten kontinuierlichen Funktionen, basierend auf einer Analogie der Elektromagnetismustheorie.
+Die nachfolgenden ErklÃ¤rungen zu den Heuristiken sind der Arbeit von \cite{debels2006hybrid} entnommen (dementsprechend beruhen sÃ¤mtliche Aussagen auf dieser Arbeit, sofern keine anderen Verweise angegeben wurden). Die Heuristik bietet lt. den Autoren eine gute AnnÃ¤herung an die optimale LÃ¶sung fÃ¼r relativ groÃŸe FÃ¤lle des ressourcenbeschrÃ¤nkten Projektplanungsproblems. Das Verfahren kombiniert den \textit{Scatter Search (SS)}, bei dem es sich um einen Sonderfall des populations-basierten, evolutionÃ¤ren Algorithmus handelt sowie eine neu entwickelte heuristische Methode der Optimierung von ungekoppelten kontinuierlichen Funktionen, basierend auf einer Analogie der Elektromagnetismustheorie.
 
 \begin{algorithm}[H]
 \textbf{Pseudo-Code des Scatter Search (SS)}\\
-1. erstelle Pool $P$ willkürlich erstellter Lösungen\\
+1. erstelle Pool $P$ willkÃ¼rlich erstellter LÃ¶sungen\\
 2. erstelle $RefSet=\mathcal{B}_{1}\cup \mathcal{B}_{2}, \mathcal{B}_{1}\cup \mathcal{B}_{2}\subset \mathcal{E}, \mathcal{B}_{1}\cap \mathcal{B}_{2}=\varnothing$\\
 \Solange{NrPlanung<Planungslimit}{3. generiere Teilmenge von $RefSet$\\
-4. erstelle neuen Pool $\mathcal{E}$ von Lösungen unter Verwendung von Lösungskombinationsmethode für jede Untermenge\\
+4. erstelle neuen Pool $\mathcal{E}$ von LÃ¶sungen unter Verwendung von LÃ¶sungskombinationsmethode fÃ¼r jede Untermenge\\
 5. aktualisiere $RefSet$}
 {\footnotesize \textbf{Quelle:} \cite{debels2006hybrid}}
 \end{algorithm}
 
-Der SS gehört zur Klasse der evolutionären Algorithmen und zur Unterkategorie der GA. Bei dieser Heuristik werden Lösungen kombiniert, die zur Menge der Lösungen eine konvexe oder nicht-konvexe Kombination aufweisen. Durch das Vereinigungsprinzip zur Erweiterung der Menge der Lösungen durch eine verallgemeinerte Konstruktion des Projektverlaufs im euklidischen Raum und durch Nutzen von Strategiedesigns betreffend der Umsortierung der Lösungsansätze der Populationssortierung (Randomisierung) werden neue gute Lösungen generiert.%\footnote{Die sogenante Randomisierung; Es wird hier von einer Population gesprochen, da dies eine Menge von Individuen entspricht. Ein Individuum ist wiederum als eine Lösung eines Optimierungsproblems in einem genetischen Algorithmus zu verstehen.} unterscheidet sich diese Methode von anderen GA.
+Der SS gehÃ¶rt zur Klasse der evolutionÃ¤ren Algorithmen und zur Unterkategorie der GA. Bei dieser Heuristik werden LÃ¶sungen kombiniert, die zur Menge der LÃ¶sungen eine konvexe oder nicht-konvexe Kombination aufweisen. Durch das Vereinigungsprinzip zur Erweiterung der Menge der LÃ¶sungen durch eine verallgemeinerte Konstruktion des Projektverlaufs im euklidischen Raum und durch Nutzen von Strategiedesigns betreffend der Umsortierung der LÃ¶sungsansÃ¤tze der Populationssortierung (Randomisierung) werden neue gute LÃ¶sungen generiert.%\footnote{Die sogenante Randomisierung; Es wird hier von einer Population gesprochen, da dies eine Menge von Individuen entspricht. Ein Individuum ist wiederum als eine LÃ¶sung eines Optimierungsproblems in einem genetischen Algorithmus zu verstehen.} unterscheidet sich diese Methode von anderen GA.
 
-Der generierte Lösungsvektor aus dem ersten Schritt vom pseudo SS-Algo\-rith\-mus enthält willkürlich generierte Lösungen. Die Lösungen haben das Format der standardisierten Zufallszahl. Es handelt sich hier um ein Prioritätswertverfahren, bei dem jedem Arbeitsgang einer möglichen Lösung $y_{i}$ ein Prioritätswert zugeordnet ist.\footnote{Vgl. \cite{domschke2005einfuhrung}, S. 129}  
+Der generierte LÃ¶sungsvektor aus dem ersten Schritt vom pseudo SS-Algo\-rith\-mus enthÃ¤lt willkÃ¼rlich generierte LÃ¶sungen. Die LÃ¶sungen haben das Format der standardisierten Zufallszahl. Es handelt sich hier um ein PrioritÃ¤tswertverfahren, bei dem jedem Arbeitsgang einer mÃ¶glichen LÃ¶sung $y_{i}$ ein PrioritÃ¤tswert zugeordnet ist.\footnote{Vgl. \cite{domschke2005einfuhrung}, S. 129}  
 %SRK Format????
-Im nächsten Schritt werden qualitativ hochwertige Lösungen (Teilmenge $\mathcal{B}_{1}$) und andere Lösungen (Teilmenge $\mathcal{B}_{2}$) der Menge $\mathcal{E}$ in die Referenzmenge $RefSet$ überführt. $RefSet$ hat die Eigenschaft  $\mathcal{B}_{1}\cap \mathcal{B}_{2}=\varnothing$. Anhand der Unterschiedlichkeiten der willkürlichen Lösungen aus $\mathcal{E}$ werden anhand der besten Bearbeitungsdauer und der minimalen Distanz zwischen den Elementen die Lösungen der Teilmenge $\mathcal{B}_{1}$ bestimmt. $\mathcal{B}_{2}$ sind Lösungen mit der weitesten Distanz zu der jeweiligen Bearbeitungsdauer der Lösungen aus $\mathcal{B}_{1}$. Im nächsten Schritt werden mehrere Reoptimierungen der Referenzmenge $RefSet$ durchgeführt, solange das Stoppkriterium des Planungslimits nicht erreicht ist.
-Bei der Reoptimierung wird von der Referenzmenge $RefSet$ wiederum eine Teilmenge gebildet und anhand dieser ein Pool an Lösungen generiert. Bei der Generierung der Lösungen wird eine Lösungskombinationsmethode für jede Untermenge verwendet. Dies kann in zwei unterschiedlichen Verfahren erfolgen:
+Im nÃ¤chsten Schritt werden qualitativ hochwertige LÃ¶sungen (Teilmenge $\mathcal{B}_{1}$) und andere LÃ¶sungen (Teilmenge $\mathcal{B}_{2}$) der Menge $\mathcal{E}$ in die Referenzmenge $RefSet$ Ã¼berfÃ¼hrt. $RefSet$ hat die Eigenschaft  $\mathcal{B}_{1}\cap \mathcal{B}_{2}=\varnothing$. Anhand der Unterschiedlichkeiten der willkÃ¼rlichen LÃ¶sungen aus $\mathcal{E}$ werden anhand der besten Bearbeitungsdauer und der minimalen Distanz zwischen den Elementen die LÃ¶sungen der Teilmenge $\mathcal{B}_{1}$ bestimmt. $\mathcal{B}_{2}$ sind LÃ¶sungen mit der weitesten Distanz zu der jeweiligen Bearbeitungsdauer der LÃ¶sungen aus $\mathcal{B}_{1}$. Im nÃ¤chsten Schritt werden mehrere Reoptimierungen der Referenzmenge $RefSet$ durchgefÃ¼hrt, solange das Stoppkriterium des Planungslimits nicht erreicht ist.
+Bei der Reoptimierung wird von der Referenzmenge $RefSet$ wiederum eine Teilmenge gebildet und anhand dieser ein Pool an LÃ¶sungen generiert. Bei der Generierung der LÃ¶sungen wird eine LÃ¶sungskombinationsmethode fÃ¼r jede Untermenge verwendet. Dies kann in zwei unterschiedlichen Verfahren erfolgen:
 
-1. Paare in $\mathcal{B}_{1}$: Es werden alle bisherigen Paare von $\mathcal{B}_{1}$ betrachtet, die eine relativ gute Lösung aufweisen und somit eine relativ kurze Projektfertigstellungsdauer. Von jedem solcher Paare werden Abkömmlinge produziert und in den neuen Pool überführt. Dies erfolgt mit dem Instrument eines zweistufigen Crossovers. D. h. es wird anhand von zwei Eingangslösungen (Eltern) durch Rekombination eine neue Ausgangslösung (Abkömmling) generiert. Durch Auswahl der anfänglichen Arbeitsgangfolge der ersten Eingangslösung und anschließender Vervollständigung anhand der Abfolge der zweiten Eingangslösung wird für die neue Ausgangslösung die Reihenfolge der Arbeitsgänge unter Einhaltung der Vorrangsrestriktionen generiert.\footnote{Vgl. \cite{hartmann1998competitive}, S. 737} %
+1. Paare in $\mathcal{B}_{1}$: Es werden alle bisherigen Paare von $\mathcal{B}_{1}$ betrachtet, die eine relativ gute LÃ¶sung aufweisen und somit eine relativ kurze Projektfertigstellungsdauer. Von jedem solcher Paare werden AbkÃ¶mmlinge produziert und in den neuen Pool Ã¼berfÃ¼hrt. Dies erfolgt mit dem Instrument eines zweistufigen Crossovers. D. h. es wird anhand von zwei EingangslÃ¶sungen (Eltern) durch Rekombination eine neue AusgangslÃ¶sung (AbkÃ¶mmling) generiert. Durch Auswahl der anfÃ¤nglichen Arbeitsgangfolge der ersten EingangslÃ¶sung und anschlieÃŸender VervollstÃ¤ndigung anhand der Abfolge der zweiten EingangslÃ¶sung wird fÃ¼r die neue AusgangslÃ¶sung die Reihenfolge der ArbeitsgÃ¤nge unter Einhaltung der Vorrangsrestriktionen generiert.\footnote{Vgl. \cite{hartmann1998competitive}, S. 737} %
 
-2. Elemente von $\mathcal{B}_{1}\times \mathcal{B}_{2}$: Von jeder Kombination von jeweils einem Element aus $\mathcal{B}_{1}$ und $\mathcal{B}_{2}$ wird über die elektromagnetische Metaheuristik die Ablauffolge einer Lösung $y$ verbessert. Die Kraft eines Punkt $y$ aus $\mathcal{B}_{1}$ zieht einen Punkt $y$ aus $\mathcal{B}_{2}$ in seine Richtung an. Für die Paare von $\mathcal{B}_{1}\times \mathcal{B}_{1}$ kann dieses Verfahren nicht angewendet werden. Dies liegt an der simultanen Bewegungsrichtung der korrespondierenden Planung. Ursächlich liegt es an der Verringerung der Wirksamkeit des EM-Algorithmus, da die Verbesserung basierend auf Unterschieden des Zielfunktionswertes zur Orientierung der Suche resultiert.\footnote{Vgl. \cite{debels2006hybrid}, S. 644-645} Abbildung \ref{embild} im Anhang versucht die Lösungskombinationsmethoden zu veranschaulichen. Die genauere Vorgehensweise des EM-Algorithmus wird im Folgenden ausführlich dargestellt.
+2. Elemente von $\mathcal{B}_{1}\times \mathcal{B}_{2}$: Von jeder Kombination von jeweils einem Element aus $\mathcal{B}_{1}$ und $\mathcal{B}_{2}$ wird Ã¼ber die elektromagnetische Metaheuristik die Ablauffolge einer LÃ¶sung $y$ verbessert. Die Kraft eines Punkt $y$ aus $\mathcal{B}_{1}$ zieht einen Punkt $y$ aus $\mathcal{B}_{2}$ in seine Richtung an. FÃ¼r die Paare von $\mathcal{B}_{1}\times \mathcal{B}_{1}$ kann dieses Verfahren nicht angewendet werden. Dies liegt an der simultanen Bewegungsrichtung der korrespondierenden Planung. UrsÃ¤chlich liegt es an der Verringerung der Wirksamkeit des EM-Algorithmus, da die Verbesserung basierend auf Unterschieden des Zielfunktionswertes zur Orientierung der Suche resultiert.\footnote{Vgl. \cite{debels2006hybrid}, S. 644-645} Abbildung \ref{embild} im Anhang versucht die LÃ¶sungskombinationsmethoden zu veranschaulichen. Die genauere Vorgehensweise des EM-Algorithmus wird im Folgenden ausfÃ¼hrlich dargestellt.
 
 
 \begin{algorithm}[H]
-\textbf{Pseudo-Code für die elektromagnetische Metaheuristik (EM)}\\
-\Solange{Stoppkriterium nicht erfüllt}{
+\textbf{Pseudo-Code fÃ¼r die elektromagnetische Metaheuristik (EM)}\\
+\Solange{Stoppkriterium nicht erfÃ¼llt}{
 1. Lokalsuche\\
-2. Kräfte berechnen\\
-3. Kräfte verwenden}
+2. KrÃ¤fte berechnen\\
+3. KrÃ¤fte verwenden}
 {\footnotesize \textbf{Quelle:} \cite{birbil2003electromagnetism}}
 \end{algorithm}
 
-Die von \cite{birbil2003electromagnetism} entwickelte elektromagnetische Metaheuristik löst Probleme der ungekoppelten globalen Optimierung. Jeder Punkt in einem multidimensionalen Lösungsraum repräsentiert eine Lösung und jede Lösung hat eine bestimmte Ladung, die wiederum mit einem Zielfunktionswert verbunden ist. Jeder Lösungspunkt übt eine Anziehungs- oder Anstoßwirkung auf einen anderen Punkt aus. Die Größe ist proportional zu dem Produkt der Ladungen und umgekehrt proportional zu dem Abstand zwischen den Punkten (Coulombsches Gesetz). Das Prinzip des Algorithmus baut auf dieser Eigenschaft auf.
+Die von \cite{birbil2003electromagnetism} entwickelte elektromagnetische Metaheuristik lÃ¶st Probleme der ungekoppelten globalen Optimierung. Jeder Punkt in einem multidimensionalen LÃ¶sungsraum reprÃ¤sentiert eine LÃ¶sung und jede LÃ¶sung hat eine bestimmte Ladung, die wiederum mit einem Zielfunktionswert verbunden ist. Jeder LÃ¶sungspunkt Ã¼bt eine Anziehungs- oder AnstoÃŸwirkung auf einen anderen Punkt aus. Die GrÃ¶ÃŸe ist proportional zu dem Produkt der Ladungen und umgekehrt proportional zu dem Abstand zwischen den Punkten (Coulombsches Gesetz). Das Prinzip des Algorithmus baut auf dieser Eigenschaft auf.
 
-Ein schlechter Lösungspunkt übt eine Bewegung in die Richtung aus, die durch den Anstoß anderer Punkte der Population verhindert wird, und die Bewegung zu den attraktiveren Lösungen wird dadurch vereinfacht. Es kann somit von einer Lokalsuche im euklidischen Raum in einer populations-basierten Sichtweise gesprochen werden. Der Hauptunterschied besteht lt. \cite{debels2006hybrid} darin, dass die Bewegung der Kräfte durch die Gesetze des Elektromagnetismus geregelt werden.
+Ein schlechter LÃ¶sungspunkt Ã¼bt eine Bewegung in die Richtung aus, die durch den AnstoÃŸ anderer Punkte der Population verhindert wird, und die Bewegung zu den attraktiveren LÃ¶sungen wird dadurch vereinfacht. Es kann somit von einer Lokalsuche im euklidischen Raum in einer populations-basierten Sichtweise gesprochen werden. Der Hauptunterschied besteht lt. \cite{debels2006hybrid} darin, dass die Bewegung der KrÃ¤fte durch die Gesetze des Elektromagnetismus geregelt werden.
 
-Im ersten Schritt des EM-Algorithmus werden die direkten Nachbarlösungen der individuellen Punkte der Population gesucht. Die ausgeübte Gesamtkraft auf jeden Punkt von allen anderen Punkten wird im zweiten Schritt berechnet. Diese Kraft ist abhängig von der Ladung des betrachteten Punkts unter Berücksichtigung der ausgeübten Kraft der anderen Punkte. Die Ladung von jedem Punkt $y_{i}$ ist bestimmt durch den Zielfunktionswert $f(y_{i})$ in Relation zu dem Zielfunktionswert des aktuell besten Punkts $y^{best}$ der Population. Die Ladung $q_{i}$ vom Punkt $y_{i}$ ist gegeben durch die Gleichung \eqref{bittewas}.
+Im ersten Schritt des EM-Algorithmus werden die direkten NachbarlÃ¶sungen der individuellen Punkte der Population gesucht. Die ausgeÃ¼bte Gesamtkraft auf jeden Punkt von allen anderen Punkten wird im zweiten Schritt berechnet. Diese Kraft ist abhÃ¤ngig von der Ladung des betrachteten Punkts unter BerÃ¼cksichtigung der ausgeÃ¼bten Kraft der anderen Punkte. Die Ladung von jedem Punkt $y_{i}$ ist bestimmt durch den Zielfunktionswert $f(y_{i})$ in Relation zu dem Zielfunktionswert des aktuell besten Punkts $y^{best}$ der Population. Die Ladung $q_{i}$ vom Punkt $y_{i}$ ist gegeben durch die Gleichung \eqref{bittewas}.
 \begin{eqnarray} \label{bittewas}
 q_{i} & = & \exp \left( -\delta\frac{f(y_{i})-f(y^{best})}{\sum_{k=1}^{w} (f(y_{k})-f(y^{best}))} \right) \hfill 
 \end{eqnarray}
 
-Die Populationsgröße wird durch den Parameter $w$ gegeben und der Parameter $\delta$ ist die Dimension des Lösungsraums. $KA_{i}$ von $i=1,...,w$ repräsentiert den Vektor der Kraftausprägungen von einem Punkt $y_{i}$. Formal wird $KA_{i}$ definiert durch die Gleichung \eqref{bittewas2}:
+Die PopulationsgrÃ¶ÃŸe wird durch den Parameter $w$ gegeben und der Parameter $\delta$ ist die Dimension des LÃ¶sungsraums. $KA_{i}$ von $i=1,...,w$ reprÃ¤sentiert den Vektor der KraftausprÃ¤gungen von einem Punkt $y_{i}$. Formal wird $KA_{i}$ definiert durch die Gleichung \eqref{bittewas2}:
 \begin{eqnarray} \label{bittewas2}
 KA_{i} & = & \sum^{j=w}_{j=1,\; j\neq i} \left\{ \begin{array}{c} (y_{j}-y_{i})(\frac{q_{i}q_{j}}{\| y_{j}-y_{i}\|^{2}}) \; \text{wenn} \; f(y_{j})<f(y_{i})\\ (y_{i}-y_{j})(\frac{q_{i}q_{j}}{\| y_{j}-y_{i}\|^{2}}) \; \text{wenn} \; f(y_{j})\geq f(y_{i}) \end{array} \right\}
 \end{eqnarray}
 
-Sobald ein Punkt einen relativ guten Zielfunktionswert aufweist, zieht er einen anderen Punkt an. Punkte mit relativ minderwertigen Zielfunktionswerten stoßen die anderen Populationsmitglieder ab. Die auf den Punkt $i$ ausgeübte Kraft von allen anderen Punkten wird mittels Vektoraddition vollzogen. Durch die Übereinstimmung der Bewegung aufgrund der ausgeübten Kraft wird eine neue Population von Lösungen erzeugt.
+Sobald ein Punkt einen relativ guten Zielfunktionswert aufweist, zieht er einen anderen Punkt an. Punkte mit relativ minderwertigen Zielfunktionswerten stoÃŸen die anderen Populationsmitglieder ab. Die auf den Punkt $i$ ausgeÃ¼bte Kraft von allen anderen Punkten wird mittels Vektoraddition vollzogen. Durch die Ãœbereinstimmung der Bewegung aufgrund der ausgeÃ¼bten Kraft wird eine neue Population von LÃ¶sungen erzeugt.
 
-Weiteres Vorgehen von \cite{debels2006hybrid} war, den EM-Algorith\-mus für das RCPSP umzuformen. Dazu wurde ein Konzept verallgemeinert durch Berücksichtigung von einer vorbestimmten Anzahl $z \in [1; w\; - \; 1]$ von Punkten zum Darstellen eines beliebig gegebenen Punktes, wobei $w$ weiterhin die Populationsgröße beschreibt. Experimente haben gezeigt, dass $z=1$ gute Ergebnisse liefert und leicht zu implementieren ist.\footnote{Vgl. \cite{debels2006hybrid}, S. 644-645\label{debels}}
+Weiteres Vorgehen von \cite{debels2006hybrid} war, den EM-Algorith\-mus fÃ¼r das RCPSP umzuformen. Dazu wurde ein Konzept verallgemeinert durch BerÃ¼cksichtigung von einer vorbestimmten Anzahl $z \in [1; w\; - \; 1]$ von Punkten zum Darstellen eines beliebig gegebenen Punktes, wobei $w$ weiterhin die PopulationsgrÃ¶ÃŸe beschreibt. Experimente haben gezeigt, dass $z=1$ gute Ergebnisse liefert und leicht zu implementieren ist.\footnote{Vgl. \cite{debels2006hybrid}, S. 644-645\label{debels}}
 
-Für die Kraftübertragung wird anstelle $q_{i}$ und $q_{j}$ für das Ausmaß der Ladung der Parameter $q_{ij}$ eingeführt. Dieser Parameter repräsentiert die Ladung als Relation der Entfernung des Zielfunktionswert zwischen $i$ und $j$.
+FÃ¼r die KraftÃ¼bertragung wird anstelle $q_{i}$ und $q_{j}$ fÃ¼r das AusmaÃŸ der Ladung der Parameter $q_{ij}$ eingefÃ¼hrt. Dieser Parameter reprÃ¤sentiert die Ladung als Relation der Entfernung des Zielfunktionswert zwischen $i$ und $j$.
 \begin{eqnarray} \label{bittewas3}
 q_{ij} & = & \frac{f(y_{i})-f(y_{j})}{f(y^{worst})-f(y^{best})} \hfill 
 \end{eqnarray}
 
-Die Berechnung der Ladung $q_{ij} \in [-1;1]$ eines Punktes durch Gleichung \eqref{bittewas3} kann nicht mehr unabhängig erfolgen, aber auf Basis der Punkte kann die ausgeübte Kraft durch $y^{worst}$ und $y^{best}$ berechnet werden. Damit können schlechte und bessere Lösung im $RefSet$ ermittelt werden, da die besseren Lösungen $y_{j}$ als Ergebnis einen höheren Wert $q_{ij}$ haben. Wenn $f(y_{i})>f(y_{j})$, dann ist $q_{ij}$ positiv und die bessere Lösung $y_{j}$ zieht die schlechtere Lösung $y_{i}$ an, da der Punkt $y_{i}$ eine längere Bearbeitungsdauer als der Punkt $y_{j}$ hat.
+Die Berechnung der Ladung $q_{ij} \in [-1;1]$ eines Punktes durch Gleichung \eqref{bittewas3} kann nicht mehr unabhÃ¤ngig erfolgen, aber auf Basis der Punkte kann die ausgeÃ¼bte Kraft durch $y^{worst}$ und $y^{best}$ berechnet werden. Damit kÃ¶nnen schlechte und bessere LÃ¶sung im $RefSet$ ermittelt werden, da die besseren LÃ¶sungen $y_{j}$ als Ergebnis einen hÃ¶heren Wert $q_{ij}$ haben. Wenn $f(y_{i})>f(y_{j})$, dann ist $q_{ij}$ positiv und die bessere LÃ¶sung $y_{j}$ zieht die schlechtere LÃ¶sung $y_{i}$ an, da der Punkt $y_{i}$ eine lÃ¤ngere Bearbeitungsdauer als der Punkt $y_{j}$ hat.
 \begin{eqnarray} \label{bittewas4}
 KA_{ij} & = &  (y_{j} - y_{i})\cdot q_{ij}
 \end{eqnarray}
-Die Gleichung \eqref{bittewas4} wurde in der Arbeit von \cite{debels2006hybrid} für die Kraftübertragung von Punkt $y_{j}$ auf Punkt $y_{i}$ verwendet und ist analog zu der PNV von \cite{glover2000fundamentals}. Da der Parameter $q_{ij}$ in der Gleichung \eqref{bittewas4} beinah immer kleiner als 1 ist, wandert die Lösung $y_{i}$ zur Lösung $y_{i} + KA_{ij}$ und somit in Richtung $y_{j}$. Aufgrund dieser Eigenschaft wird eine neue Lösung generiert.\footnote{Vgl. \cite{debels2006hybrid}, S. 644-645\label{debels5}}
+Die Gleichung \eqref{bittewas4} wurde in der Arbeit von \cite{debels2006hybrid} fÃ¼r die KraftÃ¼bertragung von Punkt $y_{j}$ auf Punkt $y_{i}$ verwendet und ist analog zu der PNV von \cite{glover2000fundamentals}. Da der Parameter $q_{ij}$ in der Gleichung \eqref{bittewas4} beinah immer kleiner als 1 ist, wandert die LÃ¶sung $y_{i}$ zur LÃ¶sung $y_{i} + KA_{ij}$ und somit in Richtung $y_{j}$. Aufgrund dieser Eigenschaft wird eine neue LÃ¶sung generiert.\footnote{Vgl. \cite{debels2006hybrid}, S. 644-645\label{debels5}}
 
-Weiter muss zur Integration des EM-Algorithmus in eine Heuristik zum Lösen des RCPSP die Eigenschaft zur Änderung der Prioritätswerte der Arbeitsgänge einer möglichen Lösung $y_{i}$ integriert sein.\footref{debels5} Damit wird garantiert, dass jede Lösung einer einzigartigen Planung entspricht.\footnote{Vgl. \cite{tang2012resource}, S. 5220} Dies geschieht dadurch, dass der Kraft ermöglicht wird auf eine einzelne Teilmenge der Dimension zu wirken.
-Ein Punkt $y_{i}$ im multidimensionalen Lösungsraum kann als Vektor mit Prioritätswerten interpretiert werden. Durch diese Prioritätsstruktur kann die spezifische Ablauffolge einer Lösung $y_{i}$ bestimmt werden.
-Die Kraft wirkt auf die Prioritätswerte eines Punktes $y_{i}$ im Intervall $[p_{min},p_{max}]$ ein. Das Intervall wird durch zufällige Auswahl von $p_{min} \in [1;n-1]$ und $p_{max} \in [2;n]$ mit $p_{min} \leq p_{max}$ und einer minimalen Distanz zwischen $p_{min}$ und $p_{max}$ beschrieben. Aufgrund der Kraftausübung $KA_{ij}$ von Punkt $y_{j}$ aus $\mathcal{B}_{1}$ auf Punkt $y_{i}$ aus $\mathcal{B}_{2}$ werden die Prioritäten eines Punkte $y_{i}$ im Intervall $\in [p_{min}, p_{max}]$ aktualisiert. %damit die dadurch geänderten Arbeitsgänge alle zu einem speziellen Zeitintervall starten.
-Die anderen Komponenten der Prioritätsstruktur der Lösungen werden anschließend aktualisiert. Die Prioritätswerte kleiner als $p_{min}$ werden durch eine $n$-große Konstante ($n$ oder größer) geschmälert und diese Konstante wird allen Prioritätswerten größer $p_{max}$ hinzugerechnet. Dadurch bleibt die Ablaufstruktur der durch die Kräfte unberührten Arbeitsgänge und die relativen Prioritäten der drei entsprechenden Untergruppen von Arbeitsgängen unberührt. Die relativen Prioritäten für die Arbeitsgänge werden für die Werte von $<p_{min}$ und $>p_{max}$ weiterhin durch die optimale Lösung gegeben. Damit bleibt die Prioritätsstruktur erhalten, analog zu den durch den EM bestimmten neuen Prioritäten zwischen $p_{min}$ und $p_{max}$.
+Weiter muss zur Integration des EM-Algorithmus in eine Heuristik zum LÃ¶sen des RCPSP die Eigenschaft zur Ã„nderung der PrioritÃ¤tswerte der ArbeitsgÃ¤nge einer mÃ¶glichen LÃ¶sung $y_{i}$ integriert sein.\footref{debels5} Damit wird garantiert, dass jede LÃ¶sung einer einzigartigen Planung entspricht.\footnote{Vgl. \cite{tang2012resource}, S. 5220} Dies geschieht dadurch, dass der Kraft ermÃ¶glicht wird auf eine einzelne Teilmenge der Dimension zu wirken.
+Ein Punkt $y_{i}$ im multidimensionalen LÃ¶sungsraum kann als Vektor mit PrioritÃ¤tswerten interpretiert werden. Durch diese PrioritÃ¤tsstruktur kann die spezifische Ablauffolge einer LÃ¶sung $y_{i}$ bestimmt werden.
+Die Kraft wirkt auf die PrioritÃ¤tswerte eines Punktes $y_{i}$ im Intervall $[p_{min},p_{max}]$ ein. Das Intervall wird durch zufÃ¤llige Auswahl von $p_{min} \in [1;n-1]$ und $p_{max} \in [2;n]$ mit $p_{min} \leq p_{max}$ und einer minimalen Distanz zwischen $p_{min}$ und $p_{max}$ beschrieben. Aufgrund der KraftausÃ¼bung $KA_{ij}$ von Punkt $y_{j}$ aus $\mathcal{B}_{1}$ auf Punkt $y_{i}$ aus $\mathcal{B}_{2}$ werden die PrioritÃ¤ten eines Punkte $y_{i}$ im Intervall $\in [p_{min}, p_{max}]$ aktualisiert. %damit die dadurch geÃ¤nderten ArbeitsgÃ¤nge alle zu einem speziellen Zeitintervall starten.
+Die anderen Komponenten der PrioritÃ¤tsstruktur der LÃ¶sungen werden anschlieÃŸend aktualisiert. Die PrioritÃ¤tswerte kleiner als $p_{min}$ werden durch eine $n$-groÃŸe Konstante ($n$ oder grÃ¶ÃŸer) geschmÃ¤lert und diese Konstante wird allen PrioritÃ¤tswerten grÃ¶ÃŸer $p_{max}$ hinzugerechnet. Dadurch bleibt die Ablaufstruktur der durch die KrÃ¤fte unberÃ¼hrten ArbeitsgÃ¤nge und die relativen PrioritÃ¤ten der drei entsprechenden Untergruppen von ArbeitsgÃ¤ngen unberÃ¼hrt. Die relativen PrioritÃ¤ten fÃ¼r die ArbeitsgÃ¤nge werden fÃ¼r die Werte von $<p_{min}$ und $>p_{max}$ weiterhin durch die optimale LÃ¶sung gegeben. Damit bleibt die PrioritÃ¤tsstruktur erhalten, analog zu den durch den EM bestimmten neuen PrioritÃ¤ten zwischen $p_{min}$ und $p_{max}$.
 
-Durch Änderungen der Prioritätsstruktur einer möglichen Lösung $y_{i}$ aus der Menge $\mathcal{B}_{2}$ aufgrund der Wirkung der Kraftausprägung $KA_{ij}$ kann eine neue Lösung generiert werden.
+Durch Ã„nderungen der PrioritÃ¤tsstruktur einer mÃ¶glichen LÃ¶sung $y_{i}$ aus der Menge $\mathcal{B}_{2}$ aufgrund der Wirkung der KraftausprÃ¤gung $KA_{ij}$ kann eine neue LÃ¶sung generiert werden.
 
 
 
@@ -788,10 +660,10 @@ Durch Änderungen der Prioritätsstruktur einer möglichen Lösung $y_{i}$ aus der M
 
 
 
-Der Vergleich zwischen den Heuristiken wird in Anlehnung an die Arbeit von \cite{kolisch2006experimental} getätigt. Die Autoren haben in ihrer Arbeit mehrere moderne Heuristiken zum Lösen des RCPSP beschrieben und anhand einer Computersimulation verglichen. In der neuen Untersuchung wurden die selben Testmengen und Stoppkritierien wie in ihren vorherigen Arbeiten verwendet.\footnote{Vgl. \cite{hartmann2000experimental}, S. 398-405} Es wurden drei unterschiedliche Projekte mit einer Anzahl von Arbeitsgängen bestimmt (30 Arbeitsgänge mit 480 Instanzen, 60 Arbeitsgänge mit 480 Instanzen und 120 Arbeitsgänge mit 600 Instanzen). Die Projekte wurden generiert durch ProGen\footnote{Vgl. \cite{kolisch1995characterization}, S. 1695-1696} und sind der PSPLIB entnommen.\footnote{Für mehr Details zum Testaufbau siehe \cite{kolisch1997psplib}, S. 205-216.} Für die verschiedenen Testaufbauten wurde eine maximale Anzahl an Planung von $1.000$, $5.000$ und $50.000$ gewählt, da die Autoren die Annahme treffen, dass der Rechenaufwand zur Konstruktion einer Planung für jede Heuristik gleich ist. %Des Weiteren ist die Anzahl an Planungen gutes Kriterium zum umfassenden Abgleich der Heuristik, da diese nur wenige Nachteile
-Zum Testen der Heuristik wurden die originalen Implementationen und besten Konfigurationen der Autoren genutzt. Teilweise wurde aufgrund anderer Stoppkriterien oder mangelnder Daten eine Anpassung der Heuristiken durchgeführt bzw. die Autoren haben die Anforderungen der Studie von \cite{kolisch2006experimental} auf ihre entwickelten Heuristiken übertragen und die neu ermittelten Ergebnisse bereitgestellt.
+Der Vergleich zwischen den Heuristiken wird in Anlehnung an die Arbeit von \cite{kolisch2006experimental} getÃ¤tigt. Die Autoren haben in ihrer Arbeit mehrere moderne Heuristiken zum LÃ¶sen des RCPSP beschrieben und anhand einer Computersimulation verglichen. In der neuen Untersuchung wurden die selben Testmengen und Stoppkritierien wie in ihren vorherigen Arbeiten verwendet.\footnote{Vgl. \cite{hartmann2000experimental}, S. 398-405} Es wurden drei unterschiedliche Projekte mit einer Anzahl von ArbeitsgÃ¤ngen bestimmt (30 ArbeitsgÃ¤nge mit 480 Instanzen, 60 ArbeitsgÃ¤nge mit 480 Instanzen und 120 ArbeitsgÃ¤nge mit 600 Instanzen). Die Projekte wurden generiert durch ProGen\footnote{Vgl. \cite{kolisch1995characterization}, S. 1695-1696} und sind der PSPLIB entnommen.\footnote{FÃ¼r mehr Details zum Testaufbau siehe \cite{kolisch1997psplib}, S. 205-216.} FÃ¼r die verschiedenen Testaufbauten wurde eine maximale Anzahl an Planung von $1.000$, $5.000$ und $50.000$ gewÃ¤hlt, da die Autoren die Annahme treffen, dass der Rechenaufwand zur Konstruktion einer Planung fÃ¼r jede Heuristik gleich ist. %Des Weiteren ist die Anzahl an Planungen gutes Kriterium zum umfassenden Abgleich der Heuristik, da diese nur wenige Nachteile
+Zum Testen der Heuristik wurden die originalen Implementationen und besten Konfigurationen der Autoren genutzt. Teilweise wurde aufgrund anderer Stoppkriterien oder mangelnder Daten eine Anpassung der Heuristiken durchgefÃ¼hrt bzw. die Autoren haben die Anforderungen der Studie von \cite{kolisch2006experimental} auf ihre entwickelten Heuristiken Ã¼bertragen und die neu ermittelten Ergebnisse bereitgestellt.
 
-Die Ergebnisse der Computersimulation von \cite{kolisch2006experimental} der in Kapitel \ref{Hauptteil} beschriebenen Heuristiken sind in den Tabellen \ref{Tabelle1}-\ref{Tabelle3} zusammengefasst. In den Tabellen wird die durchschnittliche Abweichung in Prozent in Abhängigkeit des Stoppkriteriums \glqq  Maximale Anzahl an Planungen\grqq\;aufgeführt. Dabei muss beachtet werden, dass bei dem Projekt mit 30 Arbeitsgängen eine optimale Lösung bekannt ist. Daher bezieht sich die durchschnittliche Abweichung auf diesen Wert, anders als bei den anderen zwei Projekten. Bei den Projekten mit 60 und 120 Arbeitsgängen wird als Wert für die durchschnittliche Abweichung die Projektfertigstellungsdauer anhand des kritischen Pfads als untere Schranke verwendet. In den Tabellen wird ebenfalls aufgeführt, welches SGS bei der Heuristik zum Einsatz kommt. Sortiert wurden die Heuristiken in den Tabellen anhand der Ergebnisse des Stoppkriteriums: Maximale Anzahl an Planung in Höhe von 50.000. Falls eine Heuristik keine Lösung bei der Generierung von 50.000 Planungen ermitteln konnte, wurde das Ergebnis nach der Generierung von 5.000 Planungen als Sortierung verwendet. %Regel der Dominanz?
+Die Ergebnisse der Computersimulation von \cite{kolisch2006experimental} der in Kapitel \ref{Hauptteil} beschriebenen Heuristiken sind in den Tabellen \ref{Tabelle1}-\ref{Tabelle3} zusammengefasst. In den Tabellen wird die durchschnittliche Abweichung in Prozent in AbhÃ¤ngigkeit des Stoppkriteriums \glqq  Maximale Anzahl an Planungen\grqq\;aufgefÃ¼hrt. Dabei muss beachtet werden, dass bei dem Projekt mit 30 ArbeitsgÃ¤ngen eine optimale LÃ¶sung bekannt ist. Daher bezieht sich die durchschnittliche Abweichung auf diesen Wert, anders als bei den anderen zwei Projekten. Bei den Projekten mit 60 und 120 ArbeitsgÃ¤ngen wird als Wert fÃ¼r die durchschnittliche Abweichung die Projektfertigstellungsdauer anhand des kritischen Pfads als untere Schranke verwendet. In den Tabellen wird ebenfalls aufgefÃ¼hrt, welches SGS bei der Heuristik zum Einsatz kommt. Sortiert wurden die Heuristiken in den Tabellen anhand der Ergebnisse des Stoppkriteriums: Maximale Anzahl an Planung in HÃ¶he von 50.000. Falls eine Heuristik keine LÃ¶sung bei der Generierung von 50.000 Planungen ermitteln konnte, wurde das Ergebnis nach der Generierung von 5.000 Planungen als Sortierung verwendet. %Regel der Dominanz?
 \begin{table}[h!]
   \begin{center}
     \caption{Durchschnittliche Abweichung (\%) von der optimalen Fertigstellungsdauer; $J=30$}  
@@ -804,7 +676,7 @@ Kap.  &     Algorithmus					& SGS		& Referenz	& \multicolumn{3}{l}{Max. \#Planun
 \ref{kochetov} &	GA/TS-PNV & Beide                &      \citeauthor{kochetov2003evolutionary}     	& 0,10	& 0,04 & 0,00	   \\
 \ref{debels1}&	Scatter Search-EM & Seriell                &      \citeauthor{debels2006hybrid}     	& 0,27	& 0,11 & 0,01	   \\
 \ref{tormos}&		Sampling-LFT/FBI & Beide                &      \citeauthor{tormos2003efficient}     	& 0,30	& 0,17 & 0,09	   \\
-\ref{bouleimen}&			SA-Aktivitätenliste & Seriell                &      \citeauthor{bouleimen2003new}     	& 0,38	& 0,23 & --	   \\
+\ref{bouleimen}&			SA-AktivitÃ¤tenliste & Seriell                &      \citeauthor{bouleimen2003new}     	& 0,38	& 0,23 & --	   \\
 			\\ 
     \end{tabular} \\[3mm]
   \end{small} 
@@ -812,7 +684,7 @@ Kap.  &     Algorithmus					& SGS		& Referenz	& \multicolumn{3}{l}{Max. \#Planun
   \end{center}
 \end{table}
 
-Die Tabelle \ref{Tabelle1} zeigt, dass das Verfahren von \cite{kochetov2003evolutionary} bei einer Anzahl von 50.000 Planungen bei einem Projekt mit 30 Arbeitsgängen anscheinend eine optimale Lösung und bei den anderen Fällen vergleichsweise gute Ergebnisse liefert. Die anderen Heuristiken liefern ein ähnlich gutes Bild bei der Ermittlung der Lösungen. Erkennbar wird, dass die in dieser Arbeit betrachteten Heuristiken bei kleinen Projekten gute Ergebnisse hervorbringen.
+Die Tabelle \ref{Tabelle1} zeigt, dass das Verfahren von \cite{kochetov2003evolutionary} bei einer Anzahl von 50.000 Planungen bei einem Projekt mit 30 ArbeitsgÃ¤ngen anscheinend eine optimale LÃ¶sung und bei den anderen FÃ¤llen vergleichsweise gute Ergebnisse liefert. Die anderen Heuristiken liefern ein Ã¤hnlich gutes Bild bei der Ermittlung der LÃ¶sungen. Erkennbar wird, dass die in dieser Arbeit betrachteten Heuristiken bei kleinen Projekten gute Ergebnisse hervorbringen.
 
 \begin{table}[h!]
   \begin{center}
@@ -826,7 +698,7 @@ Kap.   &    Algorithmus					& SGS		& Referenz	& \multicolumn{3}{l}{Max. \#Planun
 	\ref{debels1}&	Scatter Search-EM & Seriell                &      \citeauthor{debels2006hybrid}     	& 11,73	& 11,10 & 10.71	   \\
 \ref{kochetov}&	GA/TS-PNV & Beide                &      \citeauthor{kochetov2003evolutionary}     	& 11,71	& 11,17 & 10,74	   \\
 	\ref{tormos}&	Sampling-LFT/FBI & Beide                &      \citeauthor{tormos2003efficient}     	& 12,14	& 11,82 & 11,77	   \\
-		\ref{bouleimen}&	SA-Aktivitätenliste & Seriell                &      \citeauthor{bouleimen2003new}     	& 12,75 	& 11,90 & --	   \\
+		\ref{bouleimen}&	SA-AktivitÃ¤tenliste & Seriell                &      \citeauthor{bouleimen2003new}     	& 12,75 	& 11,90 & --	   \\
 			\\ 
     \end{tabular} \\[3mm]
   \end{small} 
@@ -834,7 +706,7 @@ Kap.   &    Algorithmus					& SGS		& Referenz	& \multicolumn{3}{l}{Max. \#Planun
   \end{center}
 \end{table}
 
-Bei einer größeren Anzahl an Arbeitsvorgängen in einem Projekt liefert die Heuristik von \cite{debels2006hybrid} bessere Ergebnisse als die Heuristik von \cite{kochetov2003evolutionary}, wobei die Unterschiede im Hundertstelbereich der Relation liegen. Dies kann der Tabelle \ref{Tabelle2} entnommen werden. Einige größere Unterschiede liefern die Heuristik von \cite{tormos2003efficient} sowie die Heuristik von \cite{bouleimen2003new} zu den vorher genannten Heuristiken. Deren Abweichungen von der durch den kritischen Pfad bestimmten Projektfertigstellungsdauer als untere Schranke liegen bereits im Zehntelbereich. Aber trotz der Unterschiede kann festgestellt werden, dass alle vier Heuristiken ähnliche Ergebnisse liefern, allerdings ist die Abweichung ähnlich angestiegen.
+Bei einer grÃ¶ÃŸeren Anzahl an ArbeitsvorgÃ¤ngen in einem Projekt liefert die Heuristik von \cite{debels2006hybrid} bessere Ergebnisse als die Heuristik von \cite{kochetov2003evolutionary}, wobei die Unterschiede im Hundertstelbereich der Relation liegen. Dies kann der Tabelle \ref{Tabelle2} entnommen werden. Einige grÃ¶ÃŸere Unterschiede liefern die Heuristik von \cite{tormos2003efficient} sowie die Heuristik von \cite{bouleimen2003new} zu den vorher genannten Heuristiken. Deren Abweichungen von der durch den kritischen Pfad bestimmten Projektfertigstellungsdauer als untere Schranke liegen bereits im Zehntelbereich. Aber trotz der Unterschiede kann festgestellt werden, dass alle vier Heuristiken Ã¤hnliche Ergebnisse liefern, allerdings ist die Abweichung Ã¤hnlich angestiegen.
 
 \begin{table}[h!]
   \begin{center}
@@ -848,7 +720,7 @@ Bei einer größeren Anzahl an Arbeitsvorgängen in einem Projekt liefert die Heuri
 \ref{debels1}&		Scatter Search-EM & Seriell                &      \citeauthor{debels2006hybrid}     	& 35,22	& 33,10 & 31,57	   \\
 \ref{kochetov}&	GA/TS-PNV & Beide                &      \citeauthor{kochetov2003evolutionary}     	& 34,74	& 33,36 & 32,06	   \\
 \ref{tormos}&		Sampling-LFT/FBI & Beide                &      \citeauthor{tormos2003efficient}     	& 36,24	& 35,56 & 34,77	   \\
-\ref{bouleimen}&			SA-Aktivitätenliste & Seriell                &      \citeauthor{bouleimen2003new}     	& 42,81 	& 37,68 & --	   \\
+\ref{bouleimen}&			SA-AktivitÃ¤tenliste & Seriell                &      \citeauthor{bouleimen2003new}     	& 42,81 	& 37,68 & --	   \\
 			\\ 
     \end{tabular} \\[3mm]
   \end{small} 
@@ -856,9 +728,9 @@ Bei einer größeren Anzahl an Arbeitsvorgängen in einem Projekt liefert die Heuri
   \end{center}
 \end{table}
 
-Beim Betrachten der Tabelle \ref{Tabelle3}, bei der die Ergebnisse eines Projekts mit 120 Arbeitsgängen dargestellt werden, ergibt sich ein ähnliches Bild wie bei dem Fall der Generierung von 50.000 Planungen. Die Heuristik von \cite{debels2006hybrid} liefert hier den besten Wert, gefolgt von der Heuristik von \cite{kochetov2003evolutionary} sowie der Heuristik von \cite{tormos2003efficient}. Die gleiche Reihenfolge der drei Heuristiken ergibt sich bei einer Anzahl von 5.000 Planungen. Bei der Anzahl von 1.000 Planungen ergibt sich jedoch ein anderes Bild. Hier scheint die Heuristik von \cite{kochetov2003evolutionary} bessere Ergebnisse zu liefern, als die Heuristik von \cite{debels2006hybrid}. Damit lässt sich sagen, dass bei einem kleineren Planungslimit die Heuristik von \cite{kochetov2003evolutionary} bessere Lösungen liefert -- zumindest in der untersuchten Projektstruktur.
+Beim Betrachten der Tabelle \ref{Tabelle3}, bei der die Ergebnisse eines Projekts mit 120 ArbeitsgÃ¤ngen dargestellt werden, ergibt sich ein Ã¤hnliches Bild wie bei dem Fall der Generierung von 50.000 Planungen. Die Heuristik von \cite{debels2006hybrid} liefert hier den besten Wert, gefolgt von der Heuristik von \cite{kochetov2003evolutionary} sowie der Heuristik von \cite{tormos2003efficient}. Die gleiche Reihenfolge der drei Heuristiken ergibt sich bei einer Anzahl von 5.000 Planungen. Bei der Anzahl von 1.000 Planungen ergibt sich jedoch ein anderes Bild. Hier scheint die Heuristik von \cite{kochetov2003evolutionary} bessere Ergebnisse zu liefern, als die Heuristik von \cite{debels2006hybrid}. Damit lÃ¤sst sich sagen, dass bei einem kleineren Planungslimit die Heuristik von \cite{kochetov2003evolutionary} bessere LÃ¶sungen liefert -- zumindest in der untersuchten Projektstruktur.
 
-Angemerkt werden muss jedoch, dass in der Vergleichsstudie von \cite{kolisch2006experimental} keine generierte Lösung anhand der Heuristik von \cite{bouleimen2003new} bei keinem der Projekte mit einem Planungslimit in Höhe von 50.000 Planungen hinterlegt wurde.
+Angemerkt werden muss jedoch, dass in der Vergleichsstudie von \cite{kolisch2006experimental} keine generierte LÃ¶sung anhand der Heuristik von \cite{bouleimen2003new} bei keinem der Projekte mit einem Planungslimit in HÃ¶he von 50.000 Planungen hinterlegt wurde.
 
 
 
@@ -872,7 +744,7 @@ Angemerkt werden muss jedoch, dass in der Vergleichsstudie von \cite{kolisch2006
 \chapter{Schlussbemerkung}
 \markboth{Schlussbemerkung}{}
 \section{Zusammenfassung}
-Für das RCPSP liefern Metaheuristiken basierend auf einer Ablauffolge des seriellen SGS die besten Lösungen.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33\label{Ergebnisse}} Die Heuristiken von \cite{debels2006hybrid} sowie \cite{kochetov2003evolutionary} verfolgen eine populations-basierte Metaheuristik. In der Leistungsbewertung liefert das Verfahren von \cite{debels2006hybrid} in den Fällen mit größerer Anzahl an Arbeitsgängen die besten Lösungen, sofern die Heuristik\footnote{Scatter Search, als Sonderfall der populations-basierten Metaheuristiken} mit dem Verfahren des EM-Algorithmus erweitert wird. Eine Zusammenfassung über die Eigenschaften der Heuristiken liefert Tabelle \ref{TabelleA}.
+FÃ¼r das RCPSP liefern Metaheuristiken basierend auf einer Ablauffolge des seriellen SGS die besten LÃ¶sungen.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33\label{Ergebnisse}} Die Heuristiken von \cite{debels2006hybrid} sowie \cite{kochetov2003evolutionary} verfolgen eine populations-basierte Metaheuristik. In der Leistungsbewertung liefert das Verfahren von \cite{debels2006hybrid} in den FÃ¤llen mit grÃ¶ÃŸerer Anzahl an ArbeitsgÃ¤ngen die besten LÃ¶sungen, sofern die Heuristik\footnote{Scatter Search, als Sonderfall der populations-basierten Metaheuristiken} mit dem Verfahren des EM-Algorithmus erweitert wird. Eine Zusammenfassung Ã¼ber die Eigenschaften der Heuristiken liefert Tabelle \ref{TabelleA}.
 
 \begin{table}[h!]
   \begin{center}
@@ -882,16 +754,16 @@ Für das RCPSP liefern Metaheuristiken basierend auf einer Ablauffolge des seriel
     \vspace*{3mm}
     \begin{tabular}{llll}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
     Kap. & Algorithmus							& Eigenschaften \\ \hline
-\ref{bouleimen}&			SA-Aktivitätenliste    &Lokale Suche    \\
-&&  Kontrollierte Annahme von Nachbarlösungen\\ \hline
-\ref{tormos}&		Sampling-LFT/FBI                    &   Prioritätswertverfahren anhand MLFT\\
+\ref{bouleimen}&			SA-AktivitÃ¤tenliste    &Lokale Suche    \\
+&&  Kontrollierte Annahme von NachbarlÃ¶sungen\\ \hline
+\ref{tormos}&		Sampling-LFT/FBI                    &   PrioritÃ¤tswertverfahren anhand MLFT\\
 &&Ermittlung der Ablauffolge anhand RBRS   	   \\
 &&Optimierung anhand eines selektiven BF-Verfahrens\\ \hline
-\ref{kochetov}&	GA/TS-PNV                & Optimierung mittels Lösungsmenge (Randomisierung)  \\      
-&&Crossover durch Pfadneuverknüpfung\\  	
-&&Suche nach entfernten neuen Lösungsmengen\\ \hline
-\ref{debels1}&		Scatter Search-EM                 & Optimierung mittels Lösungsmenge (Randomisierung)         	    \\
-&&Prioritätswertverfahren\\
+\ref{kochetov}&	GA/TS-PNV                & Optimierung mittels LÃ¶sungsmenge (Randomisierung)  \\      
+&&Crossover durch PfadneuverknÃ¼pfung\\  	
+&&Suche nach entfernten neuen LÃ¶sungsmengen\\ \hline
+\ref{debels1}&		Scatter Search-EM                 & Optimierung mittels LÃ¶sungsmenge (Randomisierung)         	    \\
+&&PrioritÃ¤tswertverfahren\\
 &&Crossover durch Elektromagnetismusanalogie\\
     \end{tabular} \\[3mm]
   \end{small} 
@@ -899,21 +771,21 @@ Für das RCPSP liefern Metaheuristiken basierend auf einer Ablauffolge des seriel
   \end{center}
 \end{table}
 
-Andere Studien belegen, dass das Verfahren des Samplings mit Vorwärts-Rückwärts-Methode die besten Lösungen liefert, zumindest im Vergleich zu hybriden Metaheuristiken bei Planung eines Projekts mit geringer Anzahl an Arbeitsgängen.\footref{Ergebnisse} Lt. dieser Aussage nimmt die Planungsqualität bei Metaheuristiken mit zunehmender Anzahl von Arbeitsgängen zu. Dies kann anhand des eingeschränkten Vergleichs der Heuristiken in Kapitel \ref{rechnung} nicht bestätigt werden. \cite{valls2005justification} zeigten das Potential der Vorwärts-Rückwärts-Methode. Ebenfalls stellen \cite{kolisch2006experimental} über einen Trend der Anwendung der Vor\-wärts-Rückwärts-Methode beim Lösen des RCPSP fest. Dies liegt an der leichten Implementierung der Vorwärts-Rückwärts-Methode in bestehende Heuristiken des RCPSP, da es bei jeder Teilplanung durchgeführt werden kann.\footnote{Vgl. \cite{valls2004population}, S. 18-19} Dies wurde in der Heuristik von \cite{tormos2003efficient} mit einem BF-Ansatz gezeigt.
+Andere Studien belegen, dass das Verfahren des Samplings mit VorwÃ¤rts-RÃ¼ckwÃ¤rts-Methode die besten LÃ¶sungen liefert, zumindest im Vergleich zu hybriden Metaheuristiken bei Planung eines Projekts mit geringer Anzahl an ArbeitsgÃ¤ngen.\footref{Ergebnisse} Lt. dieser Aussage nimmt die PlanungsqualitÃ¤t bei Metaheuristiken mit zunehmender Anzahl von ArbeitsgÃ¤ngen zu. Dies kann anhand des eingeschrÃ¤nkten Vergleichs der Heuristiken in Kapitel \ref{rechnung} nicht bestÃ¤tigt werden. \cite{valls2005justification} zeigten das Potential der VorwÃ¤rts-RÃ¼ckwÃ¤rts-Methode. Ebenfalls stellen \cite{kolisch2006experimental} Ã¼ber einen Trend der Anwendung der Vor\-wÃ¤rts-RÃ¼ckwÃ¤rts-Methode beim LÃ¶sen des RCPSP fest. Dies liegt an der leichten Implementierung der VorwÃ¤rts-RÃ¼ckwÃ¤rts-Methode in bestehende Heuristiken des RCPSP, da es bei jeder Teilplanung durchgefÃ¼hrt werden kann.\footnote{Vgl. \cite{valls2004population}, S. 18-19} Dies wurde in der Heuristik von \cite{tormos2003efficient} mit einem BF-Ansatz gezeigt.
 
-Angemerkt werden muss, dass die Arbeit von \cite{bouleimen2003new} einige Unklarheiten enthält. Dadurch entstehen Schwierigkeiten im Verständnis des Algorithmus. Unklar bleibt zum einen der mathematische Term $N_{n}=N_{n}(1+h.n)$, der mehrfach im Originalartikel in dieser Form beschrieben ist. Daher wird angenommen, dass der Parameter $h$ ein Index für die Iteration $n$ hat und dementsprechend müsste der Term $N_{n}=N_{n}(1+h_{n})$ lauten. Zum anderen werden die unterschiedlichen Indizes für die Menge an Nachbarlösungen $N_{sol}$, $N_{p}$, etc. nur eingeschränkt erklärt. Ebenfalls werden andere Abkürzungen, wie z. B. CP-Wert und SPT, nicht definiert und dadurch wird der Artikel nur fachkundigen Lesern empfohlen. 
+Angemerkt werden muss, dass die Arbeit von \cite{bouleimen2003new} einige Unklarheiten enthÃ¤lt. Dadurch entstehen Schwierigkeiten im VerstÃ¤ndnis des Algorithmus. Unklar bleibt zum einen der mathematische Term $N_{n}=N_{n}(1+h.n)$, der mehrfach im Originalartikel in dieser Form beschrieben ist. Daher wird angenommen, dass der Parameter $h$ ein Index fÃ¼r die Iteration $n$ hat und dementsprechend mÃ¼sste der Term $N_{n}=N_{n}(1+h_{n})$ lauten. Zum anderen werden die unterschiedlichen Indizes fÃ¼r die Menge an NachbarlÃ¶sungen $N_{sol}$, $N_{p}$, etc. nur eingeschrÃ¤nkt erklÃ¤rt. Ebenfalls werden andere AbkÃ¼rzungen, wie z. B. CP-Wert und SPT, nicht definiert und dadurch wird der Artikel nur fachkundigen Lesern empfohlen. 
 
-Die Arbeit von \cite{kochetov2003evolutionary} ist ebenfalls zu kritisieren, da die Heuristik sehr verkürzt beschrieben ist. Dadurch sind nur wenige Zusammenhänge der einzelnen Schritte der Heuristik erkennbar. Außerdem sind wichtige Verfahren zum Anwenden der Heuristik nicht beschrieben, wie bspw. die Anwendung des GRASP-Algorithmus zum Lösen des multi-dimensionalen Knapsack-Problems oder die Implementierung der PNV in die Heuristik. Es wird somit ein breites Grundwissen im Lösen von Heuristiken angenommen, was die Verständlichkeit der Heuristik einschränkt.
+Die Arbeit von \cite{kochetov2003evolutionary} ist ebenfalls zu kritisieren, da die Heuristik sehr verkÃ¼rzt beschrieben ist. Dadurch sind nur wenige ZusammenhÃ¤nge der einzelnen Schritte der Heuristik erkennbar. AuÃŸerdem sind wichtige Verfahren zum Anwenden der Heuristik nicht beschrieben, wie bspw. die Anwendung des GRASP-Algorithmus zum LÃ¶sen des multi-dimensionalen Knapsack-Problems oder die Implementierung der PNV in die Heuristik. Es wird somit ein breites Grundwissen im LÃ¶sen von Heuristiken angenommen, was die VerstÃ¤ndlichkeit der Heuristik einschrÃ¤nkt.
 
 \section{Ausblick}
-Der in dieser Arbeit aufgeführte Vergleich zeigt, dass eine Heuristik mit seriellem SGS die beste Planungsqualität liefert. %\cite{hartmann2000experimental} bestätigten den Erfolg des seriellen SGS bei dem ressourcenbeschränkten Projektplanungsproblem.
-\cite{kolisch2006experimental} empfehlen für das RCPSP, die Ergebnisse eines seriellen SGS durch Ergänzung des parallelen SGS zu verbessern.\footnote{Aussage aufgrund Ergebnisse von \cite{hartmann2002self} mit denen von \cite{hartmann1998competitive}.} \cite{kochetov2003evolutionary} liefern ein alternatives Verfahren zum gleichzeitigen Anwenden des seriellen und partiellen SGS, damit nur ein Teil der Planung jeweils durch die Verfahren generiert wird. Daher sollte die nachfolgende Forschung ein möglichst effizientes Verfahren zur gleichzeitigen Anwendung des SGS entwickeln.
+Der in dieser Arbeit aufgefÃ¼hrte Vergleich zeigt, dass eine Heuristik mit seriellem SGS die beste PlanungsqualitÃ¤t liefert. %\cite{hartmann2000experimental} bestÃ¤tigten den Erfolg des seriellen SGS bei dem ressourcenbeschrÃ¤nkten Projektplanungsproblem.
+\cite{kolisch2006experimental} empfehlen fÃ¼r das RCPSP, die Ergebnisse eines seriellen SGS durch ErgÃ¤nzung des parallelen SGS zu verbessern.\footnote{Aussage aufgrund Ergebnisse von \cite{hartmann2002self} mit denen von \cite{hartmann1998competitive}.} \cite{kochetov2003evolutionary} liefern ein alternatives Verfahren zum gleichzeitigen Anwenden des seriellen und partiellen SGS, damit nur ein Teil der Planung jeweils durch die Verfahren generiert wird. Daher sollte die nachfolgende Forschung ein mÃ¶glichst effizientes Verfahren zur gleichzeitigen Anwendung des SGS entwickeln.
 
 
-Weiter konnte die Studie von \cite{kolisch2006experimental} weitere effiziente Verfahren aufgezeigen, die im Fokus weiterer Forschung stehen sollten. Beispielsweise das Verfahren von \cite{tormos2001competitive}, dass mit einer Vorwärts-Rückwärts-Methode eine Planung verbessert, die durch das Verfahren der X-Pass-Methode oder Metaheuristik generiert wurde. Das Verfahren liefert durch einfaches Verschieben der Arbeitsgänge gute Ergebnisse und kann zu den meisten anderen Ansätzen hinzugefügt werden. %Die weitere Untersuchung solcher Alternativen sollte im Fokus nachfolgender Forschung stehen.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33-34}
-%Durch diese und der Vielzahl anderen Ansätze der Fortwärts-Rückwärts-Methode gewinnt das Verfahren für die weitere Entwicklung von Heuristiken für das RCPSP an Bedeutung.
+Weiter konnte die Studie von \cite{kolisch2006experimental} weitere effiziente Verfahren aufgezeigen, die im Fokus weiterer Forschung stehen sollten. Beispielsweise das Verfahren von \cite{tormos2001competitive}, dass mit einer VorwÃ¤rts-RÃ¼ckwÃ¤rts-Methode eine Planung verbessert, die durch das Verfahren der X-Pass-Methode oder Metaheuristik generiert wurde. Das Verfahren liefert durch einfaches Verschieben der ArbeitsgÃ¤nge gute Ergebnisse und kann zu den meisten anderen AnsÃ¤tzen hinzugefÃ¼gt werden. %Die weitere Untersuchung solcher Alternativen sollte im Fokus nachfolgender Forschung stehen.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33-34}
+%Durch diese und der Vielzahl anderen AnsÃ¤tze der FortwÃ¤rts-RÃ¼ckwÃ¤rts-Methode gewinnt das Verfahren fÃ¼r die weitere Entwicklung von Heuristiken fÃ¼r das RCPSP an Bedeutung.
 
-Die neueren Heuristiken versuchen durch Hinzufügen anderer oder neuerer Methoden sowie der teilweisen Nutzung beider Verfahren des SGS, effizientere Ergebnisse zu generieren.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33-34\label{ergeb2}} Weitere Forschung sollte sich mit der systematischen Kombination der verschiedenen Ansätze beschäftigen. Als Ergebnis aus dieser Arbeit lässt sich ableiten, dass der Fokus für die Entwicklung neuer hybrider Heuristiken nicht unmittelbar nur auf den Verfahren des GA liegen sollte, da auch andere Verfahren wie bspw. das Sampling gute Ergebnisse für kleine Projekte zu liefern scheint. Aber das Augenmerk sollte auf den Verfahren der populations-basierten Metaheurisiken liegen, besonders mit der Integration einer Vorwärts-Rückwärts-Methode, da diese gute Planungsqualität für das RCPSP liefern.\footref{ergeb2}
+Die neueren Heuristiken versuchen durch HinzufÃ¼gen anderer oder neuerer Methoden sowie der teilweisen Nutzung beider Verfahren des SGS, effizientere Ergebnisse zu generieren.\footnote{Vgl. \cite{kolisch2006experimental}, S. 33-34\label{ergeb2}} Weitere Forschung sollte sich mit der systematischen Kombination der verschiedenen AnsÃ¤tze beschÃ¤ftigen. Als Ergebnis aus dieser Arbeit lÃ¤sst sich ableiten, dass der Fokus fÃ¼r die Entwicklung neuer hybrider Heuristiken nicht unmittelbar nur auf den Verfahren des GA liegen sollte, da auch andere Verfahren wie bspw. das Sampling gute Ergebnisse fÃ¼r kleine Projekte zu liefern scheint. Aber das Augenmerk sollte auf den Verfahren der populations-basierten Metaheurisiken liegen, besonders mit der Integration einer VorwÃ¤rts-RÃ¼ckwÃ¤rts-Methode, da diese gute PlanungsqualitÃ¤t fÃ¼r das RCPSP liefern.\footref{ergeb2}
 
 
 
@@ -931,7 +803,7 @@ Die neueren Heuristiken versuchen durch Hinzufügen anderer oder neuerer Methoden
 
 \addcontentsline{toc}{chapter}{Anhang} %Anhang im Inhaltsverzeichnis
 
-\textbf{Ergänzung zum EM-Algorithmus (\ref{debels1}):}\\
+\textbf{ErgÃ¤nzung zum EM-Algorithmus (\ref{debels1}):}\\
 \begin{figure}[h!]
   \begin{center}
 \includegraphics[width=0.70\textwidth, keepaspectratio, page=1]{Bilder/EM.pdf}
@@ -940,8 +812,8 @@ Die neueren Heuristiken versuchen durch Hinzufügen anderer oder neuerer Methoden
   \end{center}
 \end{figure}
 
-Abbildung (a) zeigt die generierte Teilmenge $\mathcal{B}_{1}$ und $\mathcal{B}_{2}$ mit ihren jeweiligen Lösungspunkten. Dabei repräsentiert der Mittelpunkt der zwei Kreise die optimale Lösung. Je weiter ein Punkt $y$ vom Mittelpunkt entfernt ist, desto größer ist der Zielfunktionswert $f(y)$ und dementsprechend länger ist die Projektfertigstellungsdauer durch Anwendung der Ablauffolge des Punkts $y$. Abbildung (b) veranschaulicht die mögliche Lösungskombinationsmethode des GA-Algorithmus für $\mathcal{B}_{1}\times \mathcal{B}_{1}$ und des EM-Algorithmus für $\mathcal{B}_{1}\times \mathcal{B}_{2}$. Die Abbildung (c) zeigt die generierten neuen Lösungspunkte nachdem die Lösungskombinationsmethoden vollzogen wurden. %Jedoch muss beachtet werden, dass der Veranschaulichung des EM-Algorithmus eine Verschiebung der Punkte aus $\mathcal{B}_{2}$ in Richtung der Punkte aus $\mathcal{B}_{1}$ unter Vernachlässigung der Abstoßwirkung der Punkte aus $\mathcal{B}_{2}$ untereinander aufgezeigt wird.
-Abbildung (d) zeigt die aktualisierte Referenzmenge $RefSet$ nachdem die neuen Punkte bzw. Lösungen generiert wurden.
+Abbildung (a) zeigt die generierte Teilmenge $\mathcal{B}_{1}$ und $\mathcal{B}_{2}$ mit ihren jeweiligen LÃ¶sungspunkten. Dabei reprÃ¤sentiert der Mittelpunkt der zwei Kreise die optimale LÃ¶sung. Je weiter ein Punkt $y$ vom Mittelpunkt entfernt ist, desto grÃ¶ÃŸer ist der Zielfunktionswert $f(y)$ und dementsprechend lÃ¤nger ist die Projektfertigstellungsdauer durch Anwendung der Ablauffolge des Punkts $y$. Abbildung (b) veranschaulicht die mÃ¶gliche LÃ¶sungskombinationsmethode des GA-Algorithmus fÃ¼r $\mathcal{B}_{1}\times \mathcal{B}_{1}$ und des EM-Algorithmus fÃ¼r $\mathcal{B}_{1}\times \mathcal{B}_{2}$. Die Abbildung (c) zeigt die generierten neuen LÃ¶sungspunkte nachdem die LÃ¶sungskombinationsmethoden vollzogen wurden. %Jedoch muss beachtet werden, dass der Veranschaulichung des EM-Algorithmus eine Verschiebung der Punkte aus $\mathcal{B}_{2}$ in Richtung der Punkte aus $\mathcal{B}_{1}$ unter VernachlÃ¤ssigung der AbstoÃŸwirkung der Punkte aus $\mathcal{B}_{2}$ untereinander aufgezeigt wird.
+Abbildung (d) zeigt die aktualisierte Referenzmenge $RefSet$ nachdem die neuen Punkte bzw. LÃ¶sungen generiert wurden.
 \end{appendix}
 
 
@@ -968,11 +840,11 @@ Abbildung (d) zeigt die aktualisierte Referenzmenge $RefSet$ nachdem die neuen P
 
 
 \begin{algorithm}[H]
-\textbf{Pseude-Code für evolutionäre Lokalsuche aufgrund Variablennachbarschaft}\\
+\textbf{Pseude-Code fÃ¼r evolutionÃ¤re Lokalsuche aufgrund Variablennachbarschaft}\\
 \Ein{$Projektdaten$, $\#Plangrenze?$, $Zeitgrenze?$}
-\Fuer{I Iteration}{wähle Paare der Lösungen und konstruiere Pfad zwischen Paaren in dem Nachbarschaftsgraph\\
-\Beginn{GRASP\\\Ergebnis{Sammlung von möglichen Lösungen}}
-\Fuer{Lösung $L$}{\Beginn{TS(L) mit Variablennachbarschaft}\Ergebnis{Verbesserte Lösung}}Hinzunahme der verbesserten Lösungen zur Population durch Reduzierung von schlechten Lösungen\\
-\Beginn{Diversifikation der Lösungen/Population}}
+\Fuer{I Iteration}{wÃ¤hle Paare der LÃ¶sungen und konstruiere Pfad zwischen Paaren in dem Nachbarschaftsgraph\\
+\Beginn{GRASP\\\Ergebnis{Sammlung von mÃ¶glichen LÃ¶sungen}}
+\Fuer{LÃ¶sung $L$}{\Beginn{TS(L) mit Variablennachbarschaft}\Ergebnis{Verbesserte LÃ¶sung}}Hinzunahme der verbesserten LÃ¶sungen zur Population durch Reduzierung von schlechten LÃ¶sungen\\
+\Beginn{Diversifikation der LÃ¶sungen/Population}}
 {\footnotesize \textbf{Quelle:} Eigene Darstellung in Anlehnung an \cite{kochetov2003evolutionary}}
 \end{algorithm}
