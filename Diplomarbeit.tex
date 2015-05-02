@@ -21,6 +21,10 @@
 %\renewcommand{\familydefault}{\sfdefault}
 %\usepackage{helvet}
 
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\usepackage{multirow}
+
 \usepackage{longtable} 
 \usepackage{array} 
 \usepackage{ragged2e} 
@@ -127,7 +131,15 @@
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
     \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-OR		    & Operations Research\\
+        DLP			& Deterministisch-lineares Programm\\
+        DLP-op		& Deterministisch-lineares Programm für ein opakes Produktnetzwerk\\
+        DP  			 & Dynamisches Programm\\
+        DP-op		    & Dynamisches Programm für ein opakes Produktnetzwerk\\
+        GAMS 		& General Algebraic Modeling System\\
+        GE & Geldeinheiten \\
+     OK		    & Opportunitätskosten\\
+     RM		    & Revenue Management\\
+    u. B. d. R. & unter Berücksichtigung der Randbedingungen\\
 	\end{tabular}
 \end{table}
 
@@ -139,7 +151,28 @@ OR		    & Operations Research\\
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
     \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
-.. & ...\\
+    $\textbf{a}_{m}$ & Vektor des Ressourcenverbrauchs im Ausführungsmodus $m$\\
+    $a_{hm}$ &	Verbrauch der Ressource $h$ im Ausführungsmodus $m$\\
+   $\textbf{c}$ & Vektor der Ressourcenkapazität\\
+   $c_{h}$ & Kapazität der Ressource $h$\\
+    $D_{jt}$ & Aggregierte erwartete Nachfrag nach Produkt $j$ zur Periode $t$\\
+    $h$	& Ressource aus der Menge $\mathcal{H}$\\
+    $\mathcal{H}$ & Menge an Ressourcen\\
+    $i$ & Produkt-Ressourcen-Kombination aus der Menge $\mathcal{I}$\\
+    $\mathcal{I}$ & Gesamtmenge an möglichen Kombinationen von Produkten und Ressourcen\\
+    $j$ & Produkt aus der Menge $\mathcal{J}$\\
+$\mathcal{J}$ & Menge an Produkten \\   
+$m$ & Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
+    $\mathcal{M}_{j}$ & Menge an produktspezifisch-möglichen Ausführungsmodi für ein Produkt $j$\\
+ $\pi_{h}$ & Bid-Preis der Ressource $h$\\
+   $p_{j}(t)$ & Wahrscheinlichkeit der Nachfrage nach Produkt $j$ in Periode $t$\\
+    $r_{j}$ & Erlös des Produkts $j$\\
+    $t$ & Periode des Buchungshorizonts $T$\\
+        $\tau$ & Endperiode $t=1$ im Buchungshorizont $T$\\ 
+        $T$ & Buchungshorizont\\
+   $V(\textbf{c},t)$ & Ertragsfunktion in Abhängigkeit der Kapazitäten $\textbf{c}$ in der Periode $t$\\
+      $V(c_{h'},t)$ & Ertragsfunktion in Abhängigkeit der Kapazität $c_{h'}$ in der Periode $t$\\
+    $x_{jm}$ & Anzahl der akzeptierten Anfragen nach Produkt $j$ im Ausführungsmodus $m$\\
 	\end{tabular}
 \end{table}
 
@@ -169,6 +202,7 @@ OR		    & Operations Research\\
 \include{Vorwort/Vorwort}
 \include{Kapitel_1/Kapitel_1}
 \include{Kapitel_2/Kapitel_2}
+\include{Kapitel_2a/Kapitel_2a}
 \include{Kapitel_3/Kapitel_3}
 \include{Kapitel_4/Kapitel_4}
 \include{Kapitel_5/Kapitel_5}
@@ -197,7 +231,7 @@ OR		    & Operations Research\\
   Hiermit versichere ich, dass ich die vorliegende Arbeit selbstst\"{a}ndig verfasst und keine anderen als die angegebenen Quellen und Hilfsmittel
   benutzt habe, dass alle Stellen der Arbeit, die w\"{o}rtlich oder sinngem\"{a}{\ss} aus anderen Quellen \"{u}bernommen wurden, als solche kenntlich gemacht
   sind und dass die Arbeit in gleicher oder \"{a}hnlicher Form noch keiner Pr\"{u}fungsbeh\"{o}rde vorgelegt wurde.\\[3cm]
-  Hannover, 17. September 2014
+  Hannover, 11. September 2015
   \vspace*{\stretch{1.5}}
 \end{flushleft}
 \newpage\thispagestyle{empty}\null\newpage
