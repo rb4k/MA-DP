@@ -130,17 +130,18 @@
     \vspace*{-3mm}
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
-    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
+  \begin{flushleft}
+    \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
         DLP			& Deterministisch-lineares Programm\\
-        DLP-op		& Deterministisch-lineares Programm für ein opakes Produktnetzwerk\\
-        DP  			 & Dynamisches Programm\\
-        DP-op		    & Dynamisches Programm für ein opakes Produktnetzwerk\\
+        DP  			 & Dynamisches Programm zur Annahme von Aufträgen\\
+        DP-storage		    & Dynamisches Programm zur Annahme von Aufträgen unter Beachtung von Lagerbeständen\\
         GAMS 		& General Algebraic Modeling System\\
         GE & Geldeinheiten \\
      OK		    & Opportunitätskosten\\
      RM		    & Revenue Management\\
     u. B. d. R. & unter Berücksichtigung der Randbedingungen\\
 	\end{tabular}
+	\end{flushleft}
 \end{table}
 
 %Symbolverzeichnis
@@ -150,7 +151,8 @@
     \vspace*{-3mm}
     \hspace*{2mm}
   \renewcommand{\arraystretch}{1,5}
-    \begin{tabular}{ll}  %hier die Spaltenausrichtung und Anzahl eintragen
+  \begin{flushleft}
+    \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
     $\textbf{a}_{m}$ & Vektor des Ressourcenverbrauchs im Ausführungsmodus $m$\\
     $a_{hm}$ &	Verbrauch der Ressource $h$ im Ausführungsmodus $m$\\
    $\textbf{c}$ & Vektor der Ressourcenkapazität\\
@@ -174,6 +176,7 @@ $m$ & Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
       $V(c_{h'},t)$ & Ertragsfunktion in Abhängigkeit der Kapazität $c_{h'}$ in der Periode $t$\\
     $x_{jm}$ & Anzahl der akzeptierten Anfragen nach Produkt $j$ im Ausführungsmodus $m$\\
 	\end{tabular}
+	\end{flushleft}
 \end{table}
 
 
@@ -200,12 +203,12 @@ $m$ & Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
 \pagenumbering{arabic}   %ab hier arabische Seitenzahlen beginnend mit 1
 
 \include{Vorwort/Vorwort}
-\include{Kapitel_1/Kapitel_1}
-\include{Kapitel_2/Kapitel_2}
-\include{Kapitel_2a/Kapitel_2a}
-\include{Kapitel_3/Kapitel_3}
-\include{Kapitel_4/Kapitel_4}
-\include{Kapitel_5/Kapitel_5}
+\include{Einleitung/Einleitung}
+\include{Grundlagen/Grundlagen}
+\include{RevenueManagement/RevenueManagement}
+\include{Review/Review}
+\include{DynamischesProgramm/DynamischesProgramm}
+\include{Schluss/Schluss}
 
 %Anhang
 \begin{appendix}
