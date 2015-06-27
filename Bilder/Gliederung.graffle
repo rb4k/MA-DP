@@ -14,7 +14,7 @@
 	<key>BackgroundGraphic</key>
 	<dict>
 		<key>Bounds</key>
-		<string>{{0, 0}, {559.27559471130371, 782.86138916015625}}</string>
+		<string>{{0, 0}, {559, 783}}</string>
 		<key>Class</key>
 		<string>SolidGraphic</string>
 		<key>ID</key>
@@ -51,6 +51,137 @@
 	<integer>8</integer>
 	<key>GraphicsList</key>
 	<array>
+		<dict>
+			<key>Bounds</key>
+			<string>{{47.884483893712286, 516.69690314928152}, {432, 184.94424438476562}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>ID</key>
+			<integer>9</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Align</key>
+				<integer>0</integer>
+				<key>Pad</key>
+				<integer>15</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;\f1\fnil\fcharset0 CMUBright-Oblique;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
+
+\f0\b\fs28 \cf0 5. Ein exaktes L\'f6sungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen
+\f1\i\b0  \
+\pard\tx195\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
+\cf0 -	Mathematische Modellformulierung zur Auftragsannahme- und 	Lagerhaltungsentscheidung bei auftragsbezogenen 		Instandhaltungsprozessen\
+\pard\tx205\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
+\cf0 -	Pseudo-Algorithmus und Grundlagen zur Implementierung\
+-	Numerische Untersuchung}</string>
+				<key>VerticalPad</key>
+				<integer>10</integer>
+			</dict>
+			<key>TextPlacement</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{105.41333317756653, 178.94339140256011}, {446.47112941741943, 144}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>ID</key>
+			<integer>5</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Align</key>
+				<integer>0</integer>
+				<key>Pad</key>
+				<integer>15</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;\f1\fnil\fcharset0 CMUBright-Oblique;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
+
+\f0\b\fs28 \cf0 3. Das Konzept des Revenue Managements bei der Annahme von Auftr\'e4gen\
+
+\f1\i\b0 Die Herkunft, die Anwendungsvoraussetzungen sowie die Instrumente und die mathematische Modellformulierung des Revenue Managements beim\
+Entscheidungsproblem der Auftragsannahme}</string>
+				<key>VerticalPad</key>
+				<integer>10</integer>
+			</dict>
+			<key>TextPlacement</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Bounds</key>
+			<string>{{47.884462594985962, 2.6666666666662309}, {504, 40}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>ID</key>
+			<integer>3</integer>
+			<key>Magnets</key>
+			<array>
+				<string>{-0.59628479784302701, -1.1925696134567261}</string>
+				<string>{1.9868215517249155e-08, -1.3333333730697632}</string>
+				<string>{0.59628487781105122, -1.1925696134567261}</string>
+				<string>{1.1925696134567261, -0.59628480672836304}</string>
+				<string>{1.3333333730697632, 1.5894572413799324e-07}</string>
+				<string>{1.1925696134567261, 0.59628473564567486}</string>
+				<string>{0.59628465308492196, 1.1925697326660156}</string>
+				<string>{0, 1.3333333730697632}</string>
+				<string>{-0.5962849488937394, 1.1925696134567261}</string>
+				<string>{-1.1925697326660156, 0.5962844398368361}</string>
+				<string>{-1.3333333730697632, -6.3578289655197295e-07}</string>
+				<string>{-1.1925696134567261, -0.59628480672836304}</string>
+			</array>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Align</key>
+				<integer>0</integer>
+				<key>Pad</key>
+				<integer>15</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;\f1\fnil\fcharset0 CMUBright-Oblique;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
+
+\f0\b\fs28 \cf0 1. Einleitung 
+\f1\i\b0 Problemstellung, Zielsetzung und Aufbau der Arbeit.}</string>
+				<key>VerticalPad</key>
+				<integer>10</integer>
+			</dict>
+		</dict>
 		<dict>
 			<key>Bounds</key>
 			<string>{{-71.245226224262723, 595.45373201369853}, {184.94424438476562, 27.43069203694489}}</string>
@@ -262,10 +393,10 @@
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
 \cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;}
-{\colortbl;\red255\green255\blue255;\red255\green255\blue255;}
+{\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural\qc
 
-\f0\b\fs26 \cf2 Theoretische Grundlagen}</string>
+\f0\b\fs26 \cf1 Theoretische Grundlagen}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -512,7 +643,13 @@
 			<key>Shape</key>
 			<string>Rectangle</string>
 			<key>Style</key>
-			<dict/>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
 			<key>Text</key>
 			<dict>
 				<key>Align</key>
@@ -533,40 +670,6 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483893712286, 516.69690314928152}, {432, 184.94424438476562}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>ID</key>
-			<integer>9</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict/>
-			<key>Text</key>
-			<dict>
-				<key>Align</key>
-				<integer>0</integer>
-				<key>Pad</key>
-				<integer>15</integer>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;\f1\fnil\fcharset0 CMUBright-Oblique;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
-
-\f0\b\fs28 \cf0 5. Ein exaktes L\'f6sungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen
-\f1\i\b0  \
-- Mathematische Modellformulierung zur Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen\
-- Implementierung mittels IPython Notebook\
-- Numerische Untersuchung}</string>
-				<key>VerticalPad</key>
-				<integer>10</integer>
-			</dict>
-			<key>TextPlacement</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Bounds</key>
 			<string>{{191.88446259498596, 350.38943099975586}, {360, 144}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -575,7 +678,13 @@
 			<key>Shape</key>
 			<string>Rectangle</string>
 			<key>Style</key>
-			<dict/>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
 			<key>Text</key>
 			<dict>
 				<key>Align</key>
@@ -588,45 +697,12 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
 
-\f0\b\fs28 \cf0 4. Bestehende Ans\'e4tze zur Annahme von Auftragsproduktion und Instandhaltungsprozessen\
+\f0\b\fs28 \cf0 4. Bestehende Ans\'e4tze zur Annahme von Auftragsproduktion (Instandhaltungsprozessen)\
 
 \f1\i\b0 - Review 1\
 - Review 2\
 - Review 3\
 - Review 4}</string>
-				<key>VerticalPad</key>
-				<integer>10</integer>
-			</dict>
-			<key>TextPlacement</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{105.41333317756653, 178.94339140256011}, {446.47112941741943, 144}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>ID</key>
-			<integer>5</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict/>
-			<key>Text</key>
-			<dict>
-				<key>Align</key>
-				<integer>0</integer>
-				<key>Pad</key>
-				<integer>15</integer>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;\f1\fnil\fcharset0 CMUBright-Oblique;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
-
-\f0\b\fs28 \cf0 3. Das Konzept des Revenue Managements bei der Annahme von Auftr\'e4gen\
-
-\f1\i\b0 Die Herkunft, die Anwendungsvoraussetzungen sowie die Instrumente und die mathematische Modellformulierung des Revenue Managements beim\
-Entscheidungsproblem der Auftragsannahme}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -643,7 +719,13 @@ Entscheidungsproblem der Auftragsannahme}</string>
 			<key>Shape</key>
 			<string>Rectangle</string>
 			<key>Style</key>
-			<dict/>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
 			<key>Text</key>
 			<dict>
 				<key>Align</key>
@@ -664,50 +746,6 @@ Entscheidungsproblem der Auftragsannahme}</string>
 			</dict>
 			<key>TextPlacement</key>
 			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{47.884462594985962, 2.6666666666662309}, {504, 40}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>ID</key>
-			<integer>3</integer>
-			<key>Magnets</key>
-			<array>
-				<string>{-0.59628479784302701, -1.1925696134567261}</string>
-				<string>{1.9868215517249155e-08, -1.3333333730697632}</string>
-				<string>{0.59628487781105122, -1.1925696134567261}</string>
-				<string>{1.1925696134567261, -0.59628480672836304}</string>
-				<string>{1.3333333730697632, 1.5894572413799324e-07}</string>
-				<string>{1.1925696134567261, 0.59628473564567486}</string>
-				<string>{0.59628465308492196, 1.1925697326660156}</string>
-				<string>{0, 1.3333333730697632}</string>
-				<string>{-0.5962849488937394, 1.1925696134567261}</string>
-				<string>{-1.1925697326660156, 0.5962844398368361}</string>
-				<string>{-1.3333333730697632, -6.3578289655197295e-07}</string>
-				<string>{-1.1925696134567261, -0.59628480672836304}</string>
-			</array>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict/>
-			<key>Text</key>
-			<dict>
-				<key>Align</key>
-				<integer>0</integer>
-				<key>Pad</key>
-				<integer>15</integer>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1347\cocoasubrtf570
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;\f1\fnil\fcharset0 CMUBright-Oblique;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
-
-\f0\b\fs28 \cf0 1. Einleitung 
-\f1\i\b0 Problemstellung, Zielsetzung und Aufbau der Arbeit.}</string>
-				<key>VerticalPad</key>
-				<integer>10</integer>
-			</dict>
 		</dict>
 	</array>
 	<key>GridInfo</key>
@@ -757,7 +795,7 @@ Entscheidungsproblem der Auftragsannahme}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-05-09 18:30:50 +0000</string>
+	<string>2015-06-25 10:18:56 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -788,7 +826,7 @@ Entscheidungsproblem der Auftragsannahme}</string>
 		<key>NSPaperSize</key>
 		<array>
 			<string>size</string>
-			<string>{595.27559471130371, 841.86138916015625}</string>
+			<string>{595, 842}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>
@@ -838,7 +876,7 @@ Entscheidungsproblem der Auftragsannahme}</string>
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{-5, 56}, {1037, 721}}</string>
+		<string>{{175, 56}, {770, 721}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -852,7 +890,7 @@ Entscheidungsproblem der Auftragsannahme}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-171, 0}, {902, 579}}</string>
+		<string>{{-38, 183}, {635, 579}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>
