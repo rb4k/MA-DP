@@ -9,7 +9,7 @@ Aufbauend auf der Modelldarstellung der Auftragsannahme mittels Revenue Manageme
 
 \subsection{Lagerentnahmeentscheidung}
 
-Das Gleichung \eqref{DP} wird um den Parameter des Lagerbestands $y_{j}$ erweitert. Bei dieser Modellerweiterung fungiert der Parameter $y_{j}$ als Lagerbestand von Produkten $j\in\mathcal{J}$. D. h. es sind Bündel an Ressourcen $h\in\mathcal{H}$ gemeint, die direkt den Nachfragern zur Verfügung gestellt werden. Der Parameter lässt sich als Vektor $\textbf{y}$ interpretieren, wobei die Länge des Vektors die Anzahl an Produkten $j\in\mathcal{J}$ und der sortierte Eintrag des Vektors dem Lagerbestands des Produkts $j$ entspricht. Sofern eine Anfrage über den Lagerbestand befriedigt wird, erfolgt eine Reduktion des Lagerbestand durch den Parameter $s_{jj}$. Da in dieser Modellannahme eine Anfrage nach einem Produkt $j$ auch nur mit dem Lagerbestand des Produkts $j$ angenommen werden kann, entspricht $s_{j=j}=1$ und alle anderen $s_{j\neq j}=0$. Damit lässt sich ein Vektor $\textbf{s}_j$ formen, der als Lagerentnahme für eine Anfrage nach dem Produkt $j$ dient. Weiter können die einzelnen Vektoren $s_{j}$ als Matrix $\textbf{S}$ aufgebaut werden. Die Matrix $\textbf{S}$ entspricht einer Einheitsmatrix $I_{n}\in\mathbb{R}^{n\times n}$ wobei $n=j$.
+Das Gleichung \eqref{DP} wird um den Parameter des Lagerbestands $y_{j}$ erweitert. Bei dieser Modellerweiterung fungiert der Parameter $y_{j}$ als Lagerbestand von Produkten $j\in\mathcal{J}$. D. h. es sind Bündel an bereits verbrauchten Ressourcen $h\in\mathcal{H}$ gemeint, die direkt den Nachfragern zur Verfügung gestellt werden. Der Parameter lässt sich als Vektor $\textbf{y}$ interpretieren, wobei die Länge des Vektors die Anzahl an Produkten $j\in\mathcal{J}$ und der sortierte Eintrag des Vektors dem Lagerbestands des Produkts $j$ entspricht. Sofern eine Anfrage über den Lagerbestand befriedigt wird, erfolgt eine Reduktion des Lagerbestand durch den Parameter $s_{jj}$. Da in dieser Modellannahme eine Anfrage nach einem Produkt $j$ auch nur mit dem Lagerbestand des Produkts $j$ angenommen werden kann, entspricht $s_{j=j}=1$ und alle anderen $s_{j\neq j}=0$. Damit lässt sich ein Vektor $\textbf{s}_j$ formen, der als Lagerentnahme für eine Anfrage nach dem Produkt $j$ dient. Weiter können die einzelnen Vektoren $s_{j}$ als Matrix $\textbf{S}$ aufgebaut werden. Die Matrix $\textbf{S}$ entspricht einer Einheitsmatrix $I_{n}\in\mathbb{R}^{n\times n}$ wobei $n=j$.
 
 Die Gleichung \eqref{DP} lässt sich damit wie folgt formulieren:
 
@@ -18,10 +18,10 @@ V(\textbf{c}, \textbf{y}, t) =\;& \sum_{j \in \mathcal{J}}p_{j}(t)\max[V(\textbf
 & r_{j} + V(\textbf{c}-\textbf{a}_j, \textbf{y}, t-1),\\
 & r_{j} + V(\textbf{c}, \textbf{y}-\textbf{s}_j, t-1)] \\
 & + p_{0}(t)V(\textbf{c}, \textbf{y}, t-1)\\[10pt] 
-= \;& \sum_{j \in \mathcal{J}}p_{j}(t)V(\textbf{c}, \textbf{y}, t-1)\\
-& + \sum_{j \in \mathcal{J}}p_{j}(t)\max[r_{j} - V(\textbf{c}, \textbf{y}, t-1) + V(\textbf{c}-\textbf{a}_j, \textbf{y}, t-1),0]\\
-& +  \sum_{j \in \mathcal{J}}p_{j}(t)\max[r_{j} - V(\textbf{c}, \textbf{y}, t-1) + V(\textbf{c}, \textbf{y}-\textbf{s}_j, t-1),0]\\
-&+ p_{0}(t)V(\textbf{c}, \textbf{y}, t-1)\\[10pt] 
+%= \;& \sum_{j \in \mathcal{J}}p_{j}(t)V(\textbf{c}, \textbf{y}, t-1)\\
+%& + \sum_{j \in \mathcal{J}}p_{j}(t)\max[r_{j} - V(\textbf{c}, \textbf{y}, t-1) + V(\textbf{c}-\textbf{a}_j, \textbf{y}, t-1),0]\\
+%& +  \sum_{j \in \mathcal{J}}p_{j}(t)\max[r_{j} - V(\textbf{c}, \textbf{y}, t-1) + V(\textbf{c}, \textbf{y}-\textbf{s}_j, t-1),0]\\
+%&+ p_{0}(t)V(\textbf{c}, \textbf{y}, t-1)\\[10pt] 
 = \;& \sum_{j \in \mathcal{J}}p_{j}(t)V(\textbf{c}, \textbf{y}, t-1)\\
 &+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}, \textbf{y}, t-1)+ V(\textbf{c}-\textbf{a}_j, \textbf{y}, t-1),0]\\
 &+ \max[r_{j} - V(\textbf{c}, \textbf{y}, t-1) + V(\textbf{c}, \textbf{y}-\textbf{s}_j, t-1),0]]\\
@@ -38,7 +38,7 @@ V(\textbf{c}, \textbf{y}, t) = \;& V(\textbf{c}, \textbf{y}, t-1)\\
 
 
 
-Bei der Modellformulierung $V(\textbf{c}, \textbf{y}, t)$ der \textit{Bellman'schen Funktionsgleichung} des RM mit Lagerentnahme ist der Term $ r_{j} + V(\textbf{c}, \textbf{y}-\textbf{s}_j, t-1)]$ integriert, der die Annahme mittels des Lagerbestands beschreibt. Damit ist es dem Unternehmen möglich entweder die Kapazität oder den Lagerbestand in Anspruch nehmen. Diese Optionen werden in dieser Arbeit durch einen weiteren Indiz $m$ bei dem Parameter für den Produktauftrag $j_{m}$ kenntlich gemacht. Sofern es sich um eine Auftragsannahme mittels Kapazitätsinanspruchnahme (AA) handelt, erfolgt die Annahme des Produktauftrags $j_{AA}$. Handelt es sich um eine Annahme des Auftrags mittels des Lagerentnahme (LE), dann wird der Parameter $j_{LE}$ aufgeführt.
+Bei der Modellformulierung $V(\textbf{c}, \textbf{y}, t)$ der \textit{Bellman'schen Funktionsgleichung} des RM mit Lagerentnahme ist der Term $ r_{j} + V(\textbf{c}, \textbf{y}-\textbf{s}_j, t-1)]$ integriert, der die Annahme mittels des Lagerbestands beschreibt. Damit ist es dem Unternehmen möglich entweder die Kapazität oder den Lagerbestand in Anspruch zu nehmen. Diese Optionen werden in dieser Arbeit durch einen weiteren Index $m$ bei dem Parameter für den Produktauftrag $j_{m}$ kenntlich gemacht. Sofern es sich um eine Auftragsannahme mittels Kapazitätsinanspruchnahme (AA) handelt, erfolgt die Annahme des Produktauftrags $j_{AA}$. Handelt es sich um eine Annahme des Auftrags mittels des Lagerentnahme (LE), dann wird der Parameter $j_{LE}$ aufgeführt.
 
 Für die Modellerweiterung gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und es gilt zusätzlich
 \begin{equation}\label{GB3}
@@ -70,7 +70,7 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; T=4$,
   \end{center}
 \end{figure}
 
-Abbildung \ref{B3} zeigt den Entscheidungsbaum mit den möglichen Systemzuständen aufgrund der vorher beschrieben Parameter. Dabei beschreibt ein Knoten weiterhin der Systemzustand. Ein Systemzustand wird durch die Zahlenfolge definiert, wobei die ersten Einträge der Zahlenfolge die Ressoucenkapazität $\textbf{c}$ entspricht. Da in diesem Beispiel nur eine Ressource vorhanden ist, beschreibt der erste Eintrag der Zahlenfolge die Ressourcenkapazität $c_{h}$=1 von $h=1$. Das Beispiel verfügt über zwei unterschiedliche Auftragsarten von Produkten $j\in\mathcal{J}$. Somit existieren zwei Parameter für den Lagerbestand $y_{j}$. In dem vereinfachten Beispiel weist jedoch nur das Produkt $j=1$ einen Lagerbestand in Höhe von $y_{1}=1$ auf. Vom Produkt $j=2$ gibt es in diesem Beispiel keinen Lagerbestand. Damit entsprechen die nachfolgenden Zahlen in der Zahlenfolge der Systemzustände den möglichen Lagerbestand $\textbf{y}$. Der letzter Wert der Zahlenfolge ist weiterhin der Zeitpunkt bzw. die Periode $t$. Dem Unternehmen ist es damit möglich, unter Beachtung der vorausgehenden Parameter, entweder eine Anfrage von $j=1$ oder $j=2$ mittels der Kapazität von $c_{1}$ anzunehmen (Auftragsannahme) oder eine Anfrage nach Produkt $j=1$ mittels des Lagerbestands $y_{1}$ zu erfüllen (Lagerentnahme). Des Weiteren ist das Eintreffen keiner Anfrage zum Zeitpunkt $t$ möglich (Kein Auftrag). Damit sind die in dem Graphen aus der Abbildung \ref{B3} möglichen Systemzustände (Knoten) und Übergänge (Kanten) möglich.
+Abbildung \ref{B3} zeigt den Entscheidungsbaum mit den möglichen Systemzuständen aufgrund der vorher beschrieben Parameter. Dabei beschreibt ein Knoten weiterhin den Systemzustand. Ein Systemzustand wird durch die Zahlenfolge definiert, wobei die ersten Einträge der Zahlenfolge die Ressoucenkapazität $\textbf{c}$ entspricht. Da in diesem Beispiel nur eine Ressource vorhanden ist, beschreibt der erste Eintrag der Zahlenfolge die Ressourcenkapazität $c_{h}=1$ von $h=1$. Das Beispiel verfügt über zwei unterschiedliche Produkte $j\in\mathcal{J}$, die von den Nachfragern angefragt werden können. Somit existieren zwei Parameter für den Lagerbestand $\textbf{y}=(y_{1},y_{2})$. In dem vereinfachten Beispiel weist jedoch nur das Produkt $j=1$ einen Lagerbestand in Höhe von $y_{1}=1$ auf. Vom Produkt $j=2$ gibt es in diesem Beispiel keinen Lagerbestand. Damit entsprechen die nachfolgenden Zahlen in der Zahlenfolge des Systemzustands den möglichen Lagerbeständen $\textbf{y}$. Der letzter Wert der Zahlenfolge ist weiterhin der Zeitpunkt bzw. die Periode $t$. Der Systemzustand lässt damit wie folgt definieren: $[c_{1}\; y_{1}\; y_{2}\;t]$. Dem Unternehmen ist es möglich, unter Beachtung der vorausgehenden Parameter, entweder eine Anfrage $j_{AA}=1$ oder $j_{AA}=2$ mittels der Kapazität von $c_{1}$ anzunehmen (Auftragsannahme) oder eine Anfrage $j_{LE}=1$ mittels des Lagerbestands $y_{1}$ zu erfüllen (Lagerentnahme). Des Weiteren ist das Eintreffen keiner Anfrage zum Zeitpunkt $t$ möglich (Kein Auftrag). Damit sind die in dem Graphen aus der Abbildung \ref{B3} möglichen Systemzustände (Knoten) und Übergänge (Kanten) möglich.
 
 \begin{table}
 \begin{footnotesize}
@@ -83,7 +83,7 @@ Abbildung \ref{B3} zeigt den Entscheidungsbaum mit den möglichen Systemzuständ
 \end{footnotesize}
 \end{table}
 
-Die Tabelle \ref{Tab3} zeigt für das Beispiel die berechneten Erwartungswerte des noch möglichen Ertrags für jeden Systemzustand. Ebenfalls ist die optimale Politik in Form des besten Auftrags mit zugehörigem Ausführungsmodus aufgeführt. Dabei beschreibt hier der Ausführungsmodus die Auftragsannahme (AA), Lagerentnahme (LE) oder, ob ein Auftrag keine Annahme erhält (KA). Zusätzlich ist der Wert $r_{j}-OC_{j}$ für den besten Auftrag je Systemzustand angegeben. Mit diesen Werten lässt sich der optimale Pfad des Beispiels ermitteln: $[2\;1\;0\;4] \rightarrow_{j_{AA}=2} [1\;1\;0\;3] \rightarrow_{j_{AA}=2} [0\;1\;0\;2] \rightarrow_{j_{LE}=1} [0\;0\;0\;1]\rightarrow_{j=0} [0\;0\;0\;0]$. Auch hier gilt weiterhin, dass der optimale Pfad abhängig ist der tatsächlich eintreffenden Anfragen. Er kann nur aber bei strategischen Entscheidung herangezogen werden.
+Die Tabelle \ref{Tab3} zeigt für das Beispiel die berechneten Erwartungswerte des noch möglichen Ertrags für jeden Systemzustand. Ebenfalls ist die optimale Politik in Form des besten Auftrags $j^*$ mit zugehörigem Ausführungsmodus $m$ aufgeführt. Dabei beschreibt hier der Ausführungsmodus die Auftragsannahme (AA), Lagerentnahme (LE) oder ob ein Auftrag keine Annahme erhält (KA). Zusätzlich ist der Wert $r_{j}-OC_{j}$ für den besten Auftrag $j^*$ je Systemzustand angegeben. Mit diesen Werten lässt sich der optimale Pfad des Beispiels ermitteln: $[2\;1\;0\;4] \rightarrow_{j_{AA}=2} [1\;1\;0\;3] \rightarrow_{j_{AA}=2} [0\;1\;0\;2] \rightarrow_{j_{LE}=1} [0\;0\;0\;1]\rightarrow_{j=0} [0\;0\;0\;0]$. Auch hier gilt weiterhin, dass der optimale Pfad abhängig der tatsächlich eintreffenden Anfragen ist. Er kann nur aber bei strategischen Entscheidung herangezogen werden.
 
 Durch die Modellerweiterung wird gezeigt, dass ein Lagerbestand an Produkten $j\in\mathcal{J}$ den Gesamtertrag des Unternehmens erhöhen kann. Dies erfolgt jedoch aufgrund des Mechanismus, dass ein Lagerbestand eine Kapazitätserhöhung für das Unternehmen bedeutet. Somit handelt es hier um eine andere Darstellung der Modellformulierung des Netzwerk RM mit verschiedenen Ausführungsmodi für die Produktanfragen $j\in\mathcal{J}$. %Eine abschließende Beurteilung der Modellerweiterung erfolgt mit Abschluss des nachfolgenden Abschnitts.
 
@@ -106,7 +106,7 @@ V(\textbf{c}, \textbf{y}, t) =\;& \sum_{j \in \mathcal{J}}p_{j}(t)\max[V(\textbf
 \end{alignat*}
 \end{equation}
 
-Neben der Entscheidungen über die Auftragsannahme mittels Kapazitätsinanspruchnahme (AA) und der Lagerentnahme eines Produkts (LE) ist in dieser Modellerweiterung der Gleichung \eqref{storage} die Produktion eines Produkts $j$ auf Lager möglich. Dafür wird der Parameter $s_{j}$ als Lagerveränderung interpretiert. Zu beachten ist jedoch, dass bei der Entscheidung der Lagerproduktion eines Produkts $j_{LP}$ kein Ertrag $r_{j_{LE}}$ erzielt wird. Des Weiteren wird ein Parameter für einen maximalen Lagerbestand $y_{j}^{max}$ für jede möglichen Anfragentyp der Produkte $j\in\mathcal{J}$ definiert. Eine derartige Modellformulierung birgt jedoch eine spezielle Funktionsweise mit, wie nachfolgendes Beispiel verdeutlichen soll:
+Neben der Entscheidungen über die Auftragsannahme mittels Kapazitätsinanspruchnahme (AA) und der Lagerentnahme eines Produkts (LE) ist in dieser Modellerweiterung der Gleichung \eqref{storage} die Produktion eines Produkts $j$ auf Lager $y_{j}$ möglich. Dafür wird der Parameter $s_{j}$ als Lagerveränderung interpretiert. Zu beachten ist jedoch, dass bei der Entscheidung der Lagerproduktion eines Produkts $j_{LP}$ kein Ertrag $r_{j_{LE}}$ erzielt wird. Des Weiteren wird ein Parameter für einen maximalen Lagerbestand $y_{j}^{max}$ für jedes Produkt $j\in\mathcal{J}$ definiert. Eine derartige Modellformulierung bringt jedoch eine spezielle Funktionsweise mit, wie nachfolgendes Beispiel verdeutlichen soll:
 \begin{center}
 $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; T=3$,
 \end{center}
@@ -130,8 +130,9 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; T=3$,
     {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
   \end{center}
 \end{figure}
-Die Abbildung \ref{B4} mit dem Entscheidungsbaum für das Beispiel zeigt alle möglichen Systemzustände und Optionen. Es gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und
-\begin{equation}\label{GB3}
+
+Die Abbildung \ref{B4} mit dem Entscheidungsbaum für das Beispiel zeigt alle möglichen Systemzustände und Optionen. Ein Systemzustand ist definiert als Zeichenfolge $[c_{1}\; y_{1}\; y_{2}\;t]$. Es gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und
+\begin{equation}\label{GB4}
      OP_{\textbf{c}, t}:=\left\{\begin{array}{lll} j_{AA}, & \text{für } r_{j_{AA}} - OC_{j_{AA}} \ge r_{j_{LE}} - OC_{j_{LE}}\\
          j_{LE}, & \text{für } r_{j_{AA}} - OC_{j_{AA}} < r_{j_{LE}} - OC_{j_{LE}}\\
          j_{LP}, & \text{sonst}\end{array}\right. .
@@ -148,6 +149,68 @@ Sofern die Modellerweiterung in dieser Form definiert ist, wird niemals $OP_{\te
 \end{footnotesize}
 \end{table}
 
+\subsection{Aufarbeitung von Ressourcen}
+
+Bei der nachfolgenden Modellerweiterung wird nicht mehr von einem Produktlager ausgegangen, sondern von einem Ressourcenlager. Damit existiert für jede Ressource $h\in\mathcal{H}$ ein Lagerbestand $y_h^{res}$. Die Obergrenze des Lagerbestands wird durch den Parameter $y_{h}^{max,rex}$ beschrieben. Die einzelnen Lagerbestände können als Vektor $\textbf{y}^{res}$ zusammengefasst werden. In der Modellerweiterung wird davon ausgegangen, dass Kapazitäten $c_{h}$ einer Ressource $h$ verwendet werden können, damit der Lagerbestand an Ressourcen $y_{h}$ erhöht wird. Es handelt sich damit um eine Art der Vorarbeit der Leistung. Die einzelnen Bestandteile des Produkts werden auf Lager gelegt, damit diese zu einem späteren Zeitpunkt Verwendung finden. In dieser Modellerweiterung wird davon ausgegangen, dass ein komplettes Bündel des Produkts $j$ auf Lager gelegt wird. Daher kann der Parameter $\textbf{a}_{j}$ als Ressourcenveränderung angesehen werden. Das Modell schichtet damit die Kapazität der Ressourcen $h\in\mathcal{H}$ vom Parameter $c_{h}$ zu dem Lagerbestand $y_{h}$ um. Das mathematische Modell lässt sich wie folgt beschreiben:
+
+\begin{alignat*}{2}
+V(\textbf{c}, \textbf{y}^{res}, t) =\;& \sum_{j \in \mathcal{J}}p_{j}(t)\max[V(\textbf{c}, \textbf{y}^{res}, t-1),\\
+&r_{j} + V(\textbf{c}-\textbf{a}_j, \textbf{y}^{res}, t-1),\\
+&r_{j} + V(\textbf{c}, \textbf{y}^{res}-\textbf{a}_j, t-1),\\
+&V(\textbf{c}-\textbf{a}_j, \textbf{y}^{res}+\textbf{a}_j, t-1)]\\
+&+ p_{0}(t)V(\textbf{c}, \textbf{y}^{res}, t-1) \\
+\end{alignat*}
+\begin{equation}\label{workup}
+\begin{alignat*}{2}
+= \;& V(\textbf{c}, \textbf{y}^{res}, t-1)\\
+&+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1) + V(\textbf{c}-\textbf{a}_j, \textbf{y}^{res}, t-1),0] \\
+&+ \max[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1) + V(\textbf{c}, \textbf{y}^{res}-\textbf{a}_j, t-1),0]\\
+&+ \max[V(\textbf{c}-\textbf{a}_j, \textbf{y}^{res}+\textbf{a}_j, t-1) - V(\textbf{c}, \textbf{y}^{res}, t-1) ,0]]\\
+\end{alignat*}
+\end{equation}
+
+Weiterhin gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und Gleichung \eqref{GB4}. Bei dieser Modellformulierung der Gleichung \eqref{workup} wird die Einschränkung aufgehoben, bei der die Anzahl an notwendigen Ressourcen die Entscheidung der Lagerproduktion dominiert. Dies wird durch das nachfolgende Beispiel verdeutlicht:
+\begin{center}
+$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; T=3$,
+\end{center}
+\[
+    c_{1}=2, \;
+    a_{11}=1, \;
+     a_{12}=7, \;
+     p_{1}(t)=\begin{pmatrix} 0.5\\ 0.5\\ 0.5  \end{pmatrix}, \;
+     p_{2}(t)=\begin{pmatrix} 0.1\\ 0.1\\ 0.1  \end{pmatrix},
+  \]
+  \[
+    y_{1}^{res}= 5, \;
+    y^{max,res}=7
+      \]
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=130mm]{Bilder/Beispiel5.pdf}
+    \caption{Darstellung des Entscheidungsbaums des Netzwerk RM mit Möglichkeit der Aufarbeitung als Lagerproduktion}  \label{B5}
+    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+Abbildung \ref{B5} zeigt den Entscheidungsbaum für das aufgeführte Beispiel. Die Systemzustände sind beschrieben als Zahlenfolge $[c_{1}\; y_{1}\;t]$, da bei diesem Beispiel nur eine Ressource $h$ existiert. Für die Ressource $h=1$ beträgt die Kapazität $c_{1}=2$ und der Lagerbestand $y_{1}^{res}=5$. Als Obergrenze für den Lagerbestand wird $y_{1}^{max,res}$ festgelegt. Aufgrund der Ressourcenveränderungsparameter $\textbf{a}_{j}$ für jedes Produkt $j\in\mathcal{J}$ gibt es die Entscheidungsmöglichkeit Auftragsannahme (AA), Lagerentnahme (LE) sowie Lagerproduktion aufgrund von Aufarbeitung (LP) für jedes Produkt $j\in\mathcal{J}$. Weiterhin ist die Option zu jedem Systemzustand möglich, dass keine Anfrage eintrifft und der Wechsel in die nächste Periode ohne Kapazitäts- oder Lagerreduktion erfolgt.
+
+Aufgrund der der Restriktionen der Kapazität $c_{1}$ und des Lagerbestands $y_{1}^{res}$ sind nicht alle möglichen Entscheidungsalternativen zu jedem Systemzustand möglich. Beispielsweise ist im Systemzustand $[2\;5\;3]$ die AA, LE sowie LP zur Annahme einer Anfrage nach Produkt $j=2$ nicht möglich. Jedoch kann in diesem Systemzustand die Annahme einer Anfrage nach Produkt $j=1$ erfolgen, entweder durch Kapazitäts- oder Lagerreduktion. Um eine Anfrage nach Produkt $j=2$ akzeptieren zu können, werden aufgrund des Parameters $a_{12}$ 7 Einheiten von der Ressource $h=1$ benötigt. Entweder müssen genügen Kapazitäten vorhanden sein, was jedoch im Beispiel nicht gegeben ist, oder der Lagerbestand $y_{1}^{res}$ muss auf 7 Einheiten der Ressource $h=1$ erhöht werden. Sofern die Erträge $r_{1}=100$ und $r_{2}=5000$ für das Beispiel angenommen sind, erhalten wir die berechneten Werte der Tabelle \ref{Tab5}.
+\begin{table}
+\begin{footnotesize}
+    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit Möglichkeit der Lagerentnahme} \label{Tab5}
+    \vspace*{3mm}
+\csvautotabular{data/beispiel5.csv}
+    \begin{center}
+      {\footnotesize \textbf{Legende:} AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+      \end{center}
+\end{footnotesize}
+\end{table}
+
+Ist der Ertrag $r_{j}$ eines Produkts $j\in\mathcal{J}$ ausreichend groß bei gegebener Eintrittswahrscheinlichkeit $p_{j}(t)$ zum Zeitpunkt $t$, dann erfolgt in dem Modell der Gleichung \eqref{workup} eine Überführung der Ressourcenkapazität $c_{h}$ hin zu dem Lagerbestand $y_{h}^{res}$, sofern dies eine andere Ressourceninanspruchnahme $a_{j}$ ermöglicht. Das Beispiel zeigt eine solche optimale Politik.
+
+Für den anfänglichen Systemzustand $[2\;5\;3]$ existieren die Systemübergänge $j_{LE}$, $j_{LP}$ und $j_{AA}$ für Anfragen nach Produkt $j=1$. Außerdem ist das Eintreffen keiner Anfrage möglich. Damit lässt sich in diesem Systemzustand ein Ertrag $r_{j}=100$ generieren. Mit der Entscheidung $j_{LE}=1$ gelangt das System zum Zustand $[2\;4\;2]$, da für eine Annahme einer Anfrage nach Produkt $j=1$ der Lagerbestand $y_{1}^{res}$ reduziert wird. Sofern die Entscheidung $j_{AA}=1$ eintrifft, gelangt das System durch Inanspruchnahme der Kapazität $c_{1}$ zum Zustand $[1\;5\;2]$. Außerdem ist der Systemwechsel zum Zustand $[1\;6\;2]$ durch $j_{LP}=1$ möglich. Aufgrund der berechneten OK ist unter Beachtung der Parameter ein Systemwechsel durch die Lagerproduktion optimal (Vgl. Tabelle \ref{Tab5}). Abbildung \ref{B5} zeigt diesen und alle anderen optimalen Politiken für jeden Systemzustand. Daraus lässt dich die beste Pfad ermitteln:  $[2\;5\;3] \rightarrow_{j_{LP}=1} [1\;6\;2] \rightarrow_{j_{LP}=1} [0\;7\;1] \rightarrow_{j_{LE}=2} [0\;0\;0]$.
+
+Es ist damit gezeigt, dass die Kapazität $c_{1}$ der Ressource $h=1$ durch den Ausführungsparameter $a_{1}$ des Produkts $j$ verwendet wird, damit der Lagerbestand $y_{1}^{res}$ jener Ressource $h=1$ erhöht wird. Damit ist zu einem späteren Zeitpunkt $t$ die Annahme der Anfrage nach Produkt $j=2$ durch die Lagerentnahme (LE) des Lagerbestands $y_{1}^{res}$ der Ressource $h=1$ möglich. Damit ist ein Gesamtertrag von $5000$ GE generiert. 
 
 \section{Implementierung mittels IPython Notebook}
 
