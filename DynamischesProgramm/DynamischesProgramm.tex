@@ -212,7 +212,53 @@ Für den anfänglichen Systemzustand $[2\;5\;3]$ existieren die Systemübergäng
 
 Es ist damit gezeigt, dass die Kapazität $c_{1}$ der Ressource $h=1$ durch den Ausführungsparameter $a_{1}$ des Produkts $j$ verwendet wird, damit der Lagerbestand $y_{1}^{res}$ jener Ressource $h=1$ erhöht wird. Damit ist zu einem späteren Zeitpunkt $t$ die Annahme der Anfrage nach Produkt $j=2$ durch die Lagerentnahme (LE) des Lagerbestands $y_{1}^{res}$ der Ressource $h=1$ möglich. Damit ist ein Gesamtertrag von $5000$ GE generiert. 
 
-\subsection{Erneuerung von Ressourcen innerhalb des}
+\subsection{Erneuerung von Ressourcen innerhalb des Buchungshorizonts}
+
+\begin{equation}\label{reg}
+     V^{reg}(\textbf{c}, \textbf{y}^{res}, t)=\left\{\begin{array}{ll} V(\textbf{c}, \textbf{y}^{res}, t), & \forall t\neq\tilde{t}\\
+         V(\textbf{c}^{max}, \textbf{y}^{res}, t), &\forall t=\tilde{t}\end{array}\right. .
+\end{equation}
+
+\begin{alignat*}{2}
+ V(\textbf{c}^{max}, \textbf{y}^{res}, t) = \;& V(\textbf{c}^{max}, \textbf{y}^{res}, t-1)\\
+&+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}^{max}, \textbf{y}^{res}, t-1)\\
+&+ V(\textbf{c}^{max}-\textbf{a}_j, \textbf{y}^{res}, t-1),0] \\
+&+ \max[r_{j} - V(\textbf{c}^{max}, \textbf{y}^{res}, t-1) + V(\textbf{c}^{max}, \textbf{y}^{res}-\textbf{a}_j, t-1),0]\\
+&+ \max[V(\textbf{c}^{max}-\textbf{a}_j, \textbf{y}^{res}+\textbf{a}_j, t-1) - V(\textbf{c}^{max}, \textbf{y}^{res}, t-1) ,0]]\\
+\end{alignat*}
+
+\begin{center}
+$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; T=4, \; \tilde{t}=2 $,
+\end{center}
+\[
+    c_{1}=2, \;
+    a_{11}=1, \;
+     a_{12}=3, \;
+     p_{1}(t)=\begin{pmatrix} 0.5\\ 0.5\\ 0.5\\ 0.5  \end{pmatrix}, \;
+     p_{2}(t)=\begin{pmatrix} 0.1\\ 0.1\\ 0.1\\ 0.1  \end{pmatrix},
+  \]
+  \[
+    y_{1}^{res}= 0, \;
+    y^{max,res}=3
+      \]
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=150mm]{Bilder/Beispiel6.pdf}
+    \caption{Darstellung des Entscheidungsbaums des Netzwerk RM mit regenerativen Ressourcen}  \label{B6}
+    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}
+\begin{footnotesize}
+    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit regenerativen Ressourcen} \label{Tab6}
+    \vspace*{3mm}
+\csvautotabular{data/beispiel6.csv}
+    \begin{center}
+      {\footnotesize \textbf{Legende:} AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+      \end{center}
+\end{footnotesize}
+\end{table}
 
 \section{Implementierung mittels IPython Notebook}
 
