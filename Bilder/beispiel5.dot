@@ -1,7 +1,7 @@
 digraph  {
-	graph [aspect=1 concentrate=true ordering=out ratio="compress" size="10.0,10.0!" margin=0]
-	node [label="\N"];
-	edge [fontsize=10]
+	graph [ratio=0.4, nodesep=0.1, margin=0];
+	node [label="\N", fontsize=20];
+	edge [fontsize=20]
 	8	 [capacity="[2]",
 		label="[2 5 0]",
 		stock="[5]",

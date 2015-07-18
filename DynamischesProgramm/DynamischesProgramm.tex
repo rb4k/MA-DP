@@ -47,7 +47,7 @@ Für die Modellerweiterung gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{
 \end{equation}
 da das Unternehmen vorrangig versucht seine Kapazitäten auszulasten. Die Funktionsweise der Modellformulierung wird im nachfolgenden Beispiel verdeutlicht.
 \begin{center}
-$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; T=4$,
+$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; \text{Startperiode } t=4$,
 \end{center}
 \[
     c_{1}=1, \;
@@ -108,7 +108,7 @@ V(\textbf{c}, \textbf{y}, t) =\;& \sum_{j \in \mathcal{J}}p_{j}(t)\max[V(\textbf
 
 Neben der Entscheidungen über die Auftragsannahme mittels Kapazitätsinanspruchnahme (AA) und der Lagerentnahme eines Produkts (LE) ist in dieser Modellerweiterung der Gleichung \eqref{storage} die Produktion eines Produkts $j$ auf Lager $y_{j}$ möglich. Dafür wird der Parameter $s_{j}$ als Lagerveränderung interpretiert. Zu beachten ist jedoch, dass bei der Entscheidung der Lagerproduktion eines Produkts $j_{LP}$ kein Ertrag $r_{j_{LE}}$ erzielt wird. Des Weiteren wird ein Parameter für einen maximalen Lagerbestand $y_{j}^{max}$ für jedes Produkt $j\in\mathcal{J}$ definiert. Eine derartige Modellformulierung bringt jedoch eine spezielle Funktionsweise mit, wie nachfolgendes Beispiel verdeutlichen soll:
 \begin{center}
-$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; T=3$,
+$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; \text{Startperiode } t=3$,
 \end{center}
 \[
     c_{1}=2, \;
@@ -140,7 +140,7 @@ Die Abbildung \ref{B4} mit dem Entscheidungsbaum für das Beispiel zeigt alle m�
 Sofern die Modellerweiterung in dieser Form definiert ist, wird niemals $OP_{\textbf{c}, t}:=j_{LP}$ gelten. Dies resultiert aus der Tatsache, dass sofern genügend Kapazitäten $\textbf{c}$ zur Produktion eines Produkts $j$ vorhanden sind, die Kapazitäten für die direkte Annahme der Produktanfrage $j$ verwendet werden. Die Entscheidung über die Produktion eines Produkts $j_{LP}$ ist für das Unternehmen nur dann sinnvoll, wenn keine Anfragen zum Zeitpunkt $t$ eintreffen. Die Tabelle \ref{Tab4} zeigt die berechneten Werte für das hier aufgeführte Beispiel.
 \begin{table}
 \begin{footnotesize}
-    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit Möglichkeit der Lagerentnahme} \label{Tab4}
+    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit Möglichkeit der Lagerentnahme und Lagerproduktion} \label{Tab4}
     \vspace*{3mm}
 \csvautotabular{data/beispiel4.csv}
 \begin{center}
@@ -171,7 +171,7 @@ V(\textbf{c}, \textbf{y}^{res}, t) =\;& \sum_{j \in \mathcal{J}}p_{j}(t)\max[V(\
 
 Weiterhin gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und Gleichung \eqref{GB4}. Bei dieser Modellformulierung der Gleichung \eqref{workup} wird die Einschränkung aufgehoben, bei der die Anzahl an notwendigen Ressourcen die Entscheidung der Lagerproduktion dominiert. Dies wird durch das nachfolgende Beispiel verdeutlicht:
 \begin{center}
-$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; T=3$,
+$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; \text{Startperiode } t=3$,
 \end{center}
 \[
     c_{1}=2, \;
@@ -197,7 +197,7 @@ Abbildung \ref{B5} zeigt den Entscheidungsbaum für das aufgeführte Beispiel. D
 Aufgrund der der Restriktionen der Kapazität $c_{1}$ und des Lagerbestands $y_{1}^{res}$ sind nicht alle möglichen Entscheidungsalternativen zu jedem Systemzustand möglich. Beispielsweise ist im Systemzustand $[2\;5\;3]$ die AA, LE sowie LP zur Annahme einer Anfrage nach Produkt $j=2$ nicht möglich. Jedoch kann in diesem Systemzustand die Annahme einer Anfrage nach Produkt $j=1$ erfolgen, entweder durch Kapazitäts- oder Lagerreduktion. Um eine Anfrage nach Produkt $j=2$ akzeptieren zu können, werden aufgrund des Parameters $a_{12}$ 7 Einheiten von der Ressource $h=1$ benötigt. Entweder müssen genügen Kapazitäten vorhanden sein, was jedoch im Beispiel nicht gegeben ist, oder der Lagerbestand $y_{1}^{res}$ muss auf 7 Einheiten der Ressource $h=1$ erhöht werden. Sofern die Erträge $r_{1}=100$ und $r_{2}=5000$ für das Beispiel angenommen sind, erhalten wir die berechneten Werte der Tabelle \ref{Tab5}.
 \begin{table}
 \begin{footnotesize}
-    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit Möglichkeit der Lagerentnahme} \label{Tab5}
+    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit Möglichkeit der Aufarbeitung als Lagerproduktion} \label{Tab5}
     \vspace*{3mm}
 \csvautotabular{data/beispiel5.csv}
     \begin{center}
@@ -214,11 +214,18 @@ Es ist damit gezeigt, dass die Kapazität $c_{1}$ der Ressource $h=1$ durch den 
 
 \subsection{Erneuerung von Ressourcen innerhalb des Buchungshorizonts}
 
+Wie die vergangenen Modellerweiterungen zeigen, erweitert der Lagerbestand $\textbf{y}$ bzw. $\textbf{y}^{res}$ die Kapazitäten des Netzwerks. Sofern es sich um ein Ressourcenlager $\textbf{y}^{res}$ handelt, werden die notwendigen Kapazitäten $c_{h}$ der Ressourcen $h\in\mathcal{H}$ für ein Produkt $j$ mit niedrigem Ertrag auf den Lagerbestandsparameter $\textbf{y}^{res}$ umverteilt, damit die Akzeptanz eine nachfolgende Anfrage nach einem anderweitigen Produkt $j\in\mathcal{J}$ mit höherem Ertrag $r_{j}$ über den Lagerparameter $\textbf{y}^{res}$ erfolgen kann. Damit ist gezeigt, dass mithilfe der Modellerweiterung der \textit{Bellman'schen Funktionsgleichung} für das Netzwerk RM die optimale Politik ist, Anfragen mit niedrigem Ertrag zugunsten zukünftiger Anfragen mit höherem Ertrag abzulehnen. Mit dieser Ablehnung geht die Kapazitätserhöhung des Lagerbestands $\textbf{y}^{res}$ mit den dafür notwendigen Ressourcen $h\in\mathcal{H}$ einher, die für die Produktanfrage $j$ mit hohen Ertrag $r_j$ notwendig ist.
+
+Wie im vorherigen Abschnitt gezeigt, müssen jedoch gewisse Rahmenbedingungen für eine Ablehnung von Produktanfragen $j\in\mathcal{J}$ mit niedrigem Ertrag gegeben sein. Die Kapazitäten $\textbf{c}$ des Netzwerks müssen einerseits ausreichend groß sein, damit Anfragen nach dem Produkt $j$ mit niedrigem Ertrag $r_{j}$ abgelehnt und auf das Lager $\textbf{y}^{res}$ umverteilt werden können, aber anderseits niedrigen als der notwendige Bedarf $\textbf{a}_{j}$ für das Produkt $j$ mit höherem Ertrag. Zusätzlich muss die Differenz zwischen den vorhanden Kapazitäten $\textbf{c}$ und der notwendigen Kapazitäten $\textbf{a}_{j}$ für die Produktanfrage $j$ mit hohem Ertrag auf dem Lager $\textbf{y}^{res}$ vorhanden sein. Wären ausreichend Kapazitäten $\textbf{c}$ für beide Arten der Produktanfragen $j\in\mathcal{J}$ möglich, dann wäre eine Umverteilung auf das Lager aufgrund der Gleichung \eqref{GB4} unnötig. Die notwendigen Kapazitäten $c_{h}$ der Ressourcen $h\in\mathcal{H}$ würden direkt für die Anfrage nach dem Produkt $j$ mit hohem Ertrag Verwendung finden und eingeplant. Die optimale Politik wäre das Produkt $j$ mit hohem Ertrag $r_{j}$ frühzeitig einzuplanen, sofern Anfragen für das Produkt unter Beachtung der Wahrscheinlichkeiten $p_{j}(t)$ zu den Zeitpunkten $t\in T$ eintreffen. Anders formuliert, die Option der Annahme einer Anfrage nach dem Produkt $j$ mit hohem Ertrag wäre im Systemzustand mit ausreichendem Kapazitäten $c_{h}$ zum Zeitpunkt $t$ möglich und, sofern der Ertrag aufgrund der OK des Netzwerks nicht zu stark beeinflussen wird, optimal.
+
+Die Aufhebung der vorhergehenden Restriktion erfolgt durch das Einführen von regenerativen Ressourcen $h\in\mathcal{H}$ innerhalb des Buchungshorizonts $T$. Erst durch die Modellerweiterung der regenerativen Ressourcen $h\in\mathcal{H}$ erhält die Modellformulierung unter Beachtung einer Lagerhaltung von Ressourcen $\textbf{y}^{res}$ innhalb des Buchungshorizonts $T$ eine Sinnhaftigkeit. Für die Modellerweiterung wird der Parameter $\tilde{t}\in\tilde{T}$ eingeführt, wobei $\tilde{T}\subset T$ gilt. Der Parameter $\tilde{t}$ zeigt den Zeitpunkt der Regeneration der Ressourcen $h\in\mathcal{H}$ an. Durch die Regeneration erhöht sich der Wert des Kapazitätsparameters auf $\textbf{c}^{max}$. Die \textit{Bellman'schen Funktionsgleichung} für ein Netzwerk RM mit regenerativen Ressourcen innerhalb des Buchungshorizonts wird wie folgt definiert:
+
 \begin{equation}\label{reg}
      V^{reg}(\textbf{c}, \textbf{y}^{res}, t)=\left\{\begin{array}{ll} V(\textbf{c}, \textbf{y}^{res}, t), & \forall t\neq\tilde{t}\\
          V(\textbf{c}^{max}, \textbf{y}^{res}, t), &\forall t=\tilde{t}\end{array}\right. .
 \end{equation}
 
+Es gelten weiterhin Gleichungen \eqref{GB1}, \eqref{GB2} und \eqref{GB4}. Dabei erfolgt die Ermittlung der Erwartungswerte aus der Gleichung \eqref{reg} abhängig des betrachteten Zeitpunkts $t$. Die Berechnung des Erwartungswerts $V(\textbf{c}, \textbf{y}^{res}, t)$ $\forall t\neq\tilde{t}$ erfolgt wie in Gleichung \eqref{workup} und die Berechnung des Erwartungswerts $V(\textbf{c}^{max}, \textbf{y}^{res}, t)$ $\forall t=\tilde{t}$ wie nachfolgende Gleichung zeigt:
 \begin{alignat*}{2}
  V(\textbf{c}^{max}, \textbf{y}^{res}, t) = \;& V(\textbf{c}^{max}, \textbf{y}^{res}, t-1)\\
 &+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}^{max}, \textbf{y}^{res}, t-1)\\
@@ -227,27 +234,37 @@ Es ist damit gezeigt, dass die Kapazität $c_{1}$ der Ressource $h=1$ durch den 
 &+ \max[V(\textbf{c}^{max}-\textbf{a}_j, \textbf{y}^{res}+\textbf{a}_j, t-1) - V(\textbf{c}^{max}, \textbf{y}^{res}, t-1) ,0]]\\
 \end{alignat*}
 
+Die Funktionsweise des Modells soll an einem Beispiel verdeutlicht werden:
 \begin{center}
-$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; T=4, \; \tilde{t}=2 $,
+$j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; \text{Startperiode } t=4, \; \tilde{t}=\{2\} $,
 \end{center}
 \[
-    c_{1}=2, \;
+    c_{1}=1, \;
     a_{11}=1, \;
-     a_{12}=3, \;
+     a_{12}=2, \;
      p_{1}(t)=\begin{pmatrix} 0.5\\ 0.5\\ 0.5\\ 0.5  \end{pmatrix}, \;
      p_{2}(t)=\begin{pmatrix} 0.1\\ 0.1\\ 0.1\\ 0.1  \end{pmatrix},
   \]
   \[
     y_{1}^{res}= 0, \;
-    y^{max,res}=3
+    y^{max,res}=2
       \]
+      
+Es existieren zwei Produkte $j\in\mathcal{J}$ und eine Ressource $h\in\mathcal{H}$. Sofern eine Anfrage nach dem Produkt $j=1$ akzeptiert wird, generiert sich ein Ertrag in Höhe von $r_1=100$ GE. Bei Akzeptanz einer Produktanfrage $j=2$ erzielt das Unternehmen einen Ertrag von $r_1=5000$ GE. Beide Produktanfragen benötigen die Ressource $h=1$, wobei die Kapazität der Ressource bei $c_1=1$ liegt. Ein Anfrage nach Produkt $j=1$ benötigt $a_11=1$ Kapazitäten und eine Anfrage nach Produkt $j=1$ benötigt $a_12=2$. Der Buchungshorizont entspricht $T=4$ Perioden und zum Zeitpunkt $\tilde{t}=2$ erfolgt eine Regeneration der Ressourcen. Die Wahrscheinlichkeit des Eintreffens einer Anfragen zum Zeitpunkt $t$ entspricht $ p_{1}(t)=(0.5, 0.5, 0.5, 0.5)$ bzw. $ p_{2}(t)=(0.1, 0.1, 0.1, 0.1)$. Die Lagerkapazität $y^{max,res}$ ist auf 2 Einheiten beschränkt und es existiert zur Starperiode $t=4$ kein Anfangsbestand ($y^{res}=0$). Abbildung \ref{B6} zeigt alle möglichen Systemzustände mit den einzelnen Übergängen für das Beispiel. 
+
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=150mm]{Bilder/Beispiel6.pdf}
+    \includegraphics[width=140mm]{Bilder/Beispiel6.pdf}
     \caption{Darstellung des Entscheidungsbaums des Netzwerk RM mit regenerativen Ressourcen}  \label{B6}
-    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag', $\cdots$='Anfrage ablehnen'} 
   \end{center}
 \end{figure}
+
+Ein Systemzustand im vorausgehenden Beispiel ist definiert als Zahlenfolge $[c_1\;y^{res}_1\;t]$. Zu beachten ist, dass in diesem Netzwerk zum Zeitpunkt $t=2$ die Ressourcen erneuert sind und dementsprechend für die Systemzustände die Zahlenfolge $[c_1^{max}\;y^{res}_1\;2]$ gilt. Wird das Gesamtnetzwerks in Abbildung \ref{B6} betrachtet, dann ergibt sich der bester Pfad $[1\;0\;4] \rightarrow_{j_{LP}=1} [0\;1\;3] \rightarrow_{KA} [1\;1\;2] \rightarrow_{j_{LP}=1} [0\;2\;1] \rightarrow_{j_{LE}=2} [0\;0\;0]$ und ein Gesamtertrag in Höhe von $5000$ GE. Damit ist für das hier betrachtete Netzwerk die Lagerproduktion (LP) der Ressource $h=1$ optimal, damit eine Anfrage nach einem Produkt $j=2$ akzeptiert werden kann. Des Weiteren ist unter diesen Bedingungen im Systemzustand $[1\;0\;4]$ die Ablehnung der Anfrage nach einem Produkt $j=1$ die beste Politik, sofern nur diese Anfrage zum Zeitpunkt $t=4$ eintrifft. Durch diese Entscheidung gelangt das Netzwerk zum Systemzustand $[1\;0\;3]$, bei dem in weiteren Verlauf das Erreichen des Systemzustands $[1\;1\;2]$ möglich ist, bei dem die Kapazitäten regeneriert sind und der Lagerbestand $y_1^{res}$ eine Einheit der Ressource $h=1$ beinhaltet. Von diesem Systemzustand ist ein weiterer Verlauf möglich, bei dem die Anfrage nach einem Produkt $j=2$ möglich ist.
+
+Wird im Gegensatz im Systemzustand $[1\;0\;4]$ die Anfrage nach dem Produkt $j=1$ angenommen, dann gelangt das Netzwerk in den Systemzustand $[0\;0\;3]$ und erzielt einen Ertrag in Höhe von 100 GE. Vom Systemzustand $[0\;0\;3]$ ist keine Akzeptanz mehr möglich, da keine Kapazität und kein Lagerbestand vorhanden sind. Das Netzwerk gelangt dann in den Systemzustand $[1\;0\;2]$ mit einem regenerierten Kapazitätsbestand $c_1=1$. Im weiteren Verlauf ist nur noch die Akzeptanz einer Anfrage nach Produkt $j=1$ möglich. Damit ist ein Gesamtertrag in Höhe von 200 GE generiert. Damit verstößt die Annahme der Anfrage $j=1$ im Systemzustand $[1\;0\;4]$ gegen die Bedingung \eqref{OC}.
+
+Damit ist gezeigt, dass die Umverlagerung der Kapazitäten hin zu einem Lagerbestand das Ergebnis bzw. den Gesamtertrag verbessern kann. Die ermittelten Werte des Beispiels ist in der Tabelle \ref{Tab6} aufgeführt.
 
 \begin{table}
 \begin{footnotesize}
@@ -259,6 +276,8 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; T=4, \; \tilde{
       \end{center}
 \end{footnotesize}
 \end{table}
+
+Zu beachten ist jedoch, dass durch das Betrachtung der regenerierten Ressourcen als Gesamtkapazität des Netzwerks ein gleiches Ergebnis unter einer anderer Betrachtungsweise ergibt. Es gilt $\textbf{c}=(1+|\tilde{t}|)\cdot c^{max}$, dann ergeben sich die optimalen Politiken aus Tabelle ... . Da jedoch von Anfang an genügen Kapazitäten zur Annahme alle Produktanfragen $j\in\mathcal{J}$ möglich sind, ist die Lagerproduktion nicht optimale Politik sofern eine beliebige Anfrage eintrifft. Die Auftragsannahme (AA) dominiert die Lagerproduktion (LP). Die Lagerentnahme wiederum kann dann optimale Politik werden, wenn keine Anfragen eintreffen und eine Umlagerung der Kapazitäten hin zum Lager erfolgen muss. Die Betrachtung von regenerativen Ressourcen $h\in\mathcal{H}$ im Buchungshorizont $T$ hat nur zur Vereinfachung des Netzwerks einen Nutzen.
 
 \section{Implementierung mittels IPython Notebook}
 
