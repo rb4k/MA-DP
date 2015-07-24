@@ -294,7 +294,7 @@ Zu beachten ist jedoch, dass durch das Betrachtung der regenerierten Ressourcen 
  V(\textbf{c}, \textbf{y}^{res}, t) = \;& V(\textbf{c}, \textbf{y}^{res}, t-1)\\
 &+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max_{a_{j}=a_{j}^c+a_{j}^y}[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1)\\
 &+ V(\textbf{c}-\textbf{a}_j^c, \textbf{y}^{res}-\textbf{a}_{j}^y, t-1),0] \\
-&+ \max[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1) + V(\textbf{c}-\textbf{a}_{j}^c, \textbf{y}^{res}+\textbf{a}_j^c, t-1),0]\\
+&+ \max_{a_{j}=a_{j}^c+a_{j}^y}[V(\textbf{c}-\textbf{a}_{j}^c, \textbf{y}^{res}+\textbf{a}_j^c, t-1) - V(\textbf{c}, \textbf{y}^{res}, t-1),0]\\
 \end{alignat*}
 
 \section{Implementierung mittels IPython Notebook}
