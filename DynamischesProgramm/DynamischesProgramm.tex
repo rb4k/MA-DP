@@ -184,7 +184,7 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; \text{Startperi
   \]
   \[
     y_{1}^{res}= 5, \;
-    y^{max,res}=7
+    y_{1}^{max,res}=7
       \]
 \begin{figure}[h!]
   \begin{center}
@@ -249,7 +249,7 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; \text{Startperi
   \]
   \[
     y_{1}^{res}= 0, \;
-    y^{max,res}=2
+    y_{1}^{max,res}=2
       \]
       
 Es existieren zwei Produkte $j\in\mathcal{J}$ und eine Ressource $h\in\mathcal{H}$. Sofern eine Anfrage nach dem Produkt $j=1$ akzeptiert wird, generiert sich ein Ertrag in Höhe von $r_1=100$ GE. Bei Akzeptanz einer Produktanfrage $j=2$ erzielt das Unternehmen einen Ertrag von $r_1=5000$ GE. Beide Produktanfragen benötigen die Ressource $h=1$, wobei die Kapazität der Ressource bei $c_1=1$ liegt. Ein Anfrage nach Produkt $j=1$ benötigt $a_{11}=1$ Kapazitäten und eine Anfrage nach Produkt $j=1$ benötigt $a_{12}=2$. Der Buchungshorizont entspricht $T=4$ Perioden und zum Zeitpunkt $\tilde{t}=2$ erfolgt eine Regeneration der Ressourcen. Die Wahrscheinlichkeit des Eintreffens einer Anfragen zum Zeitpunkt $t$ entspricht $ p_{1}(t)=(0.5, 0.5, 0.5, 0.5)$ bzw. $ p_{2}(t)=(0.1, 0.1, 0.1, 0.1)$. Die Lagerkapazität $y_1^{max,res}$ ist auf 2 Einheiten beschränkt und es existiert zur Starperiode $t=4$ kein Anfangsbestand ($y_1^{res}=0$). Abbildung \ref{B6} zeigt alle möglichen Systemzustände mit den einzelnen Übergängen für das Beispiel. 
@@ -283,19 +283,73 @@ Zu beachten ist jedoch, dass durch das Betrachtung der regenerierten Ressourcen 
 
 
 
-\subsection{Differenzierte Inanspruchnahme der Kapazitäten und des Lagerbestands}
+\subsection{Inanspruchnahme der Kapazitäten zur Aufstockung eines beliebigen Lagerbestands}
 
+Das Modell des Netzwerk RM wird jetzt um eine weitere Eigenschaft erweitert. Sofern angenommen wird, dass es sich bei den Ressourcen um flexible und regenerative Ressourcen handelt, dann ist eine beliebige Aufstockung des Lagerbestands möglich. Anders formuliert, eine Ressource $h\in\mathcal{H}$ für eine Produktanfrage $j\in\mathcal{J}$ mit dem notwendigen Verbrauch bzw. Ressourceneinsatz $\textbf{a}_j$ wird verwendet um einen beliebigen Lagerbestand an Ressourcen $\textbf{y}^{res}$ zu erhöhen. Zur Verdeutlichung wird ein einfaches Fallbeispiel gebildet. Sei die Ressource $h=1$ eine Arbeitsstunde eines Werksarbeiter, der in dieser Stunde für die Fertigung eines bestimmten Produkts $j=1$ zuständig ist. Das Produkt $j=1$ kann z. B. ein Taschenrechner sein. Die Produktion eines Taschenrechners bedarf einer Stunde der Ressource $h=1$. Jetzt trifft im Zeitverlauf des betrachteten Buchungshorizonts auch eine Anfrage nach einem Produkt $j=2$ ein. Bei dem Produkt handelt es sich um einen hochwertigen Computer, der einen höheren Ertrag $r_{2}$ erzielt. Für das Beispiel wird angenommen, dass der Werksarbeiter die Fertigkeiten besitzt diesen Computer zu fertigen, obwohl dieses bei der Ressourcenplanung des Unternehmens nicht vorgesehen ist. Zur Annahme der Anfrage werden dafür zwei Komponenten der Ressource $h=2$ benötigt. Damit gilt ein Ressourcenverbauch von $a_12=2$ zur Annahme der Anfrage nach Produkt $j=2$. In diesem einfachen Beispiel gehen wird davon aus, dass die Arbeitsstunden der Ressource $h=1$ aufgewendet werden, damit die erforderlichen Komponenten hergestellt und auf Lager gelegt werden. Diese Transformation erfolgt im Ausmaß des Ressourcenverbrauchs $a_{j}$. D. h. es kann nur so viel auf das Lager transferiert werden, wie der Ressourcenverbrauch $a_{j}$ ermöglicht. Die unterschiedlichen Ressourcen sind damit substituierbar.
+
+Sofern angenommen wird, dass der Buchungshorizont $T$ und die Kapazität $c_1$ ausreichend groß sind, sowie kein Lagerbestand $y^{res}_1$ für die Ressource $h=1$ vorhanden ist, dann ist die optimale Politik des Beispiels den Anfragen nach dem Taschenrechner nicht nachzugehen und die Anfrage nach dem Computer zu befriedigen. Dies erfolg durch aufwenden der Ressource $h=2$ zur Erhöhung des Lagerbestands $y^{res}_{2}$ der Ressource $h=2$.
+
+Für die Formulierung dieses Modellerweiterung wird der Vektor $\textbf{m}$ eingeführt. Bei dem Vektor handelt es sich um die Lagerbestandserhöhung in Abhängigkeit des Ressourceneinsatzes $\textbf{a}_{j}$ der Produktanfrage $j\in\mathcal{J}$. Für jedes Produkt $j\in\mathcal{J}$ existiert eine Menge $\mathcal{M}_j$ an möglichen Modi $\textbf{m}$, die den Lagerbestand $y^{res}_h$ in Höhe des Ressourcenverbrauchs $a_{j}$ erhöhen können. Die Menge $\mathcal{M}_j$ beinhaltet damit alle möglichen Transformationen des Ressourceneinsatzes $a_{j}$ eines Produkts $j\in\mathcal{J}$. Sei $\hat{j}$ eine Produktanfrage mit dem Ressourcenverbrauch $a_{\hat{j}}=(2,0,0,0)$, dann existiert eine Menge $\mathcal{M}_{\hat{j}}$ mit allen möglichen Ausführungsmodi $\textbf{m}$ der Transformation des Ressourcenverbauchs. Für $a_{\hat{j}}=(2,0,0,0)$ beinhaltet die Menge $\mathcal{M}_{\hat{j}}$ die Ausführungsmodi $\textbf{m}$: $\{ (2, 0, 0, 0), (1, 1, 0, 0), (1, 0, 1, 0),$ $(1, 0, 0, 1), (0 ,2, 0, 0), (0, 1, 1, 0), (0, 1, 0, 1), (0, 0, 2, 0),$ $(0, 0, 1, 1), (0, 0, 0, 2)\}$.
+
+Damit lässt sich die \textit{Bellman'schen Funktionsgleichung} für das Netwerk RM mit der Inanspruchnahme der Kapazitäten zur Aufstockung eines beliebigen Lagerbestands formulieren:
 \begin{equation}\label{dif}
      V^{dif}(\textbf{c}, \textbf{y}^{res}, t)=\left\{\begin{array}{ll} V(\textbf{c}, \textbf{y}^{res}, t), & \forall t\neq\tilde{t}\\
          V(\textbf{c}^{max}, \textbf{y}^{res}, t), &\forall t=\tilde{t}\end{array}\right. .
 \end{equation}
-
 \begin{alignat*}{2}
- V(\textbf{c}, \textbf{y}^{res}, t) = \;& V(\textbf{c}, \textbf{y}^{res}, t-1)\\
-&+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max_{a_{j}=a_{j}^c+a_{j}^y}[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1)\\
-&+ V(\textbf{c}-\textbf{a}_j^c, \textbf{y}^{res}-\textbf{a}_{j}^y, t-1),0] \\
-&+ \max_{a_{j}=a_{j}^c+a_{j}^y}[V(\textbf{c}-\textbf{a}_{j}^c, \textbf{y}^{res}+\textbf{a}_j^c, t-1) - V(\textbf{c}, \textbf{y}^{res}, t-1),0]\\
+ V(\textbf{c}, \textbf{y}^{res}, t) = \;& V(\textbf{c}, \textbf{y}^{res}, t-1)+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1)\\
+&+ V(\textbf{c}-\textbf{a}_j, \textbf{y}^{res}, t-1),0] \\
+&+ \max[r_{j} - V(\textbf{c}, \textbf{y}^{res}, t-1) + V(\textbf{c}, \textbf{y}^{res}-\textbf{a}_j, t-1),0]\\
+&+ \max_{\textbf{m}\in\mathcal{M}_{j}}[V(\textbf{c}-\textbf{a}_j, \textbf{y}^{res}+\textbf{m}, t-1) - V(\textbf{c}, \textbf{y}^{res}, t-1) ,0]]\\
 \end{alignat*}
+Für den Erwartungswert $V(\textbf{c}^{max}, \textbf{y}^{res}, t)$ gilt analog die vorhergehende Gleichung mit $\textbf{c}=\textbf{c}^{max}$. Die Modellformulierung des Auftragsannahmeproblems hat damit die Optionen der Ablehnung des Auftrags (KA), der Annahme des Auftrags, entweder durch Kapazitäts- oder Lagerreduktion (AA bzw. LE), sowie die Option der Transformation der Ressourcen bzw. der Produktion von Ressourcen durch Aufwendung der notwendigen Ressourcen einer Produktanfrage (LP). Zur Verdeutlichung des Modells wird ebenfalls ein Beispiel eingeführt und berechnet:
+
+\begin{center}
+$j = \{1, 2, 3\}, \; h = \{1,2,3\}, \; r_{1} = 100, \; r_{2} = 200, \; r_{3} = 5000,$ \\
+$\text{Startperiode } t=3, \; \tilde{t}=\{\} $,
+\end{center}
+\[
+    \textbf{c}=\begin{pmatrix} 1\\ 1\\ 0  \end{pmatrix}, \;
+    \textbf{a}_{1}=\begin{pmatrix} 1\\ 0\\ 0  \end{pmatrix}, \;
+     \textbf{a}_{2}=\begin{pmatrix} 0\\ 1\\ 0  \end{pmatrix}, \;
+       \textbf{a}_{3}=\begin{pmatrix} 0\\ 0\\ 2  \end{pmatrix}, \;
+            p_{j}(t)=
+       \begin{pmatrix}
+       0.9 & 0 & 0 \\
+0 & 0.9 & 0 \\
+0 & 0 & 0.9
+\end{pmatrix}, 
+  \]
+  \[
+    \textbf{y}^{res}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
+    \textbf{y}^{max,res}=\begin{pmatrix} 0\\ 0\\ 2  \end{pmatrix}
+      \]
+
+Bei dem vorausgehenden Beispiel werden drei Produkte $j\in\mathcal{J}$ mit drei unterschiedlichen Ressourcen $h\in\mathcal{H}$ betrachtet. Die Produkte generieren einen Ertrag in Höhe von $r_1=100, r_2=200 und r_3=5000$. Die Kapazitäten für die Ressourcen betragen $\textbf{c}=(1,1,0)$ und die Ressourcenverbräuche für die Produktanfragen betragen $\textbf{a}_1=(1,0,0),\; \textbf{a}_2=(0,1,0)$ sowie $\textbf{a}_3=(0,0,2)$. Der Buchungshorizont beträgt $T=3$ und die Ressourcen werden darin nicht regeneriert $(\tilde{t}=\{\})$. Es existiert kein Lagerbestand $\textbf{y}^{res}$ und es kann nur ein maximaler Lagerbestand $\textbf{y}^{max,res}=(0, 0, 2)$ aufgebaut werden. In diesem Beispiel sind nicht alle Produktanfragen $j\in\mathcal{J}$ zu jedem Zeitpunkt $t\in T$ möglich. Dies zeigt die Matrix $p_{j}(t)$ mit den Eintrittswahrscheinlichkeiten für jedes Produkt $j$ zum jeweiligen Zeitpunkt $t$. Für das Produkt $j=1$ treffen Anfragen zu den Zeitpunkten $t\in T$ mit den Wahrscheinlichkeiten $p_{1}(t)=(0.9, 0, 0)$ ein. Für die Produkte $j=2$ und $j=3$ betragen die Wahrscheinlichkeiten $p_{2}(t)=(0, 0.9, 0)$ bzw. $p_{3}(t)=(0, 0, 0.9)$. Bei den Wahrscheinlichkeiten $p_j(t)$ der Produktanfrage $j$ zum Zeitpunkt $t$ muss beachtet werden, dass der Buchungshorizont rückwärts verläuft. Damit gilt $p_{j}(t)=(p_{j}(3), p_{j}(2), p_{j}(1))$. Abbildung \ref{B7} zeigt für das Beispiel den Entscheidungsbaum mit allen Optionen. Dabei wird ein Systemzustand im Netzwerk als Zahlenfolge $[c_1,c_2,c_3,y_1,y_2,y_3,t]$ beschrieben.
+ 
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=200mm, angle=90]{Bilder/Beispiel7.pdf}
+    \caption{Darstellung des Entscheidungsbaums des Netzwerk RM mit Inanspruchnahme der Kapazitäten zur Aufstockung eines beliebigen Lagerbestands}  \label{B7}
+    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag', $\cdots$='Anfrage ablehnen'} 
+  \end{center}
+\end{figure}
+
+Wie in der Abbildung \ref{B7} zu erkennen ist, wäre die optimale Politik im Systemzustand $[1,1,0,0,0,0,3]$ die Lagerproduktion im Ausführungsmodus $\textbf{m}=(0,0,1)$ durchzuführen. Dadurch transformiert sich die Ressource $h=1$ durch $\textbf{a}_{1}$ hin zu einer Ressource $h=3$. Damit ist im nächsten Systemzustand ein Lagerbestand $\textbf{y}^{res}=(0,0,1)$ generiert. Eine andere Transformation ist aufgrund der Eintrittswahrscheinlichkeiten $p_{j}(t)$ zum Zeitpunkt $t=3$ nicht möglich. Bei dem nächsten Systemzustand handelt es sich um die Zahlenfolge $[0,1,0,0,0,1,2]$. In diesem Systemzustand ist die Transformation bzw. Lagerproduktion von $h=2$ mit dem Ressourcenverbauch $a_{2}$ hin zu der Ressource $h=3$ möglich. Hierfür wird der Ausführungsmodus $\textbf{m}=(0,0,1)\in\mathcal{M}_2$ verwendet. Damit wird der Systemzustand $[0,0,0,0,0,2,1]$ mit einem Lagerbestand $\textbf{y}^{res}=(0,0,2)$ erreicht. In diesem Systemzustand ist aufgrund der Eintrittswahrscheinlichkeiten $p_2(t)$ und des vorhanden Lagerbestand $\textbf{y}^{res}=(0,0,2)$ eine Lagerentnahme der Ressource $h=3$ möglich. Dies erfolgt aufgrund der möglichen Annahme einer Anfrage nach Produkt $j=3$ mit einem Ressourcenverzehr von $a_{3}=(0,0,2)$. Unter Einhaltung dieser optimalen Politik wird in dem Netzwerk ein Ertrag in Höhe von $5000$ GE erzielt. Tabelle \ref{Tab7} zeigt die berechneten Erwartungswerte für alle Systemzustände des Beispiels. 
+
+\begin{table}
+\begin{footnotesize}
+    \caption{Ergebnistabelle für das beispielhafte Netzwerk RM mit regenerativen Ressourcen} \label{Tab7}
+    \vspace*{3mm}
+\csvautotabular{data/beispiel7.csv}
+    \begin{center}
+      {\footnotesize \textbf{Legende:} AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+      \end{center}
+\end{footnotesize}
+\end{table}
+
+Diese Modellformulierung zeigt, dass eine Transformation der Ressourcen sinnvoll ist, damit Produktanfragen mit höherem Ertrag akzeptiert werden. Abschließend muss bei der Modellformulierung kritisiert werden, dass es sich um eine andere Darstellung des Netzwerk RM mit opaken Produkten handelt. Eine Transformation von Ressourcen kann auch durch unterschiedliche Ausführungsmodi der Produktanfragen formuliert werden und eine Akzeptanz der Produktanfragen kann folglich direkt über die Kapazität geschehen. Das hier vorgestellte Modell ermöglich jedoch eine flexible Bestimmung aller möglichen Ausführungsmodi, da nicht nur vordefinierte Ausführungsmodi untersucht werden.
+
 
 \section{Implementierung mittels IPython Notebook}
 
