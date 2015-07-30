@@ -350,6 +350,50 @@ Wie in der Abbildung \ref{B7} zu erkennen ist, wäre die optimale Politik im Sys
 
 Diese Modellformulierung zeigt, dass eine Transformation der Ressourcen sinnvoll ist, damit Produktanfragen mit höherem Ertrag akzeptiert werden. Abschließend muss bei der Modellformulierung kritisiert werden, dass es sich um eine andere Darstellung des Netzwerk RM mit opaken Produkten handelt. Eine Transformation von Ressourcen kann auch durch unterschiedliche Ausführungsmodi der Produktanfragen formuliert werden und eine Akzeptanz der Produktanfragen kann folglich direkt über die Kapazität geschehen. Das hier vorgestellte Modell ermöglich jedoch eine flexible Bestimmung aller möglichen Ausführungsmodi, da nicht nur vordefinierte Ausführungsmodi untersucht werden.
 
+\subsection{Inanspruchnahme der Kapazitäten zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen}
+
+Bei der Modellerweiterung der Inanspruchnahme der Kapazitäten zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen wird die \textit{Bellman'schen Funktionsgleichung} \ref{dif} mit der Eigenschaft erweitert, dass die Ressourcen $h\in\mathcal{H}$ und die zugehörigen Kapazitäten $c_{h}$ für bestimmte Leistungsperioden $\hat{t}\in \hat{T}$ vorgesehen sind. D. h. dem Parametern $h$ kann der Index ??? der zugehörigen Leistungsperiode $\hat{t}$ ergänzt werden ($\exists{!\hat{t}}\in\hat{T}\; \forall\; h^{\hat{t}}\in\mathcal{H}$). Mit dieser Eigenschaft können Anfragen betrachtet werden, die speziell für bestimmte zusammenhängende Buchungsperioden eintreffen. Damit sind bestimmte Produktanfragen nicht über den gesamten Buchungshorizont verfügbar. Mit Veränderung der Möglichkeiten des Auftragseingangs von Produktanfragen wird die Leistungsperiode $\hat{t}$ bestimmt. Die Leistungsperioden $\hat{t}\in \hat{T}$ lassen sich somit als zusammenhängenden Buchungsperioden $t\in T$ definieren, wie Abbildung \ref{LP} anhand eines Beispiels aufzeigt. In dem Beispiel wird ein Netzwerk mit drei Ressourcen $h^{\hat{t}}\in\mathcal{H}$ betrachtet, die somit den drei Leistungsperioden $\hat{t}\in\hat{T}$ des Beispiels entsprechen. Der Buchungshorizont $T$ entspricht 15 Perioden, die sich auf die Leistungsperioden gleichmäßig verteilen. Diese Verteilung resultiert aus der Möglichkeit des Auftragseingangs der drei Produktanfragen $j\in\mathcal{J}$ (Wahrscheinlichkeitsverteilung $p_j(t)\; \forall\; j\in\mathcal{J}$).
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=130mm]{Bilder/Leistungsperioden.pdf}
+    \caption{Zusammenhand von Buchungs- und Leistungsperiode bei der Inanspruchnahme von Kapazität zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen}  \label{LP}
+    {\footnotesize \textbf{In Anlehnung an:} ????} 
+  \end{center}
+\end{figure}
+
+Aufgrund dieser Eigenschaft erfolgt die Modifizierung der Menge an möglichen Ausführungsmodi $\textbf{m}\in\mathcal{M}_{j}$. Die Ressourcen $h^{\hat{t}}\in\mathcal{H}$ sind speziell für die jeweilige Leistungsperiode $\hat{t}\in \hat{T}$ vorgesehen und daher kann eine Transformation der Ressource $h^{\hat{t}}$ aus der aktuellen Leistungsperiode $\hat{t}$ nur zu den nächstfolgenden Leistungsperioden $\hat{t}\in \hat{T}$ erfolgen. Sei der Parameter $\tilde{j}$ alle möglichen Nachfolger der Produktanfrage $j$, dann ist die Menge aller möglichen Ausführungsmodi $\mathcal{M}_{\tilde{j}>j}\subseteq\mathcal{M}_j$. Damit existieren zum Beispiel für die Anfrage nach $\hat{j}$ aufgrund des Ressourcenverbrauchs $a_{\hat{j}}=(2,0,0,0)$ die Ausführungsmodi $\mathcal{M}_{\tilde{j}>\hat{j}}$: $\{ (0 ,2, 0, 0), (0, 1, 1, 0), (0, 1, 0, 1),$ $(0, 0, 2, 0),$ $(0, 0, 1, 1), (0, 0, 0, 2)\}$. Zur Veranschaulichung der Modellerweiterung wird ein Beispiel eingeführt:
+
+\begin{center}
+$j = \{1, 2, 3\}, \; h = \{1,2,3\}, \; r_{1} = 100, \; r_{2} = 200, \; r_{3} = 5000,$ \\
+$\text{Startperiode } t=3, \; \tilde{t}=\{\} $,
+\end{center}
+\[
+    \textbf{c}=\begin{pmatrix} 1\\ 1\\ 1  \end{pmatrix}, \;
+    \textbf{a}_{1}=\begin{pmatrix} 1\\ 0\\ 0  \end{pmatrix}, \;
+     \textbf{a}_{2}=\begin{pmatrix} 0\\ 1\\ 0  \end{pmatrix}, \;
+       \textbf{a}_{3}=\begin{pmatrix} 0\\ 0\\ 2  \end{pmatrix}, \;
+            p_{j}(t)=
+       \begin{pmatrix}
+       0.3 & 0.3 & 0.3 \\
+0 & 0.5 & 0.5 \\
+0 & 0 & 0.2
+\end{pmatrix}, 
+  \]
+  \[
+    \textbf{y}^{res}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
+    \textbf{y}^{max,res}=\begin{pmatrix} 1\\ 1\\ 2  \end{pmatrix}
+      \]
+
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=200mm, angle=90]{Bilder/Beispiel8.pdf}
+    \caption{Darstellung des Entscheidungsbaums des Netzwerk RM mit Inanspruchnahme von Kapazität zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen}  \label{B8}
+    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Produktauftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag', $\cdots$='Anfrage ablehnen'} 
+  \end{center}
+\end{figure}
+
 
 \section{Implementierung mittels IPython Notebook}
 
