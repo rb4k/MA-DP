@@ -53,6 +53,36 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
+			<string>{{134.33333333333346, 272.25}, {360.1656977335611, 24}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>HFlip</key>
+			<string>YES</string>
+			<key>ID</key>
+			<integer>129</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\fs24 \cf0 Ressource 1}</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
 			<string>{{474.92678617961917, 165.30584056702949}, {108, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -203,7 +233,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{9.4999949137369413, 309.66666666666725}, {122.00000508626306, 64}}</string>
+			<string>{{134.99999364217115, 325.91665649414028}, {359.49903742472338, 12}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -242,7 +272,7 @@
 			<key>Text</key>
 			<dict>
 				<key>Align</key>
-				<integer>2</integer>
+				<integer>0</integer>
 				<key>Pad</key>
 				<integer>0</integer>
 				<key>Text</key>
@@ -250,73 +280,17 @@
 \cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Oblique;}
 {\colortbl;\red255\green255\blue255;}
 \deftab720
-\pard\pardeftab720\sa240\qr
+\pard\pardeftab720\sa240
 
-\f0\i\fs24 \cf0 \expnd0\expndtw0\kerning0
-M\'f6gliche Auftragseing\'e4nge innerhalb der Buchungsabschnitte}</string>
+\f0\i\fs18 \cf0 \expnd0\expndtw0\kerning0
+Beispielhaft m\'f6gliche Auftragseing\'e4nge innerhalb der Buchungsabschnitte: }</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{50.499664306640625, 276.25009155273438}, {81.000335693359375, 15.999839782714844}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FitText</key>
-			<string>Clip</string>
-			<key>Flow</key>
-			<string>Clip</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>CMUBright-Oblique</string>
-				<key>Size</key>
-				<real>12</real>
-			</dict>
-			<key>ID</key>
-			<integer>127</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Pad</key>
-				<integer>0</integer>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Oblique;\f1\fnil\fcharset0 TeXGyreChorus-MediumItalic;}
-{\colortbl;\red255\green255\blue255;}
-\deftab720
-\pard\pardeftab720\sa240\qc
-
-\f0\i\fs24 \cf0 \expnd0\expndtw0\kerning0
-Ressourcen 
-\f1\fs32 H}</string>
-				<key>VerticalPad</key>
-				<integer>0</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{111, 216.625}, {28.5, 16}}</string>
+			<string>{{107.66666666666664, 216.625}, {28.5, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -369,7 +343,7 @@ Ressourcen
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{11.500480651855412, 220.75}, {119.99951934814453, 16}}</string>
+			<string>{{113.99999968210847, 220.75}, {14.166666984558105, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -411,19 +385,18 @@ Ressourcen
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Oblique;\f1\fnil\fcharset0 CMUSerif-Roman;}
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\i\fs24 \cf0 Buchungsabschnitte
-\f1  T}</string>
+\f0\i\fs24 \cf0 T}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{408.49925740559894, 347}, {52, 16}}</string>
+			<string>{{408.49925740559894, 384.41666666666669}, {52, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -483,8 +456,8 @@ Ressourcen
 			<integer>124</integer>
 			<key>Points</key>
 			<array>
-				<string>{372, 363}</string>
-				<string>{494.49903106689453, 363}</string>
+				<string>{372, 400.41666666666669}</string>
+				<string>{494.49903106689453, 400.41666666666669}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -501,7 +474,7 @@ Ressourcen
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{288.49976603190106, 324.75}, {52, 16}}</string>
+			<string>{{288.49976603190106, 362.16666666666669}, {52, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -561,8 +534,8 @@ Ressourcen
 			<integer>118</integer>
 			<key>Points</key>
 			<array>
-				<string>{252.25, 340.75}</string>
-				<string>{494.75128173828125, 340.75}</string>
+				<string>{252.25, 378.16666666666669}</string>
+				<string>{494.75128173828125, 378.16666666666669}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -579,7 +552,7 @@ Ressourcen
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{168.999755859375, 302.5}, {52, 16}}</string>
+			<string>{{168.999755859375, 339.91666666666669}, {52, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -639,8 +612,8 @@ Ressourcen
 			<integer>121</integer>
 			<key>Points</key>
 			<array>
-				<string>{132.49871826171875, 318.5}</string>
-				<string>{494.75128173828125, 318.5}</string>
+				<string>{132.49871826171875, 355.91666666666669}</string>
+				<string>{494.75128173828125, 355.91666666666669}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -901,7 +874,7 @@ Ressourcen
 			<key>Points</key>
 			<array>
 				<string>{495, 237.5}</string>
-				<string>{495, 296.625}</string>
+				<string>{495, 319.33333333333331}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -932,7 +905,7 @@ Ressourcen
 			<key>Points</key>
 			<array>
 				<string>{375, 237.5}</string>
-				<string>{375, 296.25001523892109}</string>
+				<string>{375, 319.33333841959637}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -963,7 +936,7 @@ Ressourcen
 			<key>Points</key>
 			<array>
 				<string>{254.5, 237.5}</string>
-				<string>{254.5, 296.25001523892109}</string>
+				<string>{254.5, 319.33333333333366}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -984,7 +957,7 @@ Ressourcen
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{374.49951171875, 272.25}, {119.99951934814453, 24}}</string>
+			<string>{{374.49951171875, 295.33333333333366}, {119.99951934814453, 24}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>HFlip</key>
@@ -1009,12 +982,12 @@ Ressourcen
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 Ressource 3}</string>
+\f0\fs24 \cf0 Kapazit\'e4t 3}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{254.50000508626303, 272.25}, {119.99951934814453, 24}}</string>
+			<string>{{254.50000508626303, 295.33333333333366}, {119.99951934814453, 24}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>HFlip</key>
@@ -1039,12 +1012,12 @@ Ressourcen
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 Ressource 2}</string>
+\f0\fs24 \cf0 Kapazit\'e4t 2}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{135, 272.25}, {119.99951934814453, 24}}</string>
+			<string>{{135, 295.33333333333366}, {119.99951934814453, 24}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>HFlip</key>
@@ -1069,7 +1042,7 @@ Ressourcen
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 Ressource 1}</string>
+\f0\fs24 \cf0 Kapazit\'e4t 1}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1554,7 +1527,7 @@ Ressourcen
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{16.999832153320256, 252.25}, {114.50016784667969, 16}}</string>
+			<string>{{113.99999968210847, 252.25}, {14.166666984558105, 16}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -1596,12 +1569,11 @@ Ressourcen
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Oblique;\f1\fnil\fcharset0 CMUSerif-Roman;}
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\i\fs24 \cf0 Buchungsperioden
-\f1  T}</string>
+\f0\i\fs24 \cf0 T}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -1654,7 +1626,7 @@ Ressourcen
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-07-30 07:37:00 +0000</string>
+	<string>2015-08-01 14:03:01 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -1744,7 +1716,7 @@ Ressourcen
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{102.66666666666667, 114.66666666666667}, {490.66666666666669, 390}}</string>
+		<string>{{61.333333333333336, 97.333333333333329}, {490.66666666666669, 390}}</string>
 		<key>Zoom</key>
 		<real>1.5</real>
 		<key>ZoomValues</key>
