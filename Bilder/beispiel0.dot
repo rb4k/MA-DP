@@ -8,7 +8,7 @@ value=231.25];
 label="[2 1 3]",
 time=3,
 value=0];
-4 -> 3 [label="j=0",
+4 -> 3 [label="KA",
 goal="[2 1 3]",
 not_best_politic=True,
 revenue=0,

@@ -1,0 +1,49 @@
+digraph G {
+	graph [ratio="compress"nodesep=0.17 margin=0];
+	1	 [label="[2 2]"];
+	2	 [label="[1 1]"];
+	3	 [label="[1 1]"];
+	4	 [label="[2 1]"];
+	5	 [label="[0 0]"];
+	6	 [label="[0 0]"];
+	7	 [label="[1 0]"];
+	8	 [label="[0 0]"];
+	9	 [label="[0 0]"];
+	10 [label="[1 0]"];
+	11 [label="[1 0]"];
+	12 [label="[1 0]"];
+	13 [label="[2 0]"];
+
+	1 -> 2 [label="j=1"];
+	1 -> 3 [label="j=2"];
+	1 -> 4 [label=KA];
+	2 -> 5 [label="j=1"];
+	2 -> 6 [label="j=2"];
+	2 -> 7 [label=KA];
+	3 -> 8 [label="j=1"];
+	3 -> 9 [label="j=2"];
+	3 -> 10 [label=KA];
+	4 -> 11 [label="j=1"];
+	4 -> 12 [label="j=2"];
+	4 -> 13 [label=KA];
+}
+
+digraph {
+	graph [ratio="compress"nodesep=0.17 label="Form mit Memofunktion" margin=0];
+	21	 [label="[2 2]"];
+	22	 [label="[1 1]"];
+	24	 [label="[2 1]"];
+	25	 [label="[0 0]"];
+	27	 [label="[1 0]"];
+	213 [label="[2 0]"];
+
+	21 -> 22 [label="j=1"];
+	21 -> 22 [label="j=2"];
+	21 -> 24 [label=KA];
+	22 -> 25 [label="j=1"];
+	22 -> 25 [label="j=2"];
+	22 -> 27 [label=KA];
+	24 -> 213 [label="j=1"];
+	24 -> 27 [label="j=2"];
+	24 -> 27 [label=KA];
+}

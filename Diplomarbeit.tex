@@ -191,8 +191,15 @@ $m$ & ... Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
 
 
 
+%\listofalgorithms
+%\newpage
+\pagenumbering{arabic}   %ab hier arabische Seitenzahlen beginnend mit 1
 
-
+%Abbildungsverzeichnis
+\begingroup
+\renewcommand*{\addvspace}[1]{}
+\listoffigures
+\endgroup
 
 %Tabellenverzeichnis
 \begingroup
@@ -201,16 +208,6 @@ $m$ & ... Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
 \endgroup
 
 
-%Abbildungsverzeichnis
-\begingroup
-\renewcommand*{\addvspace}[1]{}
-\listoffigures
-\endgroup
-
-
-%\listofalgorithms
-\newpage
-\pagenumbering{arabic}   %ab hier arabische Seitenzahlen beginnend mit 1
 
 \include{Vorwort/Vorwort}
 \include{Einleitung/Einleitung}

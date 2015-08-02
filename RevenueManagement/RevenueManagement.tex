@@ -1,5 +1,5 @@
 % !TEX encoding = UTF-8 Unicode
-\chapter{Das Konzept des Revenue Managements bei der Annahme von Aufträgen}
+\chapter{Das Konzept des Revenue Managements bei der Annahme von Aufträgen}\label{KapitelDP}
 \markboth{2 Revenue Management in der Auftragsannahme}{}
 \setcounter{footnote}{4}  %um durchgehende Fußnotennummerierung zu haben, hier die Anzahl der bisherigen Fußnoten eintragen
 
@@ -56,7 +56,7 @@ Auf Grundlage der von \cite{friege1996yield} beschriebenen Anwendungsvoraussetzu
 
 Erklärung segmentorientierte Preisdifferenzierung, Kapazitätssteuerung, Überbuchungssteuerung?
 
-\section{Mathematische Modellformulierung des Revenue Managements}
+\section{Mathematische Modellformulierung des Revenue Managements}\label{Grundmodell}
 Im Folgenden wird das dynamisch, stochastische Grundmodell des RM nach \citeauthor{talluri2004revenue} (2004, S. 18-19) beschrieben. Ein Dienstleistungsnetzwerk eines Anbieters benötigt jeweils zur Erstellung der Dienstleistungen ein bestimmtes Kontingent an Ressourcen aus einer Menge an Ressourcen $\mathcal{H} = \{1,...,l \}$. Der Index $h$ beschreibt dabei eine jeweilige Ressource und der Index $l$ die gesamte Anzahl an möglichen Ressourcen. Die jeweilige Kapazität einer Ressource $h \in \mathcal{H}$ ist durch den Parameter $c_{h}$ beschrieben und die gesamten Kapazitäten der Ressourcen ist als Vektor $\textbf{c}=(c_{1},...,c_{h},...,c_{l})$ formuliert. Eine Anfrage nach einem Produkt (Dienstleistung) in dem Netzwerk ist durch den Parameter $j$ aus der Menge an möglichen Produktanfragen $\mathcal{J} = \{1,...,n \}$ %für die Menge der Ressourcen $\mathcal{H}$
 beschrieben. Die gesamte Anzahl an Produktanfragen ist durch den Parameter $n$ definiert. Sobald eine Produktanfrage $j\in \mathcal{J}$ akzeptiert und somit abgesetzt ist, fällt für den Absatz der Ertrag $r_{j}$ an. Der jeweilige Verbrauch einer Ressource $h$ durch Annahme einer Anfrage nach einem Produkt $j$ ist anhand des Parameters $a_{hj}$ beschrieben. Durch Vektorschreibweise kann der Ressourcenverbrauch für eine Anfrage nach einem Produkt $j$ als Vektor $\textbf{a}_{j}=(a_{1j},...,a_{hj},...,a_{lj})$ formuliert werden. Der Buchungshorizont entspricht $T$ Perioden und kann jeweils in einzelne Perioden $t=1,...,T$ aufgeteilt werden. Dabei muss Beachtung finden, dass der Buchungshorizont $T$ gegenläufig verläuft. Die Wahrscheinlichkeit der Nachfrage eines Produkts $j$ in der Periode $t$ entspricht $p_{j}(t)$ und die Wahrscheinlichkeit, dass keine Nachfrage in der Periode $t$ eintrifft, entspricht $p_{0}(t)$. Es gilt $\sum_{j\in \mathcal{J}}p_{j}(t)+p_{0}(t)=1$ und somit kann $p_{0}(t)$ durch den Term $p_{0}(t)=1-\sum_{j\in \mathcal{J}}p_{j}(t)$ für die Periode $t$ ermittelt werden.\footnote{Vgl. \citeauthor{talluri2004revenue}, S. 18} Die noch erwartete Nachfrage $D_{jt}$ für ein bestimmtes Produkt $j$ für eine beliebige Periode $t$ lässt sich durch $\sum_{\tau=1}^{t}p_{j}(\tau)$ aggregieren. 
 
@@ -67,7 +67,7 @@ V(\textbf{c},t)=\sum_{j\in\mathcal{J}}p_{j}(t)\max[ V(\textbf{c},t-1),\; r_{j}+V
 \end{equation}
 
 
-Es handelt sich hier um die Modellformulierung der Dynamischen Programmierung (DP) im Netzwerk RM. Das Konzept der DP wurde von \citeauthor{bellman1954theory} entwickelt und dient der Ermittlung der optimalen Politik in Bezug auf den aktuellen Zustand eines Systems.\footnote{Vgl. \cite{bellman1954theory}, S. 4-5} Dabei bildet jeder Erwartungswert $V(\textbf{c},t)$ mit der Ressourcenkapazität $\textbf{c}$ zum Zeitpunkt $t$ einen Systemzustand des Netzwerks ab. Eine derartige Formulierung eines Optimierungsproblems wird oft als sogenannte \textit{Bellman'sche Funktionsgleichug oder Bellman-Gleichung} bezeichnet.\footnote{???}
+Es handelt sich hier um die Modellformulierung der Dynamischen Programmierung (DP) im Netzwerk RM. Das Konzept der DP wurde von \citeauthor{bellman1954theory} entwickelt und dient der Ermittlung der optimalen Politik in Bezug auf den aktuellen Zustand eines Systems.\footnote{Vgl. \cite{bellman1954theory}, S. 4-5} Dabei bildet jeder Erwartungswert $V(\textbf{c},t)$ mit der Ressourcenkapazität $\textbf{c}$ zum Zeitpunkt $t$ einen Systemzustand des Netzwerks ab. Eine derartige Formulierung eines Optimierungsproblems wird oft als sogenannte \textit{Bellman'sche Funktionsgleichung oder Bellman-Gleichung} bezeichnet.\footnote{???}
 
 Die Gleichung weist die Grenzbedingungen
 \begin{equation}\label{GB1}

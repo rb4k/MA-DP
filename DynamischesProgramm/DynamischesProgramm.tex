@@ -3,7 +3,73 @@
 \markboth{3 Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung}{}
 \setcounter{footnote}{7}
 
-\section{Mathematische Modellformulierung}
+\section{Grundlegendes zum Lösen und Implementieren des Auftragsannahmeproblems}
+
+In Kapitel \ref{KapitelDP} ist das Grundmodell des Netzwerk RM für die Annahme von Kundenanfragen als \textit{Bellman'sche Funktionsgleichung} dargestellt. Gleichung \eqref{DP} zeigt die mathematische Modellformulierung und Gleichung \eqref{DP2} zeigt eine Vereinfachung der Modellformulierung. In diesem Kapitel wird dieses Modellformulierung in ein Computersystem implementiert und mittels dieser Implementierung erfolgt das exakte Lösen von vordefinierten Szenarien. Dabei wird das Grundmodell mit der Entscheidung über eine mögliche Lagerhaltung erweitert. Bei der Implementierung wird in dieser Arbeit schrittweise das Grundmodell mit neuen Parametern einer möglichen Lagerhaltungsentscheidung bei der Annahme von Kundenaufträgen ergänzt. Zum einen soll eine Verdeutlichung der Funktionsweise der verschiedenen Modellerweiterungen der \textit{Bellman'sche Funktionsgleichung} erfolgen und zum anderen wird das Ergebnis dieser schrittweisen Modellerweiterung für eine numerische Untersuchung verwendet.
+
+Bei der \textit{Bellman'sche Funktionsgleichung} \eqref{DP} aus Abschnitt \ref{Grundmodell} handelt es um ein stochastisch-dynamisches Optimierungsproblem in rekursiver Form.\footnote{Vgl. ???, S. ???} Das Optimierungsmodell besteht aus verschiedenen gleichartigen Teilproblemen und zur Lösung des gesamten Optimierungsmodells müssen alle Teilprobleme gelöst werden.\footnote{Vgl. ???, S. ???} Zur Lösung solcher rekusiven Modellformulierung wird auf das vom amerikanischen Mathematiker Richard Bellman entwickelte Konzept der \textbf{Dynamischen Programmierung (DP)} zurückgegriffen.\footnote{Vgl. ???, S. ???} Bei diesem Konzept werden die berechneten Teilergebnisse gespeichert und bei der weiteren Berechnung des Optimierungsmodells verwendet.\footnote{Vgl. ???, S. ???} Durch eine solche Implementierung kann die rekusive Berechnung des Modells verbessern werden, da auf bereits berechnete Teilergebnisse zurückgegriffen wird, anstelle diese neu zu berechnen.
+
+Eine Form der Implementierung des Konzepts der DP ist das Anwenden einer \textit{Memofunktion}. Mit der Memofunktion werden die Teilprobleme des Konstrukturs des Optimierungsmodells überführt, ob diese bereits schon berechnet sind.\footnote{Vgl. ???, S. ?} Bei dem Konstrukt handelt es sich um ein Graphen mit allen Teilproblemen und den einzelnen Übergängen in die nachfolgenden Teilprobleme. Zur Verdeutlichung einer Memofunktion im Netzwerk RM in der Auftragsannahme wird ein einfaches Beispiel eingeführt: $j = \{1, 2\}, \; h = \{1\}, \; \text{Startperiode } t=2, c_{1}=2, a_{11}=1, a_{12}=1.$
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=140mm]{Bilder/Einfach.pdf}
+    \caption{Rekursiver Entscheidungsbaum ohne Memofunktion}  \label{Einfach}
+        {\footnotesize \textbf{Quelle:} ????} 
+    {\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+Abbildung \ref{Einfach} zeigt die möglichen Systemzustände in Form der Knoten und Übergänge in Form der Kanten. Dabei ist ein Knoten definiert als Zahlenfolge $[c_h\; t]$ und zeigt damit den Kapazitätsbestand $c_h$ zum Zeitpunkt $t$. Durch Annahme einer Produktanfrage $j\in\mathcal{J}$ oder sofern keine Anfrage eintrifft, wird ein Systemzustand verlassen. Diese rekursive Folge des Graphen bzw. Entscheidungsbaums wird konstruiert durch Anwenden der Gleichung \eqref{DP}. Sofern keine Memofunktion Anwendung findet, werden die einzelnen Teilprobleme jeweils mehrfach ermittelt, da sie jeweils für das vorherige Teilproblem notwendig sind.
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=50mm]{Bilder/Einfach2.pdf}
+    \caption{Rekursiver Entscheidungsbaum mit Memofunktion}  \label{Einfach2}
+        {\footnotesize \textbf{Quelle:} ????} 
+    {\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+Durch Anwenden einer Memofunktion kann der Entscheidungsbaum des Beispiels vereinfacht werden, wie Abbildung \ref{Einfach2} zeigt. Jedes Systemzustand ist nur einmal im Netzwerk vorhanden und sofern der rekursive Verlauf auf ein bereits ermitteltes Teilproblem trifft, erfolgt das Abrufen der bereits gespeicherten Lösung. Anders formuliert bedeutet dies, dass nachdem der Systemzustand bzw. das Teilproblem $[1\; 1]$ aufgrund der Anfrage nach Produkt $j=1$ gelöst ist, die Berechnung des gleichen Systemzustands $[1\; 1]$ aufgrund der Anfrage nach Produkt $j=2$ nicht mehr notwendig ist. Das Ergebnis des Teilproblems wird direkt aus der Memofunktion abgerufen.
+
+Der in dieser Arbeit verwendete \textbf{Algorithmus} zum exakten Lösen des Auftragsannahmeproblems im Netzwerk RM verwendet eine solche Memofunktion. Der Algorithmus basiert auf der rekursiven Form der Gleichung \eqref{DP2}. 
+
+\begin{algorithm}[H]
+\textbf{Pseudoalgorithmus: Auftragsannahmeproblem im Netzwerk RM}\\
+\Daten{$Memofunktion$}
+\Ein{$\mathcal{J}$, $\textbf{c}$, $t$ sowie $\textbf{a}_j$, $r_{j}$ und $p_j(t)\; \forall j\in\mathcal{J}$}
+\uWenn{$V(\textbf{c},t)$ nicht in der $Memofunktion$ ist}{
+	\uWenn{$t \neq 0$}{
+		$value^{reject} = V(\textbf{c},t-1)$\\
+		\FuerJedes{$j\in\mathcal{J}$}{
+			\uWenn{$\textnormal{\textbf c}-\textnormal{\textbf a}_j\ge \textnormal{\textbf{0}}$}{
+				$value_{j}^{accept} = p_j(t)\cdot\max[r_{j}-value^{reject}+V(\textnormal{\textbf c}-\textnormal{\textbf a}_j,t-1),0]$}
+			\uSonst{Grenzbedingung \eqref{GB2}: $V(\textnormal{\textbf c}-\textnormal{\textbf a}_j,t-1)=-\infty$\\
+			$value_{j}^{accept} = p_j(t)\cdot\max[r_{j}-value^{reject}-\infty,0]$}
+			}
+		$V(\textbf{c},t)=value^{reject} + \sum_{j\in\mathcal{J}}value_j^{accept}$}
+	\uSonst{Grenzbedingung \eqref{GB1}: $V(\textbf{c},t)=0$}
+	speichere $V(\textbf{c},t)$ in die $Memofunktion$}
+\uSonst{entnehme $V(\textbf{c},t)$ aus der $Memofunktion$}
+\Aus{$V(\textbf{c},t)$}
+%{\footnotesize \textbf{Quelle:} \cite{bouleimen2003new}, S. 273}
+\end{algorithm}
+
+%\Fuer{C Verkettung}
+%{{
+%$\Theta= \Theta_{0max}$\\
+%$N_{n}=N_{0}$\\
+%\Fuer{I Iteration}{$N_{n}=N_{n}(1+h_{n})$\\
+%\Fuer{$N_{p}$ Nachbarn}{erstelle einen Nachbarn $y'$ von der aktuellen Lösung $y_{aktuell}$\\
+%berechne $f(y')$\\
+%berechne $\Delta =f(y')-f(y)$\\
+%\uWenn{$\Delta<0$}{$y'=y_{aktuell},f(y')=f_{aktuell}$\\
+%\lWenn{$f(y')<f_{best}$}{speicher {$y'=y_{best}, f(y')=f(y_{best})$}}\lWenn{$f_{best}=CP$-Wert}{beende Prozess}}\lSonstWenn{$P=\exp^{(-\Delta/\Theta)}>y_{zufall}$}{speicher $y'$ und $f(y')$ als aktuell}
+%}berechne $\Theta =\alpha \Theta $}}}
+
+
+\section{Mathematische Erweiterung der Modellformulierung des Auftragsannahmeproblems}
 
 Aufbauend auf der Modelldarstellung der Auftragsannahme mittels Revenue Management erfolgt in diesem Kapitel die Erweiterung um die Lagerhaltungsentscheidung. Instandhalter haben die Möglichkeit Anfragen nach MRO-Prozessen entweder durch Kapazitätsinanspruchnahme oder durch Lagerentnahme eines neuwertigen Produkts zu akzeptieren. Abhängig der Entscheidung, in welchem dieser Modi die Anfrage befriedigt wird, erfolgt entweder eine Kapazitäts- oder Lagerreduktion.
 
@@ -133,7 +199,7 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; \text{Startperio
   \end{center}
 \end{figure}
 
-Die Abbildung \ref{B4} mit dem Entscheidungsbaum für das Beispiel zeigt alle möglichen Systemzustände und Optionen. Ein Systemzustand ist definiert als Zeichenfolge $[c_{1}\; y_{1}\; y_{2}\;t]$. Es gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und
+Die Abbildung \ref{B4} mit dem Entscheidungsbaum für das Beispiel zeigt alle möglichen Systemzustände und Optionen. Ein Systemzustand ist definiert als Zahlenfolge $[c_{1}\; y_{1}\; y_{2}\;t]$. Es gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} und
 \begin{equation}\label{GB4}
      OP_{\textbf{c}, t}:=\left\{\begin{array}{lll} j_{AA}, & \text{für } r_{j_{AA}} - OC_{j_{AA}} \ge r_{j_{LE}} - OC_{j_{LE}}\\
          j_{LE}, & \text{für } r_{j_{AA}} - OC_{j_{AA}} < r_{j_{LE}} - OC_{j_{LE}}\\
@@ -469,7 +535,5 @@ Tabelle \ref{Tab9} zeigt die ermittelten Erwartungswerte des vorher eingeführte
 \end{table}
 
 Aufgrund des umfangreichen Buchungshorizonts ist die optimale Politik des Beispiels anfangs keine Anfragen anzunehmen. Erst zur Periode $t=7$ verändern sich die OK insofern, dass der potentielle Ertrag eine Annahme einer Produktanfrage $j\in\mathcal{J}$ rechtfertigt. Jedoch ist zum Zeitpunkt $t=7$ die Lagerproduktion (LP) die optimale Politik. Zum nächsten Zeitpunkt $t=6$ kann keine Anfrage angenommen werden, da keine Kapazitäten $c^{\hat{t}}_{h^{\hat{t}}}$ für den aktuellen Buchungsabschnitt $\hat{t}=1$ verfügbar sind. Erst mit Übergang vom Zeitpunkt $t=5$ zu $t=6$ erfolgt der Wechsel in den nächsten Buchungsabschnitt $\hat{t}=2$. Damit ist wieder eine Einheit der Ressourcenkapazität $c^{\hat{t}}_{h^{\hat{t}}}$ vorhanden. Die optimale Politik für das Unternehmen zum Zeitpunkt $t=5$ ist demnach die weitere Lagerproduktion der Ressource $h^{\hat{t}}$ hin zum Lagerbestand $y^{\hat{t}}$ zum Buchungsabschnitt $\hat{t}=2$. Durch diese Politik ist zum Zeitpunkt $t=4$ eine Lagerentnahme (LE) des Produkts $j=2$ möglich, was die Annahme dieser Produktanfrage entspricht. Dadurch wird ein Ertrag in Höhe von $5000$ GE generiert.
-
-\section{Implementierung mittels IPython Notebook}
 
 \section{Numerische Untersuchung}

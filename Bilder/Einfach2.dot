@@ -1,0 +1,19 @@
+digraph {
+	graph [ratio="compress"nodesep=0.17 margin=0];
+	21	 [label="[2 2]"];
+	22	 [label="[1 1]"];
+	24	 [label="[2 1]"];
+	25	 [label="[0 0]"];
+	27	 [label="[1 0]"];
+	213 [label="[2 0]"];
+
+	21 -> 22 [label="j=1"];
+	21 -> 22 [label="j=2"];
+	21 -> 24 [label=KA];
+	22 -> 25 [label="j=1"];
+	22 -> 25 [label="j=2"];
+	22 -> 27 [label=KA];
+	24 -> 213 [label="j=1"];
+	24 -> 27 [label="j=2"];
+	24 -> 27 [label=KA];
+}
