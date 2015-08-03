@@ -13,7 +13,7 @@ digraph {
 	22 -> 25 [label="j=1"];
 	22 -> 25 [label="j=2"];
 	22 -> 27 [label=KA];
-	24 -> 213 [label="j=1"];
+	24 -> 27 [label="j=1"];
 	24 -> 27 [label="j=2"];
-	24 -> 27 [label=KA];
+	24 -> 213 [label=KA];
 }
