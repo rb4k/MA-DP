@@ -131,15 +131,15 @@ Die mathematische Modellformulierung des stochastisch, dynamisches Programms aus
 
 Ein Knoten repräsentiert einen Systemzustand des Netzwerks mit den vorhandenen Kapazitäten $\textbf{c}$ zum Zeitpunkt $t$. Dabei wird als Benennung für den Knoten eine Zahlenfolge verwendet, bei dem die ersten Einträge die Ressourcenkapazität $\textbf{c}$ in Länge der Ressourcen $h$ entsprechen und der letzte Eintrag den Zeitpunkt $t$ aufzeigt. Bspw. zeigt der Startknoten des Beispiels die Zahlenfolge $[2\;1\;4]$, da das Netzwerk noch die volle Ressourcenkapazität $\textbf{c}=(2,1)$ aufweist und sich im Zeitpunkt $t=4$ befindet. Von diesem Systemzustand können jetzt nachfolgende Systemzustände abhängig der Produktanfragen erreicht werden. In diesem Netzwerk gibt es zwei Produkte $j$ und durch betrachten der Gleichung \eqref{DP2} wird klar, dass drei Optionen zum Erreichen des nachfolgenden Systemzustands zum Zeitpunkt $t-1=3$ möglich sind. Diese Optionen bilden die Kanten des Graphen. Es kann keine Anfrage nach einem Produkt $j$ eintreffend, dann wird der nachfolgende Systemzustand $[2\;1\;3]$ erreicht. Alternativ können Anfragen nach Produkt $j=1$ oder $j=2$ eintreffen und dementsprechend müssen die vorhanden Kapazitäten $\textbf{c}$ um den Ressourcenverbrauch $a_{11}=1$ bzw. $a_{22}=1$ reduziert werden. Daraus folgt, dass der Systemzustand $[1\;1\;3]$ bzw. $[2\;0\;3]$ im Netzwerk erreicht werden kann.
 
-Aufbauen auf dieser rekursiven Logik wird ein kompletter Entscheidungsbaum (Gerichteter und gewichteter Multigraph) aufgebaut. Er zeigt alle möglichen Systemzustände des Netzwerks. Die Rekursion wird abgebrochen, sofern ein Systemzustand aufgrund der Grenzbedingungen aus den Gleichungen \eqref{GB1} oder \eqref{GB2} nicht möglich ist. Abbildung \ref{B1} zeigt den Entscheidungsbaum für das eingeführte Beispiel.
+Aufbauen auf dieser rekursiven Logik wird ein gerichteter und gewichteter Multigraph aufgebaut. Er zeigt alle möglichen Systemzustände des Netzwerks. Die Rekursion wird abgebrochen, sofern ein Systemzustand aufgrund der Grenzbedingungen aus den Gleichungen \eqref{GB1} oder \eqref{GB2} nicht möglich ist. Abbildung \ref{B1} zeigt die möglichen Systemzustände für das eingeführte Beispiel.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=150mm]{Bilder/Beispiel1.pdf}
-    \caption{Darstellung des Entscheidungsbaums des beispielhaften Netzwerk RM}  \label{B1}
+    \caption{Darstellung der Systemzustände des beispielhaften Netzwerk RM}  \label{B1}
   \end{center}
 \end{figure}
 
-Anhand des Entscheidungsbaums mit den möglichen Systemzuständen aus der Abbildung \ref{B1} wird ersichtlich, welche Erwartungswerte für das Entscheidungsproblem der Auftragsannahme durch Rückwärtsinduktion gelöst werden müssen.\footnote{Vgl. ???, S. ???.} Dafür wird im ersten Schritt die Grenzbedingung aus Gleichung \eqref{GB1} betrachtet. Alle Systemzustände zum Zeitpunkt $t=0$ nehmen den Erwartungswert $V(\textbf{c}, t=0)=0$ an. Mit dieser Bedingung lassen sich die zeitlich zuvorkommenden Systemzustände mit $t=1$ berechnen. Es wird die Gleichung \eqref{DP2} angewendet, wobei beachtet werden muss, dass nicht für alle Systemzustände mit $t=1$ alle Produktanfragen möglich sind. Dies folgt aus der Grenzbedingung aus Gleichung \eqref{GB2}. Zur Veranschaulichung wird der Erwartungswert des Systemzustands $[1\;0\;1]$ mittels der Gleichung \eqref{DP2} berechnet.
+Anhand dieses Graphen mit den möglichen Systemzuständen aus der Abbildung \ref{B1} wird ersichtlich, welche Erwartungswerte für das Entscheidungsproblem der Auftragsannahme durch Rückwärtsinduktion gelöst werden müssen.\footnote{Vgl. ???, S. ???.} Dafür wird im ersten Schritt die Grenzbedingung aus Gleichung \eqref{GB1} betrachtet. Alle Systemzustände zum Zeitpunkt $t=0$ nehmen den Erwartungswert $V(\textbf{c}, t=0)=0$ an. Mit dieser Bedingung lassen sich die zeitlich zuvorkommenden Systemzustände mit $t=1$ berechnen. Es wird die Gleichung \eqref{DP2} angewendet, wobei beachtet werden muss, dass nicht für alle Systemzustände mit $t=1$ alle Produktanfragen möglich sind. Dies folgt aus der Grenzbedingung aus Gleichung \eqref{GB2}. Zur Veranschaulichung wird der Erwartungswert des Systemzustands $[1\;0\;1]$ mittels der Gleichung \eqref{DP2} berechnet.
 \begin{alignat*}{2}
 V(1,0,1)=\;&V(1,0,0)+p_{1}(1)\max[r_{1}-V(1,0,0)+V(0,0,0),0]\\
 &+p_{2}(1)\max[r_{2}-V(1,0,0)+V(0,-1,0),0]\\
@@ -148,7 +148,7 @@ V(1,0,1)=\;&V(1,0,0)+p_{1}(1)\max[r_{1}-V(1,0,0)+V(0,0,0),0]\\
 =\;&50\\
 \end{alignat*}
 
-Nach dieser Vorgehensweise der Rückwärtsinduktion erfolgt die Ermittlung alle Erwartungswerte der möglichen Systemzustände des Entscheidungsbaum. Tabelle \ref{Tab1} zeigt für den Entscheidungsbaum alle möglichen Systemzustände ($c_1,c_2,t$) mit den Erwartungswerten (ExpValue) und den möglichen Nachfolgern (Successor). Dabei werden die für die möglichen Systemzustände des Beispiels anhand der Spalte ID indiziert. 
+Nach dieser Vorgehensweise der Rückwärtsinduktion erfolgt die Ermittlung alle Erwartungswerte der möglichen Systemzustände. Tabelle \ref{Tab1} zeigt alle möglichen Systemzustände ($c_1,c_2,t$) mit den Erwartungswerten (ExpValue) und den möglichen Nachfolgern (Successor). Dabei werden die für die möglichen Systemzustände des Beispiels anhand der Spalte ID indiziert. 
 \begin{table}
 \begin{footnotesize}
     \caption{Ergebnistabelle für das beispielhafte Netzwerk RM} \label{Tab1}
@@ -160,17 +160,17 @@ Nach dieser Vorgehensweise der Rückwärtsinduktion erfolgt die Ermittlung alle 
 \end{footnotesize}
 \end{table}
 
-Zusätzlich zeigt die Tabelle die optimale Politik $j*$ für jeden Systemzustand, sowie den daraus resultierenden Nachfolger (Best Successor) und den um die OK reduzierten Ertrag ($r_j-OC_j$). Die optimale Politik $OP_{\textbf{c}, t}$ lässt sich anhand der Gleichung \eqref{OP} für jeden Systemzustand ermitteln. Für jede Kante im Entscheidungsbaum der Abbildung \ref{B1} kann damit der Ertrag abzgl. der OK hinterlegt werden ($r_{j}-OC_{j}$). Die optimale Politik $OP_{\textbf{c}, t}$ im betrachteten Systemzustand ist demnach die Kante bei der höchste Ertrag erzielt wird. Abbildung \ref{B1a} zeigt den Entscheidungsbaum mit den jeweiligen Erwartungswerten und der optimalen Politiken für jeden Systemzustand.
+Zusätzlich zeigt die Tabelle den besten Auftragseingang $j*$ für jeden Systemzustand, sowie den daraus resultierenden Nachfolger (Best Successor) und den um die OK reduzierten Ertrag ($r_j-OC_j$). Die optimale Politik $OP_{\textbf{c}, t}$ lässt sich anhand der Gleichung \eqref{OP} für jeden Systemzustand ermitteln. Für jede Kante des Graphens in Abbildung \ref{B1} kann damit der Ertrag abzgl. der OK hinterlegt werden ($r_{j}-OC_{j}$). Die optimale Politik $OP_{\textbf{c}, t}$ im betrachteten Systemzustand ist demnach die Kante bei der ein Ertrag größer gleich der OK erzielt wird. Abbildung \ref{B1a} zeigt alle Systemzustände und Übergänge als Graphen mit den jeweiligen Erwartungswerten und den besten Auftragseingang für jeden Systemzustand. Dabei muss hier beachtet werden, dass alle Übergänge bzw. Entscheidungen zur optimalen Politik gehören.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=150mm]{Bilder/Beispiel1a.pdf}
-    \caption{Darstellung des Entscheidungsbaums des beispielhaften Netzwerk RM (optimale Politiken)}  \label{B1a}
+    \caption{Darstellung der Systemzustände des beispielhaften Netzwerk RM (optimaler Auftragseingang)}  \label{B1a}
   \end{center}
 \end{figure}
 
-\textbf{???} Mit diesem Ergebnis kann eine strategische Politik abgeleitet werden. Diese strategische Politik kann dem Unternehmen helfen seine Instrumente der Marktbearbeitung zu optimieren. In diesem kleinen Betrachtungsfeld $T=4$ sollte das Unternehmen zum Zeitpunkt $t=4$ versuchen seine Instrumente in der Form auszurichten, dass eine Anfrage nach Produkt $j=2$ eintrifft. Nachfolgend sollte das Unternehmen zum Zeitpunkt $t=3$ und $t=2$ den Absatz von Produkt $j=1$ vorantreiben. Damit wäre der optimale Pfad des Entscheidungsbaums gefunden ($[2\;1\;4] \rightarrow_{j=2} [2\;0\;3] \rightarrow_{j=1} [1\;0\;2] \rightarrow_{j=1} [0\;0\;1]\rightarrow_{j=0} [0\;0\;0]$). Mit dem optimalen Pfad ist ein Ertrag in Höhe von 400 GE generiert. Bei Abweichung des Pfads in der operativen Planung der Unternehmensaktivitäten, z. B. durch nicht eintreffen der Anfrage $j=2$ zum Zeitpunkt $t=4$, gibt das Modell einen anderen Pfad mithilfe der optimalen Politiken an. Bspw. trifft zum Zeitpunkt $t=4$ nur die Anfrage nach Produkt $j=1$ ein. Dann muss das Unternehmen seine Instrumente an den neuen Pfad anpassen ($[2\;1\;4] \rightarrow_{j=1} [1\;1\;3] \rightarrow_{j=2} [0\;1\;2] \rightarrow_{j=1} [0\;0\;1]\rightarrow_{j=0} [0\;0\;0]$). Damit ist trotz der Abweichung ein Gesamtertrag von 400 GE möglich.
+\textbf{???} Mit diesem Ergebnis kann eine strategische Politik abgeleitet werden. Diese strategische Politik kann dem Unternehmen helfen seine Instrumente der Marktbearbeitung zu optimieren. In diesem kleinen Betrachtungsfeld $T=4$ sollte das Unternehmen zum Zeitpunkt $t=4$ versuchen seine Instrumente in der Form auszurichten, dass eine Anfrage nach Produkt $j=2$ eintrifft. Nachfolgend sollte das Unternehmen zum Zeitpunkt $t=3$ und $t=2$ den Absatz von Produkt $j=1$ vorantreiben. Damit wäre der beste Pfad des Graphen gefunden ($[2\;1\;4] \rightarrow_{j=2} [2\;0\;3] \rightarrow_{j=1} [1\;0\;2] \rightarrow_{j=1} [0\;0\;1]\rightarrow_{j=0} [0\;0\;0]$). Mit dem besten Pfad ist ein Ertrag in Höhe von 400 GE generiert. Bei Abweichung des Pfads in der operativen Planung der Unternehmensaktivitäten, z. B. durch nicht eintreffen der Anfrage $j=2$ zum Zeitpunkt $t=4$, gibt das Modell einen anderen Pfad mithilfe der optimalen Politiken an. Bspw. trifft zum Zeitpunkt $t=4$ nur die Anfrage nach Produkt $j=1$ ein. Dann muss das Unternehmen seine Instrumente an den neuen Pfad anpassen ($[2\;1\;4] \rightarrow_{j=1} [1\;1\;3] \rightarrow_{j=2} [0\;1\;2] \rightarrow_{j=1} [0\;0\;1]\rightarrow_{j=0} [0\;0\;0]$). Damit ist trotz der Abweichung ein Gesamtertrag von 400 GE möglich.
 
-Anhand des Beispiels wird klar, dass die Prognose über die Wahrscheinlichkeiten des Eintreffens einer Anfrage nach den Produkten $j\in\mathcal{J}$ die Erwartungswerte stark beeinflussen. Der potentielle Ertrag $r_{j}$ und die $OC_{j}$ beeinflussen maßgeblich die optimale Politik. Dies kann durch das Abwandeln der Parameter gezeigt werden:
+Anhand des Beispiels wird klar, dass die Prognose über die Wahrscheinlichkeiten des Eintreffens einer Anfrage nach den Produkten $j\in\mathcal{J}$ die Erwartungswerte stark beeinflussen. Der potentielle Ertrag $r_{j}$ und die $OC_{j}$ beeinflussen maßgeblich die optimale Politik sowie den besten Auftragseingang. Dies kann durch das Abwandeln der Parameter gezeigt werden:
 \begin{center}
 $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 150, \; T=4$
 \end{center}
@@ -181,12 +181,12 @@ $j = \{1, 2\}, \; h = \{1\}, \; r_{1} = 100, \; r_{2} = 150, \; T=4$
      p_{1}(t)=\begin{pmatrix} 0.5\\ 0.5\\ 0.5\\ 0.5  \end{pmatrix}, \;
      p_{2}(t)=\begin{pmatrix} 0.1\\ 0.1\\ 0.1\\ 0.1  \end{pmatrix}
   \]
-Bei dieser Definition der Parameter konkurrieren die Typen der Produktanfragen $j$ mit der einzigen Ressource $h$. Der nachfolgende Abbildung \ref{B2} zeigt den zugehörigen Entscheidungsbaum mit den Systemzuständen, den möglichen Entscheidungen und der grafischen Darstellung der optimalen Politik und die Tabelle \ref{Tab2} zeigt die berechneten Erwartungswerte sowie die optimale Politik anhand des um die OK reduzierten Ertrags für jeden Systemzustand.
+Bei dieser Definition der Parameter konkurrieren die Typen der Produktanfragen $j$ mit der einzigen Ressource $h$. Der nachfolgende Abbildung \ref{B2} zeigt den zugehörigen Graphen mit den Systemzuständen, den möglichen Entscheidungen und der grafischen Darstellung der optimalen Politik und die Tabelle \ref{Tab2} zeigt die berechneten Erwartungswerte sowie besten Auftragseingang anhand des um die OK reduzierten Ertrags für jeden Systemzustand.
 
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=150mm]{Bilder/Beispiel2.pdf}
-    \caption{Darstellung des Entscheidungsbaums des Netzwerk RM mit konkurrierenden Anfragen}  \label{B2}
+    \caption{Darstellung der Systemzustände des Netzwerk RM mit konkurrierenden Anfragen}  \label{B2}
   \end{center}
 \end{figure}
 
@@ -201,6 +201,6 @@ Bei dieser Definition der Parameter konkurrieren die Typen der Produktanfragen $
 \end{footnotesize}
 \end{table}
 
-Mit dem Beispiel wird klar, dass trotz des höheren Ertrags der Produktauftrags $j=2$ im Systemzustand $[3\,4]$ die optimale Politik die Annahme bzw. Vorausbuchung der Produktanfrage $j=1$ ist. Aufbauend auf dieser Entscheidung ist der optimale Pfad $[3\;4] \rightarrow_{j=1} [2\;3] \rightarrow_{j=1} [1\;2] \rightarrow_{j=1} [0\;1]\rightarrow_{j=0} [0\;0]$ und es wird ein Gesamtertrag von 300 GE generiert. Trifft zum Systemzustand $[3\,4]$ jedoch keine Anfrage ein ($j=0$), dann ist die optimale Politik im Systemzustand $[3\,3]$ die Annahme der Produktanfrage $j=2$. Dies resultiert aus der Tatsache, dass die OK dem potentiellen Ertrag entgegenwirkt. Durch diese Eigenschaft gelangt das System zum Zustand $[1\,2]$ mit einem Ertrag von 150 GE. In diesem System wäre über zwei Perioden noch die Annahme einer Anfrage $j=1$ möglich.
+Mit dem Beispiel wird klar, dass trotz des höheren Ertrags der Produktauftrags $j=2$ im Systemzustand $[3\,4]$ der beste Auftrag die Annahme bzw. Vorausbuchung der Produktanfrage $j=1$ ist. Aufbauend auf dieser Entscheidung ist der beste Pfad $[3\;4] \rightarrow_{j=1} [2\;3] \rightarrow_{j=1} [1\;2] \rightarrow_{j=1} [0\;1]\rightarrow_{j=0} [0\;0]$ und es wird ein Gesamtertrag von 300 GE generiert. Trifft zum Systemzustand $[3\,4]$ jedoch keine Anfrage ein ($j=0$), dann ist der beste Auftrag im Systemzustand $[3\,3]$ die Annahme der Produktanfrage $j=2$. Dies resultiert aus der Tatsache, dass die OK dem potentiellen Ertrag entgegenwirkt. Durch diese Eigenschaft gelangt das System zum Zustand $[1\,2]$ mit einem Ertrag von 150 GE. In diesem System wäre über zwei Perioden noch die Annahme einer Anfrage $j=1$ möglich.
 
 !!! Mehr !!!
