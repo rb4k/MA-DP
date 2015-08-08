@@ -53,6 +53,59 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
+			<string>{{115.75, 213.4999923706057}, {14.166666984558105, 16}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>Vertical</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUSerif-Italic</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
+			<key>ID</key>
+			<integer>131</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
+\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
+{\colortbl;\red255\green255\blue255;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+
+\f0\i\fs24 \cf0 -}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>Bounds</key>
 			<string>{{134.33333333333346, 272.25}, {360.1656977335611, 24}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
@@ -284,59 +337,6 @@
 
 \f0\i\fs18 \cf0 \expnd0\expndtw0\kerning0
 Beispielhaft m\'f6gliche Auftragseing\'e4nge innerhalb der Buchungsabschnitte: }</string>
-				<key>VerticalPad</key>
-				<integer>0</integer>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{107.66666666666664, 216.625}, {28.5, 16}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>FitText</key>
-			<string>Vertical</string>
-			<key>Flow</key>
-			<string>Resize</string>
-			<key>FontInfo</key>
-			<dict>
-				<key>Font</key>
-				<string>CMUSerif-Italic</string>
-				<key>Size</key>
-				<real>12</real>
-			</dict>
-			<key>ID</key>
-			<integer>126</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict>
-				<key>fill</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-				<key>stroke</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Pad</key>
-				<integer>0</integer>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUSerif-Roman;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-
-\f0\i\fs24 \cf0 ^}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -1626,7 +1626,7 @@ Beispielhaft m\'f6gliche Auftragseing\'e4nge innerhalb der Buchungsabschnitte: }
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-08-01 14:03:01 +0000</string>
+	<string>2015-08-07 08:17:37 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -1716,15 +1716,15 @@ Beispielhaft m\'f6gliche Auftragseing\'e4nge innerhalb der Buchungsabschnitte: }
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{61.333333333333336, 97.333333333333329}, {490.66666666666669, 390}}</string>
+		<string>{{0, -13}, {736, 585}}</string>
 		<key>Zoom</key>
-		<real>1.5</real>
+		<real>1</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Arbeitsfläche 1</string>
-				<real>1.5</real>
-				<real>2</real>
+				<real>1</real>
+				<real>4</real>
 			</array>
 		</array>
 	</dict>

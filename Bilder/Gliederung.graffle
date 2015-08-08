@@ -14,7 +14,7 @@
 	<key>BackgroundGraphic</key>
 	<dict>
 		<key>Bounds</key>
-		<string>{{0, 0}, {559, 783}}</string>
+		<string>{{0, 0}, {559.28997802734375, 782.8900146484375}}</string>
 		<key>Class</key>
 		<string>SolidGraphic</string>
 		<key>ID</key>
@@ -84,7 +84,7 @@
 \f1\i\b0  \
 \pard\tx195\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li199\fi-200\slleading40\pardirnatural
 \cf0 -	Grundlegendes zum L\'f6sen und Implementieren des Auftragsannahmeproblems\
--	Mathematische Erweiterung der Modellformulierung des Auftragsannahmeproblems\
+-	Mathematische Formulierung eines Modells zur Auftragsannahme- und Lagerhaltungsentscheidung\
 -	Numerische Untersuchung}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
@@ -794,7 +794,7 @@ Entscheidungsproblem der Auftragsannahme}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-08-02 09:26:41 +0000</string>
+	<string>2015-08-08 06:55:53 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -825,7 +825,7 @@ Entscheidungsproblem der Auftragsannahme}</string>
 		<key>NSPaperSize</key>
 		<array>
 			<string>size</string>
-			<string>{595, 842}</string>
+			<string>{595.28997802734375, 841.8900146484375}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>

@@ -79,11 +79,13 @@ V(\textbf{c},t)=-\infty \text{ wenn } c_{j}<0 \;\forall j\in\mathcal{J}
 auf, da eine jeweilig verbleibende Kapazität nach Bereitstellung des Produkts wertlos und eine negative Ressourcenkapazität nicht möglich ist. 
 
 Die Gleichung \eqref{DP} lässt sich umformen, indem die Entscheidungen über die Annahme und Ablehnung einer Produktanfrage separiert wird. Da $\sum_{j\in \mathcal{J}}p_{j}(t)+p_{0}(t)=1$ gilt, kann die Gleichung weiter vereinfacht werden:\footnote{Vgl. \cite{Spengler:2007aa}, S. 161.}
-\begin{equation*}
-V(\textbf{c},t)=\sum_{j\in\mathcal{J}}p_{j}(t) V(\textbf{c},t-1) + \sum_{j\in\mathcal{J}}p_{j}(t) \max[r_{j}-V(\textbf{c},t-1)+V(\textbf{c}-\textbf{a}_{j},t-1,0)]+p_{0}(t)V(\textbf{c},t-1)
-\end{equation*}
 \begin{equation}\label{DP2}
-=V(\textbf{c},t-1) + \sum_{j\in\mathcal{J}}p_{j}(t) \max[r_{j}-V(\textbf{c},t-1)+V(\textbf{c}-\textbf{a}_{j},t-1),0]
+\begin{alignat*}{2}
+V(\textbf{c},t)=\;& \sum_{j\in\mathcal{J}}p_{j}(t) V(\textbf{c},t-1)+ \sum_{j\in\mathcal{J}}p_{j}(t) \max[0,r_{j}-V(\textbf{c},t-1)\\
+&+V(\textbf{c}-\textbf{a}_{j},t-1)]+p_{0}(t)V(\textbf{c},t-1)\\
+=\;& V(\textbf{c},t-1) + \sum_{j\in\mathcal{J}}p_{j}(t) \max[0,\\
+&  r_{j}-V(\textbf{c},t-1)+V(\textbf{c}-\textbf{a}_{j},t-1)]
+\end{alignat*}
 \end{equation}
 
 Eine eintreffende Anfrage nach einem Produkt $j$ ist demnach dann akzeptiert, wenn der Ertrag $r_{j}$ größer gleich der Differenz des Erwartungswertes des Ertrags unter der Prämisse der Annahme der Produktanfrage und des Erwartungswertes des Ertrag unter der Prämisse der Ablehnung der Produktanfrage ist:
@@ -98,14 +100,14 @@ OC_{j} = V(\textbf{c},t-1)-V(\textbf{c}-\textbf{a}_{j},t-1)
 
 Somit erfolgt die Akzeptanz einer Anfrage nach einem Produkt $j\in\mathcal{J}$ ausschließlich nur dann, sofern die OK des Ressourcenverbrauchs niedriger als der Ertrag ist. Der maximal mögliche Erwartungswert unter Beachtung des Kapazität $\textbf{c}$ zum Zeitpunkt $t$ ist damit der Erwartungswert unter der Prämisse der Ablehnung der Anfrage zum nächsten Zeitpunkt $t-1$ inkl. der Summe der Erträge abzgl. der OK durch Annahme der möglichen Anfragen über aller Produkte $j\in\mathcal{J}$ und lässt sich mathematisch wie folgt definieren:
 \begin{equation}\label{DPoc}
-V(\textbf{c},t)=V(\textbf{c},t-1) + \sum_{j\in\mathcal{J}}p_{j}(t) \max[r_{j}-OC_{j},0]
+V(\textbf{c},t)=V(\textbf{c},t-1) + \sum_{j\in\mathcal{J}}p_{j}(t) \max[0,r_{j}-OC_{j}]
 \end{equation}
 
-Die optimale Politik des Netzwerks zum Zeitpunkt $t$ ist damit die Annahme der Anfrage nach Produkt $j$ mit dem höchsten Ertrag $r_{j}$ abzüglich der anfallenden $OC_{j}$:
+%Die optimale Politik des Netzwerks zum Zeitpunkt $t$ ist damit die Annahme der Anfrage nach Produkt $j$ mit dem höchsten Ertrag $r_{j}$ abzüglich der anfallenden $OC_{j}$:
 
-\begin{equation}\label{OP}
-OP_{\textbf{c}, t}:= \{ \; j\; | \max_{j\in\mathcal{J}} [r_{j}-OC_{j}] \} 
-\end{equation}
+%begin{equation}\label{OP}
+%OP_{\textbf{c}, t}:= \{ \; j\; | \max_{j\in\mathcal{J}} [r_{j}-OC_{j}] \} 
+%\end{equation}
 
 Zur Veranschaulichung des Netzwerk RM wird ein Netzwerk mit zwei Produkten $j\in\mathcal{J}$ und zwei Ressourcen $h\in\mathcal{H}$ betrachtet. Die Ressource $h=1$ hat eine Kapazität von $c_{1}=2$ und die Ressource $h=2$ hat eine Kapazität von $c_{2}=1$. Zur Ausführung des Produkt $j=1$ wird die Ressource $h=1$ mit einer Einheit benötigt und zur Ausführung des Produkt $j=2$ wird wiederum eine Einheit der Ressource $h=2$ gebraucht. Damit gilt $a_{11}=1$ und $a_{22}=1$. Durch Annahme einer Anfrage nach Produkt $j=1$ wird der Ertrag $r_{1}=100$ und durch Annahme von Produkt $j=2$ eine Ertrag von Ertrag $r_{2}=200$ generiert. Der Buchungshorizont entspricht $T=4$. Die Wahrscheinlichkeiten des Eintreffens eine Anfrage nach Produkt $j=1$ über die Buchungsperioden $t\in T$ lässt sich als Vektor $p_{1}(t)=(0.5, 0.5, 0.5, 0.5)$ beschreiben. Analog lassen sich die Wahrscheinlichkeiten für das Eintreffen der Produktanfragen $j=2$ als Vektor $p_{2}(t)=(0.1, 0.1, 0.1, 0.1)$ definieren. Die Gegenwahrscheinlichkeiten, dass keine Anfragen eintreffen, lassen sich mit $p_{0}(t)=1-\sum_{j\in \mathcal{J}}p_{j}(t)$ berechnen und bilden den Vektor $p_{0}(t)=(0.4, 0.4, 0.4, 0.4)$. Durch Vereinfachung der Gleichung \eqref{DP} zur Gleichung \eqref{DP2} werden die Gegenwahrscheinlichkeiten $p_{0}(t)$ nicht mehr benötigt und im weiteren Verlauf der Arbeit nicht mehr berücksichtigt.
 

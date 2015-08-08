@@ -1,69 +1,3 @@
-% !TEX encoding = UTF-8 Unicode
-\chapter{Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen}
-\markboth{3 Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung}{}
-\setcounter{footnote}{7}
-
-\section{Grundlegendes zum Lösen und Implementieren des Auftragsannahmeproblems}
-
-In Kapitel \ref{KapitelDP} ist das Grundmodell des Netzwerk RM für die Annahme von Kundenanfragen als \textit{Bellman'sche Funktionsgleichung} dargestellt. Gleichung \eqref{DP} zeigt die mathematische Modellformulierung und Gleichung \eqref{DP2} zeigt eine Vereinfachung der Modellformulierung. In diesem Kapitel wird dieses Modellformulierung in ein Computersystem implementiert und mittels dieser Implementierung erfolgt das exakte Lösen von vordefinierten Szenarien. Dabei wird das Grundmodell mit der Entscheidung über eine mögliche Lagerhaltung erweitert. Bei der Implementierung wird in dieser Arbeit schrittweise das Grundmodell mit neuen Parametern einer möglichen Lagerhaltungsentscheidung bei der Annahme von Kundenaufträgen ergänzt. Zum einen soll eine Verdeutlichung der Funktionsweise der verschiedenen Modellerweiterungen der \textit{Bellman'sche Funktionsgleichung} erfolgen und zum anderen wird das Ergebnis dieser schrittweisen Modellerweiterung für eine numerische Untersuchung verwendet.
-
-Bei der \textit{Bellman'sche Funktionsgleichung} \eqref{DP} aus Abschnitt \ref{Grundmodell} handelt es um ein stochastisch-dynamisches Optimierungsproblem in rekursiver Form.\footnote{Vgl. ???, S. ???} Das Optimierungsmodell besteht aus verschiedenen gleichartigen Teilproblemen und zur Lösung des gesamten Optimierungsmodells müssen alle Teilprobleme gelöst werden.\footnote{Vgl. ???, S. ???} Zur Lösung solcher rekusiven Modellformulierung wird auf das vom amerikanischen Mathematiker Richard Bellman entwickelte Konzept der \textbf{Dynamischen Programmierung (DP)} zurückgegriffen.\footnote{Vgl. ???, S. ???} Bei diesem Konzept werden die berechneten Teilergebnisse gespeichert und bei der weiteren Berechnung des Optimierungsmodells verwendet.\footnote{Vgl. ???, S. ???} Durch eine solche Implementierung kann die rekusive Berechnung des Modells verbessern werden, da auf bereits berechnete Teilergebnisse zurückgegriffen wird, anstelle diese neu zu berechnen.
-
-Eine Form der Implementierung des Konzepts der DP ist das Anwenden einer \textit{Memofunktion}. Mit der Memofunktion werden die Teilprobleme des Konstrukturs des Optimierungsmodells überführt, ob diese bereits schon berechnet sind.\footnote{Vgl. ???, S. ?} Bei dem Konstrukt handelt es sich um ein Graphen mit allen Teilproblemen und den einzelnen Übergängen in die nachfolgenden Teilprobleme. Zur Verdeutlichung einer Memofunktion im Netzwerk RM in der Auftragsannahme wird ein einfaches Beispiel eingeführt: $j = \{1, 2\}, \; h = \{1\}, \; \text{Startperiode } t=2, c_{1}=2, a_{11}=1, a_{12}=1.$
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=140mm]{Bilder/Einfach.pdf}
-    \caption{Rekursive Übergänge der Systemzustände ohne Memofunktion}  \label{Einfach}
-        {\footnotesize \textbf{Quelle:} ????} 
-    {\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
-  \end{center}
-\end{figure}
-
-Abbildung \ref{Einfach} zeigt die möglichen Systemzustände in Form der Knoten und Übergänge in Form der Kanten. Dabei ist ein Knoten definiert als Zahlenfolge $[c_h\; t]$ und zeigt damit den Kapazitätsbestand $c_h$ zum Zeitpunkt $t$. Durch Annahme einer Produktanfrage $j\in\mathcal{J}$ oder sofern keine Anfrage eintrifft, wird ein Systemzustand verlassen. Diese rekursive Folge des Graphen wird konstruiert durch Anwenden der Gleichung \eqref{DP}. Sofern keine Memofunktion Anwendung findet, werden die einzelnen Teilprobleme jeweils mehrfach ermittelt, da sie jeweils für das vorherige Teilproblem notwendig sind.
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=50mm]{Bilder/Einfach2.pdf}
-    \caption{Rekursive Übergänge mit Memofunktion}  \label{Einfach2}
-        {\footnotesize \textbf{Quelle:} ????} 
-    {\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
-  \end{center}
-\end{figure}
-
-Durch Anwenden einer Memofunktion können die möglichen Übergänge der Systemzustände des Beispiels vereinfacht werden, wie Abbildung \ref{Einfach2} zeigt. Jedes Systemzustand ist nur einmal im Netzwerk vorhanden und sofern der rekursive Verlauf auf ein bereits ermitteltes Teilproblem trifft, erfolgt das Abrufen der bereits gespeicherten Lösung. Anders formuliert bedeutet dies, dass nachdem der Systemzustand bzw. das Teilproblem $[1\; 1]$ aufgrund der Anfrage nach Produkt $j=1$ gelöst ist, die Berechnung des gleichen Systemzustands $[1\; 1]$ aufgrund der Anfrage nach Produkt $j=2$ nicht mehr notwendig ist. Das Ergebnis des Teilproblems wird direkt aus der Memofunktion abgerufen.
-
-Der in dieser Arbeit verwendete \textbf{Algorithmus} zum exakten Lösen des Auftragsannahmeproblems im Netzwerk RM verwendet eine solche Memofunktion. Der Algorithmus berechnet den Erwartungswert des maximal möglichen Ertrags für ein Netzwerk RM auf Basis der rekursiven Form der Gleichung \eqref{DP2}. Er durchläuft alle möglichen Teilprobleme bzw. Systemzustände des Netzwerks, indem der Algorithmus sich selbst mit angepassten Parametern aufruft. Als Grenzen für die rekursive Abfolge werden die Grenzbedingungen \eqref{GB1} und \eqref{GB2} hinterlegt. Sofern eine dieser Grenzen erreicht ist bzw. die Lösungen für die notwendigen nachfolgenden Teilprobleme vorhanden sind, kann das Teilproblem gelöst werden. Somit erfolgt das Lösen des Optimierungsproblems durch Rückwärtsinduktion der rekursiven Folge, wobei bei jedem Teilproblem geprüft wird, ob bereits eine Lösung in der Memofunktion vorliegt. Nachfolgend wird der verwendete Algorithmus als Pseudocode dargestellt.
-
-\begin{algorithm}[H]
-\textbf{Pseudocode: Auftragsannahmeproblem im Netzwerk RM;\\ 
-Ermittlung des Erwartungswerts $V(\textbf{c},t)$}\\
-\Ein{$Memofunktion$}
-\Ein{$\mathcal{J}$, $\textbf{c}$, $t$ sowie $\textbf{a}_j$, $r_{j}$ und $p_j(t)\; \forall j\in\mathcal{J}$}
-\uWenn{$V(\textbf{c},t) \notin Memofunktion$}{
-	\uWenn{$t \neq 0$}{
-		$value^{reject} = V(\textbf{c},t-1)$\\
-		\FuerJedes{$j\in\mathcal{J}$}{
-			\uWenn{$\textnormal{\textbf c}-\textnormal{\textbf a}_j\ge \textnormal{\textbf{0}}$}{
-				$value_{j}^{accept} = p_j(t)\cdot\max[r_{j}-value^{reject}+V(\textnormal{\textbf c}-\textnormal{\textbf a}_j,t-1),0]$}
-			\uSonst{Grenzbedingung \eqref{GB2}: $V(\textnormal{\textbf c}-\textnormal{\textbf a}_j,t-1)=-\infty$\\
-			$value_{j}^{accept} = p_j(t)\cdot\max[r_{j}-value^{reject}-\infty,0]$}
-			}
-		$V(\textbf{c},t)=value^{reject} + \sum_{j\in\mathcal{J}}value_j^{accept}$}
-	\uSonst{Grenzbedingung \eqref{GB1}: $V(\textbf{c},t)=0$}
-	$Memofunktion = Memofunktion+V(\textbf{c},t)$}
-\lSonst{$V(\textbf{c},t) \in Memofunktion$}
-\Aus{$V(\textbf{c},t)$}
-%{\footnotesize \textbf{Quelle:} \cite{bouleimen2003new}, S. 273}
-\end{algorithm}
-
-Zur Implementierung des Algorithmus zum Lösen des Grundmodells des Auftragsannahmeproblems im Netzwerk RM wird die Programmiersprache \texttt{Python/2.7.1} verwendet. Es handelt sich um eine höhere Programmiersprache mit einem Interpreter.\footnote{Vgl. ???, S. ??} Als  Kommandozeileninterpreter wird \texttt{IPython/3.2.1} genutzt. Zur Verbesserung der Laufzeit der Implementierung wird auf die Programmbibliothek \texttt{NumPy/}\texttt{1.9.2} zurückgegriffen. Mit dieser Programmbibliothek ist es möglich multidimensionale Datenstrukturen zu formen und mit den integrierten numerischen Algorithmen sowie mathematischen Werkzeugen zu bearbeiten.\footnote{Vgl. ???, S. ???} Dabei ist \texttt{NumPy/} \texttt{1.9.2} ein Bestandteil von \texttt{SciPy/0.15.1}.\footnote{Vgl. ???, S. ??} Die Laufzeitverbesserung kommt zu Stande, da die Funktionen der Programmbibliothek hauptsächlich in der Programmiersprache \texttt{C} geschrieben sind.\footnote{Vgl. ???, S. ??} Zusätzlich wird die Programmbibliothek \texttt{NetworkX/1.9.1} verwendet, um die ermittelten Erwartungswerte in eine Netzwerkdatenstruktur zu überführen. Diese Netzwerkdatenstruktur ist explizit für Multigraphen geeignet, was für diese Problemstellung notwendig ist. Die Teilprobleme werden miteinander in Beziehung gesetzt, indem ein Teilproblem ein Knoten bildet und die für das Teilproblem notwendigen nachfolgenden Teilprobleme die Kanten der Netzwerkdatenstruktur bilden. Dadurch wird das Optimierungsproblem als Netzwerk interpretierbar. Weiter kann dieser Netzwerkdatenstruktur grafisch expotiert werden, indem eine für das Programm \texttt{GraphViz/2.38.0} verwertbare Datei erzeugt wird. Dadurch ist das Rendern der jeweiligen Netzwerkdatenstruktur möglich. Sämtliche in dieser Arbeit abgebildeten Entscheidungsbäume sind mit dem Programm \texttt{GraphViz/2.38.0} erstellt. Zusätzlich erfolgt die Verwaltung der Daten durch die Datenanalyse-Programmbibliothek \texttt{Pandas/0.16.2}. Nachfolgend wird das Grundmodell auf Basis der \textit{Bellman'schen Funktionsgleichung} mit der Lagerhaltungsentscheidung erweitert und der hier aufgeführte Algorithmus mit den aufgeführten Erweiterungen umgeformt. Im Anschluss dieses Kapitels erfolgt die abschließende numerische Untersuchung von Szenarien....
-
-%Das Optimierungsmodell verwendet eine parallele Programmierung, womit die Laufzeit jedoch nur im geringen Maße verbessert wird. Dieser Sachverhalt und die numerische Untersuchung des Algorithmus für die Auftragsannahme von auftragsbezogenen Instandhaltungsprozessen anhand von Szenarien sind im Abschnitt \ref{Untersuchung} aufgeführt. Im Vorfeld muss jedoch die Erweiterung des Grundmodells um das Entscheidungsproblem der Instandhaltung von Produkten erfolgen. Dies wird im nachfolgenden Abschnitt \ref{Umformung} durchgeführt.
-
-
-\section{Mathematische Erweiterung der Modellformulierung des Auftragsannahmeproblems}\label{Umformung}
-
 \subsection{Lagerentnahmeentscheidung}
 
 Die Gleichung \eqref{DP} wird in der Modellerweiterung der Lagerentnahmeentscheidung um den Parameter des Lagerbestands $y_{j}$ erweitert. In Bezug des Ausgangsproblems der Annahmeentscheidung über auftragsbezogenen Instandhaltungsprozessen ist dieser Schritt der Modellerweiterung nötig, damit ein Parameter für bereits reparierte Produkte im Modell vorhanden ist. 
@@ -278,7 +212,8 @@ Es ist damit gezeigt, dass die Kapazität $c_{1}$ der Ressource $h=1$ durch den 
 
 \subsection{Erneuerung von Ressourcen innerhalb des Buchungshorizonts}
 
-Wie die vergangenen Modellerweiterungen zeigen, erfolgt mit den bisherigen Modellerweiterung eine Umschichtung der Kapazitäten des Netzwerks hin zu den Lagerbestand $\textbf{y}$ bzw. $\textbf{y}^{res}$. Sofern es sich um ein Ressourcenlager $\textbf{y}^{res}$ handelt, werden die notwendigen Kapazitäten $c_{h}$ der Ressourcen $h\in\mathcal{H}$ für ein Produkt $j$ mit niedrigem Ertrag auf den Lagerbestandsparameter $\textbf{y}^{res}$ umverteilt, damit die Akzeptanz eine nachfolgende Anfrage nach einem anderweitigen Produkt $j\in\mathcal{J}$ mit höherem Ertrag $r_{j}$ über den Lagerparameter $\textbf{y}^{res}$ erfolgen kann. Damit ist gezeigt, dass mithilfe der Modellerweiterung der \textit{Bellman'schen Funktionsgleichung} für das Netzwerk RM die optimale Politik ist, Anfragen mit niedrigem Ertrag zugunsten zukünftiger Anfragen mit höherem Ertrag abzulehnen. Mit dieser Ablehnung geht die Kapazitätserhöhung des Lagerbestands $\textbf{y}^{res}$ mit den dafür notwendigen Ressourcen $h\in\mathcal{H}$ einher, die für die Produktanfrage $j$ mit hohen Ertrag $r_j$ notwendig sind.
+Wie die vergangenen Modellerweiterungen zeigen, erfolgt mit den bisherigen Modellerweiterung eine Umschichtung der Kapazitäten des Netzwerks hin zu den Lagerbestand $\textbf{y}$ bzw. $\textbf{y}^{res}$. Sofern es sich um ein Ressourcenlager $\textbf{y}^{res}$ handelt, werden die notwendigen Kapazitäten $c_{h}$ der Ressourcen $h\in\mathcal{H}$ für ein Produkt $j$ mit niedrigem Ertrag auf den Lagerbestandsparameter $\textbf{y}^{res}$ umverteilt, damit die Akzeptanz eine nachfolgende Anfrage nach einem anderweitigen Produkt $j\in\mathcal{J}$ mit höherem Ertrag $r_{j}$ über den Lagerparameter $\textbf{y}^{res}$ erfolgen kann. %Damit ist gezeigt, dass mithilfe der Modellerweiterung der \textit{Bellman'schen Funktionsgleichung} für das Netzwerk RM die optimale Politik ist, Anfragen mit niedrigem Ertrag zugunsten zukünftiger Anfragen mit höherem Ertrag abzulehnen.
+Mit der Umverteilung zum Lagerbestand $\textbf{y}^{res}$ erfolgt eine Kapazitätserhöhung der notwendigen Ressourcen $h\in\mathcal{H}$ für die Produktanfrage $j$ mit hohen Ertrag $r_j$ einher.
 
 Wie im vorherigen Abschnitt gezeigt, müssen jedoch gewisse Rahmenbedingungen für eine Ablehnung von Produktanfragen $j\in\mathcal{J}$ mit niedrigem Ertrag gegeben sein. Die Kapazitäten $\textbf{c}$ des Netzwerks müssen einerseits ausreichend groß sein, damit Anfragen nach dem Produkt $j$ mit niedrigem Ertrag $r_{j}$ abgelehnt und auf das Lager $\textbf{y}^{res}$ umverteilt werden können, aber anderseits niedrigen als der notwendige Bedarf $\textbf{a}_{j}$ für das Produkt $j$ mit höherem Ertrag. Zusätzlich muss die Differenz zwischen den vorhanden Kapazitäten $\textbf{c}$ und der notwendigen Kapazitäten $\textbf{a}_{j}$ für die Produktanfrage $j$ mit hohem Ertrag auf dem Lager $\textbf{y}^{res}$ vorhanden sein. Wären ausreichend Kapazitäten $\textbf{c}$ für beide Arten der Produktanfragen $j\in\mathcal{J}$ möglich, dann wäre eine Umverteilung auf das Lager aufgrund der Gleichung \eqref{GB4} unnötig. Die notwendigen Kapazitäten $c_{h}$ der Ressourcen $h\in\mathcal{H}$ würden direkt für die Anfrage nach dem Produkt $j$ mit hohem Ertrag Verwendung finden und eingeplant. Die optimale Politik wäre das Produkt $j$ mit hohem Ertrag $r_{j}$ frühzeitig einzuplanen, sofern Anfragen für das Produkt unter Beachtung der Wahrscheinlichkeiten $p_{j}(t)$ zu den Zeitpunkten $t\in T$ eintreffen. Anders formuliert, die Option der Annahme einer Anfrage nach dem Produkt $j$ mit hohem Ertrag wäre im Systemzustand mit ausreichendem Kapazitäten $c_{h}$ zum Zeitpunkt $t$ möglich und, sofern der Ertrag aufgrund der OK des Netzwerks nicht zu stark beeinflussen wird, optimal.
 
@@ -352,9 +287,9 @@ Zu beachten ist jedoch, dass durch das Betrachtung der regenerierten Ressourcen 
 
 Das Modell des Netzwerk RM wird jetzt um eine weitere Eigenschaft erweitert. Sofern angenommen wird, dass es sich bei den Ressourcen um flexible und regenerative Ressourcen handelt, dann ist eine beliebige Aufstockung des Lagerbestands möglich. Anders formuliert, eine Ressource $h\in\mathcal{H}$ für eine Produktanfrage $j\in\mathcal{J}$ mit dem notwendigen Verbrauch bzw. Ressourceneinsatz $\textbf{a}_j$ wird verwendet um einen beliebigen Lagerbestand an Ressourcen $\textbf{y}^{res}$ zu erhöhen. Zur Verdeutlichung wird ein einfaches Fallbeispiel gebildet. Sei die Ressource $h=1$ eine Arbeitsstunde eines Werksarbeiter, der in dieser Stunde für die Fertigung eines bestimmten Produkts $j=1$ zuständig ist. Das Produkt $j=1$ kann z. B. ein Taschenrechner sein. Die Produktion eines Taschenrechners bedarf einer Stunde der Ressource $h=1$. Jetzt trifft im Zeitverlauf des betrachteten Buchungshorizonts auch eine Anfrage nach einem Produkt $j=2$ ein. Bei dem Produkt handelt es sich um einen hochwertigen Computer, der einen höheren Ertrag $r_{2}$ erzielt. Für das Beispiel wird angenommen, dass der Werksarbeiter die Fertigkeiten besitzt diesen Computer zu fertigen, obwohl dieses bei der Ressourcenplanung des Unternehmens nicht vorgesehen ist. Zur Annahme der Anfrage werden dafür zwei Komponenten der Ressource $h=2$ benötigt. Damit gilt ein Ressourcenverbauch von $a_12=2$ zur Annahme der Anfrage nach Produkt $j=2$. In diesem einfachen Beispiel gehen wird davon aus, dass die Arbeitsstunden der Ressource $h=1$ aufgewendet werden, damit die erforderlichen Komponenten hergestellt und auf Lager gelegt werden. Diese Transformation erfolgt im Ausmaß des Ressourcenverbrauchs $a_{j}$. D. h. es kann nur so viel auf das Lager transferiert werden, wie der Ressourcenverbrauch $a_{j}$ ermöglicht. Die unterschiedlichen Ressourcen sind damit substituierbar.
 
-Sofern angenommen wird, dass der Buchungshorizont $T$ und die Kapazität $c_1$ ausreichend groß sind, sowie kein Lagerbestand $y^{res}_1$ für die Ressource $h=1$ vorhanden ist, dann ist die optimale Politik des Beispiels den Anfragen nach dem Taschenrechner nicht nachzugehen und die Anfrage nach dem Computer zu befriedigen. Dies erfolg durch aufwenden der Ressource $h=2$ zur Erhöhung des Lagerbestands $y^{res}_{2}$ der Ressource $h=2$.
+Sofern angenommen wird, dass der Buchungshorizont $T$ und die Kapazität $c_1$ ausreichend groß sind, sowie kein Lagerbestand $y^{res}_1$ für die Ressource $h=1$ vorhanden ist, dann sollte die optimale Politik des Beispiels sein, die Anfragen nach dem Taschenrechner nicht nachzugehen und die Anfrage nach dem Computer zu befriedigen. Dies erfolg durch aufwenden der Ressource $h=2$ zur Erhöhung des Lagerbestands $y^{res}_{2}$ der Ressource $h=2$.
 
-Für die Formulierung dieses Modellerweiterung wird der Vektor $\textbf{m}$ eingeführt. Bei dem Vektor handelt es sich um die Lagerbestandserhöhung in Abhängigkeit des Ressourceneinsatzes $\textbf{a}_{j}$ der Produktanfrage $j\in\mathcal{J}$. Für jedes Produkt $j\in\mathcal{J}$ existiert eine Menge $\mathcal{M}_j$ an möglichen Modi $\textbf{m}$, die den Lagerbestand $y^{res}_h$ in Höhe des Ressourcenverbrauchs $a_{j}$ erhöhen können. Die Menge $\mathcal{M}_j$ beinhaltet damit alle möglichen Transformationen des Ressourceneinsatzes $a_{j}$ eines Produkts $j\in\mathcal{J}$. Sei $\hat{j}$ eine Produktanfrage mit dem Ressourcenverbrauch $a_{\hat{j}}=(2,0,0,0)$, dann existiert eine Menge $\mathcal{M}_{\hat{j}}$ mit allen möglichen Ausführungsmodi $\textbf{m}$ der Transformation des Ressourcenverbauchs. Für $a_{\hat{j}}=(2,0,0,0)$ beinhaltet die Menge $\mathcal{M}_{\hat{j}}$ die Ausführungsmodi $\textbf{m}$: $\{ (2, 0, 0, 0), (1, 1, 0, 0), (1, 0, 1, 0),$ $(1, 0, 0, 1), (0 ,2, 0, 0), (0, 1, 1, 0), (0, 1, 0, 1), (0, 0, 2, 0),$ $(0, 0, 1, 1), (0, 0, 0, 2)\}$.
+Für die Formulierung dieses Modellerweiterung wird der Vektor $\textbf{m}$ eingeführt. Bei dem Vektor handelt es sich um die Lagerbestandserhöhung in Abhängigkeit des Ressourceneinsatzes $\textbf{a}_{j}$ der Produktanfrage $j\in\mathcal{J}$. Für jedes Produkt $j\in\mathcal{J}$ existiert eine Menge $\mathcal{M}_j$ an möglichen Modi $\textbf{m}$, die den Lagerbestand $y^{res}_h$ in Höhe des Ressourcenverbrauchs $a_{j}$ erhöhen können. Die Menge $\mathcal{M}_j$ beinhaltet damit alle möglichen Transformationen des Ressourceneinsatzes $a_{j}$ eines Produkts $j\in\mathcal{J}$. Sei $j$ eine Produktanfrage mit dem Ressourcenverbrauch $a_{j}=(2,0,0,0)$, dann existiert eine Menge $\mathcal{M}_{j}$ mit allen möglichen Ausführungsmodi $\textbf{m}$ der Transformation des Ressourcenverbauchs. Für $a_{j}=(2,0,0,0)$ beinhaltet die Menge $\mathcal{M}_{j}$ die Ausführungsmodi $\textbf{m}$: $\{ (2, 0, 0, 0), (1, 1, 0, 0), (1, 0, 1, 0),$ $(1, 0, 0, 1), (0 ,2, 0, 0), (0, 1, 1, 0), (0, 1, 0, 1), (0, 0, 2, 0),$ $(0, 0, 1, 1), (0, 0, 0, 2)\}$.
 
 Damit lässt sich die \textit{Bellman'schen Funktionsgleichung} für das Netwerk RM mit der Inanspruchnahme der Kapazitäten zur Aufstockung eines beliebigen Lagerbestands formulieren:
 \begin{equation}\label{dif}
@@ -419,9 +354,9 @@ Diese Modellformulierung zeigt, dass eine Transformation der Ressourcen sinnvoll
 
 \subsection{Inanspruchnahme der Kapazitäten zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen}
 
-Bei der Modellerweiterung der Inanspruchnahme der Kapazitäten zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen wird die \textit{Bellman'schen Funktionsgleichung} \ref{dif} mit der Eigenschaft erweitert, dass die Ressourcen $h\in\mathcal{H}$ und die zugehörigen Kapazitäten $c_{h}$ für bestimmte Buchungsabschnitte $\hat{t}\in \hat{T}$ vorgesehen sind. Ein Buchungsabschnitt $\hat{t}$ beschreibt eine bestimmte Anzahl von Buchungsperioden $t\in T$ und damit ist $\hat{T}\subseteq T$. Der Parameter $h$ wird mit dem hochgestellte Index zum zugehörigen Buchungsabschnitt $\hat{t}$ ergänzt ($\exists{!\hat{t}}\in\hat{T}\; \forall\; h^{\hat{t}}\in\mathcal{H}$). In dieser Arbeit wird im Folgenden nur von einer einzelnen Ressource $h^{\hat{t}}$ ausgegangen. Ein Eintrag im Vektor $\textbf{c}^{\hat{t}}$ beschreibt damit die Kapazitätseinheiten der Ressource $h^{\hat{t}}$ für den Buchungsabschnitt $\hat{t}\in\hat{T}$. Mit Abschluss des Buchungsabschnitts $\hat{t}$ wird die Kapazität $c^{\hat{t}}_{h^{\hat{t}}}$ für eine Leistungserstellung verwendet und die verbleibenden Kapazitätseinheiten aus $c^{\hat{t}}_{h^{\hat{t}}}$ sind für die nachfolgenden Buchungsabschnitte nicht mehr verwendbar. Durch diese Eigenschaft können Anfragen betrachtet werden, die speziell für bestimmte Zeitpunkte der Leistungserstellung eintreffen sollen. 
+Bei der Modellerweiterung der Inanspruchnahme der Kapazitäten zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen wird die \textit{Bellman'schen Funktionsgleichung} \ref{dif} mit der Eigenschaft erweitert, dass die Ressourcen $h\in\mathcal{H}$ und die zugehörigen Kapazitäten $c_{h}$ für bestimmte Buchungsabschnitte $\bar{t}\in \bar{T}$ vorgesehen sind. Ein Buchungsabschnitt $\bar{t}$ beschreibt eine bestimmte Anzahl von Buchungsperioden $t\in T$ und damit ist $\bar{T}\subseteq T$. Der Parameter $h$ wird mit dem hochgestellte Index zum zugehörigen Buchungsabschnitt $\bar{t}$ ergänzt ($\exists{!\bar{t}}\in\bar{T}\; \forall\; h^{\bar{t}}\in\mathcal{H}$). In dieser Arbeit wird im Folgenden nur von einer einzelnen Ressource $h^{\bar{t}}$ ausgegangen. Ein Eintrag im Vektor $\textbf{c}^{\bar{t}}$ beschreibt damit die Kapazitätseinheiten der Ressource $h^{\bar{t}}$ für den Buchungsabschnitt $\bar{t}\in\bar{T}$. Mit Abschluss des Buchungsabschnitts $\bar{t}$ wird die Kapazität $c^{\bar{t}}_{h^{\bar{t}}}$ für eine Leistungserstellung verwendet und die verbleibenden Kapazitätseinheiten aus $c^{\bar{t}}_{h^{\bar{t}}}$ sind für die nachfolgenden Buchungsabschnitte nicht mehr verwendbar. Durch diese Eigenschaft können Anfragen betrachtet werden, die speziell für bestimmte Zeitpunkte der Leistungserstellung eintreffen sollen. 
 
-Die Buchungsabschnitte $\hat{t}\in \hat{T}$ lassen sich somit als zusammenhängenden Buchungsperioden $t\in T$ mit einer vorhandenen Ressourcenkapazität $c^{\hat{t}}_{h^{\hat{t}}}$ der Ressource $\hat{t}$ definieren, wie Abbildung \ref{IH} anhand eines Beispiels aufzeigt. In dem Beispiel wird ein Netzwerk mit einer Ressource $h^{\hat{t}}\in\mathcal{H}$ betrachtet, die auf drei Buchungsabschnitten $\hat{t}\in\hat{T}$ aufgeteilt wird. Der Buchungshorizont $T$ entspricht 15 Perioden, die sich auf die Buchungsabschnitte gleichmäßig verteilen. Zusätzlich zeigt die Abbildung die Verteilung der möglichen Auftragseingänge der drei Produktanfragen $j\in\mathcal{J}$. Sie entspricht der Wahrscheinlichkeitsverteilung $p_j(t)\; \forall\; j\in\mathcal{J}$. Sofern eine Produktanfrage $j$ nicht zur Buchungsperiode $t$ möglich ist, nimmt der Parameter $p_j(t)$ den Wert $0$ an und die Anfrage ist in der Buchungsperiode $t$ nicht möglich. 
+Die Buchungsabschnitte $\bar{t}\in \bar{T}$ lassen sich somit als zusammenhängenden Buchungsperioden $t\in T$ mit einer vorhandenen Ressourcenkapazität $c^{\bar{t}}_{h^{\bar{t}}}$ der Ressource $\bar{t}$ definieren, wie Abbildung \ref{IH} anhand eines Beispiels aufzeigt. In dem Beispiel wird ein Netzwerk mit einer Ressource $h^{\bar{t}}\in\mathcal{H}$ betrachtet, die auf drei Buchungsabschnitten $\bar{t}\in\bar{T}$ aufgeteilt wird. Der Buchungshorizont $T$ entspricht 15 Perioden, die sich auf die Buchungsabschnitte gleichmäßig verteilen. Zusätzlich zeigt die Abbildung die Verteilung der möglichen Auftragseingänge der drei Produktanfragen $j\in\mathcal{J}$. Sie entspricht der Wahrscheinlichkeitsverteilung $p_j(t)\; \forall\; j\in\mathcal{J}$. Sofern eine Produktanfrage $j$ nicht zur Buchungsperiode $t$ möglich ist, nimmt der Parameter $p_j(t)$ den Wert $0$ an und die Anfrage ist in der Buchungsperiode $t$ nicht möglich. 
 
 \begin{figure}[h!]
   \begin{center}
@@ -431,17 +366,17 @@ Die Buchungsabschnitte $\hat{t}\in \hat{T}$ lassen sich somit als zusammenhänge
   \end{center}
 \end{figure}
 
-Weiter gibt es die Möglichkeit der Transformation der Ressourcenkapazität hin zu einem Lagerbestand. Der Parameter $y^{\hat{t}}$ dient hier als Lagerbestand für die unterschiedlichen Buchungsabschnitte $\hat{t}\in\hat{T}$. Die Transformation bzw. Instandhaltung erfolgt weiterhin aufgrund des Parameters $a_j$. Es wird damit unterstellt, dass anstelle der Auftragsannahme eines Produkts $j$ die Kapazität der Ressource Verwendung finden den Lagerbestand mit den zukünftig geforderten Produkten zu befühlen. Da in dieser Modellformulierung nur von einer Ressource $h^{\hat{t}}$ ausgegangen wird, erfolgt die Bereinigung des Parameters $a_{j}$ um den Index für die Ressource. Für die Modellerweiterung werden jedoch abhängig des aktuell betrachteten Buchungsabschnitts $\hat{t}\in\hat{T}$ unterschiedliche Varianten des Vektors $\textbf{a}_{j}^{\hat{t}}$ für die Produktanfragen $j\in\mathcal{J}$ benötigt. Dies resultiert aus dem Sachverhalt, dass der Vektor $\textbf{a}_{j}^{\hat{t}}$ nur einen Eintrag für den benötigen Ressourcenverbrauch der Produktanfrage $j\in\mathcal{J}$ besitzt und dieser abhängig des Buchungsabschnitts $\hat{t}\in\hat{T}$ wechselt. Existieren zum Beispiel zwei Buchungsabschnitte $\hat{t}$ und beläuft sich der Ressourcenverbauch $a_j$ einer Produktanfrage $j$ auf 2 Einheiten, dann kann die Reduktion der Kapazitäten $c^{\hat{t}}_{h^{\hat{t}}}$ zu den jeweiligen Buchungsabschnitten $\hat{t}\in\hat{T}$ erfolgen. Es existieren damit zwei Vektoren für den Ressourcenverbrauch für die Produktanfrage: ${\textbf{a}_{j}^{\hat{t}}}^{\textbf{T}}=\{ (2,0), (0,2)\}$.
+Weiter gibt es die Möglichkeit der Transformation der Ressourcenkapazität hin zu einem Lagerbestand. Der Parameter $y^{\bar{t}}$ dient hier als Lagerbestand für die unterschiedlichen Buchungsabschnitte $\bar{t}\in\bar{T}$. Die Transformation bzw. Instandhaltung erfolgt weiterhin aufgrund des Parameters $a_j$. Es wird damit unterstellt, dass anstelle der Auftragsannahme eines Produkts $j$ die Kapazität der Ressource Verwendung finden den Lagerbestand mit den zukünftig geforderten Produkten zu befühlen. Da in dieser Modellformulierung nur von einer Ressource $h^{\bar{t}}$ ausgegangen wird, erfolgt die Bereinigung des Parameters $a_{j}$ um den Index für die Ressource. Für die Modellerweiterung werden jedoch abhängig des aktuell betrachteten Buchungsabschnitts $\bar{t}\in\bar{T}$ unterschiedliche Varianten des Vektors $\textbf{a}_{j}^{\bar{t}}$ für die Produktanfragen $j\in\mathcal{J}$ benötigt. Dies resultiert aus dem Sachverhalt, dass der Vektor $\textbf{a}_{j}^{\bar{t}}$ nur einen Eintrag für den benötigen Ressourcenverbrauch der Produktanfrage $j\in\mathcal{J}$ besitzt und dieser abhängig des Buchungsabschnitts $\bar{t}\in\bar{T}$ wechselt. Existieren zum Beispiel zwei Buchungsabschnitte $\bar{t}$ und beläuft sich der Ressourcenverbauch $a_j$ einer Produktanfrage $j$ auf 2 Einheiten, dann kann die Reduktion der Kapazitäten $c^{\bar{t}}_{h^{\bar{t}}}$ zu den jeweiligen Buchungsabschnitten $\bar{t}\in\bar{T}$ erfolgen. Es existieren damit zwei Vektoren für den Ressourcenverbrauch für die Produktanfrage: ${\textbf{a}_{j}^{\bar{t}}}^{\textbf{T}}=\{ (2,0), (0,2)\}$.
 
-Aufgrund der bisherigen Modellformulierung wird die Modifizierung der Menge an möglichen Ausführungsmodi $\textbf{m}\in\mathcal{M}_{j}$ benötigt. Die Ressource $h^{\hat{t}}$ ist speziell für die jeweilige Leistungsperiode $\hat{t}\in \hat{T}$ vorgesehen und daher kann eine Transformation der Ressource $h^{\hat{t}}$ aus der aktuellen Leistungsperiode $\hat{t}$ nur zu der aktuellen und zu den nächstfolgenden Leistungsperioden $\hat{t}\in \hat{T}$ erfolgen. Sei der Parameter $\tilde{t}$ alle möglichen nachfolgenden Buchungsabschnitte des Buchungsabschnitts $\hat{t}$, dann ist die Menge aller möglichen Ausführungsmodi $\mathcal{M}_{j}^{\tilde{t}\ge \hat{t}}\subseteq\mathcal{M}_j$. Die Menge wird im nachfolgenden als $\mathcal{M}_{j}^{+}$ bezeichnet. Damit existieren zum Beispiel für die Anfrage nach $j$ aufgrund des Ressourcenverbrauchs $\textbf{a}_{j}^{\hat{t}}=(0,2,0,0)$ die Ausführungsmodi $\mathcal{M}_{j}^{+}$: $\{ (0 ,2, 0, 0), (0, 1, 1, 0), (0, 1, 0, 1),$ $(0, 0, 2, 0),$ $(0, 0, 1, 1), (0, 0, 0, 2)\}$. 
+Aufgrund der bisherigen Modellformulierung wird die Modifizierung der Menge an möglichen Ausführungsmodi $\textbf{m}\in\mathcal{M}_{j}$ benötigt. Die Ressource $h^{\bar{t}}$ ist speziell für die jeweilige Leistungsperiode $\bar{t}\in \bar{T}$ vorgesehen und daher kann eine Transformation der Ressource $h^{\bar{t}}$ aus der aktuellen Leistungsperiode $\hat{t}$ nur zu der aktuellen und zu den nächstfolgenden Leistungsperioden $\bar{t}\in \bar{T}$ erfolgen. Sei der Parameter $\tilde{\bar t}$ alle möglichen nachfolgenden Buchungsabschnitte des Buchungsabschnitts $\bar{t}$, dann ist die Menge aller möglichen Ausführungsmodi $\mathcal{M}_{j}^{\tilde{\bar t}\ge \bar{t}}\subseteq\mathcal{M}_j$. Die Menge wird im nachfolgenden als $\mathcal{M}_{j}^{+}$ bezeichnet. Damit existieren zum Beispiel für die Anfrage nach $j$ aufgrund des Ressourcenverbrauchs $\textbf{a}_{j}^{\bar{t}}=(0,2,0,0)$ die Ausführungsmodi $\mathcal{M}_{j}^{+}$: $\{ (0 ,2, 0, 0), (0, 1, 1, 0), (0, 1, 0, 1),$ $(0, 0, 2, 0),$ $(0, 0, 1, 1), (0, 0, 0, 2)\}$. 
 
 Die \textit{Bellman'schen Funktionsgleichung} für die Inanspruchnahme der Kapazitäten zur Aufstockung eines Lagerbestands für nachfolgende Produktanfragen definiert sich damit wie folgt:
 \begin{equation}\label{time}
 \begin{alignat*}{2}
-V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t) = \;& V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1)+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1)\\
-&+ V(\textbf{c}^{\hat{t}}-\textbf{a}^{\hat{t}}_j, \textbf{y}^{\hat{t}}, t-1),0] \\
-&+ \max[r_{j} - V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1) + V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}-\textbf{a}_j^{\hat{t}}, t-1),0]\\
-&+ \max_{\textbf{m}\in\mathcal{M}_{j}^{+}}[V(\textbf{c}^{\hat{t}}-\textbf{a}^{\hat{t}}_j, \textbf{y}^{\hat{t}}+\textbf{m}, t-1) - V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1) ,0]]\\
+V(\textbf{c}^{\bar{t}}, \textbf{y}^{\bar{t}}, t) = \;& V(\textbf{c}^{\bar{t}}, \textbf{y}^{\bar{t}}, t-1)+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}^{\bar{t}}, \textbf{y}^{\bar{t}}, t-1)\\
+&+ V(\textbf{c}^{\bar{t}}-\textbf{a}^{\bar{t}}_j, \textbf{y}^{\bar{t}}, t-1),0] \\
+&+ \max[r_{j} - V(\textbf{c}^{\bar{t}}, \textbf{y}^{\bar{t}}, t-1) + V(\textbf{c}^{\bar{t}}, \textbf{y}^{\bar{t}}-\textbf{a}_j^{\bar{t}}, t-1),0]\\
+&+ \max_{\textbf{m}\in\mathcal{M}_{j}^{+}}[V(\textbf{c}^{\bar{t}}-\textbf{a}^{\bar{t}}_j, \textbf{y}^{\bar{t}}+\textbf{m}, t-1) - V(\textbf{c}^{\bar{t}}, \textbf{y}^{\bar{t}}, t-1) ,0]]\\
 \end{alignat*}
 \end{equation}
 
@@ -449,11 +384,11 @@ V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t) = \;& V(\textbf{c}^{\hat{t}}, \
 Zur Veranschaulichung der Modellerweiterung wird ein Beispiel eingeführt:
 
 \begin{center}
-$j = \{1, 2, 3\}, \; h^{\hat{t}} = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; r_{3} = 5000,$ \\
-$\text{Startperiode } t=3, \; \hat{T}= \{1: \{3\},\; 2: \{2\},\;3: \{1\} \} $,
+$j = \{1, 2, 3\}, \; h^{\bar{t}} = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; r_{3} = 5000,$ \\
+$\text{Startperiode } t=3, \; \bar{T}= \{1: \{3\},\; 2: \{2\},\;3: \{1\} \} $,
 \end{center}
 \[
-    \textbf{c}^{\hat{t}}=\begin{pmatrix} 1\\ 1\\ 1  \end{pmatrix}, \;
+    \textbf{c}^{\bar{t}}=\begin{pmatrix} 1\\ 1\\ 1  \end{pmatrix}, \;
     a_{1}=1, \;
      a_{2}=1, \;
        a_{3}=2, \;
@@ -465,11 +400,11 @@ $\text{Startperiode } t=3, \; \hat{T}= \{1: \{3\},\; 2: \{2\},\;3: \{1\} \} $,
 \end{pmatrix}, 
   \]
   \[
-    \textbf{y}^{\hat{t}}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
-    \textbf{y}^{\hat{t},max}=\begin{pmatrix} 0\\ 0\\ 2  \end{pmatrix}
+    \textbf{y}^{\bar{t}}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
+    \textbf{y}^{\bar{t},max}=\begin{pmatrix} 0\\ 0\\ 2  \end{pmatrix}
       \]
 
-Bei dem Beispiel handelt es sich um ein RM Netzwerk mit den vorausgegangen Modellannahmen. Eine Ressource $h^{\hat{t}}$ über alle Perioden $T$. Dabei nimmt die Ressource $h^{\hat{t}}$ zu jedem Buchungsabschnitt $\hat{t}$ den vordefinierten Kapazitätswert $c^{\hat{t}}_{h^{\hat{t}}}$ an. Zur Vereinfachung des Beispiels kann eine Instandhaltung nur zum letzten Buchungsabschnitt erfolgen. Dieses wird gesteuert durch den Parameter $\textbf{y}^{\hat{t},max}$. Aufgrund der Werte der Parameter ergeben sich der in Abbildung \ref{B8} gezeigten Systemzustände und die Erwartungswerte aus der Tabelle \ref{Tab8}.
+Bei dem Beispiel handelt es sich um ein RM Netzwerk mit den vorausgegangen Modellannahmen. Eine Ressource $h^{\bar{t}}$ über alle Perioden $T$. Dabei nimmt die Ressource $h^{\bar{t}}$ zu jedem Buchungsabschnitt $\bar{t}$ den vordefinierten Kapazitätswert $c^{\bar{t}}_{h^{\bar{t}}}$ an. Zur Vereinfachung des Beispiels kann eine Instandhaltung nur zum letzten Buchungsabschnitt erfolgen. Dieses wird gesteuert durch den Parameter $\textbf{y}^{\bar{t},max}$. Aufgrund der Werte der Parameter ergeben sich der in Abbildung \ref{B8} gezeigten Systemzustände und die Erwartungswerte aus der Tabelle \ref{Tab8}.
 
 \begin{figure}[h!]
   \begin{center}
@@ -492,11 +427,11 @@ Bei dem Beispiel handelt es sich um ein RM Netzwerk mit den vorausgegangen Model
 \end{footnotesize}
 \end{table}
 
-Da es sich hier um Parameter handelt, die in Abhängigkeit des Buchungsabschnitts $\hat{t}$ stehen, wird ein Systemzustand im Netzwerk als Zahlenfolge $[c^1,c^2,c^3,y^1,y^2,y^3,t]$ definiert. Dabei beschreibt der hochgestellt Index den Buchungsabschnitt $\hat{t}\in\hat{T}$. Der optimale Pfad für dieses Netzwerk lautet $[1\;1\;1\;0\;0\;0\;3] \rightarrow_{j_{IH}=1[0\;0\;1]} [0\;1\;1\;0\;0\;1\;2] \rightarrow_{j_{IH}=1[0\;0\;1]}  [0\;0\;1\;0\;0\;2\;1]  \rightarrow_{j_{LE}=3} [0\;0\;1\;0\;0\;0\;0]$. Innerhalb der ersten zwei Buchungsabschnitte ist die optimale Politik eine Instandhaltung (IH) im einzig möglichen Moduls $\textbf{m}=(0,0,1)$. Dadurch entsteht ein Lagerbestand, der zur Annahme einer Produktanfrage $j=3$ im Buchungsabschnitt $\hat{t}=3$ Verwendung findet. Dieses Beispiel soll in Abbildung \ref{B8} hauptsächlich die möglichen Optionen bzw. Entscheidungsalternativen für die möglichen Systemzuständen verdeutlichen. Die eigentliche Funktionsweise der Modellerweiterung geht verloren, da die Anzahl an Buchungsperioden $t\in T$ der Anzahl der möglichen Buchungsabschnitte $\hat{t}\in\hat{T}$ entspricht. Zur besseren Veranschaulichung wird ein umfangreicheres Beispiel berechnet.
+Da es sich hier um Parameter handelt, die in Abhängigkeit des Buchungsabschnitts $\bar{t}$ stehen, wird ein Systemzustand im Netzwerk als Zahlenfolge $[c^1,c^2,c^3,y^1,y^2,y^3,t]$ definiert. Dabei beschreibt der hochgestellt Index den Buchungsabschnitt $\bar{t}\in\bar{T}$. Der beste Pfad für dieses Netzwerk lautet $[1\;1\;1\;0\;0\;0\;3] \rightarrow_{j_{IH}=1[0\;0\;1]} [0\;1\;1\;0\;0\;1\;2] \rightarrow_{j_{IH}=1[0\;0\;1]}  [0\;0\;1\;0\;0\;2\;1]  \rightarrow_{j_{LE}=3} [0\;0\;1\;0\;0\;0\;0]$. Die optimale Politik im Netzwerk besteht aus der Annahme aller Produktanfragen, sofern diese im Systemzustand möglich sind (Vgl. Abbildung \ref{B8}). Innerhalb der ersten zwei Buchungsabschnitte ist der beste Auftragseinfang eine Instandhaltung (IH) im einzig möglichen Moduls $\textbf{m}=(0,0,1)$. Dadurch entsteht ein Lagerbestand, der zur Annahme einer Produktanfrage $j=3$ im Buchungsabschnitt $\bar{t}=3$ Verwendung findet. Dieses Beispiel soll in Abbildung \ref{B8} hauptsächlich die möglichen Optionen bzw. Entscheidungsalternativen für die möglichen Systemzuständen verdeutlichen. Die eigentliche Funktionsweise der Modellerweiterung geht verloren, da die Anzahl an Buchungsperioden $t\in T$ der Anzahl der möglichen Buchungsabschnitte $\bar{t}\in\bar{T}$ entspricht. Zur besseren Veranschaulichung wird ein umfangreicheres Beispiel berechnet.
 \begin{center}
-$j = \{1, 2\}, \; h^{\hat{t}} = \{1\}, \; r_{1} = 100, \; r_{2} = 5000,$ \\
-$\text{Startperiode } t=10, \; \hat{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\}  $,
-\[\textbf{c}^{\hat{t}}=\begin{pmatrix} 1\\ 1  \end{pmatrix}, \;
+$j = \{1, 2\}, \; h^{\bar{t}} = \{1\}, \; r_{1} = 100, \; r_{2} = 5000,$ \\
+$\text{Startperiode } t=10, \; \bar{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\}  $,
+\[\textbf{c}^{\bar{t}}=\begin{pmatrix} 1\\ 1  \end{pmatrix}, \;
     a_{1}=1, \;
        a_{2}=2,   \]
          \[ p_{j}(t)=
@@ -506,8 +441,8 @@ $\text{Startperiode } t=10, \; \hat{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\
 \end{pmatrix}, 
   \]
   \[
-    \textbf{y}^{\hat{t}}= \begin{pmatrix} 0\\ 0\end{pmatrix}, \;
-    \textbf{y}^{\hat{t},max}=\begin{pmatrix} 1\\ 2  \end{pmatrix}
+    \textbf{y}^{\bar{t}}= \begin{pmatrix} 0\\ 0\end{pmatrix}, \;
+    \textbf{y}^{\bar{t},max}=\begin{pmatrix} 1\\ 2  \end{pmatrix}
       \]
 \end{center}
 
@@ -524,7 +459,7 @@ $\text{Startperiode } t=10, \; \hat{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\
 \end{footnotesize}
 \end{table}
 
-Tabelle \ref{Tab9} zeigt die ermittelten Erwartungswerte des vorher eingeführten Beispiels. Aufgrund des Umfangs des Buchungshorizonts ist die grafische Darstellung der Systemzustände für dieses Beispiel nicht mehr zielführend, daher wird darauf verzichtet und der optimale Pfad in Tabelle \ref{Erg9} dargestellt.
+Aufgrund des Umfangs des Buchungshorizonts ist die grafische Darstellung der Systemzustände für dieses Beispiel nicht mehr zielführend, daher wird darauf verzichtet. Tabelle \ref{Tab9} zeigt die ermittelten Erwartungswerte inkl. der optimalen Politik. Tabelle \ref{Erg9} zeigt für eine strategische Entscheidung den besten Pfad der Auftragseingänge.
 
 \begin{table}
 \begin{footnotesize}
@@ -539,66 +474,4 @@ Tabelle \ref{Tab9} zeigt die ermittelten Erwartungswerte des vorher eingeführte
 \end{footnotesize}
 \end{table}
 
-Aufgrund des umfangreichen Buchungshorizonts ist die optimale Politik des Beispiels anfangs keine Anfragen anzunehmen. Erst zur Periode $t=7$ verändern sich die OK insofern, dass der potentielle Ertrag eine Annahme einer Produktanfrage $j\in\mathcal{J}$ rechtfertigt. Jedoch ist zum Zeitpunkt $t=7$ die Instandhaltung (IH) die optimale Politik. Zum nächsten Zeitpunkt $t=6$ kann keine Anfrage angenommen werden, da keine Kapazitäten $c^{\hat{t}}_{h^{\hat t}}$ für den aktuellen Buchungsabschnitt $\hat{t}=1$ verfügbar sind. Erst mit Übergang vom Zeitpunkt $t=5$ zu $t=6$ erfolgt der Wechsel in den nächsten Buchungsabschnitt $\hat{t}=2$. Damit ist wieder eine Einheit der Ressourcenkapazität $c^{\hat{t}}_{h^{\hat{t}}}$ vorhanden. Die optimale Politik für das Unternehmen zum Zeitpunkt $t=5$ ist demnach die weitere Instandhaltung der Ressource $h^{\hat{t}}$ hin zum Lagerbestand $y^{\hat{t}}$ zum Buchungsabschnitt $\hat{t}=2$. Durch diese Politik ist zum Zeitpunkt $t=4$ eine Lagerentnahme (LE) des Produkts $j=2$ möglich, was die Annahme dieser Produktanfrage entspricht. Dadurch wird ein Ertrag in Höhe von $5000$ GE generiert.
-
-\subsection{Beachtung von Produktanfragen für nachfolgende Buchungsabschnitte}
-
-Aufbauen auf den vorhergehenden Erweiterung erfolgt die Betrachtung des Modells um eine andere Möglichkeit der Lagerhaltungsentscheidung. Bei dem in diesem Abschnitt beschriebenen Modell wird die Einschränkung bzgl. der Kapazitätsinanspruchnahme für den jeweiligen Buchungsabschnitt wieder aufgehoben. Damit wird unterstellt, dass Anfragen auch für nachfolgende Buchungsabschnitte $\hat{t}$ akzeptiert werden können, was die Annahme der Instandhaltungsauftrags oder das Instandsetzen von Ressourcen entspricht. Es wird weiterhin nur eine Ressource $h^{\hat{t}}$ betrachtet, die jeweils eine bestimmte Kapazität $c^{\hat{t}}_{h^{\hat t}}$ für den jeweiligen Buchungsabschnitt $\hat{t}$ aufweist. Es gibt damit weiter nur Anfragen nach einem Produkt mit unterschiedlichen Wertigkeiten. Der Kapazitätsverbrauch $a_{t}^{\hat{t}}$ einer Produktanfrage $j$ beschreibt mit dem jeweiligen Eintrag für die Ressource $h^{\hat t}$ dabei den Zeitpunkt der Erfüllung der Anfrage. Sei $\tilde{j}$ eine Anfrage nach einem Produkt für diese Modellerweiterung, dann beschreibt der Parameter $\textbf{a}_{\tilde{j}}=(0,1,0)$, dass die Erfüllung der Anfrage für den Buchungsabschnitt $\hat{t}=2$ vorgesehen ist. Somit erfolgt zum Endzeitpunkt des Buchungsabschnitts $\hat{t}=2$ die Leistungserstellung der Produktanfrage $\tilde t$. Zur Vereinfachung des Modells wird angenommen, dass mit der Leistungserstellung keine weiteren Anfragen für eine Produktanfrage $j$ mehr eintreffen. D. h. nicht beanspruchte Kapazitäten $c^{\hat{t}}_{h^{\hat t}}$ für vergangene Buchungsabschnitte $\hat t$ können nicht mehr für die weitere Auftragsannahme verwendet werden. Diese Annahme wird mit der Wahrscheinlichkeit $p_j(t)$ für die jeweiligen Anfragen $j$ gesteuert. Dabei ist der Zeitpunkt an dem die erste Anfrage nach einem Produkt $j$ unerheblich. Abbildung \ref{LP2} zeigt die Rahmenbedingungen der Modellerweiterung als grafische Darstellung. Dabei soll der Zusammenhang von Buchungsperioden, Buchungsabschnitte und Leistungserstellung verdeutlicht werde, aber auch aufgezeigt werden, welche Möglichkeiten von Produktanfragen in welchen Zeiträumen eintreffen können.
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=130mm]{Bilder/Leistungsperioden2.pdf}
-    \caption{Zusammenhand von Buchungsperioden und den Buchungsabschnitten}  \label{LP2}
-    {\footnotesize \textbf{In Anlehnung an:} ????} 
-  \end{center}
-\end{figure}
-
-Zusätzlich erfolgt bei dieser Modellformulierung eine Lagerung der Ressource $h^{\hat t}$ über den ganzen Buchungshorizont bzw. über alle Buchungsabschnitte. D. h. Sei der Parameter $\hat{t}^*$ der aktuelle Buchungsabschnitt, dann erfolgt durch die Lagerhaltungsentscheidung der Ressource $h^{\hat t}$ der Erhöhung der des Lagerbestand $y^{\hat t}$ für alle Buchungsabschnitte $\hat t\ge \hat{t}^*$ um den Parameter $a_{hj}$, wobei aufgrund der Vereinfachung des Modells $h=\tilde t$ entspricht ($\sum_{i=\hat t}^{\hat T}y_{h=i}^{\hat{t}}+a_{h=\hat{t},j}$). Die mathematische Formulierung der \textit{Bellman'schen Funktionsgleichung} für die Beachtung von Produktanfragen für nachfolgende Buchungsabschnitte wird damit wie folgt beschrieben:
-\begin{equation}\label{time}
-\begin{alignat*}{2}
-V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t) = \;& V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1)+ \sum_{j \in \mathcal{J}}p_{j}(t)[\max[r_{j} - V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1)\\
-&+ V(\textbf{c}^{\hat{t}}-\textbf{a}_j, \textbf{y}^{\hat{t}}, t-1),0] \\
-&+ \max[r_{j} - V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1) + V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}-\textbf{a}_j, t-1),0]\\
-&+ \max[V(\textbf{c}^{\hat{t}}-\textbf{a}_j, \sum_{i=\hat t}^{\hat T}y_{h=i}^{\hat{t}}+a_{h=\hat{t},j}, t-1) - V(\textbf{c}^{\hat{t}}, \textbf{y}^{\hat{t}}, t-1) ,0]]\\
-\end{alignat*}
-\end{equation}
-
-Die Beschreibung der Funktionsweise der Modellerweiterung wird anhand nachfolgendem Beispiels getätigt:
-\begin{center}
-$j = \{1, 2, 3, 4\}, \; h^{\hat{t}} = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; r_{3} = 100, \; r_{4} = 5000,$ \\
-$\text{Startperiode } t=10, \; \hat{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\}  $,
-\[\textbf{c}^{\hat{t}}=\begin{pmatrix} 1\\ 1  \end{pmatrix}, \;
-    \textbf{a}_1=\begin{pmatrix} 1\\ 0  \end{pmatrix}, \;
-\textbf{a}_2=\begin{pmatrix} 1\\ 0  \end{pmatrix}, \;
-\textbf{a}_3=\begin{pmatrix} 0\\ 1  \end{pmatrix}, \;
-\textbf{a}_4=\begin{pmatrix} 0\\ 1  \end{pmatrix}, \]
-         \[ p_{j}(t)=
-       \begin{pmatrix}
-       0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0 & 0 & 0 & 0 & 0\\
-       0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0 & 0 & 0 & 0 & 0\\
-       0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2\\
-       0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2 & 0.2
-\end{pmatrix}, 
-  \]
-  \[
-    \textbf{y}^{\hat{t}}= \begin{pmatrix} 0\\ 0\end{pmatrix}, \;
-    \textbf{y}^{\hat{t},max}=\begin{pmatrix} 1\\ 1  \end{pmatrix}
-      \]
-\end{center}
-
-Für dieses Beispiel ist eine grafische Auswertung unter Beachtung der Parameter und der Menge an möglichen Systemübergängen nicht mehr möglich. Eine Auswertung der optimalen Politik anhand der Tabelle \ref{Tab10} ist jedoch weiterhin möglich. Die Tabelle zeigt die jeweiligen Erwartungswerte und die optimalen Politik für jeden Systemzustand. Dabei wird in diesem Beispiel ein Systemzustand als Zahlenfolge $[c_1^{\hat t}\;c_2^{\hat t}\;y_1^{\hat t}\;y_2^{\hat t}\;t]$ definiert.
-
-\begin{table}
-\begin{footnotesize}
-     \caption{Optimale Politik für das beispielhafte Netzwerk RM unter Beachtung von Produktanfragen für nachfolgende Buchungsabschnitte} \label{Tab10}
-    \vspace*{3mm}
-        \begin{center}
-\csvautotabular{data/beispiel10.csv}
-      \end{center}
-    \begin{center}
-      {\footnotesize \textbf{Legende:} LE='Lagerentnahme', IH='Instandhaltung', KA='Kein Auftrag'} 
-      \end{center}
-\end{footnotesize}
-\end{table}
-
-\section{Numerische Untersuchung}\label{Untersuchung}
+Aufgrund des umfangreichen Buchungshorizonts ist die optimale Politik des Beispiels anfangs keine Anfragen anzunehmen. Erst zur Periode $t=7$ verändern sich die OK insofern, dass der potentielle Ertrag eine Annahme einer Produktanfrage $j\in\mathcal{J}$ rechtfertigt. Jedoch ist zum Zeitpunkt $t=7$ die Instandhaltung (IH) die optimale Politik. Zum nächsten Zeitpunkt $t=6$ kann keine Anfrage angenommen werden, da keine Kapazitäten $c^{\bar{t}}_{h^{\bar t}}$ für den aktuellen Buchungsabschnitt $\bar{t}=1$ verfügbar sind. Erst mit Übergang vom Zeitpunkt $t=5$ zu $t=6$ erfolgt der Wechsel in den nächsten Buchungsabschnitt $\bar{t}=2$. Damit ist wieder eine Einheit der Ressourcenkapazität $c^{\bar{t}}_{h^{\bar{t}}}$ vorhanden. Die optimale Politik für das Unternehmen zum Zeitpunkt $t=5$ ist demnach die weitere Instandhaltung der Ressource $h^{\bar{t}}$ hin zum Lagerbestand $y^{\bar{t}}$ zum Buchungsabschnitt $\bar{t}=2$. Durch diese Politik ist zum Zeitpunkt $t=4$ eine Lagerentnahme (LE) des Produkts $j=2$ möglich, was die Annahme dieser Produktanfrage entspricht. Dadurch wird ein Ertrag in Höhe von $5000$ GE generiert.
