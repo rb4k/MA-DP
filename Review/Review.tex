@@ -1,8 +1,47 @@
 \chapter{Bestehende Ansätze zur Annahme von Auftragsproduktion und Instandhaltungsprozessen}
-\markboth{2 Bestehende Ansätze zur Annahme von Auftragsproduktion und Instandhaltungsprozessen}{}
+\markboth{2 Bestehende Ansätze zur Annahme von Aufträgen in der Auftragsfertigung und bei Instandhaltungsprozessen}{}
 \setcounter{footnote}{4}  %um durchgehende Fußnotennummerierung zu haben, hier die Anzahl der bisherigen Fußnoten eintragen
 
-\section{Review 1}
-\section{Review 2}
-\section{Review 3}
-\section{Review 4}
+Das Konzept des Revenue Managements (RM) zur Annahme von Aufträgen im Dienstleistungsgewerbe findet bereits über mehrere Dekanen in der wissenschaftlichen Literatur Anwendung.\footnote{Vgl. Klein (2001), S. 246 NACHLESEN SONST FALSCH!!!!!} Neue Veröffentlichungen versuchen das Konzept auf die Problemstellung der Annahme von Anfragen der Auftragsfertigung bzw. Kundeneinzelfertigung zu übertragen.\footnote{Vgl. ???} Wie in Kapitel \ref{Instandhaltung} dargelegt, kann der Instandhaltungsprozess eines Dienstleistungsunternehmens einer Auftragsfertigung gleichgesetzt werden. \cite{kimms2005revenue} geben einen Überblick über das traditionelle Konzept des RM über verschiedene Branchen. Dabei schreiben die Autoren, dass das Konzept des RM vermehrt Anwendung findet, damit Unternehmen eine Unterstützung in der Entscheidungsfindung erhalten, welche Aufträge zur Auftragsfertigung akzeptiert werden sollen.\footnote{Vgl. \cite{kimms2005revenue}, S. 1} \cite{quante2009management} gibt einen Überblick über relevante Literatur des traditionellen RM. Tabelle \ref{Überblick} zeigt eine Anlehnung der Übersicht von \cite{quante2009management} mit den Publikationen zum traditionellen RM in der Fertigungsindustrie. Die Tabelle zeigt jeweils zur Publikation den Kundenauftragskoppelpunkt, die Anzahl der berücksichtigen Konsumerklassen und die Methode aufgeführt ist. Die Konsumerklassen resultieren aus der für das Konzepts des Revenue Management notwendigen Marktsegmentierung von Kunden bzw. Auftragstypen. Einige Konzepte und Modelle berücksichtigen daher explizit die Anzahl dieser Klassen.
+
+
+\begin{table}[h!]
+  \begin{center}
+    \caption{Überblick über Publikationen des traditionellen Konzepts des Revenue Managements in der Fertigungsindustrie}  \label{Überblick}
+    \vspace*{3mm}
+    \begin{tabular}{llll}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+     Autoren & KAKP  & \#Klassen & Methode  \\ \hline
+     \cite{deBHarris1995299} &      ATO          &  2  &  K, M \\
+      \cite{Kalyan:2002aa}      &      MTO/ATO/MTS          &  --  &  K \\
+                \cite{rehkopf:2005aa};   &      MTO          &  mehrere &  K, M, F \\
+                               \cite{Spengler:2007aa}   &                &  &   \\
+            \cite{petrick2012using}      &      MTO          &  ?  &  M \\
+              \cite{DECI:DECI074}  &      MTO          &  mehrere  &  M \\
+               &      MTO          &  --  &  K \\
+                   &      MTO          &  mehrere  &  M \\
+               &      MTO          &  --  &  K \\
+               &      MTO          &  --  &  K, M, L \\
+                &      MTO/MTS          &  3  &  F \\
+                   &      MTO          &  mehrere  &  M \\
+                  &      --          &  --  &  L \\
+                &        ATO    &  --  & K, F  \\    \hline
+    \end{tabular} \\[3mm]
+    {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        {\footnotesize \textbf{Legende:} KAKP: Kundenauftragskoppelpunkt, F: Fallstudie, K: Konzeption, L: Literaturüberblick, M: Simulations-/Analysemodell. }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
+
+\cite{deBHarris1995299} beziehen die RM-Komponenten der differenzierten Preispolitik und eine multiklassen Kapazitätsallokation in ihr Modell mit ein. Sie zeigen, dass sofern stochastische Nachfrage auf fixe und kurzfristige Kapazität trifft, dass es zu Lagerfehlbeständen bei Niedrig-Preis-Segmenten führt. Jedoch rechtfertigen diese Lagerfehlbestände eine Premiumpreisstrategie bei den Kundengruppen mit höherer Preisbereitschaft, was letztendlich zu Umsatzsteigerungen führt.\footnote{Vgl. \cite{deBHarris1995299}, S. 307-308.} \cite{Kalyan:2002aa} beschäftigt sich mit der Bestätigung der Anwendungsvoraussetzungen des RM für die Auftragsfertigung. Das vom Autor beschriebene Konzept sieht die Einführung eines minimalen Akzeptanzwert vor. Sofern dieser Wert bekannt ist, kann ein Unternehmen bei jedem Auftragseingang die Entscheidung treffen, welche Anfrage angenommen oder abgelehnt werden soll.
+
+Der vom Autoren \cite{Kalyan:2002aa} eingeführte minimalen Akzeptanzwert wird in der wissenschaftlichen Literatur im Kontext des Konzepts des Revenue Managements als sogenannten Bid-Preis bezeichnet. Bei dem Bid-Preis handelt es sich um einen variierenden Parameter in Abhängigkeit der Zeit (bzw. der Periode) und der verfügbaren Ressourcenkapazität des betrachteten Netzwerks. Er kann als statische Information der optimalen Lösung für die eindimensionalen Probleme angesehen werden. Die Ermittlung des Bid-Preises erfolgt bei den traditionelle Modellformulierungen des RM anhand des \textit{deterministische lineare Programm (DLP)} unter deterministisch eintreffenden Nachfragen.\footnote{Vgl. \cite{talluri2004revenue}, S. 107-108} %Der Bid-Preis korrespondiert zur Entscheidungsvariable $x_{jm}$ des DLP, da er verbunden ist mit der Kapazität einer jeden Ressource $h$.\footnote{Vgl. \cite{gonsch2013using}, S. 98}
+Er fungiert als Schwellenpreis für eine jede Ressource im Netzwerk und ist normalerweise beschrieben als geschätzte marginale Kosten aufgrund des nächsten sukzessiven Verbrauchs einer Einheit der Ressourcenkapazität.\footnote{Vgl. \cite{talluri2004theory}, S. 89} Laut \cite{gonsch2013using} erfolgt der Ansatz erstmalig von \cite{talluri2001airline} in Verbindung der Optimierung von Passagierrouten. Das Verfahren des Bid-Preises ist ein einfacher Weg, die Kapazitäten der Ressourcen in einem Netzwerk eines Anbieters zu kontrollieren.\footnote{Vgl. \cite{talluri2004theory}, S. 86-87\label{RMH}} Viele Konzepte der neueren Veröffentlichungen im Bereich des Netzwerk RM sehen die Verwendung des Bid-Preise vor.\footnote{Vgl. \cite{petrick2010dynamic}, S. 2028; \cite{gonsch2013using}, S. 98-100.}
+
+\cite{rehkopf:2005aa} zeigen durch das Lösen eines linearen Modells die Kapazitätsallokation für die Problemformulierung des Netzwerk-RM im Fall von MTO-Prozessen. Die Autoren fokussieren sich dabei auf die Branche der Eisen- sowie Stahlindustrie und veröffentlichen zwei Publikationen mit ihren Forschungsergebnissen. Dabei findet der im vorherigen Absatz definierte Bid-Preis Anwendung. In der Fallstudie wird gezeigt, dass durch eine Bid-Preis-Strategie der Gesamtdeckungsbeitrag verbessert wird.\footnote{Vgl. \cite{Spengler:2007aa}, S. 157–171} Dabei werden die Bid-Preise jeweils mit einer linearen Modellformulierung sowie einer multi-dimensionalen Knaksack-Modell\-for\-mu\-lier\-ung berechnet und verglichen. Dabei wird deutlich, dass beide Verfahren den Deckungsbeitrag ähnlich verbessern, wobei sich das Lösen anhand der Knaksack-Modell\-for\-mu\-lier\-ung als robuster darstellt. 
+
+Das Modell von \cite{petrick2012using} zeigt eine Anwendung des RM mit flexiblen Produkten, welche auf MTO/MRO-Prozesse überführt werden können.\footnote{Vgl. \cite{petrick2012using}, S. 218.} ....
+
+Anders als die vorher aufgeführten Autoren befassen sich die Autoren \cite{DECI:DECI074} nicht nur mit dem Auftragsannahmeproblem, welches sich im Konzept des RM ergibt, sondern auch um die Planung und der Bestimmung des genauen Zeitpunkts der Fertigung. Die Autoren stellen eine Heuristik vor, die Aufträge in verschiedene Lose sortiert. Dabei werden mehrere Konsumerklassen beachtet. Die Basisidee des Verfahrens ist die Beachtung der relativen Gewinnspannen der Aufträge, damit der Gesamtdeckungsbeitrag sich erhöht.\footnote{Vgl. \cite{DECI:DECI074}, S. 291} Unter Einsatz der Heuristik zeigen die Autoren, dass ein höherer Gewinn aufgrund einer effizienten Nutzung der verfügbaren Kapazität erzielt wird. Dies kommt zustande, da eine Unterscheidung der Aufträge in Bezug von verschiedene Produktklassen mit unterschiedlichen Deckungsbeiträge erfolgt.
+
+
+
+
