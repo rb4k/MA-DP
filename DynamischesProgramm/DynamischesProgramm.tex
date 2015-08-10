@@ -1,6 +1,6 @@
 % !TEX encoding = UTF-8 Unicode
 \chapter{Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen}
-\markboth{3 Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung}{}
+\markboth{5 Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung}{}
 \setcounter{footnote}{7}
 
 \section{Grundlegendes zum Lösen und Implementieren des Auftragsannahmeproblems}
@@ -74,7 +74,7 @@ Die Gleichung \eqref{DP} wird bei Modellerweiterung der Auftragsannahme- und Lag
 Die Modellerweiterung soll es ermöglichen ertragsarme Anfragen $j^{-}$ nach auftragsbezogenen Instandhaltungsprozessen abzulehnen und eine Erhöhung des Lagerbestands $y_{h}$ über des Parameters $a_{hj}$ zu ermöglichen, sofern diese Anfragen im weiteren Verlauf des Buchungshorizonts $T$ relevante Ressourcenkapazitäten $c_{h}$ für ertragreichere Anfragen $j^{+}$ reduzieren. Weiter ist eine Annahme von Anfragen $j$ nach Instandhaltungsprozessen über den Lagerparameter $y_{h}$ möglich, indem anstelle der Kapazitätsreduktion eine Lagerreduktion erfolgt. Der Parameter $y_{h}$ wird bei der Annahme via Lagerbestand um den Parameter $a_{hj}$ reduziert. Damit fungiert in diesem Modell der Parameters $a_{hj}$ als Bestandsveränderung der Kapazitäten oder der Lagerbestände. 
 
 % Leistungsperioden
-In der Modellerweiterung werden Anfragen nach Produkten betrachtet, die für bestimmte Leistungserstellungszeitpunkte vorgesehen sind. Ein Leistungserstellungszeitpunkt wird durch den Parameter $\hat{t}$ definiert. Damit existiert für eine jede Ressourcen $h$ eine Kapazität $c_h$ und ein Lagerbestand $y_h$ für einen jeden Leistungserstellungszeitpunkt $\hat{t}$. Den Parametern $c_h$ und $y_h$ kann der hochgestellte Index zum zugehörigen Buchungsabschnitt $\hat{t}$ ergänzt werden. Zur Vereinfachung des Modells wird jedoch nur eine einzelne Ressource $h$ über den gesamten Buchungshorizont betrachtet. Damit gilt $c_{h=\hat t}$. Der jeweilige Eintrag im Vektor $\textbf{c}$ entspricht somit der Kapazität $c_h$ der Ressource $h$ zum Leisungserstellungszeitpunkt $\hat{t}$.
+In der Modellerweiterung werden Anfragen nach Produkten betrachtet, die für bestimmte Leistungserstellungszeitpunkte vorgesehen sind. Ein Leistungserstellungszeitpunkt wird durch den Parameter $\hat{t}$ definiert. Damit existiert für eine jede Ressourcen $h$ eine Kapazität $c_h$ und ein Lagerbestand $y_h$ für einen jeden Leistungserstellungszeitpunkt $\hat{t}$. Den Parametern $c_h$ und $y_h$ kann der hochgestellte Index zum zugehörigen Buchungsabschnitt $\hat{t}$ ergänzt werden. Die Menge aller Leistungserstellungszeitpunkte wird mit dem Parameter $\hat T$ abgebildet. Zur Vereinfachung des Modells wird jedoch nur eine einzelne Ressource $h$ über den gesamten Buchungshorizont betrachtet. Damit gilt $c_{h=\hat t}$. Der jeweilige Eintrag im Vektor $\textbf{c}$ entspricht somit der Kapazität $c_h$ der Ressource $h$ zum Leisungserstellungszeitpunkt $\hat{t}$.
 
 % Kapazitätsverbrauch
 Der Kapazitätsverbrauch $a_{j}$ einer Produktanfrage $j$ beschreibt mit dem jeweiligen Eintrag für die Ressource $h$ damit den Zeitpunkt der Erfüllung der Anfrage. Sei $\tilde{j}$ eine Anfrage nach einem Produkt für diese Modellerweiterung, dann beschreibt der Parameter $\textbf{a}_{\tilde{j}}=(0,1,0)$, dass die Erfüllung der Anfrage für den Leistungserstellungszeitpunkt $\hat{t}=2$ vorgesehen ist. Die bis zur Leistungserstellung benötigten Perioden können ermittelt werden durch Division des Buchungshorizonts $T$ und der Anzahl an Leisungszeitpunkten $\hat t$. Wobei $T$ durch die Anzahl der Leisungszeitpunkten $\hat t$ ganzzahlig teilbar sein muss. Daher wird bei dieser Modellerweiterung strikt ein Buchungshorizont gewählt, der in Fünfer-Schritten den nächsten Zeitpunkt der Leisungserstellung vorsieht. Sofern für eine Anfrage $j$ mit einem Kapazitätsverbrauch $\textbf{a}_{\tilde{j}}=(0,1,0)$ ein Buchungshorizont von $T=15$ vorgesehen ist, dann erfolgt die Leistungserstellung der Anfrage $j$ mit Ablauf der sechsten Periode $t$.
@@ -133,8 +133,59 @@ Es gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} aus Kapitel \ref{Ka
 
 
 Die Beschreibung der Funktionsweise der Modellerweiterung wird anhand nachfolgendem Beispiels getätigt:
+
 \begin{center}
-$j = \{1, 2, 3, 4\}, \; h^{\hat{t}} = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; r_{3} = 100, \; r_{4} = 5000,$ \\
+$j = \{1, 2, 3\}, \; h^{\hat{t}\forall \hat T} = \{1\}, \; r_{1} = 100, \; r_{2} = 200, \; r_{3} = 5000,$ \\
+$\text{Startperiode } t=3, \; \hat{T}= \{1: \{3\},\; 2: \{2\},\;3: \{1\} \} $,
+\end{center}
+\[
+    \textbf{c}^{\hat{t}}=\begin{pmatrix} 1\\ 1\\ 1  \end{pmatrix}, \;
+    \textbf{a}_{1}=\begin{pmatrix} 1\\ 0\\   \end{pmatrix}, \;
+     \textbf{a}_{2}=\begin{pmatrix} 0\\ 1\\ 0  \end{pmatrix}, \;
+       \textbf{a}_{3}=\begin{pmatrix} 0\\ 0\\ 2  \end{pmatrix}, \;
+            p_{j}(t)=
+       \begin{pmatrix}
+       0.3 & 0 & 0 \\
+0.3 & 0.3 & 0 \\
+0.3 & 0.3 & 0.3
+\end{pmatrix}, 
+  \]
+  \[
+    \textbf{y}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
+    \textbf{y}^{max}=\begin{pmatrix} 2\\ 2\\ 2  \end{pmatrix}
+      \]
+
+Bei dem Beispiel wird ein Netzwerk mit drei Produkte $j\in\mathcal{J}$ betrachtet. Es existieren drei Leistungserstellungszeitpunkte $\hat t$ für eine Ressource $h^{\hat t}\in\mathcal{H}$. Die Produkte generieren einen Ertrag in Höhe von $r_1=100, r_2=200$ und $r_3=5000$. Die Kapazitäten für die Ressourcen betragen $\textbf{c}=(1,1,1)$ und die Bestandsveränderungen für die Anfragen betragen $\textbf{a}_1=(1,0,0),\; \textbf{a}_2=(0,1,0)$ sowie $\textbf{a}_3=(0,0,2)$. Der Buchungshorizont beträgt $T=3$. Es existiert kein Lagerbestand $\textbf{y}$ und es kann nur ein maximaler Lagerbestand $\textbf{y}^{max}=(2, 2, 2)$ zu jeder Leistungserstellung aufgebaut werden. In diesem Beispiel sind nicht alle Produktanfragen $j\in\mathcal{J}$ zu jedem Zeitpunkt $t\in T$ möglich. Dies zeigt die Matrix $p_{j}(t)$ mit den Eintrittswahrscheinlichkeiten für jedes Produkt $j$ zum jeweiligen Zeitpunkt $t$. Für das Produkt $j=1$ treffen Anfragen zu den Zeitpunkten $t\in T$ mit den Wahrscheinlichkeiten $p_{1}(t)=(0.3, 0, 0)$ ein. Für die Produkte $j=2$ und $j=3$ betragen die Wahrscheinlichkeiten $p_{2}(t)=(0.3, 0.3, 0)$ bzw. $p_{3}(t)=(0.3, 0.3, 0.3)$. Bei den Wahrscheinlichkeiten $p_j(t)$ der Produktanfrage $j$ zum Zeitpunkt $t$ muss beachtet werden, dass der Buchungshorizont rückwärts verläuft. Damit gilt $p_{j}(t)=(p_{j}(3), p_{j}(2), p_{j}(1))$. Abbildung \ref{B9} zeigt für das Beispiel die möglichen Systemzustände mit allen Übergängen. Dabei wird ein Systemzustand im Netzwerk als Zahlenfolge $[c_1\;c_2\;c_3\;y_1\;y_2\;y_3\;t]$ beschrieben.
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=200mm, angle=90]{Bilder/Beispiel9.pdf}
+    \caption{Darstellung der Systemzustände des Netzwerk RM unter Beachtung der Möglichkeit der Auftragsannahme- und Lagerhaltungsentscheidung}  \label{B9}
+    {\footnotesize \textbf{Legende:} Die Zahlen stehen für den Auftrag $j$, AA='Auftragsannahme', LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag', $\cdots$='Anfrage ablehnen'} 
+  \end{center}
+\end{figure}
+
+Wie in der Abbildung \ref{B9} zu erkennen ist, wäre die optimale Politik $d_{j}({\textbf{c},\textbf{y}, t})$ im Systemzustand $[1\;1\;1\;0\;0\;0\;3]$ eine Anfrage nach einem Produkt $j=1$ abzulehnen und eine Bestandsveränderung des Lagers zu bewilligen (Lagerproduktion) sowie die Annahme der Produktanfrage $j$ anhand der Kapazitäten. Eine Anfrage $j=3$ kann in diesem Systemzustand nicht akzeptiert werden, da nicht genügend Kapazität vorhanden ist und daher wird der Übergang in einem Systemzustand mit einer negativen Ressourcenkapazität nicht dargestellt. Sofern eine Anfrage $j=1$ im Systemzustand $[1\;1\;1\;0\;0\;0\;3]$ eintrifft, erreicht das Netzwerk den Systemzustand $[0\;1\;1\;0\;1\;1\;2]$. Wie zu erkennen, ist die Kapazität $c_1^{\hat t=1}$ auf $0$ reduziert und nach dem Leistungserstellungszeitpunkt $\hat t = 1$ ist ein Ressourcenbestand auf dem Lagerhaltungsparameter $\textbf y$ verfügbar. Zum Systemzustand $[0\;1\;1\;0\;1\;1\;2]$ wird angenommen, dass aufgrund der Wahrscheinlichkeitsverteilung $p_j(t)$ keine Anfrage nach Produkt $j=2$ mehr möglich ist, und ebenfalls ist eine Annahme einer Anfrage nach Produkt $j=3$ aufgrund der Kapazitätsbestände ausgeschlossen. In diesem Systemzustand ist, sofern die Anfrage eintrifft, das Ablehnen einer Produktanfrage $j=2$ und die aus der Ablehnung mögliche Lagerproduktion alleiniges Bestandteil der optimalen Politik. Aufgrund einer solchen Entscheidung erfolgt der Übergang in den Systemzustand $[0\;0\;1\;0\;1\;2\;1]$. Wie die Zahlenfolge $[0\;0\;1\;0\;1\;2\;1]$ des Systemzustands andeutet, ist anhand des Lagerhaltungsparameters $\textbf y=(0,1,2)$ erstmalig eine Annahme der Produktanfrage $j=3$ möglich. Sofern diese aufgrund der Wahrscheinlichkeitsverteilung $p_j(t)$ einzig mögliche Anfrage eintrifft, ist die optimale Politik des Netzwerks die Annahme der Anfrage $j=3$ anhand der Entscheidung der Lagerentnahme ($d_{3}((0,0,1)^{\textnormal T},(0,1,2)^{\textnormal T}, 1)=2$). Erfolgt eine solche Reihenfolge des Eintreffens der Auftrage, dass würde ein Unternehmen unter Einhaltung der optimalen Politik einen Gesamtdeckungsbeitrag in Höhe von $5000$ GE erzielen.
+
+Sofern im Ausgangssystemzustand $[1\;1\;1\;0\;0\;0\;3]$ eine Anfrage nach einem Produkt $j=2$ eintrifft, ist die optimale Politik die Annahme der Anfrage über die Ressourcenkapazitität $\textbf{c}^{\hat t}$. Aufgrund dieser Entscheidung ist ein Gesamtdeckungsbeitrag in Höhe von $200$ GE erzielt. Eine Entscheidung über die Ablehnung und Aufarbeitung von Ressourcen (Lagerproduktion) unter diesen Parametergegebenheiten hätte in Bezug der Zielsetzung der Maximierung des Gesamtdeckungsbeitrags keinen Nutzen. Wie in der Abbildung \ref{B9} zu erkennen ist, würde eine Lagerproduktion zwar den Bestand an Ressourcen auf Lager erhöhen, jedoch wäre im weiteren Verlauf keine Annahme einer anderen Produktanfrage $j\in\mathcal M$ möglich. Sofern ein Unternehmen sich gegen die optimale Politik entscheidet, würde kein Ertrag im weiteren Verlauf des Netzwerks generiert. Tabelle \ref{Tab9} zeigt zusammenfassend die berechneten Erwartungswerte und die optimale Politik für alle Systemzustände des Beispiels.
+
+\begin{table}
+\begin{footnotesize}
+     \caption{Optimale Politik für das beispielhafte Netzwerk RM unter Beachtung der Möglichkeit der Auftragsannahme- und Lagerhaltungsentscheidung} \label{Tab9}
+    \vspace*{3mm}
+        \begin{center}
+\csvautotabular{data/beispiel9.csv}
+      \end{center}
+    \begin{center}
+      %{\footnotesize \textbf{Legende:} LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
+      \end{center}
+\end{footnotesize}
+\end{table}
+
+Die eigentliche Funktionsweise des hier vorgestellten Modells geht anhand des vorher aufgeführten Beispiels jedoch teilweise verloren, da die Anzahl an Buchungsperioden $t\in T$ der Anzahl der möglichen Buchungsabschnitte $\bar{t}\in\bar{T}$ gleich ist. Zur besseren Veranschaulichung wird ein umfangreicheres Beispiel berechnet:
+
+{\begin{center}
+$j = \{1, 2, 3, 4\}, \; h^{\hat{t}\forall \hat T} = \{1\}, \; r_{1} = 100, \; r_{2} = 5000, \; r_{3} = 100, \; r_{4} = 5000,$ \\
 $\text{Startperiode } t=10, \; \hat{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\}  $,
 \[\textbf{c}^{\hat{t}}=\begin{pmatrix} 1\\ 1  \end{pmatrix}, \;
     \textbf{a}_1=\begin{pmatrix} 1\\ 0  \end{pmatrix}, \;
@@ -150,22 +201,22 @@ $\text{Startperiode } t=10, \; \hat{T}= \{1: \{10,9,8,7,6\},\; 2: \{5,4,3,2,1\}\
 \end{pmatrix}, 
   \]
   \[
-    \textbf{y}^{\hat{t}}= \begin{pmatrix} 0\\ 0\end{pmatrix}, \;
-    \textbf{y}^{\hat{t},max}=\begin{pmatrix} 1\\ 1  \end{pmatrix}
+    \textbf{y}= \begin{pmatrix} 0\\ 0\end{pmatrix}, \;
+    \textbf{y}^{max}=\begin{pmatrix} 1\\ 1  \end{pmatrix}
       \]
-\end{center}
+\end{center}}
 
-Für dieses Beispiel ist eine grafische Auswertung unter Beachtung der Parameter und der Menge an möglichen Systemübergängen nicht mehr möglich. Eine Auswertung der optimalen Politik anhand der Tabelle \ref{Tab10} ist jedoch weiterhin möglich. Die Tabelle zeigt die jeweiligen Erwartungswerte und die optimalen Politik für jeden Systemzustand. Dabei wird in diesem Beispiel ein Systemzustand als Zahlenfolge $[c_1^{\hat t}\;c_2^{\hat t}\;y_1^{\hat t}\;y_2^{\hat t}\;t]$ definiert.
+Für dieses Beispiel ist eine grafische Auswertung unter Beachtung der Parameter und der Menge an möglichen Systemübergängen nicht mehr zielführend. Eine Auswertung der optimalen Politik anhand einer tabellarischen Auswertung ist jedoch weiterhin möglich, wie Tabelle \ref{Tab10} zeigt. Die Tabelle zeigt die jeweiligen Erwartungswerte und die optimalen Politik für jeden Systemzustand. Dabei wird in diesem Beispiel ein Systemzustand als Zahlenfolge $[c_1^{\hat t}\;c_2^{\hat t}\;y_1^{\hat t}\;y_2^{\hat t}\;t]$ definiert.
 
 \begin{table}
 \begin{footnotesize}
-     \caption{Optimale Politik für das beispielhafte Netzwerk RM unter Beachtung von Produktanfragen für nachfolgende Buchungsabschnitte} \label{Tab10}
+     \caption{Optimale Politik für das zweite beispielhafte Netzwerk RM unter Beachtung der Möglichkeit der Auftragsannahme- und Lagerhaltungsentscheidung} \label{Tab10}
     \vspace*{3mm}
         \begin{center}
 \csvautotabular{data/beispiel10.csv}
       \end{center}
     \begin{center}
-      {\footnotesize \textbf{Legende:} LE='Lagerentnahme', IH='Instandhaltung', KA='Kein Auftrag'} 
+      %{\footnotesize \textbf{Legende:} LE='Lagerentnahme', LP='Lagerproduktion', KA='Kein Auftrag'} 
       \end{center}
 \end{footnotesize}
 \end{table}
@@ -176,7 +227,8 @@ Wie aus der Tabelle \ref{Tab10} zu erkennen ist, ermittelt der Algorithmus keine
 
 Die Dominanz der Annahmen von $j=2$ bzw. $j=4$ wird über das gesamte Netzwerk beibehalten, sofern die Wahrscheinlichkeit des Auftragseingangs besteht. Zum Zeitpunkt $t=5$ können die Kapazitäten vom Leistungszeitpunkt $\hat t = 1$ nicht mehr abgerufen werden, was zum Beispiel für den Systemzustand $[1\;0\;0\;0\;5]$ bedeutet, dass keine Auftragsannahmen oder Lagerungen von Produkten möglich sind. 
 
+Abschluss...
+
 
 %Da der jeweilige Kapazitätsverbrauch $\textbf{a}_j$ und der Ertrag $r_j$ jeweils für zwei Typen von Anfragen $j$ für beide Leistungserstellungszeitpunkte $\hat j$ identisch sind, ist eine Erweiterung des Lagerbestands zwar Bestandteil der optimalen Politik (zumindest für Produktanfragen $j=1$), aber 
 
-\section{Numerische Untersuchung}\label{Untersuchung}
