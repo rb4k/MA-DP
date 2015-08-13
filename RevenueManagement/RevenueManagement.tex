@@ -123,7 +123,7 @@ $j = \{1, 2\}, \; h = \{1, 2\}, \; r_{1} = 100, \; r_{2} = 200, \; \text{Startpe
      p_{2}(t)=\begin{pmatrix} 0.1\\ 0.1\\ 0.1\\ 0.1  \end{pmatrix}
   \]
 
-Die mathematische Modellformulierung des stochastisch, dynamisches Programms aus Gleichung \eqref{DP2} lässt sich als Graph darstellen, der die einzelnen Systemzustände für die DP aufzeigt. Der Erwartungswert $V(\textbf{c},t)$ ist abhängig vom Erwartungswert $V(\textbf{c},t-1)$ und vom Erwartungswert $V(\textbf{c}-\textbf{a}_{j},t-1)$. Der Erwartungswert $V(\textbf{c},t-1)$ ist wiederum abhängig vom Erwartungswert $V(\textbf{c},t-2)$ und vom Erwartungswert $V(\textbf{c}-\textbf{a}_{j},t-2)$, usw. Abbildung \ref{B0} zeigt die erste rekursive Folge für die Gleichung \eqref{DP2} als gerichteten Graphen auf und im nachfolgenden wird auf die Notation eingegangen.
+Die mathematische Modellformulierung des stochastisch, dynamisches Programms aus Gleichung \eqref{DP2} lässt sich als Graph darstellen, der die einzelnen Systemzustände für die DP aufzeigt.\footnote{Vgl. \cite{demiguel2006multistage}, S. 8-13.} Der Erwartungswert $V(\textbf{c},t)$ ist abhängig vom Erwartungswert $V(\textbf{c},t-1)$ und vom Erwartungswert $V(\textbf{c}-\textbf{a}_{j},t-1)$. Der Erwartungswert $V(\textbf{c},t-1)$ ist wiederum abhängig vom Erwartungswert $V(\textbf{c},t-2)$ und vom Erwartungswert $V(\textbf{c}-\textbf{a}_{j},t-2)$, usw. Abbildung \ref{B0} zeigt die erste rekursive Folge für die Gleichung \eqref{DP2} als gerichteten Graphen auf und im nachfolgenden wird auf die Notation eingegangen.
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[width=80mm]{Bilder/Beispiel0.pdf}
