@@ -14,6 +14,9 @@
 
 \usepackage{amsthm}
 \newtheorem{mydef}{Definition}
+\usepackage{color}
+\definecolor{hellgrau}{gray}{0.85}
+\definecolor{dunkelgrau}{gray}{0.55}
 
 \renewcommand{\familydefault}{\sfdefault}
 
@@ -33,11 +36,75 @@
 \usepackage{booktabs} 
 
 \usepackage{csvsimple}
+\usepackage{csvtools}
 
 %\usepackage{datatool}
 %\usepackage[showframe,paperwidth=32cm]{geometry}
 
 \SetAlgorithmName{Algorithmus}{Algorithmenverzeichnis}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
+\lstdefinestyle{Listing}{
+	frame=single,
+	tabsize=4,
+        extendedchars=true,
+        basicstyle=\footnotesize,
+	rulecolor=,
+	language=Python,
+        upquote=true,
+        aboveskip={0.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941}
+}
+
+\lstdefinestyle{Listing2}{
+	frame=single,
+	tabsize=4,
+        extendedchars=true,
+        basicstyle=\footnotesize,
+	rulecolor=,
+	language=Java,
+        upquote=true,
+        aboveskip={0.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0,0,1},
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941}
+}
+
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
+
 
 % Fussnoten
 \usepackage{chngcntr}
@@ -207,7 +274,12 @@ $m$ & ... Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
 \listoftables
 \endgroup
 
-
+%Codeverzeichnis
+\begingroup
+\renewcommand\lstlistlistingname{Quellcodeverzeichnis} 
+\lstlistoflistings 
+\endgroup
+\renewcommand*\lstlistingname{Quellcode} 
 
 \include{Vorwort/Vorwort}
 \include{Einleitung/Einleitung}
