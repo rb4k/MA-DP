@@ -34,6 +34,7 @@ Pandas Version 0.16.2
 
 Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je Szenario gibt es eine Anzahl an Buchungsperioden $T$ und eine Anzahl an Leistungserstellungszeitpunkten $\hat T$. In dieser Arbeit wird nur eine Ressource $h\in\mathcal{H}$ betrachtet, was sich ebenfalls in den Szenarien widerspiegelt. Für einen jeden Leistungserstellungszeitpunkt $\hat t \in \hat T$ gibt es eine Anzahl an Kapazitäten $c_h^{\hat t}$, einen Lagerbestand $y_h^{\hat t}$ und einen maximal möglichen Lagerbestand $y_h^{{\hat t},max}$ der Ressource $h=1$. Die unterschiedlichen Produktanfragen $j\in\mathcal{J}$ haben dabei einen individuellen Ertrag $r_j$, einen Parameter für die Inanspruchnahme bzw. Bestandsveränderung der Kapazitäten $a_hj$ der Ressource $h=1$ und einen Zeitpunkt der Leistungserstellung $\hat t$. Die Szenarien besitzen für die Buchungsperioden $t\in T$ eine bestimmte Wahrscheinlichkeitsverteilung $p_j(t)$ über den Auftragseingang einer jeden Produktanfrage $j\in\mathcal{J}$. Die Verteilungen ist jeweils beim Produkt $j$ angegeben und über alle Produkte $j\in\mathcal{J}$ des jeweiligen Szenarios als grafischer Kurvenverlauf abgebildet.
 
+%%%%%%%%%%%%%%%%%% DP_L_AB
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.5}
   \begin{center}
@@ -72,7 +73,7 @@ Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Pr
 
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{SBilder/1.png}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_L_Ab/Wverteilung.png}
     \caption{Wahrscheinlichkeitsverteilung Szenario 1}  \label{SB1}
        % {\footnotesize \textbf{Quelle:} ????} 
     %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
@@ -110,16 +111,529 @@ $d_{10}$ &  13013 &  29235 &  33355 &   0 \\
 Tabelle \ref{S1} zeigt die verwendeten Parameter des Szenarios und das Ergebnis der Berechnung. Das vollständige Ergebnis ist im Anhang ??? nachzulesen. Tabelle \ref{AS1} zeigt die Auswertung der optimalen Politik die sich aufgrund der Parameter und der Wahrscheinlichkeitsverteilung des Szenarios 1 ergeben. Es handelt sich um eine Auswertung der absoluten Anzahl der Entscheidungen für die optimale Politik sofern keine Anfrage eintrifft ($d_0$) und sofern Anfragen eintreffen ($d_j\forall j \in\mathcal{J}$). Wie in der Tabelle \ref{AS1} zu erkennen, werden nur die Bestandsveränderungsparameter $a_j$ mit niedrigem Ertrag $r_j$ für eine mögliche Lagerhaltungsentscheidung verwendet. Dabei kann die Annahme getroffen werden, dass bei fortschreiten des Buchungshorizonts $T$ die Entscheidung über eine mögliche Lagerproduktion öfters getroffen wird. Bei der optimalen Politik $d_j$ ergibt sich ein ähnliches Bild. Tendenziell werden öfters Anfragen mit niedrigem Ertrag abgelehnt und eine Lagerproduktion durchgeführt. ....
 
 
+%%%%%%%%% DP_A_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 2}  \label{S2}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{.5cm} p{.5cm} p{.5cm}  p{.5cm} p{9cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 100 & 1 & 1 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 81   \\
+2 & 1000 & 1 & 1 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 81  \\
+3 & 100 & 1 & 2 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 61  \\
+4 & 1000 & 1 & 2 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 61  \\
+5 & 100 & 1 & 3 & Linear ansteigend auf $p_j(t)=0,3$ von 60 bis 41 \\
+6 & 1000 & 1 & 3 & Linear ansteigend auf $p_j(t)=0,3$ von 60 bis 41 \\
+7 & 100 & 1 & 4 & Linear ansteigend auf $p_j(t)=0,3$ von 80 bis 21  \\
+8 & 1000 & 1 & 4 & Linear ansteigend auf $p_j(t)=0,3$ von 80 bis 21  \\
+9 & 100 & 1 & 5 & Linear ansteigend auf $p_j(t)=0,3$ von 40 bis 1  \\
+10 & 1000 & 1 & 5 & Linear ansteigend auf $p_j(t)=0,3$ von 40 bis 1  \\ \hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.195573} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{36367} \\ 
+     Rechenzeit DP (h): & \texttt{4:44:09.316592} \\ 
+          Max. Erwartungswert (GE): & \texttt{9372.57} \\ \hline
+         \end{tabular} \\[3mm]
+  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_A_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 2}  \label{SB2}
+       % {\footnotesize \textbf{Quelle:} ????} 
+    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 2}  \label{AS2}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+$d_{0}$ &  32652 &  55 &  0 &  219 &  0 &  914 &  0 &  1733 &  0 &  0 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_{1}$  &  35518 &    0 &    0 &    55 \\
+$d_{2}$  &  35518 &    0 &    0 &    55 \\
+$d_{3}$  &  35336 &      6 &     12 &   219 \\
+$d_{4}$  &  34998 &     70 &    335 &   170 \\
+$d_{5}$  &  34483 &    102 &     74 &   914 \\
+$d_{6}$  &  32670 &    878 &   1451 &   574 \\
+$d_{7}$  &  33222 &    180 &    438 &  1733 \\
+$d_{8}$  &  20329 &   3901 &  11343 &   0 \\
+$d_{9}$  &  34292 &    900 &    381 &   0 \\
+$d_{10}$ &  10526 &  14285 &  10762 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%% DP_N_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 3}  \label{S3}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 100 & 1 & 1 & Normalverteilt $\mathcal{N}(90, 2)$   \\
+2 & 1000 & 1 & 1 & Normalverteilt $\mathcal{N}(90, 2)$  \\
+3 & 100 & 1 & 2 & Normalverteilt $5\cdot\mathcal{N}(70, 10)$  \\
+4 & 1000 & 1 & 2 & Normalverteilt $5\cdot\mathcal{N}(70, 10)$  \\
+5 & 100 & 1 & 3 & Normalverteilt $5\cdot\mathcal{N}(50, 10)$ \\
+6 & 1000 & 1 & 3 & Normalverteilt $5\cdot\mathcal{N}(50, 10)$ \\
+7 & 100 & 1 & 4 & Normalverteilt $5\cdot\mathcal{N}(30, 10)$  \\
+8 & 1000 & 1 & 4 & Normalverteilt $5\cdot\mathcal{N}(30, 10)$  \\
+9 & 100 & 1 & 5 & Normalverteilt $15\cdot\mathcal{N}(10, 30)$  \\
+10 & 1000 & 1 & 5 & Normalverteilt $15\cdot\mathcal{N}(10, 30)$  \\ \hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.102509} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{14:14:26.314997} \\ 
+          Max. Erwartungswert (GE): & \texttt{9955.83} \\ \hline
+         \end{tabular} \\[3mm]
+  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_N_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 3}  \label{SB3}
+       % {\footnotesize \textbf{Quelle:} ????} 
+    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 3}  \label{AS3}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+$d_{0}$ &  59953 &  1461 &  0 &  4093 &  0 &  5938 &  0 &  4158 &  0 &  0 &  0 \\\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_{1}$  &  73882 &    260 &    0 &  1461 \\
+$d_{2}$  &  73318 &    824 &    0 &  1461 \\
+$d_{3}$  &  70901 &    156 &    280 &  4266 \\
+$d_{4}$  &  60509 &   1222 &  11300 &  2572 \\
+$d_{5}$  &  68039 &    252 &    672 &  6640 \\
+$d_{6}$  &  47217 &    554 &  24722 &  3110 \\
+$d_{7}$  &  68464 &    180 &   2854 &  4105 \\
+$d_{8}$  &  27421 &  10707 &  37475 &   0 \\
+$d_{9}$  &  71283 &   1281 &   3039 &   0 \\
+$d_{10}$ &  13033 &  29233 &  33337 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+
+%%%%%%%%%%% DP2_A_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 4}  \label{S4}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{.5cm} p{.5cm} p{.5cm}  p{.5cm} p{9cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 81   \\
+2 & 400 & 1 & 2 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 61  \\
+3 & 600 & 1 & 3 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 41  \\
+4 & 800 & 1 & 4 & Linear ansteigend auf $p_j(t)=0,3$ von 80 bis 21  \\
+5 & 1000 & 1 & 5 & Linear ansteigend auf $p_j(t)=0,3$ von 40 bis 1 \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.130437} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{36367} \\ 
+     Rechenzeit DP (h): & \texttt{2:52:58.148777} \\ 
+          Max. Erwartungswert (GE): & \texttt{7253.44} \\ \hline
+         \end{tabular} \\[3mm]
+  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_A_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 4}  \label{SB4}
+       % {\footnotesize \textbf{Quelle:} ????} 
+    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 4}  \label{AS4}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+$d_{0}$ &  30000 &  55 &  218 &  914 &  4386 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_1$ &  35518 &    0 &    0 &    55 \\
+$d_2$ &  34998 &     70 &    335 &   170 \\
+$d_3$ &  32670 &    878 &   1471 &   554 \\
+$d_4$ &  21941 &    378 &  11360 &  1894 \\
+$d_5$ &  10526 &  14285 &  10762 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+
+%%%%%%%%%%% DP2_N_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 5}  \label{S5}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Normalverteilt $\mathcal{N}(90, 1)$   \\
+2 & 400 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
+3 & 600 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(50, 10)$  \\
+4 & 800 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(30, 10)$  \\
+5 & 1000 & 1 & 5 & Normalverteilt $30\cdot\mathcal{N}(10, 30)$ \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.217978} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{8:20:03.217835} \\ 
+          Max. Erwartungswert (GE): & \texttt{8524.61} \\ \hline
+         \end{tabular} \\[3mm]
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_N_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 5}  \label{SB5}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 5}  \label{AS5}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+$d_{0}$ &  62159 &  1378 &  2467 &  3934 &  5665 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_1$ &  73661 &    564 &    0 &  1378 \\
+$d_2$ &  61592 &   1108 &  11228 &  1675 \\
+$d_3$ &  48503 &    372 &  24628 &  2100 \\
+$d_4$ &  35634 &    288 &  37465 &  2216 \\
+$d_5$ &  20523 &  24942 &  30138 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+
+%%%%%%%%%%%%%% DP3_N_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 6}  \label{S6}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Normalverteilt $10\cdot\mathcal{N}(90, 10)$   \\
+2 & 400 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
+3 & 200 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(50, 10)$  \\
+4 & 300 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(30, 30)$  \\
+5 & 5000 & 1 & 5 & Normalverteilt $30\cdot\mathcal{N}(10, 0.45)$ \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.104080} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{30566} \\ 
+     Rechenzeit DP (h): & \texttt{1:57:13.471350} \\ 
+          Max. Erwartungswert (GE): & \texttt{7082.92} \\ \hline
+         \end{tabular} \\[3mm]
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP3_N_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 6}  \label{SB6}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 6}  \label{AS6}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+$d_{0}$ &  27750 &  461 &  570 &  912 &  79 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_1$ &  29010 &   301 &   0 &  461 \\
+$d_2$ &  25387 &  1651 &  2436 &  298 \\
+$d_3$ &  21861 &  2847 &  4567 &  497 \\
+$d_4$ &  20793 &  5195 &  3768 &   16 \\
+$d_5$ &  21781 &  4935 &  3056 &  0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+
+%%%%%%%%%%%%%% DP4_N_Lang_Anf
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 7}  \label{S7}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Normalverteilt $10\cdot\mathcal{N}(90, 10)$   \\
+2 & 300 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(80, 10)$  \\
+3 & 800 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
+4 & 2500 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(50, 30)$  \\
+5 & 5000 & 1 & 5 & Normalverteilt $10\cdot\mathcal{N}(20, 10)$ \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.137545} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{8:53:13.857870} \\ 
+          Max. Erwartungswert (GE): & \texttt{27825.7} \\ \hline
+         \end{tabular} \\[3mm]
+  \end{center}
+\end{table}
+
+\clearpage
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP4_N_Lang_Anf/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 7}  \label{SB7}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 7}  \label{AS7}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+$d_{0}$ &  58123 &  1380 &  4615 &  6772 &  4713 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_1$ &  73527 &    696 &    0 &  1380 \\
+$d_2$ &  60104 &   1840 &  10694 &  2965 \\
+$d_3$ &  47161 &    509 &  24652 &  3281 \\
+$d_4$ &  35467 &    288 &  37463 &  2385 \\
+$d_5$ &  13237 &  28944 &  33422 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
 
 
 
+%%%%%%%%%%%%%%%%%%%%% DP_C_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 8}  \label{S8}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 100 & 1 & 1 & Cauchyverteilt $5\cdot\mathcal{C}(81, 5)$   \\
+2 & 1000 & 1 & 1 & Cauchyverteilt $5\cdot\mathcal{C}(81, 5)$  \\
+3 & 100 & 1 & 2 & Cauchyverteilt $5\cdot\mathcal{C}(61, 5)$  \\
+4 & 1000 & 1 & 2 & Cauchyverteilt $5\cdot\mathcal{C}(61, 5)$  \\
+5 & 100 & 1 & 3 & Cauchyverteilt $5\cdot\mathcal{C}(41, 5)$ \\
+6 & 1000 & 1 & 3 & Cauchyverteilt $5\cdot\mathcal{C}(41, 5)$ \\
+7 & 100 & 1 & 4 & Cauchyverteilt $5\cdot\mathcal{C}(21, 5)$  \\
+8 & 1000 & 1 & 4 & Cauchyverteilt $5\cdot\mathcal{C}(21, 5)$  \\
+9 & 100 & 1 & 5 & Cauchyverteilt $5\cdot\mathcal{C}(1, 5)$  \\
+10 & 1000 & 1 & 5 & Cauchyverteilt $5\cdot\mathcal{C}(1, 5)$  \\ \hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.090940} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{12:54:21.228869} \\ 
+          Max. Erwartungswert (GE): & \texttt{7655.0} \\ \hline
+         \end{tabular} \\[3mm]
+  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_C_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 8}  \label{SB8}
+       % {\footnotesize \textbf{Quelle:} ????} 
+    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 8}  \label{AS8}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+$d_{0}$ &  61926 &  1461 &  0 &  4829 &  0 &  6746 &  0 &  641 &  0 &  0 &  0 \\\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_{1}$  &  74090 &     52 &    0 &  1461 \\
+$d_{2}$  &  73318 &    824 &    0 &  1461 \\
+$d_{3}$  &  70249 &    148 &    216 &  4990 \\
+$d_{4}$  &  59475 &   1933 &  11336 &  2859 \\
+$d_{5}$  &  67572 &    246 &    394 &  7391 \\
+$d_{6}$  &  43544 &   4016 &  24816 &  3227 \\
+$d_{7}$  &  71807 &    180 &   2993 &   623 \\
+$d_{8}$  &  27421 &  10707 &  37475 &   0 \\
+$d_{9}$  &  69131 &    900 &   5572 &   0 \\
+$d_{10}$ &  13013 &  29056 &  33534 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
 
 
+%%%%%%%%%%%%%%%%%%%%% DP2_C_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 9}  \label{S9}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Cauchyverteilt $5\cdot\mathcal{C}(81, 5)$   \\
+2 & 400 & 1 & 2 & Cauchyverteilt $5\cdot\mathcal{C}(61, 5)$  \\
+3 & 600 & 1 & 3 & Cauchyverteilt $5\cdot\mathcal{C}(41, 5)$  \\
+4 & 800 & 1 & 4 & Cauchyverteilt $5\cdot\mathcal{C}(21, 5)$  \\
+5 & 1000 & 1 & 5 & Cauchyverteilt $5\cdot\mathcal{C}(1, 5)$ \\ \hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.096467} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{7:18:41.657455} \\ 
+          Max. Erwartungswert (GE): & \texttt{5677.11} \\ \hline
+         \end{tabular} \\[3mm]
+  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
 
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_C_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 9}  \label{SB9}
+       % {\footnotesize \textbf{Quelle:} ????} 
+    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
 
-
-
-
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 9}  \label{AS9}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+$d_{0}$ &  58893 &  1461 &  4800 &  6788 &  3661 &  0 \\
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
+$d_1$ &  73378 &    764 &    0 &  1461 \\
+$d_2$ &  59771 &   1639 &  11337 &  2856 \\
+$d_3$ &  44058 &   3349 &  24818 &  3378 \\
+$d_4$ &  29200 &   7845 &  37475 &  1083 \\
+$d_5$ &  13013 &  29056 &  33534 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
 
 
 
