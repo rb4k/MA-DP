@@ -53,9 +53,16 @@
 	<array>
 		<dict>
 			<key>Bounds</key>
-			<string>{{588.37505722045921, 430.26622517903496}, {33.5, 34}}</string>
+			<string>{{588, 430.26622517903496}, {67, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -78,14 +85,21 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 P}</string>
+\f0\b\fs22 \cf0 Prognose}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{631.25008010864269, 430.26622517903547}, {33.5, 34}}</string>
+			<string>{{658.66408538818359, 430.26622517903547}, {86.335937499999886, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -108,44 +122,21 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 TP}</string>
+\f0\b\fs22 \cf0 Transport-planung}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{630.81255976359046, 389.48377482096305}, {33.5, 34}}</string>
+			<string>{{588, 358.50001064936265}, {157.00000000000011, 23}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
-			<key>HFlip</key>
-			<string>YES</string>
-			<key>ID</key>
-			<integer>121</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
+			<key>FontInfo</key>
 			<dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
 			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-
-\f0\b\fs24 \cf0 DP}</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
-			<string>{{588.00000000000011, 357.50001064936265}, {76.750081380208258, 23}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -168,14 +159,21 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 MP}</string>
+\f0\b\fs22 \cf0 Masterplanung}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{588.00000000000011, 326.96751912434843}, {156.99999999999977, 23}}</string>
+			<string>{{588.00000000000011, 327.96751912434843}, {156.99999999999977, 23}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -198,14 +196,21 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Strat. Netzwerkplanung}</string>
+\f0\b\fs22 \cf0 Strat. Netzwerkplanung}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{588.00001970926928, 389.48375447591144}, {33.5, 34}}</string>
+			<string>{{658.6640625, 389.48375447591144}, {86.335937499999886, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -228,14 +233,21 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 PP}</string>
+\f0\b\fs22 \cf0 Produktions-planung}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{671.37504005432163, 414.2662353515625}, {73.624959945678484, 50}}</string>
+			<string>{{588, 389.03250217437744}, {67, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -258,7 +270,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Bedarfs-deckung}</string>
+\f0\b\fs22 \cf0 ATP}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -311,39 +323,16 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{671.3750400543214, 357.5}, {73.624959945678484, 50}}</string>
-			<key>Class</key>
-			<string>ShapedGraphic</string>
-			<key>HFlip</key>
-			<string>YES</string>
-			<key>ID</key>
-			<integer>100</integer>
-			<key>Shape</key>
-			<string>Rectangle</string>
-			<key>Style</key>
-			<dict>
-				<key>shadow</key>
-				<dict>
-					<key>Draws</key>
-					<string>NO</string>
-				</dict>
-			</dict>
-			<key>Text</key>
-			<dict>
-				<key>Text</key>
-				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
-\cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;}
-{\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-
-\f0\b\fs24 \cf0 Absatz-planung}</string>
-			</dict>
-		</dict>
-		<dict>
-			<key>Bounds</key>
 			<string>{{309.33203125000006, 430.26623916625977}, {86.335937499999886, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -366,7 +355,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Prognose (P)}</string>
+\f0\b\fs22 \cf0 Prognose}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -374,6 +363,13 @@
 			<string>{{309.33203125000006, 389.48376846313477}, {86.335937499999886, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -396,7 +392,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Produktions-planung (PP)}</string>
+\f0\b\fs22 \cf0 Produktions-planung}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -404,6 +400,13 @@
 			<string>{{400.16406250000006, 389.4837646484375}, {86.335937499999886, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -426,7 +429,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Distributions-planung (DP)}</string>
+\f0\b\fs22 \cf0 Distributions-planung}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -434,6 +437,13 @@
 			<string>{{400.16406250000006, 430.2662353515625}, {86.335937499999886, 34}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -456,12 +466,12 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Transport-planung (TP)}</string>
+\f0\b\fs22 \cf0 Transport-planung}</string>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{489.5, 414.2662353515625}, {82, 50}}</string>
+			<string>{{489.50000000000006, 414.2662353515625}, {86.335937499999886, 50}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>HFlip</key>
@@ -484,9 +494,10 @@
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf1348\cocoasubrtf170
 \cocoascreenfonts1{\fonttbl\f0\fnil\fcharset0 CMUBright-Bold;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
+\deftab720
+\pard\pardeftab720\qc
 
-\f0\b\fs24 \cf0 Bedarfs-deckung}</string>
+\f0\b\fs22 \cf0 Available-to-promise (ATP)}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -494,6 +505,13 @@
 			<string>{{152.5, 357.5}, {334, 23}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -516,7 +534,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Masterplanung (MP)}</string>
+\f0\b\fs22 \cf0 Masterplanung}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -726,6 +744,13 @@
 			<string>{{152.5, 389.4837646484375}, {152.50000000000011, 74.782470703125}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -748,7 +773,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Einkauf- und Material-bedarfsplanung (EMP)}</string>
+\f0\b\fs22 \cf0 Einkauf- und Material-bedarfsplanung}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -756,6 +781,13 @@
 			<string>{{489.5, 357.5}, {82, 50}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -778,7 +810,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Absatz-planung}</string>
+\f0\b\fs22 \cf0 Absatz-planung}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -786,6 +818,13 @@
 			<string>{{152.5, 327.7337646484375}, {419, 23}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>CMUBright-Bold</string>
+				<key>Size</key>
+				<real>12</real>
+			</dict>
 			<key>HFlip</key>
 			<string>YES</string>
 			<key>ID</key>
@@ -808,7 +847,7 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\b\fs24 \cf0 Strategische Netzwerkplanung}</string>
+\f0\b\fs22 \cf0 Strategische Netzwerkplanung}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -2481,7 +2520,7 @@ Entwicklung}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-08-18 13:53:07 +0000</string>
+	<string>2015-08-19 10:36:28 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -2571,7 +2610,7 @@ Entwicklung}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{56, -13}, {811, 585}}</string>
+		<string>{{52, -13}, {811, 585}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>

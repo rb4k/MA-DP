@@ -2,13 +2,13 @@
 \markboth{5 Numerische Untersuchung}{}
 \setcounter{footnote}{4}  %um durchgehende Fußnotennummerierung zu haben, hier die Anzahl der bisherigen Fußnoten eintragen
 
-Für die numerische Untersuchung wurden mehrere Berechnungen der optimalen Politik für bestimmte Kombinationen von Eigenschaften der Produktanfragen und verschiedener Wahrscheinlichkeitsverteilungen durchgeführt. Ziel ist es zu untersuchen, ob durch die Möglichkeit der Lagerhaltung eine Veränderung in der optimalen Politik resultiert und sofern es eine Veränderung gibt, in welcher Ausgestaltungsform diese eintritt. Die Ergebnisse der Berechnungen, die in dieser Arbeit vorgestellt sind, wurden mithilfe des Clustersystems an der Leibniz Universität Hannover berechnet. Tabelle \ref{Hardware} zeigt die verwendete Rechnersysteme, wobei eine Berechnung jeweils auf einem Knoten der verfügbaren Rechnersysteme durchgeführt wurde.
+Für die numerische Untersuchung wurden mehrere Berechnungen der optimalen Politik für bestimmte Kombinationen der Eigenschaften der Produktanfragen und verschiedener Wahrscheinlichkeitsverteilungen bzgl. des Eintritts der Anfragen durchgeführt. Ziel ist es zu untersuchen, ob durch die Möglichkeit der Lagerhaltung eine Veränderung in der optimalen Politik resultiert und sofern es eine Veränderung gibt, in welcher Form diese eintritt. Die Ergebnisse der Berechnungen, die in dieser Arbeit vorgestellt sind, wurden mithilfe des Clustersystems an der Leibniz Universität Hannover berechnet. Tabelle \ref{Hardware} zeigt die verwendete Rechnersysteme, wobei eine Berechnung jeweils auf einem Knoten der verfügbaren Rechnersysteme durchgeführt wurde.
 
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.5}
   \begin{center}
   \begin{small}
-    \caption{Überblick über Publikationen des traditionellen Konzepts des Revenue Managements in der Fertigungsindustrie}  \label{Hardware}
+    \caption{Überblick der verwendeten Hardware des Clustersystems an der Leibniz Universität Hannover}  \label{Hardware}
     \vspace*{3mm}
     \begin{tabular}{llp{6cm}p{1.5cm}p{1.5cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
      Cluster & Knoten  & Prozessoren & Kerne/ Knoten  & Speicher/ Knoten (GB) \\  \hline
@@ -24,7 +24,7 @@ Für die numerische Untersuchung wurden mehrere Berechnungen der optimalen Polit
   \end{center}
 \end{table}
 
-Die in der Arbeit verwendete Implementierung des Auftragsannahmeproblems im Netzwerk RM mit Lagerhaltungsentscheidung sieht die Berechnung der möglichen Systemzustände und des maximal möglichen Erwartungswerts vor. Mithilfe der möglichen Systemzustände wird die Memofunktion gespeist (Vgl. Kapitel ????), die wiederum bei der Berechnung der Erwartungswerte für die benötigten Systemzustände notwendig ist. Bei der Berechnung der Erwartungswerte handelt es sich um das DP. Zusätzlich erfolgt nach Berechnung der Erwartungswerte die Übertragung und Speicherung der optimalen Politik für jeden Systemzustand in eine Datenbank. Aufgrund der zwei Berechnungsschritte werden für beide Berechnungen jeweils die ermittelten Daten bzw. Berechnungskennzahlen angegeben.  Auf dem Rechnersystem wurden folgende Versionen der verwendeten Software-Pakete genutzt:
+Die in der Arbeit verwendete Implementierung des Auftragsannahmeproblems im Netzwerk RM mit Lagerhaltungsentscheidung sieht die Berechnung der möglichen Systemzustände und des maximal möglichen Erwartungswerts vor. Mithilfe der möglichen Systemzustände wird die Memofunktion gespeist, die wiederum bei der Berechnung der Erwartungswerte für die benötigten Systemzustände notwendig ist (Vgl. Kapitel \ref{Implementierung}). Bei der Berechnung der Erwartungswerte handelt es sich um das DP im Netzwerk RM. Zusätzlich erfolgt nach Berechnung der Erwartungswerte die Übertragung und Speicherung der optimalen Politik für jeden Systemzustand in eine Datenbank. Aufgrund der zwei Berechnungsschritte werden für beide Berechnungen jeweils die ermittelten Daten bzw. Berechnungskennzahlen angegeben.  Auf dem vorgestellten Rechnersystem wurden folgende Versionen der verwendeten Software-Pakete genutzt:
 
 \colorbox{hellgrau}{\parbox{14cm}{\texttt{Python Version 2.7.9 (default, Jul  2 2015, 11:24:04) [GCC 4.9.2]\\
 Numpy Version 1.9.2\\
@@ -32,7 +32,7 @@ Matplotlib Version 1.4.3\\
 Pandas Version 0.16.2
 }}}
 
-Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je Szenario gibt es eine Anzahl an Buchungsperioden $T$ und eine Anzahl an Leistungserstellungszeitpunkten $\hat T$. In dieser Arbeit wird nur eine Ressource $h\in\mathcal{H}$ betrachtet, was sich ebenfalls in den Szenarien widerspiegelt. Für einen jeden Leistungserstellungszeitpunkt $\hat t \in \hat T$ gibt es eine Anzahl an Kapazitäten $c_h^{\hat t}$, einen Lagerbestand $y_h^{\hat t}$ und einen maximal möglichen Lagerbestand $y_h^{{\hat t},max}$ der Ressource $h=1$. Die unterschiedlichen Produktanfragen $j\in\mathcal{J}$ haben dabei einen individuellen Ertrag $r_j$, einen Parameter für die Inanspruchnahme bzw. Bestandsveränderung der Kapazitäten $a_hj$ der Ressource $h=1$ und einen Zeitpunkt der Leistungserstellung $\hat t$. Die Szenarien besitzen für die Buchungsperioden $t\in T$ eine bestimmte Wahrscheinlichkeitsverteilung $p_j(t)$ über den Auftragseingang einer jeden Produktanfrage $j\in\mathcal{J}$. Die Verteilungen ist jeweils beim Produkt $j$ angegeben und über alle Produkte $j\in\mathcal{J}$ des jeweiligen Szenarios als grafischer Kurvenverlauf abgebildet.
+Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je Szenario gibt es eine Anzahl an Buchungsperioden $T$ und eine Anzahl an Leistungserstellungszeitpunkten $\hat T$. In dieser Arbeit wird nur eine Ressource $h\in\mathcal{H}$ betrachtet, was sich ebenfalls in den Szenarien widerspiegelt. Für einen jeden Leistungserstellungszeitpunkt $\hat t \in \hat T$ gibt es eine Anzahl an Kapazitäten $c_h^{\hat t}$, einen Lagerbestand $y_h^{\hat t}$ und einen maximal möglichen Lagerbestand $y_h^{{\hat t},max}$ der Ressource $h=1$. Die unterschiedlichen Produktanfragen $j\in\mathcal{J}$ haben dabei einen individuellen Ertrag $r_j$, einen Parameter für die Inanspruchnahme bzw. Bestandsveränderung der Kapazitäten $a_{hj}$ der Ressource $h=1$ und einen Zeitpunkt der Leistungserstellung $\hat t$. Die Szenarien besitzen für die Buchungsperioden $t\in T$ eine bestimmte Wahrscheinlichkeitsverteilung $p_j(t)$ über den Auftragseingang einer jeden Produktanfrage $j\in\mathcal{J}$. Die Verteilungen ist jeweils beim Produkt $j$ angegeben und über alle Produkte $j\in\mathcal{J}$ des jeweiligen Szenarios als grafischer Kurvenverlauf abgebildet.
 
 %%%%%%%%%%%%%%%%%% DP_L_AB
 \begin{table}[h!]
@@ -69,7 +69,9 @@ Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je
   \end{center}
 \end{table}
 
-Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Produktanfragen $j\in\mathcal{J}$ betrachtet. Jeweils zwei Produktanfragen $j$ sind für eine der fünf möglichen Leistungserstellungen vorgesehen und die Anfragen wechseln sich dabei jeweils zwischen dem möglichen Ertrag $r_j=100$ und $r_j=1000$ ab. Die Wahrscheinlichkeitsverteilung einer jeden Produktanfrage verläuft dabei linear mit dem konstanten Wert $p_j(t)$ über den Buchungshorizont $T$, wobei mit Überschreitung der zur Produktanfrage $j$ zugehörigen Leistungserstellung $\hat t$ die Eintrittswahrscheinlichkeit der Produktanfrage auf $p_j(t)=0$ sinkt (Vgl. Abbildung \ref{SB1}).
+\textbf{Szenario 1}
+
+Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Produktanfragen $j\in\mathcal{J}$ betrachtet. Jeweils zwei Produktanfragen $j$ sind für eine der fünf möglichen Leistungserstellungen $\hat t\in\hat T$ vorgesehen und die Anfragen wechseln sich dabei jeweils zwischen dem möglichen Ertrag $r_j=100$ und $r_j=1000$ ab. Die Wahrscheinlichkeitsverteilung einer jeden Produktanfrage verläuft dabei linear mit dem konstanten Wert $p_j(t)=0,09$ über den Buchungshorizont $T$, wobei mit Überschreitung der zur Produktanfrage $j$ zugehörigen Leistungserstellung $\hat t$ die Eintrittswahrscheinlichkeit der Produktanfrage auf $p_j(t)=0$ sinkt (Vgl. Abbildung \ref{SB1}).
 
 \begin{figure}[h!]
   \begin{center}
@@ -87,7 +89,7 @@ Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Pr
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\ \hline
 $d_{0}$ &  57767 &  1461 &  0 &  5048 &  0 &  7960 &  0 &  3367 &  0 &  0 &  0 \\
 \hline
     \end{tabular} \\[3mm]
@@ -108,8 +110,11 @@ $d_{10}$ &  13013 &  29235 &  33355 &   0 \\
      \end{center}
 \end{table}
 
-Tabelle \ref{S1} zeigt die verwendeten Parameter des Szenarios und das Ergebnis der Berechnung. Das vollständige Ergebnis ist im Anhang ??? nachzulesen. Tabelle \ref{AS1} zeigt die Auswertung der optimalen Politik die sich aufgrund der Parameter und der Wahrscheinlichkeitsverteilung des Szenarios 1 ergeben. Es handelt sich um eine Auswertung der absoluten Anzahl der Entscheidungen für die optimale Politik sofern keine Anfrage eintrifft ($d_0$) und sofern Anfragen eintreffen ($d_j\forall j \in\mathcal{J}$). Wie in der Tabelle \ref{AS1} zu erkennen, werden nur die Bestandsveränderungsparameter $a_j$ mit niedrigem Ertrag $r_j$ für eine mögliche Lagerhaltungsentscheidung verwendet. Dabei kann die Annahme getroffen werden, dass bei fortschreiten des Buchungshorizonts $T$ die Entscheidung über eine mögliche Lagerproduktion öfters getroffen wird. Bei der optimalen Politik $d_j$ ergibt sich ein ähnliches Bild. Tendenziell werden öfters Anfragen mit niedrigem Ertrag abgelehnt und eine Lagerproduktion durchgeführt. ....
+Tabelle \ref{S1} zeigt die verwendeten Parameter des Szenarios und das Ergebnis der Berechnung. Das vollständige Ergebnis ist im Anhang ??? nachzulesen. Tabelle \ref{AS1} zeigt die Auswertung der optimalen Politik die sich aufgrund der Parameter und der Wahrscheinlichkeitsverteilung des Szenarios 1 ergeben. Es handelt sich um eine Auswertung der absoluten Anzahl der Entscheidungen für die optimale Politik sofern keine Anfrage eintrifft ($d_0$) und sofern Anfragen eintreffen ($d_j\forall j \in\mathcal{J}$). Wie in der Tabelle \ref{AS1} zu erkennen, unterscheidet das Modell am Anfang nicht zwischen den Produktanfragen $1$ oder $2$ für eine mögliche Lagerhaltungsentscheidung. Beide werden bis zum Leistungserstellungszeitpunkt $\hat t=1$ gleich oft als optimale Politik $d_{j}$ zur möglichen Lagerproduktion gewählt. Sofern der weitere Buchungshorizont $T$ betrachtet wird, steigt die Anzahl an Entscheidungen für die Lagerproduktion für Produktanfragen mit einem Ertrag $r_j=100$ höher an als die für die Produktanfrage mit einem Ertrag $r_j=1000$. Ein ähnliches Bild ergibt sich bei der Entscheidung zur Lagerentnahme. Anfragen mit höherem Ertrag werden tendenziell öfters als optimale Politik gewählt und nimmt mit ablaufenden Buchungshorizont weiter zu. Sofern keine Anfragen eintreffen, ist die vom Modell gewählte optimale Politik $d_{0}$ die Verwendung von Anfragen mit niedrigem Ertrag für eine mögliche Lagerhaltung. Dabei werden öfters Anfragen aus dem mittleren Bereich des Buchungshorizonts verwendet.
 
+\textbf{Szenario 2}
+
+Das zweite Szenario zeichnet sich durch linear ansteigende Eintrittswahrscheinlichkeiten $p_j(t)$ der Produktanfragen $j\in\mathcal{J}$ aus. Dabei steigt die Eintrittswahrscheinlichkeit bis zum Leistungserstellungszeitpunkt $\hat t$ auf $p_j(t)=0,3$ für ein jeweiliges Produkts $j$ an, wobei die Steigung an jeweils unterschiedlichen Perioden startet. Die weiteren Eigenschaften der Produktanfragen basieren auf den des Szenarios 1. Tabelle \ref{S2} und Abbildung \ref{SB2} zeigen die Parameter für das Szenario 2.
 
 %%%%%%%%% DP_A_Lang
 \begin{table}[h!]
@@ -162,7 +167,7 @@ Tabelle \ref{S1} zeigt die verwendeten Parameter des Szenarios und das Ergebnis 
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
 $d_{0}$ &  32652 &  55 &  0 &  219 &  0 &  914 &  0 &  1733 &  0 &  0 &  0 \\
 \hline
     \end{tabular} \\[3mm]
@@ -183,6 +188,11 @@ $d_{10}$ &  10526 &  14285 &  10762 &   0 \\
      \end{center}
 \end{table}
 
+Tabelle \ref{AS2} zeigt die optimale Politik für das Szenario 2. Aufgrund der Wahrscheinlichkeitsverteilung $p_j(t)$ und aufgrund des hohen Ertrags $r_j$ von Produktanfrage $j=8$ wird diese tendenziell gegenüber der anderen Produktanfragen $j<8$ öfters gewählt. Auch in diesem Szenario steigt die Anzahl der Entscheidungen über eine Lagerproduktion mit ablaufenden Buchungshorizonts für Anfragen mit niedrigem Ertrag weiter an. Die Anzahl an Systemzustände ist unter einer solchen Verteilung geringer, da nicht alle Anfragen zu jeder Periode verfügbar sind. Dies reduziert auch die Berechnungszeit des Algorithmus. Tendenziell erfolgt die Entscheidungen über eine Lagerproduktion nicht so häufig wie bei einer konstant linearen Verteilung. Sofern keine Anfragen eintreffen, wird tendenziell weniger eine Lagerproduktion durchgeführt. Nur mit ablaufenden Buchungshorizont scheint öfters die Entscheidung für die Lagerproduktion zu erfolgen.
+
+\textbf{Szenario 3}
+
+Bei dem Szenario 3 handelt es sich um normalverteilte Eintrittswahrscheinlichkeiten für die Produktanfragen $j\in\mathcal{J}$. Dabei ist für jedes Produkt der Erwartungswert $\mu$ und die Standardabweichung $\sigma$ angegeben. Zu beachten ist, dass aufgrund des unter Umständen umfangreichen Zeitraums der Wahrscheinlichkeitsverteilung $p_j(t)$ einer Produktanfrage $j$ die Normalverteilung $\mathcal{N}(\mu,\sigma)$ um einen Skala normiert werden musste. Andernfalls wären die Werte der Wahrscheinlichkeitsverteilung für solche Anfragen viel geringer als die für Anfragen mit einer kurzem Betrachtungszeitraum. Dies spiegelt die Verteilung von Produkt 1 und Produkt 9 in Tabelle \ref{S3} wider. Weiter zeigt die Tabelle alle anderen Parameterausprägungen für das Szenario 3. Die weiteren Eigenschaften der Produktanfragen orientieren sich anhand der bereits beschriebenen Szenarien. Abbildung \ref{SB3} zeigt die Wahrscheinlichkeitsverteilung des Szenarios.
 
 %%%%%%%%%%%%%%%%%%%%% DP_N_Lang
 \begin{table}[h!]
@@ -214,8 +224,6 @@ $d_{10}$ &  10526 &  14285 &  10762 &   0 \\
      Rechenzeit DP (h): & \texttt{14:14:26.314997} \\ 
           Max. Erwartungswert (GE): & \texttt{9955.83} \\ \hline
          \end{tabular} \\[3mm]
-  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
-        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
   \end{center}
 \end{table}
 
@@ -223,8 +231,6 @@ $d_{10}$ &  10526 &  14285 &  10762 &   0 \\
   \begin{center}
     \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_N_Lang/Wverteilung.png}
     \caption{Wahrscheinlichkeitsverteilung Szenario 3}  \label{SB3}
-       % {\footnotesize \textbf{Quelle:} ????} 
-    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
   \end{center}
 \end{figure}
 
@@ -235,7 +241,7 @@ $d_{10}$ &  10526 &  14285 &  10762 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
 $d_{0}$ &  59953 &  1461 &  0 &  4093 &  0 &  5938 &  0 &  4158 &  0 &  0 &  0 \\\hline
     \end{tabular} \\[3mm]
         \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
@@ -254,6 +260,10 @@ $d_{10}$ &  13033 &  29233 &  33337 &   0 \\
    \end{tabular} \\[3mm]
      \end{center}
 \end{table}
+
+Sofern eine solche Wahrscheinlichkeitsverteilung $p_j(j)$ angenommen wird, verhält es sich die optimale Politik $d_j$ für Produkte $j=1$ und $j=2$ ähnlich der 
+
+
 
 
 %%%%%%%%%%% DP2_A_Lang
@@ -303,7 +313,7 @@ $d_{10}$ &  13033 &  29233 &  33337 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
 $d_{0}$ &  30000 &  55 &  218 &  914 &  4386 &  0 \\
 \hline
     \end{tabular} \\[3mm]
@@ -363,7 +373,7 @@ $d_5$ &  10526 &  14285 &  10762 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
 $d_{0}$ &  62159 &  1378 &  2467 &  3934 &  5665 &  0 \\
 \hline
     \end{tabular} \\[3mm]
@@ -423,7 +433,7 @@ $d_5$ &  20523 &  24942 &  30138 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
 $d_{0}$ &  27750 &  461 &  570 &  912 &  79 &  0 \\
 \hline
     \end{tabular} \\[3mm]
@@ -484,7 +494,7 @@ $d_5$ &  21781 &  4935 &  3056 &  0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
 $d_{0}$ &  58123 &  1380 &  4615 &  6772 &  4713 &  0 \\
 \hline
     \end{tabular} \\[3mm]
@@ -553,7 +563,7 @@ $d_5$ &  13237 &  28944 &  33422 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
 $d_{0}$ &  61926 &  1461 &  0 &  4829 &  0 &  6746 &  0 &  641 &  0 &  0 &  0 \\\hline
     \end{tabular} \\[3mm]
         \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
@@ -620,8 +630,8 @@ $d_{10}$ &  13013 &  29056 &  33534 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  
-$d_{0}$ &  58893 &  1461 &  4800 &  6788 &  3661 &  0 \\
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
+$d_{0}$ &  58893 &  1461 &  4800 &  6788 &  3661 &  0 \\ \hline
     \end{tabular} \\[3mm]
         \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
     $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
