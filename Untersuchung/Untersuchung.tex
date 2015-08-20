@@ -2,7 +2,7 @@
 \markboth{5 Numerische Untersuchung}{}
 \setcounter{footnote}{4}  %um durchgehende Fußnotennummerierung zu haben, hier die Anzahl der bisherigen Fußnoten eintragen
 
-Für die numerische Untersuchung wurden mehrere Berechnungen der optimalen Politik für bestimmte Kombinationen der Eigenschaften der Produktanfragen und verschiedener Wahrscheinlichkeitsverteilungen bzgl. des Eintritts der Anfragen durchgeführt. Ziel ist es zu untersuchen, ob durch die Möglichkeit der Lagerhaltung eine Veränderung in der optimalen Politik resultiert und sofern es eine Veränderung gibt, in welcher Form diese eintritt. Die Ergebnisse der Berechnungen, die in dieser Arbeit vorgestellt sind, wurden mithilfe des Clustersystems an der Leibniz Universität Hannover berechnet. Tabelle \ref{Hardware} zeigt die verwendete Rechnersysteme, wobei eine Berechnung jeweils auf einem Knoten der verfügbaren Rechnersysteme durchgeführt wurde.
+Für die numerische Untersuchung wurden mehrere Berechnungen der optimalen Politik für bestimmte Szenerien mit unterschiedlichen Eigenschaften und verschiedener Eintrittswahrscheinlichkeiten der Produktanfragen durchgeführt. Ziel ist es zu untersuchen, ob durch die Möglichkeit der Lagerhaltung eine Veränderung in der optimalen Politik resultiert und sofern es eine Veränderung gibt, in welcher Form diese eintritt. Die Ergebnisse der Berechnungen, die in dieser Arbeit vorgestellt sind, wurden mithilfe des Clustersystems an der Leibniz Universität Hannover berechnet. Tabelle \ref{Hardware} zeigt die verwendete Rechnersysteme, wobei eine Berechnung jeweils auf einem Knoten der verfügbaren Rechnersysteme durchgeführt wurde.
 
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.5}
@@ -24,7 +24,7 @@ Für die numerische Untersuchung wurden mehrere Berechnungen der optimalen Polit
   \end{center}
 \end{table}
 
-Die in der Arbeit verwendete Implementierung des Auftragsannahmeproblems im Netzwerk RM mit Lagerhaltungsentscheidung sieht die Berechnung der möglichen Systemzustände und des maximal möglichen Erwartungswerts vor. Mithilfe der möglichen Systemzustände wird die Memofunktion gespeist, die wiederum bei der Berechnung der Erwartungswerte für die benötigten Systemzustände notwendig ist (Vgl. Kapitel \ref{Implementierung}). Bei der Berechnung der Erwartungswerte handelt es sich um das DP im Netzwerk RM. Zusätzlich erfolgt nach Berechnung der Erwartungswerte die Übertragung und Speicherung der optimalen Politik für jeden Systemzustand in eine Datenbank. Aufgrund der zwei Berechnungsschritte werden für beide Berechnungen jeweils die ermittelten Daten bzw. Berechnungskennzahlen angegeben.  Auf dem vorgestellten Rechnersystem wurden folgende Versionen der verwendeten Software-Pakete genutzt:
+Die in der Arbeit verwendete Implementierung des Auftragsannahmeproblems des Netzwerk RM mit Lagerhaltungsentscheidung sieht die Berechnung der möglichen Systemzustände und des maximal möglichen Erwartungswerts vor. Mithilfe der möglichen Systemzustände wird die Memofunktion gespeist, die wiederum bei der Berechnung der Erwartungswerte für die benötigten Systemzustände notwendig ist (vgl. Kapitel \ref{Implementierung}). Bei der Berechnung der Erwartungswerte wird ein  angepasstes DP des Netzwerk RM verwendet. Anhang \ref{CodeA} zeigt den verwendeten Quellcode. Zusätzlich erfolgt mithilfe der Implementierung nach Berechnung der Erwartungswerte die Übertragung und Speicherung der optimalen Politik für jeden Systemzustand in eine Datenbank. Aufgrund der zwei Berechnungsschritte werden für beide Berechnungen jeweils die ermittelten Daten bzw. Berechnungskennzahlen angegeben.  Auf dem vorgestellten Rechnersystem wurden folgende Versionen der verwendeten Software-Pakete genutzt:
 
 \colorbox{hellgrau}{\parbox{14cm}{\texttt{Python Version 2.7.9 (default, Jul  2 2015, 11:24:04) [GCC 4.9.2]\\
 Numpy Version 1.9.2\\
@@ -32,7 +32,7 @@ Matplotlib Version 1.4.3\\
 Pandas Version 0.16.2
 }}}
 
-Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je Szenario gibt es eine Anzahl an Buchungsperioden $T$ und eine Anzahl an Leistungserstellungszeitpunkten $\hat T$. In dieser Arbeit wird nur eine Ressource $h\in\mathcal{H}$ betrachtet, was sich ebenfalls in den Szenarien widerspiegelt. Für einen jeden Leistungserstellungszeitpunkt $\hat t \in \hat T$ gibt es eine Anzahl an Kapazitäten $c_h^{\hat t}$, einen Lagerbestand $y_h^{\hat t}$ und einen maximal möglichen Lagerbestand $y_h^{{\hat t},max}$ der Ressource $h=1$. Die unterschiedlichen Produktanfragen $j\in\mathcal{J}$ haben dabei einen individuellen Ertrag $r_j$, einen Parameter für die Inanspruchnahme bzw. Bestandsveränderung der Kapazitäten $a_{hj}$ der Ressource $h=1$ und einen Zeitpunkt der Leistungserstellung $\hat t$. Die Szenarien besitzen für die Buchungsperioden $t\in T$ eine bestimmte Wahrscheinlichkeitsverteilung $p_j(t)$ über den Auftragseingang einer jeden Produktanfrage $j\in\mathcal{J}$. Die Verteilungen ist jeweils beim Produkt $j$ angegeben und über alle Produkte $j\in\mathcal{J}$ des jeweiligen Szenarios als grafischer Kurvenverlauf abgebildet.
+Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je Szenario gibt es eine Anzahl an Buchungsperioden $T$ und eine Anzahl an Leistungserstellungszeitpunkten $\hat T$. Die Leistungserstellungszeitpunkte $\hat t \in \hat T$ teilen sich dabei gleichmäßig über den Buchungshorizont $T$ auf. In dieser Arbeit wird nur eine Ressource $h\in\mathcal{H}$ betrachtet, was sich ebenfalls in den Szenarien widerspiegelt. Für einen jeden Leistungserstellungszeitpunkt $\hat t \in \hat T$ gibt es eine Anzahl an Kapazitäten $c_h^{\hat t}$, einen Lagerbestand $y_h^{\hat t}$ und einen maximal möglichen Lagerbestand $y_h^{{\hat t},max}$ der Ressource $h=1$. Die unterschiedlichen Produktanfragen $j\in\mathcal{J}$ haben dabei einen individuellen Ertrag $r_j$, einen Parameter für die Inanspruchnahme bzw. Bestandsveränderung der Kapazitäten $a_{hj}$ der Ressource $h=1$ und einen Zeitpunkt der Leistungserstellung $\hat t$. Die Szenarien besitzen für die Buchungsperioden $t\in T$ eine bestimmte Wahrscheinlichkeitsverteilung $p_j(t)$ über den Auftragseingang einer jeden Produktanfrage $j\in\mathcal{J}$. Die Verteilungen ist jeweils beim Produkt $j$ angegeben und über alle Produkte $j\in\mathcal{J}$ des jeweiligen Szenarios als grafischer Kurvenverlauf abgebildet.
 
 %%%%%%%%%%%%%%%%%% DP_L_AB
 \begin{table}[h!]
@@ -71,11 +71,11 @@ Nachfolgend sind alle berechneten Beispiele anhand von Szenarien dargestellt. Je
 
 \textbf{Szenario 1}
 
-Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Produktanfragen $j\in\mathcal{J}$ betrachtet. Jeweils zwei Produktanfragen $j$ sind für eine der fünf möglichen Leistungserstellungen $\hat t\in\hat T$ vorgesehen und die Anfragen wechseln sich dabei jeweils zwischen dem möglichen Ertrag $r_j=100$ und $r_j=1000$ ab. Die Wahrscheinlichkeitsverteilung einer jeden Produktanfrage verläuft dabei linear mit dem konstanten Wert $p_j(t)=0,09$ über den Buchungshorizont $T$, wobei mit Überschreitung der zur Produktanfrage $j$ zugehörigen Leistungserstellung $\hat t$ die Eintrittswahrscheinlichkeit der Produktanfrage auf $p_j(t)=0$ sinkt (Vgl. Abbildung \ref{SB1}).
+Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Produktanfragen $j\in\mathcal{J}$ betrachtet. Jeweils zwei Produktanfragen $j$ sind für eine der fünf möglichen Leistungserstellungen $\hat t\in\hat T$ vorgesehen und die Anfragen wechseln sich dabei jeweils zwischen dem möglichen Erträgen $r_j=100$ und $r_j=1000$ ab. Die Wahrscheinlichkeitsverteilung einer jeden Produktanfrage verläuft dabei linear mit dem konstanten Wert $p_j(t)=0,09$ über den Buchungshorizont $T$, wobei mit Überschreitung des Leistungserstellungszeitpunkts $\hat t$ die Eintrittswahrscheinlichkeit einer dessen zugehörigen Produktanfrage $j$ auf $p_j(t)=0$ sinkt (vgl. Abbildung \ref{SB1}).
 
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_L_Ab/Wverteilung.png}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_L_Ab/Wverteilung.png}
     \caption{Wahrscheinlichkeitsverteilung Szenario 1}  \label{SB1}
        % {\footnotesize \textbf{Quelle:} ????} 
     %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
@@ -91,30 +91,32 @@ Im ersten Szenario werden über einen Buchungszeitraum $T=100$ insgesamt zehn Pr
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
          $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\ \hline
 $d_{0}$ &  57767 &  1461 &  0 &  5048 &  0 &  7960 &  0 &  3367 &  0 &  0 &  0 \\
+$d_{0}$ (\%) &  76.41 &  1.93 &  0 &  6.68 &  0 &  10.53 &  0 &  4.45 & 0 &  0 &  0 \\
 \hline
     \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_{1}$  &  74038 &    104 &    0 &  1461 \\
-$d_{2}$  &  73850 &    292 &    0 &  1461 \\
-$d_{3}$  &  69657 &    208 &    528 &  5210 \\
-$d_{4}$  &  60889 &    404 &  11262 &  3048 \\
-$d_{5}$  &  65333 &    304 &   1136 &  8830 \\
-$d_{6}$  &  46350 &    659 &  24820 &  3774 \\
-$d_{7}$  &  69725 &    216 &   2583 &  3079 \\
-$d_{8}$  &  27421 &  10707 &  37475 &   0 \\
-$d_{9}$  &  70577 &   2440 &   2586 &   0 \\
-$d_{10}$ &  13013 &  29235 &  33355 &   0 \\
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$  &  74038 &  97.93 &    104 &   0.14 &    0 &    0 &  1461 &   1.93 \\
+$d_{2}$  &  73850 &  97.68 &    292 &   0.39 &    0 &    0 &  1461 &   1.93 \\
+$d_{3}$  &  69657 &  92.14 &    208 &   0.27 &    528 &    0.7 &  5210 &   6.88 \\
+$d_{4}$  &  60889 &  80.54 &    404 &   0.53 &  11262 &  14.88 &  3048 &   4.03 \\
+$d_{5}$  &  65333 &  86.42 &    304 &    0.4 &   1136 &    1.5 &  8830 &  11.67 \\
+$d_{6}$  &  46350 &  61.31 &    659 &   0.87 &  24820 &   32.8 &  3774 &   4.99 \\
+$d_{7}$  &  69725 &  92.23 &    216 &   0.29 &   2583 &   3.41 &  3079 &   4.07 \\
+$d_{8}$  &  27421 &  36.27 &  10707 &  14.16 &  37475 &  49.54 &   0 &    0 \\
+$d_{9}$  &  70577 &  93.35 &   2440 &   3.22 &   2586 &   3.42 &   0 &    0 \\
+$d_{10}$ &  13013 &  17.21 &  29235 &  38.66 &  33355 &  44.09 &   0 &    0 \\
           \hline
    \end{tabular} \\[3mm]
      \end{center}
 \end{table}
 
-Tabelle \ref{S1} zeigt die verwendeten Parameter des Szenarios und das Ergebnis der Berechnung. Das vollständige Ergebnis ist im Anhang ??? nachzulesen. Tabelle \ref{AS1} zeigt die Auswertung der optimalen Politik die sich aufgrund der Parameter und der Wahrscheinlichkeitsverteilung des Szenarios 1 ergeben. Es handelt sich um eine Auswertung der absoluten Anzahl der Entscheidungen für die optimale Politik sofern keine Anfrage eintrifft ($d_0$) und sofern Anfragen eintreffen ($d_j\forall j \in\mathcal{J}$). Wie in der Tabelle \ref{AS1} zu erkennen, unterscheidet das Modell am Anfang nicht zwischen den Produktanfragen $1$ oder $2$ für eine mögliche Lagerhaltungsentscheidung. Beide werden bis zum Leistungserstellungszeitpunkt $\hat t=1$ gleich oft als optimale Politik $d_{j}$ zur möglichen Lagerproduktion gewählt. Sofern der weitere Buchungshorizont $T$ betrachtet wird, steigt die Anzahl an Entscheidungen für die Lagerproduktion für Produktanfragen mit einem Ertrag $r_j=100$ höher an als die für die Produktanfrage mit einem Ertrag $r_j=1000$. Ein ähnliches Bild ergibt sich bei der Entscheidung zur Lagerentnahme. Anfragen mit höherem Ertrag werden tendenziell öfters als optimale Politik gewählt und nimmt mit ablaufenden Buchungshorizont weiter zu. Sofern keine Anfragen eintreffen, ist die vom Modell gewählte optimale Politik $d_{0}$ die Verwendung von Anfragen mit niedrigem Ertrag für eine mögliche Lagerhaltung. Dabei werden öfters Anfragen aus dem mittleren Bereich des Buchungshorizonts verwendet.
+Tabelle \ref{S1} zeigt die verwendeten Parameter des Szenarios und das Ergebnis der Berechnung. Das vollständige Ergebnis ist im Anhang ??? nachzulesen. Tabelle \ref{AS1} zeigt die Auswertung der optimalen Politik die sich aufgrund der Parameter und der Wahrscheinlichkeitsverteilung des Szenarios 1 ergeben. Es handelt sich um eine Auswertung der absoluten Anzahl und um die jeweilige Relation zu der gesamten Anzahl der optimale Politik sofern keine Anfrage eintrifft ($d_0$) und sofern Anfragen eintreffen ($d_j\forall j \in\mathcal{J}$). Wie in der Tabelle \ref{AS1} zu erkennen, unterscheidet das Modell am Anfang nicht zwischen den Produktanfragen $1$ oder $2$ für eine mögliche Lagerhaltungsentscheidung. Beide werden bis zum Leistungserstellungszeitpunkt $\hat t=1$ gleich oft als optimale Politik $d_{j}$ zur möglichen Lagerproduktion gewählt. Sofern der weitere Buchungshorizont $T$ betrachtet wird, steigt die Anzahl an Entscheidungen für die Lagerproduktion für Produktanfragen mit einem Ertrag $r_j=100$ höher an als die für die Produktanfrage mit einem Ertrag $r_j=1000$. Ein ähnliches Bild ergibt sich bei der Entscheidung zur Lagerentnahme. Anfragen mit höherem Ertrag werden tendenziell öfters als optimale Politik gewählt und nimmt mit ablaufenden Buchungshorizont weiter zu. Sofern keine Anfragen eintreffen, ist die vom Modell gewählte optimale Politik $d_{0}$ die Verwendung von Anfragen mit niedrigem Ertrag für eine mögliche Lagerhaltung. Dabei greift das Modell häufiger auf die Lagerhaltungsentscheidung im mittleren Bereich des Buchungshorizonts zurück.
 
 \textbf{Szenario 2}
 
-Das zweite Szenario zeichnet sich durch linear ansteigende Eintrittswahrscheinlichkeiten $p_j(t)$ der Produktanfragen $j\in\mathcal{J}$ aus. Dabei steigt die Eintrittswahrscheinlichkeit bis zum Leistungserstellungszeitpunkt $\hat t$ auf $p_j(t)=0,3$ für ein jeweiliges Produkts $j$ an, wobei die Steigung an jeweils unterschiedlichen Perioden startet. Die weiteren Eigenschaften der Produktanfragen basieren auf den des Szenarios 1. Tabelle \ref{S2} und Abbildung \ref{SB2} zeigen die Parameter für das Szenario 2.
+Das zweite Szenario zeichnet sich durch linear ansteigende Eintrittswahrscheinlichkeiten $p_j(t)$ der Produktanfragen $j\in\mathcal{J}$ aus. Dabei steigt die Eintrittswahrscheinlichkeit für ein jeweiliges Produkts $j$ bis zum Leistungserstellungszeitpunkt $\hat t$ auf $p_j(t)=0,3$ an, wobei die Steigung an jeweils unterschiedlichen Perioden startet. Die weiteren Eigenschaften der Produktanfragen basieren auf den des Szenarios 1. Tabelle \ref{S2} und Abbildung \ref{SB2} zeigen die Parameter für das Szenario 2.
 
 %%%%%%%%% DP_A_Lang
 \begin{table}[h!]
@@ -153,7 +155,7 @@ Das zweite Szenario zeichnet sich durch linear ansteigende Eintrittswahrscheinli
 
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_A_Lang/Wverteilung.png}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_A_Lang/Wverteilung.png}
     \caption{Wahrscheinlichkeitsverteilung Szenario 2}  \label{SB2}
        % {\footnotesize \textbf{Quelle:} ????} 
     %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
@@ -169,30 +171,32 @@ Das zweite Szenario zeichnet sich durch linear ansteigende Eintrittswahrscheinli
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
          $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
 $d_{0}$ &  32652 &  55 &  0 &  219 &  0 &  914 &  0 &  1733 &  0 &  0 &  0 \\
+$d_{0}$ (\%)&  91.79 &  0.15 &  0 &  0.62 &  0 &  2.57 &  0 &  4.87 &  0 &  0 &  0 \\
 \hline
     \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_{1}$  &  35518 &    0 &    0 &    55 \\
-$d_{2}$  &  35518 &    0 &    0 &    55 \\
-$d_{3}$  &  35336 &      6 &     12 &   219 \\
-$d_{4}$  &  34998 &     70 &    335 &   170 \\
-$d_{5}$  &  34483 &    102 &     74 &   914 \\
-$d_{6}$  &  32670 &    878 &   1451 &   574 \\
-$d_{7}$  &  33222 &    180 &    438 &  1733 \\
-$d_{8}$  &  20329 &   3901 &  11343 &   0 \\
-$d_{9}$  &  34292 &    900 &    381 &   0 \\
-$d_{10}$ &  10526 &  14285 &  10762 &   0 \\
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$  &  35518 &  99.85 &    0 &    0 &    0 &    0 &    55 &  0.15 \\
+$d_{2}$  &  35518 &  99.85 &    0 &    0 &    0 &    0 &    55 &  0.15 \\
+$d_{3}$  &  35336 &  99.33 &      6 &   0.02 &     12 &   0.03 &   219 &  0.61 \\
+$d_{4}$  &  34998 &  98.38 &     70 &    0.2 &    335 &   0.94 &   170 &  0.48 \\
+$d_{5}$  &  34483 &  96.94 &    102 &   0.29 &     74 &   0.21 &   914 &  2.56 \\
+$d_{6}$  &  32670 &  91.84 &    878 &   2.46 &   1451 &   4.07 &   574 &  1.61 \\
+$d_{7}$  &  33222 &  93.39 &    180 &    0.5 &    438 &   1.23 &  1733 &  4.86 \\
+$d_{8}$  &  20329 &  57.15 &   3901 &  10.95 &  11343 &  31.83 &   0 &   0 \\
+$d_{9}$  &  34292 &   96.4 &    900 &   2.52 &    381 &   1.07 &   0 &   0 \\
+$d_{10}$ &  10526 &  29.59 &  14285 &  40.12 &  10762 &  30.19 &   0 &   0 \\
           \hline
    \end{tabular} \\[3mm]
      \end{center}
 \end{table}
 
-Tabelle \ref{AS2} zeigt die optimale Politik für das Szenario 2. Aufgrund der Wahrscheinlichkeitsverteilung $p_j(t)$ und aufgrund des hohen Ertrags $r_j$ von Produktanfrage $j=8$ wird diese tendenziell gegenüber der anderen Produktanfragen $j<8$ öfters gewählt. Auch in diesem Szenario steigt die Anzahl der Entscheidungen über eine Lagerproduktion mit ablaufenden Buchungshorizonts für Anfragen mit niedrigem Ertrag weiter an. Die Anzahl an Systemzustände ist unter einer solchen Verteilung geringer, da nicht alle Anfragen zu jeder Periode verfügbar sind. Dies reduziert auch die Berechnungszeit des Algorithmus. Tendenziell erfolgt die Entscheidungen über eine Lagerproduktion nicht so häufig wie bei einer konstant linearen Verteilung. Sofern keine Anfragen eintreffen, wird tendenziell weniger eine Lagerproduktion durchgeführt. Nur mit ablaufenden Buchungshorizont scheint öfters die Entscheidung für die Lagerproduktion zu erfolgen.
+Tabelle \ref{AS2} zeigt die optimale Politik für das Szenario 2. Aufgrund der Wahrscheinlichkeitsverteilung $p_j(t)$ und aufgrund des hohen Ertrags $r_j$ von Produktanfrage $j=8$ wird diese tendenziell gegenüber der anderen Produktanfragen $j<8$ öfters gewählt. Auch in diesem Szenario steigt die Anzahl der Entscheidungen über eine Lagerproduktion mit ablaufenden Buchungshorizonts für Anfragen mit niedrigem Ertrag weiter an. Die Anzahl an Systemzustände ist unter einer solchen Verteilung geringer, da nicht alle Anfragen zu jeder Periode verfügbar sind. Dies reduziert auch die Berechnungszeit des Algorithmus. Tendenziell erfolgt die Entscheidungen über eine Lagerproduktion nicht so häufig wie bei einer konstant linearen Verteilung. Jedoch werden in diesem Szenario keine Anfragen $j=1$ und $j=2$ angenommen, sondern ausschließlich für die Lagerproduktion verwendet. Sofern keine Anfragen eintreffen, wird tendenziell weniger eine Lagerproduktion durchgeführt als im Vergleich zu einem linearen Verlauf der Eintrittswahrscheinlichkeiten. Nur mit ablaufenden Buchungshorizont scheint öfters die Entscheidung für die Lagerproduktion zu erfolgen, sofern keine Anfragen eintreffen.
 
 \textbf{Szenario 3}
 
-Bei dem Szenario 3 handelt es sich um normalverteilte Eintrittswahrscheinlichkeiten für die Produktanfragen $j\in\mathcal{J}$. Dabei ist für jedes Produkt der Erwartungswert $\mu$ und die Standardabweichung $\sigma$ angegeben. Zu beachten ist, dass aufgrund des unter Umständen umfangreichen Zeitraums der Wahrscheinlichkeitsverteilung $p_j(t)$ einer Produktanfrage $j$ die Normalverteilung $\mathcal{N}(\mu,\sigma)$ um einen Skala normiert werden musste. Andernfalls wären die Werte der Wahrscheinlichkeitsverteilung für solche Anfragen viel geringer als die für Anfragen mit einer kurzem Betrachtungszeitraum. Dies spiegelt die Verteilung von Produkt 1 und Produkt 9 in Tabelle \ref{S3} wider. Weiter zeigt die Tabelle alle anderen Parameterausprägungen für das Szenario 3. Die weiteren Eigenschaften der Produktanfragen orientieren sich anhand der bereits beschriebenen Szenarien. Abbildung \ref{SB3} zeigt die Wahrscheinlichkeitsverteilung des Szenarios.
+Bei dem Szenario 3 handelt es sich um normalverteilte Eintrittswahrscheinlichkeiten für die Produktanfragen $j\in\mathcal{J}$. Dabei ist für jedes Produkt der Erwartungswert $\mu$ und die Standardabweichung $\sigma$ angegeben. Zu beachten ist, dass aufgrund des unter Umständen umfangreichen Zeitraums der Wahrscheinlichkeitsverteilung $p_j(t)$ einer Produktanfrage $j$ die Normalverteilung $\mathcal{N}(\mu,\sigma)$ um einen Skala normiert werden musste. Andernfalls wären die Werte der Wahrscheinlichkeitsverteilung für solche Anfragen viel geringer als die für Anfragen mit einem kurzen Betrachtungszeitraum. Dies spiegelt die Verteilung von Produkt 1 und Produkt 9 in Tabelle \ref{S3} wider. Weiter zeigt die Tabelle alle anderen Parameterausprägungen für das Szenario 3. Die weiteren Eigenschaften der Produktanfragen orientieren sich anhand der bereits beschriebenen Szenarien. Abbildung \ref{SB3} zeigt die Wahrscheinlichkeitsverteilung des Szenarios.
 
 %%%%%%%%%%%%%%%%%%%%% DP_N_Lang
 \begin{table}[h!]
@@ -229,7 +233,7 @@ Bei dem Szenario 3 handelt es sich um normalverteilte Eintrittswahrscheinlichkei
 
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_N_Lang/Wverteilung.png}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_N_Lang/Wverteilung.png}
     \caption{Wahrscheinlichkeitsverteilung Szenario 3}  \label{SB3}
   \end{center}
 \end{figure}
@@ -242,281 +246,35 @@ Bei dem Szenario 3 handelt es sich um normalverteilte Eintrittswahrscheinlichkei
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
          $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
-$d_{0}$ &  59953 &  1461 &  0 &  4093 &  0 &  5938 &  0 &  4158 &  0 &  0 &  0 \\\hline
+$d_{0}$ &  59953 &  1461 &  0 &  4093 &  0 &  5938 &  0 &  4158 &  0 &  0 &  0 \\
+$d_{0}$ (\%)&   79.3 &  1.93 &  0 &  5.41 &  0 &  7.85 &  0 &   5.5 &  0 &  0 &  0 \\\hline
     \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_{1}$  &  73882 &    260 &    0 &  1461 \\
-$d_{2}$  &  73318 &    824 &    0 &  1461 \\
-$d_{3}$  &  70901 &    156 &    280 &  4266 \\
-$d_{4}$  &  60509 &   1222 &  11300 &  2572 \\
-$d_{5}$  &  68039 &    252 &    672 &  6640 \\
-$d_{6}$  &  47217 &    554 &  24722 &  3110 \\
-$d_{7}$  &  68464 &    180 &   2854 &  4105 \\
-$d_{8}$  &  27421 &  10707 &  37475 &   0 \\
-$d_{9}$  &  71283 &   1281 &   3039 &   0 \\
-$d_{10}$ &  13033 &  29233 &  33337 &   0 \\
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$  &  73882 &  97.72 &    260 &   0.34 &    0 &    0 &  1461 &  1.93 \\
+$d_{2}$  &  73318 &  96.98 &    824 &   1.09 &    0 &    0 &  1461 &  1.93 \\
+$d_{3}$  &  70901 &  93.78 &    156 &   0.21 &    280 &   0.37 &  4266 &  5.64 \\
+$d_{4}$  &  60509 &  80.04 &   1222 &   1.61 &  11300 &  14.93 &  2572 &   3.4 \\
+$d_{5}$  &  68039 &     90 &    252 &   0.33 &    672 &   0.89 &  6640 &  8.77 \\
+$d_{6}$  &  47217 &  62.45 &    554 &   0.73 &  24722 &  32.67 &  3110 &  4.11 \\
+$d_{7}$  &  68464 &  90.56 &    180 &   0.24 &   2854 &   3.77 &  4105 &  5.42 \\
+$d_{8}$  &  27421 &  36.27 &  10707 &  14.16 &  37475 &  49.54 &   0 &   0 \\
+$d_{9}$  &  71283 &  94.29 &   1281 &   1.69 &   3039 &   4.01 &   0 &   0 \\
+$d_{10}$ &  13033 &  17.24 &  29233 &  38.66 &  33337 &  44.06 &   0 &   0 \\
           \hline
    \end{tabular} \\[3mm]
      \end{center}
 \end{table}
 
-Sofern eine solche Wahrscheinlichkeitsverteilung $p_j(j)$ angenommen wird, verhält es sich die optimale Politik $d_j$ für Produkte $j=1$ und $j=2$ ähnlich der 
-
-
-
-
-%%%%%%%%%%% DP2_A_Lang
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Szenario 4}  \label{S4}
-    \vspace*{3mm}
-    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
-100 & 5 & 1 & 1 & 0 & 2  \\ \hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{p{.5cm} p{.5cm} p{.5cm}  p{.5cm} p{9cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
-1 & 200 & 1 & 1 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 81   \\
-2 & 400 & 1 & 2 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 61  \\
-3 & 600 & 1 & 3 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 41  \\
-4 & 800 & 1 & 4 & Linear ansteigend auf $p_j(t)=0,3$ von 80 bis 21  \\
-5 & 1000 & 1 & 5 & Linear ansteigend auf $p_j(t)=0,3$ von 40 bis 1 \\
-\hline
-    \end{tabular} \\[3mm]
-     \begin{tabular}{p{7cm}p{5cm}} \hline
-     Rechenzeit Systemzustände (h): & \texttt{0:00:00.130437} \\
-     Anzahl möglicher Systemzustände: & \texttt{785376} \\
-     Anzahl benötigter Systemzustände: & \texttt{36367} \\ 
-     Rechenzeit DP (h): & \texttt{2:52:58.148777} \\ 
-          Max. Erwartungswert (GE): & \texttt{7253.44} \\ \hline
-         \end{tabular} \\[3mm]
-  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
-        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
-  \end{center}
-\end{table}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_A_Lang/Wverteilung.png}
-    \caption{Wahrscheinlichkeitsverteilung Szenario 4}  \label{SB4}
-       % {\footnotesize \textbf{Quelle:} ????} 
-    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
-  \end{center}
-\end{figure}
-
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Auswertung des Szenarios 4}  \label{AS4}
-    \vspace*{3mm}
-    %%%%%%%%%%%%%%% d[0]
-    \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
-$d_{0}$ &  30000 &  55 &  218 &  914 &  4386 &  0 \\
-\hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_1$ &  35518 &    0 &    0 &    55 \\
-$d_2$ &  34998 &     70 &    335 &   170 \\
-$d_3$ &  32670 &    878 &   1471 &   554 \\
-$d_4$ &  21941 &    378 &  11360 &  1894 \\
-$d_5$ &  10526 &  14285 &  10762 &   0 \\
-          \hline
-   \end{tabular} \\[3mm]
-     \end{center}
-\end{table}
-
-
-%%%%%%%%%%% DP2_N_Lang
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Szenario 5}  \label{S5}
-    \vspace*{3mm}
-    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
-100 & 5 & 1 & 1 & 0 & 2  \\ \hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
-1 & 200 & 1 & 1 & Normalverteilt $\mathcal{N}(90, 1)$   \\
-2 & 400 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
-3 & 600 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(50, 10)$  \\
-4 & 800 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(30, 10)$  \\
-5 & 1000 & 1 & 5 & Normalverteilt $30\cdot\mathcal{N}(10, 30)$ \\
-\hline
-    \end{tabular} \\[3mm]
-     \begin{tabular}{p{7cm}p{5cm}} \hline
-     Rechenzeit Systemzustände (h): & \texttt{0:00:00.217978} \\
-     Anzahl möglicher Systemzustände: & \texttt{785376} \\
-     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
-     Rechenzeit DP (h): & \texttt{8:20:03.217835} \\ 
-          Max. Erwartungswert (GE): & \texttt{8524.61} \\ \hline
-         \end{tabular} \\[3mm]
-  \end{center}
-\end{table}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_N_Lang/Wverteilung.png}
-    \caption{Wahrscheinlichkeitsverteilung Szenario 5}  \label{SB5}
-  \end{center}
-\end{figure}
-
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Auswertung des Szenarios 5}  \label{AS5}
-    \vspace*{3mm}
-    %%%%%%%%%%%%%%% d[0]
-    \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
-$d_{0}$ &  62159 &  1378 &  2467 &  3934 &  5665 &  0 \\
-\hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_1$ &  73661 &    564 &    0 &  1378 \\
-$d_2$ &  61592 &   1108 &  11228 &  1675 \\
-$d_3$ &  48503 &    372 &  24628 &  2100 \\
-$d_4$ &  35634 &    288 &  37465 &  2216 \\
-$d_5$ &  20523 &  24942 &  30138 &   0 \\
-          \hline
-   \end{tabular} \\[3mm]
-     \end{center}
-\end{table}
-
-
-%%%%%%%%%%%%%% DP3_N_Lang
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Szenario 6}  \label{S6}
-    \vspace*{3mm}
-    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
-100 & 5 & 1 & 1 & 0 & 2  \\ \hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
-1 & 200 & 1 & 1 & Normalverteilt $10\cdot\mathcal{N}(90, 10)$   \\
-2 & 400 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
-3 & 200 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(50, 10)$  \\
-4 & 300 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(30, 30)$  \\
-5 & 5000 & 1 & 5 & Normalverteilt $30\cdot\mathcal{N}(10, 0.45)$ \\
-\hline
-    \end{tabular} \\[3mm]
-     \begin{tabular}{p{7cm}p{5cm}} \hline
-     Rechenzeit Systemzustände (h): & \texttt{0:00:00.104080} \\
-     Anzahl möglicher Systemzustände: & \texttt{785376} \\
-     Anzahl benötigter Systemzustände: & \texttt{30566} \\ 
-     Rechenzeit DP (h): & \texttt{1:57:13.471350} \\ 
-          Max. Erwartungswert (GE): & \texttt{7082.92} \\ \hline
-         \end{tabular} \\[3mm]
-  \end{center}
-\end{table}
-
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP3_N_Lang/Wverteilung.png}
-    \caption{Wahrscheinlichkeitsverteilung Szenario 6}  \label{SB6}
-  \end{center}
-\end{figure}
-
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Auswertung des Szenarios 6}  \label{AS6}
-    \vspace*{3mm}
-    %%%%%%%%%%%%%%% d[0]
-    \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
-$d_{0}$ &  27750 &  461 &  570 &  912 &  79 &  0 \\
-\hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_1$ &  29010 &   301 &   0 &  461 \\
-$d_2$ &  25387 &  1651 &  2436 &  298 \\
-$d_3$ &  21861 &  2847 &  4567 &  497 \\
-$d_4$ &  20793 &  5195 &  3768 &   16 \\
-$d_5$ &  21781 &  4935 &  3056 &  0 \\
-          \hline
-   \end{tabular} \\[3mm]
-     \end{center}
-\end{table}
-
-
-%%%%%%%%%%%%%% DP4_N_Lang_Anf
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Szenario 7}  \label{S7}
-    \vspace*{3mm}
-    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
-100 & 5 & 1 & 1 & 0 & 2  \\ \hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
-    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
-1 & 200 & 1 & 1 & Normalverteilt $10\cdot\mathcal{N}(90, 10)$   \\
-2 & 300 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(80, 10)$  \\
-3 & 800 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
-4 & 2500 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(50, 30)$  \\
-5 & 5000 & 1 & 5 & Normalverteilt $10\cdot\mathcal{N}(20, 10)$ \\
-\hline
-    \end{tabular} \\[3mm]
-     \begin{tabular}{p{7cm}p{5cm}} \hline
-     Rechenzeit Systemzustände (h): & \texttt{0:00:00.137545} \\
-     Anzahl möglicher Systemzustände: & \texttt{785376} \\
-     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
-     Rechenzeit DP (h): & \texttt{8:53:13.857870} \\ 
-          Max. Erwartungswert (GE): & \texttt{27825.7} \\ \hline
-         \end{tabular} \\[3mm]
-  \end{center}
-\end{table}
-
-\clearpage
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP4_N_Lang_Anf/Wverteilung.png}
-    \caption{Wahrscheinlichkeitsverteilung Szenario 7}  \label{SB7}
-  \end{center}
-\end{figure}
-
-\begin{table}[h!]
-\renewcommand{\arraystretch}{1.5}
-  \begin{center}
-    \caption{Auswertung des Szenarios 7}  \label{AS7}
-    \vspace*{3mm}
-    %%%%%%%%%%%%%%% d[0]
-    \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
-$d_{0}$ &  58123 &  1380 &  4615 &  6772 &  4713 &  0 \\
-\hline
-    \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_1$ &  73527 &    696 &    0 &  1380 \\
-$d_2$ &  60104 &   1840 &  10694 &  2965 \\
-$d_3$ &  47161 &    509 &  24652 &  3281 \\
-$d_4$ &  35467 &    288 &  37463 &  2385 \\
-$d_5$ &  13237 &  28944 &  33422 &   0 \\
-          \hline
-   \end{tabular} \\[3mm]
-     \end{center}
-\end{table}
-
-
+Sofern eine solche Wahrscheinlichkeitsverteilung $p_j(j)$ angenommen wird, verhält es sich die optimale Politik $d_j$ ähnlich der Verteilung mit einem linearen Verlauf der Eintrittswahrscheinlichkeiten (siehe Auswertung des Szenarios 1). Tabelle \ref{AS3} zeigt die Auswertung des Szenarios 3. Die optimale Politik bzgl. einer Lagerhaltungsentscheidung wird eher für Produktanfragen $j$ mit geringem Ertrag $r_j$ ermittelt. Ebenfalls wird diese optimale Politik eher bei den Produktanfragen $j$ getroffen , die für den mittleren Bereich des Buchungshorizonts $T$ vorgesehen sind. Auch bei möglichen Entscheidungen für Lagerproduktion sofern keine Anfragen eintreffen bzw. für die optimalen Politik $d_0$ sind ähnliche Werte wie bei einem linearen Verlauf der Eintrittswahrscheinlichkeiten $p_j(t)$ festzustellen.\\[30mm]
+\newpage
 
 %%%%%%%%%%%%%%%%%%%%% DP_C_Lang
 \begin{table}[h!]
 \renewcommand{\arraystretch}{1.5}
   \begin{center}
-    \caption{Szenario 8}  \label{S8}
+    \caption{Szenario 4}  \label{S4}
     \vspace*{3mm}
     \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
     $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
@@ -547,12 +305,292 @@ $d_5$ &  13237 &  28944 &  33422 &   0 \\
   \end{center}
 \end{table}
 
+\textbf{Szenario 4}
+
+Für das Szenario 4 wird eine Cauchyverteilung für die Eintrittswahrscheinlichkeiten $p_j(t)$ für die Produktanfragen $j\in\mathcal{J}$ angenommen. Damit wird eine Verteilung modelliert, die für eine jede Produktanfrage $j$ den Höhepunkt der Wahrscheinlichkeit des Eintreffens zur letztmöglichen Buchungsperiode $t$ vorsieht. D. h. die Wahrscheinlichkeit steigt zum Leistungserstellungszeitpunkt $\hat t$ für eine jede Produktanfrage $j$ an. Abbildung \ref{SB2} zeigt die beschriebene Verteilung anhand eines Kurvendiagramms. Auch in diesem Szenario ist die Verteilung eines Produkts $j\in\mathcal{J}$ durch einen jeweiligen Skala verstärkt, damit die Eintrittswahrscheinlichkeiten $p_j(t)$ größere Werte aufweisen. Die weiteren Eigenschaften des Szenarios orientieren sich an den bisherigen Szenarien. Tabelle \ref{S4} zeigt die Parameter  zusammenfassend.
+
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_C_Lang/Wverteilung.png}
-    \caption{Wahrscheinlichkeitsverteilung Szenario 8}  \label{SB8}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP_C_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 4}  \label{SB4}
        % {\footnotesize \textbf{Quelle:} ????} 
     %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 4}  \label{AS4}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
+$d_{0}$ &  61926 &  1461 &  0 &  4829 &  0 &  6746 &  0 &  641 &  0 &  0 &  0 \\
+$d_{0}$ (\%) &  81.91 &  1.93 &  0 &  6.39 &  0 &  8.92 &  0 &  0.85 &  0 &  0 &  0 \\\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$  &  74090 &     98 &     52 &   0.07 &    0 &    0 &  1461 &  1.93 \\
+$d_{2}$  &  73318 &  96.98 &    824 &   1.09 &    0 &    0 &  1461 &  1.93 \\
+$d_{3}$  &  70249 &  92.92 &    148 &    0.2 &    216 &   0.29 &  4990 &  6.59 \\
+$d_{4}$  &  59475 &  78.67 &   1933 &   2.55 &  11336 &  14.98 &  2859 &  3.78 \\
+$d_{5}$  &  67572 &  89.38 &    246 &   0.32 &    394 &   0.52 &  7391 &  9.76 \\
+$d_{6}$  &  43544 &   57.6 &   4016 &   5.31 &  24816 &   32.8 &  3227 &  4.26 \\
+$d_{7}$  &  71807 &  94.98 &    180 &   0.24 &   2993 &   3.95 &   623 &  0.82 \\
+$d_{8}$  &  27421 &  36.27 &  10707 &  14.16 &  37475 &  49.54 &   0 &   0 \\
+$d_{9}$  &  69131 &  91.44 &    900 &   1.19 &   5572 &   7.36 &   0 &   0 \\
+$d_{10}$ &  13013 &  17.21 &  29056 &  38.42 &  33534 &  44.32 &   0 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+Die Auswertung in der Tabelle \ref{AS4} zeigt für die Cauchyverteilung, dass die Anzahl der optimalen Politik $d_j$ für Produktanfragen $j\in\mathcal{J}$ zur möglichen Lagerproduktion relativ hoch ist. Nur die lineare Verteilung hat größere Werte bei der optimalen Politik sofern Anfragen eintreffen. Die Cauchyverteilung zeichnet sich dadurch aus, dass die Eintrittswahrscheinlichkeiten $p_j(t)$ über dem Wert $0$ liegen und somit über den gesamten Buchungshorizont $T$ eine Anfrage über jedes Produkt $j$ möglich ist, sofern der Leistungserstellungszeitpunkt $\hat t$ nicht überschritten ist. Die optimale Politik für Produktanfragen ist tendenziell eher die Akzeptanz einer Produktanfrage $j$. Sofern keine Anfragen eintreffen, scheint die optimale Politik $d_0$ für die Lagerproduktion auf Basis von Produktanfragen $j$ aus dem mittleren Bereich des Buchungshorizont zu sein.
+
+\textbf{Szenario 5}
+
+Für die nachfolgenden Szenarien wird die Anzahl an Produktanfragen $j\in\mathcal{J}$ auf fünf mögliche Anfragen reduziert. Diese sind jeweils für einen bestimmten Leistungserstellungszeitpunkt $\hat t$ vorgesehen. Die Leistungserstellungszeitpunkte $\hat t$ erstrecken sich weiterhin gleichmäßig über den gesamten Buchungshorizont $T$. Für das Szenario 5 existieren nur diese fünf Produktanfragen. Der Ertrag $r_j$ für die Produktanfragen $j\in\mathcal{J}$ ist dabei gestaffelt. Der Ertrag $r_j$ der Anfrage nach dem Produkt $j=1$ beträgt $200$ GE und für die weiteren Produktanfragen steigt der Ertrag jeweils um $200$ GE. D. h. für die letzte Produktanfrage $j=5$ wird ein Ertrag in Höhe von $r_5=1000$ erzielt. Bei dem Szenario 5 wird wieder eine linear aufsteigende Wahrscheinlichkeitsfunktion $p_j(t)$ für eine jeden Produktanfrage $j$ verwendet. Tabelle \ref{S5} zeigt die verwendeten Parameter und die Abbildung \ref{SB5} zeigt die Eintrittswahrscheinlichkeiten der Anfragen für das Szenario 5.
+
+%%%%%%%%%%% DP2_A_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 5}  \label{S5}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{.5cm} p{.5cm} p{.5cm}  p{.5cm} p{9cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 81   \\
+2 & 400 & 1 & 2 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 61  \\
+3 & 600 & 1 & 3 & Linear ansteigend auf $p_j(t)=0,3$ von 100 bis 41  \\
+4 & 800 & 1 & 4 & Linear ansteigend auf $p_j(t)=0,3$ von 80 bis 21  \\
+5 & 1000 & 1 & 5 & Linear ansteigend auf $p_j(t)=0,3$ von 40 bis 1 \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.130437} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{36367} \\ 
+     Rechenzeit DP (h): & \texttt{2:52:58.148777} \\ 
+          Max. Erwartungswert (GE): & \texttt{7253.44} \\ \hline
+         \end{tabular} \\[3mm]
+  %  {\footnotesize \textbf{In Anlehnung an:} \cite{quante2009management}, S. 44.}\\
+        % {\footnotesize \textbf{Quelle:} \url{http://www.rrzn.uni-hannover.de/scientific_computing_doku.html} }   %footnotesize liefert Schrift in Größe 10pt
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_A_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 5}  \label{SB5}
+       % {\footnotesize \textbf{Quelle:} ????} 
+    %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 5}  \label{AS5}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
+$d_{0}$ &  30000 &  55 &  218 &  914 &  4386 &  0 \\
+$d_{0}$ (\%) &  84.33 &  0.15 &  0.61 &  2.57 &  12.33 &  0 \\\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_1$ &  35518 &  99.85 &    0 &    0 &    0 &    0 &    55 &  0.15 \\
+$d_2$ &  34998 &  98.38 &     70 &    0.2 &    335 &   0.94 &   170 &  0.48 \\
+$d_3$ &  32670 &  91.84 &    878 &   2.46 &   1471 &   4.12 &   554 &  1.55 \\
+$d_4$ &  21941 &  61.68 &    378 &   1.06 &  11360 &  31.88 &  1894 &  5.31 \\
+$d_5$ &  10526 &  29.59 &  14285 &  40.12 &  10762 &  30.19 &   0 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+In diesem Szenario zeigt sich, dass die optimale Politik die Annahme von Anfragen mit hohen Ertrag ist, sofern diese Anfragen eintreffen ($d_j$). Mit ablaufenden Buchungshorizont steigt dabei die Anzahl dieser Politiken. Auch die Entscheidung einer möglichen Lagerproduktion steigt zum Ende des Buchungshorizonts. Sofern keine Anfragen eintreffen ($d_0$), werden vorwiegend Anfragen vom Ende des Buchungshorizonts $T$ für eine mögliche Lagerproduktion verwendet.
+
+\textbf{Szenario 6}
+
+Das Szenario 6 zeichnet sich durch eine normalverteilte Wahrscheinlichkeitsverteilung $p_j(t)$ aus. Dabei weist das Produkt $j=1$ einen Erwartungswert von $\mu=t=90$ und eine Standardabweichung von $\sigma=1$. Für die weiteren Produktanfragen ist der Erwartungswert $\mu$ jeweils um $t=20$ Perioden verschoben. Die Standardabweichung $\sigma$ variiert jedoch je Produktanfrage $j$ und wird zur Normierung über den gesamten Buchungshorizont $T$ mit einem Skala multipliziert. Damit besitzt eine jeweilige Verteilung $p_j(t)$ höhere Wahrscheinlichkeitswerte über den gesamten Betrachtungszeitraum. Die fünf möglichen Produktanfragen $j\in\mathcal{J}$ haben für die anderen Parameter die Werte des Szenarios 5 hinterlegt. Tabelle \ref{S6} zeigt die Parameter für das Szenario 6.
+
+%%%%%%%%%%% DP2_N_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 6}  \label{S6}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Normalverteilt $\mathcal{N}(90, 1)$   \\
+2 & 400 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
+3 & 600 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(50, 10)$  \\
+4 & 800 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(30, 10)$  \\
+5 & 1000 & 1 & 5 & Normalverteilt $30\cdot\mathcal{N}(10, 30)$ \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.217978} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{8:20:03.217835} \\ 
+          Max. Erwartungswert (GE): & \texttt{8524.61} \\ \hline
+         \end{tabular} \\[3mm]
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_N_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 6}  \label{SB6}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 6}  \label{AS6}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
+$d_{0}$ &  62159 &  1378 &  2467 &  3934 &  5665 &  0 \\
+$d_{0}$ (\%) &  82.22 &  1.82 &  3.26 &   5.2 &  7.49 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$ &  73661 &  97.43 &    564 &   0.75 &    0 &    0 &  1378 &  1.82 \\
+$d_{2}$ &  61592 &  81.47 &   1108 &   1.46 &  11228 &  14.83 &  1675 &  2.21 \\
+$d_{3}$ &  48503 &  64.15 &    372 &   0.49 &  24628 &  32.55 &  2100 &  2.77 \\
+$d_{4}$ &  35634 &  47.13 &    288 &   0.38 &  37465 &  49.52 &  2216 &  2.93 \\
+$d_{5}$ &  20523 &  27.15 &  24942 &  32.98 &  30138 &  39.83 &   0 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+Tabelle \ref{AS6} zeigt die Auswertung für das Szenario 6. Unter Beachtung einer solchen Verteilung der Eintrittswahrscheinlichkeit ist die optimale Politik bzgl. der Lagerproduktion für die Produktanfragen $j\in\mathcal{J}$ relativ ähnlich verteilt. Die Annahme von Produktanfragen $j<5$ scheint für das Modell nicht zur optimalen Politik zu gehören, wobei die Annahme der Produktanfrage $j=5$ relativ häufig zur optimalen Politik gehört. Das Modell sieht eher die Lagerproduktion vor, als die Annahme von Anfragen mit niedrigem Ertrag. % Was ist mit keine Anfragen????
+
+
+\textbf{Szenario 7}
+
+In dem Szenario 7 wird unterstellt, dass am Anfang relativ gleichwertige Anfragen existieren und das Eintreffen dieser Anfragen nochmalverieilt ist. Es gibt aber zusätzlich die Möglichkeit, die auch relativ wahrscheinlich ist, dass eine höherwertige Anfrage $j=5$ eintrifft und einen Ertrag in Höhe von $r_j=5000$ erzielt. Es soll mit dem Modell getestet werden, ob eine solche Anfrage die optimale Politik des Netzwerks beeinflusst. Tabelle \ref{S7} zeigt die verwendeten Parameter und die Abbildung \ref{SB7} zeigt die Wahrscheinlichkeitsverteilung für das Szenario 7.
+
+
+%%%%%%%%%%%%%% DP3_N_Lang
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 7}  \label{S7}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Normalverteilt $10\cdot\mathcal{N}(90, 10)$   \\
+2 & 400 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
+3 & 200 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(50, 10)$  \\
+4 & 300 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(30, 30)$  \\
+5 & 5000 & 1 & 5 & Normalverteilt $30\cdot\mathcal{N}(10, 0.45)$ \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.104080} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{30566} \\ 
+     Rechenzeit DP (h): & \texttt{1:57:13.471350} \\ 
+          Max. Erwartungswert (GE): & \texttt{7082.92} \\ \hline
+         \end{tabular} \\[3mm]
+  \end{center}
+\end{table}
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP3_N_Lang/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 7}  \label{SB7}
+  \end{center}
+\end{figure}
+
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Auswertung des Szenarios 7}  \label{AS7}
+    \vspace*{3mm}
+    %%%%%%%%%%%%%%% d[0]
+    \begin{tabular}{l l l l l l l l l l l l }  \hline 
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
+$d_{0}$ &  27750 &  461 &  570 &  912 &  79 &  0 \\
+$d_{0}$ (\%) &  93.21 &  1.55 &  1.91 &  3.06 &  0.27 &  0 \\
+\hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$ &  29010 &  97.44 &   301 &   1.01 &   0 &    0 &  461 &  1.54 \\
+$d_{2}$ &  25387 &  85.27 &  1651 &   5.53 &  2436 &   8.16 &  298 &     1 \\
+$d_{3}$ &  21861 &  73.43 &  2847 &   9.54 &  4567 &   15.3 &  497 &  1.66 \\
+$d_{4}$ &  20793 &  69.84 &  5195 &  17.41 &  3768 &  12.62 &   16 &  0.05 \\
+$d_{5}$ &  21781 &  73.16 &  4935 &  16.54 &  3056 &  10.23 &  0 &   0 \\
+          \hline
+   \end{tabular} \\[3mm]
+     \end{center}
+\end{table}
+
+Die Auswertung des Szenarios 7 zeigt in Tabelle \ref{AS7}, dass unter eine solchen Verteilung die optimale Politik der Lagerproduktion von Produktanfragen $j\in\mathcal{J}$ selten bestimmt wurde. Das Modell sieht es eher weniger vor, dass ein Lagerbestand für spätere ertragreiche Produktanfragen aufgebaut wird, obwohl die Wahrscheinlichkeit des Eintretens dieser Produktanfrage relativ hoch ist. Auch eine besondere Politik sofern keine Anfragen eintreffen kann nicht festgestellt werden.\\[10mm]
+
+\textbf{Szenario 8}
+
+%%%%%%%%%%%%%% DP4_N_Lang_Anf
+\begin{table}[h!]
+\renewcommand{\arraystretch}{1.5}
+  \begin{center}
+    \caption{Szenario 8}  \label{S8}
+    \vspace*{3mm}
+    \begin{tabular}{l l l l l l}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $T$ & $\hat T$  & $h$ & $c_h^{\hat t}\forall \hat{t}\in{\hat T}$ & $y_h^{\hat t}\forall \hat{t}\in{\hat T}$  & $y_h^{{\hat t},max}\forall \hat{t}\in{\hat T}$  \\  \hline
+100 & 5 & 1 & 1 & 0 & 2  \\ \hline
+    \end{tabular} \\[3mm]
+        \begin{tabular}{p{1cm} p{1cm} p{1cm}  p{1cm} p{6cm}}   %hier die Spaltenausrichtung, -breite, -begrenzung und -anzahl eintragen
+    $j$ & $r_j$  & $a_{1j}$ & $\hat t$ & Verteilung $p_j(t)$ \\  \hline
+1 & 200 & 1 & 1 & Normalverteilt $10\cdot\mathcal{N}(90, 10)$   \\
+2 & 300 & 1 & 2 & Normalverteilt $10\cdot\mathcal{N}(80, 10)$  \\
+3 & 800 & 1 & 3 & Normalverteilt $10\cdot\mathcal{N}(70, 10)$  \\
+4 & 2500 & 1 & 4 & Normalverteilt $10\cdot\mathcal{N}(50, 30)$  \\
+5 & 5000 & 1 & 5 & Normalverteilt $10\cdot\mathcal{N}(20, 10)$ \\
+\hline
+    \end{tabular} \\[3mm]
+     \begin{tabular}{p{7cm}p{5cm}} \hline
+     Rechenzeit Systemzustände (h): & \texttt{0:00:00.137545} \\
+     Anzahl möglicher Systemzustände: & \texttt{785376} \\
+     Anzahl benötigter Systemzustände: & \texttt{76397} \\ 
+     Rechenzeit DP (h): & \texttt{8:53:13.857870} \\ 
+          Max. Erwartungswert (GE): & \texttt{27825.7} \\ \hline
+         \end{tabular} \\[3mm]
+  \end{center}
+\end{table}
+
+\clearpage
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP4_N_Lang_Anf/Wverteilung.png}
+    \caption{Wahrscheinlichkeitsverteilung Szenario 8}  \label{SB8}
   \end{center}
 \end{figure}
 
@@ -563,25 +601,24 @@ $d_5$ &  13237 &  28944 &  33422 &   0 \\
     \vspace*{3mm}
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
-         $j$ & 0 & 1  & 2 & 3 & 4  & 5 & 6 & 7 & 8 & 9 & 10  \\  \hline
-$d_{0}$ &  61926 &  1461 &  0 &  4829 &  0 &  6746 &  0 &  641 &  0 &  0 &  0 \\\hline
+         $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
+$d_{0}$ &  58123 &  1380 &  4615 &  6772 &  4713 &  0 \\
+$d_{0}$ (\%) &  76.88 &  1.83 &   6.1 &  8.96 &  6.23 &  0 \\
+\hline
     \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_{1}$  &  74090 &     52 &    0 &  1461 \\
-$d_{2}$  &  73318 &    824 &    0 &  1461 \\
-$d_{3}$  &  70249 &    148 &    216 &  4990 \\
-$d_{4}$  &  59475 &   1933 &  11336 &  2859 \\
-$d_{5}$  &  67572 &    246 &    394 &  7391 \\
-$d_{6}$  &  43544 &   4016 &  24816 &  3227 \\
-$d_{7}$  &  71807 &    180 &   2993 &   623 \\
-$d_{8}$  &  27421 &  10707 &  37475 &   0 \\
-$d_{9}$  &  69131 &    900 &   5572 &   0 \\
-$d_{10}$ &  13013 &  29056 &  33534 &   0 \\
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$ &  73527 &  97.25 &    696 &   0.92 &    0 &    0 &  1380 &  1.82 \\
+$d_{2}$ &  60104 &   79.5 &   1840 &   2.43 &  10694 &  14.13 &  2965 &  3.92 \\
+$d_{3}$ &  47161 &  62.38 &    509 &   0.67 &  24652 &  32.58 &  3281 &  4.33 \\
+$d_{4}$ &  35467 &  46.91 &    288 &   0.38 &  37463 &  49.52 &  2385 &  3.15 \\
+$d_{5}$ &  13237 &  17.51 &  28944 &  38.28 &  33422 &  44.17 &   0 &   0 \\
           \hline
    \end{tabular} \\[3mm]
      \end{center}
 \end{table}
+
 
 
 %%%%%%%%%%%%%%%%%%%%% DP2_C_Lang
@@ -616,7 +653,7 @@ $d_{10}$ &  13013 &  29056 &  33534 &   0 \\
 
 \begin{figure}[h!]
   \begin{center}
-    \includegraphics[width=80mm, trim=300pt 180pt 300pt 50pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_C_Lang/Wverteilung.png}
+    \includegraphics[width=80mm, trim=300pt 180pt 300pt 0pt]{/Users/Superuser/DP-RM-with-storage/cluster/DP2_C_Lang/Wverteilung.png}
     \caption{Wahrscheinlichkeitsverteilung Szenario 9}  \label{SB9}
        % {\footnotesize \textbf{Quelle:} ????} 
     %{\footnotesize \textbf{Legende:} Annahme einer Produktauftrag entspricht '$j$', KA='Kein Auftrag'} 
@@ -631,15 +668,17 @@ $d_{10}$ &  13013 &  29056 &  33534 &   0 \\
     %%%%%%%%%%%%%%% d[0]
     \begin{tabular}{l l l l l l l l l l l l }  \hline 
          $j$ & 0 & 1  & 2 & 3 & 4  & 5   \\  \hline
-$d_{0}$ &  58893 &  1461 &  4800 &  6788 &  3661 &  0 \\ \hline
+$d_{0}$ &  58893 &  1461 &  4800 &  6788 &  3661 &  0 \\
+$d_{0}$ (\%) &   77.9 &  1.93 &  6.35 &  8.98 &  4.84 &  0 \\\hline
     \end{tabular} \\[3mm]
-        \begin{tabular}{ l p{2.5cm} p{2.5cm} p{2.5cm} p{2.5cm} }   \hline    %%%%%%%%%%%%%%% d[0]
-    $d_j$ & Auftrags\-ablehnung (0) & Auftrags\-annahme (1)  & Lager\-entnahme (2) & Lager\-produktion (3)\\\hline 
-$d_1$ &  73378 &    764 &    0 &  1461 \\
-$d_2$ &  59771 &   1639 &  11337 &  2856 \\
-$d_3$ &  44058 &   3349 &  24818 &  3378 \\
-$d_4$ &  29200 &   7845 &  37475 &  1083 \\
-$d_5$ &  13013 &  29056 &  33534 &   0 \\
+        \begin{tabular}{ l l l l l l l l l}   \hline    %%%%%%%%%%%%%%% d[0]
+    $d_j$ & \multicolumn{2}{c}{Ablehnung (0)} & \multicolumn{2}{c}{Annahme (1)}  & \multicolumn{2}{c}{Lagerentnahme (2)} & \multicolumn{2}{c}{Lagerproduktion (3)}\\
+    & Anz. & \% & Anz. & \% & Anz. & \% & Anz. & \% \\ \hline 
+$d_{1}$ &  73378 &  97.06 &    764 &   1.01 &    0 &    0 &  1461 &  1.93 \\
+$d_{2}$ &  59771 &  79.06 &   1639 &   2.17 &  11337 &  14.98 &  2856 &  3.77 \\
+$d_{3}$ &  44058 &  58.28 &   3349 &   4.43 &  24818 &   32.8 &  3378 &  4.46 \\
+$d_{4}$ &  29200 &  38.62 &   7845 &  10.37 &  37475 &  49.54 &  1083 &  1.43 \\
+$d_{5}$ &  13013 &  17.21 &  29056 &  38.42 &  33534 &  44.32 &   0 &   0 \\
           \hline
    \end{tabular} \\[3mm]
      \end{center}
