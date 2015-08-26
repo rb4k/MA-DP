@@ -14,7 +14,7 @@
 	<key>BackgroundGraphic</key>
 	<dict>
 		<key>Bounds</key>
-		<string>{{0, 0}, {559.28997802734375, 782.8900146484375}}</string>
+		<string>{{0, 0}, {559.28997802734375, 1565.780029296875}}</string>
 		<key>Class</key>
 		<string>SolidGraphic</string>
 		<key>ID</key>
@@ -62,8 +62,8 @@
 			<integer>33</integer>
 			<key>Points</key>
 			<array>
-				<string>{263.38449096679688, 624.64240431785583}</string>
-				<string>{263.38449096679688, 649.79266738891602}</string>
+				<string>{263.38449096679688, 662.99999411899762}</string>
+				<string>{263.38449096679688, 690.15026307106018}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -84,7 +84,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483893712286, 649.79266738891602}, {432, 52.207332611083984}}</string>
+			<string>{{47.884483893712286, 690.15026307106018}, {432, 52.207332611083984}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -124,7 +124,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483893712286, 463.03620322544293}, {432, 161.606201171875}}</string>
+			<string>{{47.884483893712286, 463.03620322544293}, {432, 199.96379089355469}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -151,11 +151,12 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
 
-\f0\b\fs28 \cf0 5. Ein exaktes L\'f6sungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen
+\f0\b\fs28 \cf0 5. Ein exaktes L\'f6sungsverfahren f\'fcr Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen
 \f1\i\b0  \
 \pard\tx195\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li199\fi-200\slleading40\pardirnatural
-\cf0 -	Grundlegendes zum L\'f6sen und Implementieren des Auftragsannahmeproblems.\
--	Mathematische Formulierung eines Modells zur Auftragsannahme- und Lagerhaltungsentscheidung.}</string>
+\cf0 -	Modellannahmen zur Ber\'fccksichtigung von Lagerhaltungsentscheidugnen.\
+-	Mathematische Formulierung eines Modells f\'fcr Auftragsannahme- und Lagerhaltungsentscheidung.\
+-	Grundlegendes zum L\'f6sen und Implementieren des Auftragsannahmeproblems.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -164,7 +165,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{105.41333317756653, 177.94339140256011}, {446.47128295898438, 105.05661010742188}}</string>
+			<string>{{105.41333317756653, 180.94339140256011}, {446.47128295898438, 105.05661010742188}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -193,7 +194,7 @@
 
 \f0\b\fs28 \cf0 3. Das Konzept des Revenue Managements\
 
-\f1\i\b0 Die Herkunft, die Anwendungsvoraussetzungen sowie die Instrumente und die mathematische Modellformulierung des Revenue Managements.}</string>
+\f1\i\b0 Die Herkunft, die Anwendungsvoraussetzungen und die Instrumente des Revenue Managements und das dynamisch, stochastische Grundmodell.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -252,7 +253,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{-98.75497659047366, 569.30278245607087}, {239.9637451171875, 27.43069203694489}}</string>
+			<string>{{-118.87997659047366, 588.92778245607087}, {279.7137451171875, 27.43069203694489}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FontInfo</key>
@@ -398,7 +399,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{-85.273187955219754, 161.78473941484938}, {212.99996948242188, 27.430561065673828}}</string>
+			<string>{{-87.188917212880995, 163.20046867251062}, {216.24983215332031, 27.430561065673828}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FontInfo</key>
@@ -480,8 +481,8 @@
 			<integer>26</integer>
 			<key>Points</key>
 			<array>
-				<string>{263.38448739051819, 701.75486755371094}</string>
-				<string>{263.38448739051819, 729.18555959065588}</string>
+				<string>{263.38448739051819, 742.1124632358551}</string>
+				<string>{263.38448739051819, 769.54315527280005}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -542,7 +543,7 @@
 			<integer>22</integer>
 			<key>Points</key>
 			<array>
-				<string>{79.413352251052856, 156.19473266601591}</string>
+				<string>{79.413352251052856, 163.00000127156403}</string>
 				<string>{79.413352251052856, 462.00000000000023}</string>
 			</array>
 			<key>Style</key>
@@ -657,7 +658,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483575820823, 728.95143528317703}, {504, 40.000320434570312}}</string>
+			<string>{{47.884483575820823, 769.3090309653212}, {504, 40.000320434570312}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -700,7 +701,7 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
 
 \f0\b\fs28 \cf0 7. Schlussbemerkung 
-\f1\i\b0 Zusammenfassung und Ausblick}</string>
+\f1\i\b0 Zusammenfassung, Limitation und Ausblick.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -736,7 +737,7 @@
 
 \f0\b\fs28 \cf0 4. Bestehende Ans\'e4tze zur Annahme von Auftr\'e4gen in der Auftragsfertigung und bei Instandhaltungsprozessen\
 
-\f1\i\b0 Ein \'dcberblick \'fcber aktuelle wissenschaftliche Literatur des Konzepts des Revenue Management.}</string>
+\f1\i\b0 Ein \'dcberblick \'fcber die aktuelle wissenschaftliche Literatur.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -745,7 +746,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483575820923, 69.097359975177312}, {432, 86.400001525878906}}</string>
+			<string>{{47.884483575820923, 69.097359975177312}, {432, 93.902641296386719}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -774,7 +775,7 @@
 
 \f0\b\fs28 \cf0 2. Grundlagen zu auftragsbezogenen Instandhaltungsprozessen\
 
-\f1\i\b0 Einordnung in die Produktionswirtschaft, die Charakteristika und die Relevanz f\'fcr betriebliche Entscheidungen.}</string>
+\f1\i\b0 Einordnung in die Produktionswirtschaft und Begriffsbestimmung sowie die Charakteristika und die Relevanz f\'fcr betriebliche Entscheidungen.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -793,7 +794,7 @@
 			<key>Points</key>
 			<array>
 				<string>{515.94225239753723, 435.88594055175781}</string>
-				<string>{515.94225239753723, 729.18555959065588}</string>
+				<string>{515.94225239753723, 769.3090309653212}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -860,7 +861,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-08-10 17:10:10 +0000</string>
+	<string>2015-08-26 14:26:51 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -928,7 +929,7 @@
 	<key>UseEntirePage</key>
 	<false/>
 	<key>VPages</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>WindowInfo</key>
 	<dict>
 		<key>CurrentSheet</key>
@@ -941,7 +942,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{-29, 56}, {770, 721}}</string>
+		<string>{{-8, 51}, {770, 721}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -955,15 +956,15 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-38, 160}, {635, 579}}</string>
+		<string>{{-11, 365.13760349744734}, {582.56878949969621, 531.19264428397491}}</string>
 		<key>Zoom</key>
-		<real>1</real>
+		<real>1.0900000333786011</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Arbeitsfläche 1</string>
-				<real>1</real>
-				<real>2</real>
+				<real>1.0900000333786011</real>
+				<real>1.0399999618530273</real>
 			</array>
 		</array>
 	</dict>
