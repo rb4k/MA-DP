@@ -1,5 +1,5 @@
 % !TEX encoding = UTF-8 Unicode
-\chapter{Ein exaktes Lösungsverfahren für Auftragsannahme- und Lagerhaltungsentscheidung bei auftragsbezogenen Instandhaltungsprozessen}\label{HauptteilDP}
+\chapter{Ein exaktes Lösungsverfahren für Auftragsannahme- und Lagerhaltungsentscheidungen bei auftragsbezogenen Instandhaltungsprozessen}\label{HauptteilDP}
 \markboth{5 Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung}{}
 \setcounter{footnote}{7}
 
@@ -31,7 +31,7 @@ Dem modifizierten Modell soll es erlaubt sein, durch Betrachten der Leistungsers
   \end{center}
 \end{figure}
 
-\section{Mathematische Formulierung eines Modells für Auftragsannahme- und Lagerhaltungsentscheidung}\label{Umformung}
+\section{Mathematische Formulierung eines Modells für Auftragsannahme- und Lagerhaltungsentscheidungen}\label{Umformung}
 
 % Neuer Terme
 Bei der Modellformulierung erfolgt die Anpassung der \textit{Bellman'schen Funktionsgleichung}  \eqref{DP} um die Lagerentnahme in Form des Terms $r_{j} + V(\textbf{c}^{\hat t}, \textbf{y}^{\hat t}-Y(\textbf{a}_j^{\hat t}, \hat t), t-1)$. Der Term beschreibt die Annahme mittels des Lagerbestands. Damit ist es dem Unternehmen möglich entweder die Kapazität oder den Lagerbestand zur Annahme einer Anfrage eines Instandhaltungsprozess in Anspruch zu nehmen. Die gewollte Ablehnung einer Anfrage $j$ zur Produktion eines Lagerbestand $y_h^{\hat t}$ wird mit dem Term $V(\textbf{c}^{\hat t}-\textbf{a}^{\hat t}_j, \textbf{y}^{\hat t}+Y(\textbf{a}^{\hat t}_j, \hat t +1), t-1)$ dargestellt. Für das Modell gilt, dass eine Ressource und eine Einheit des Lagerbestands im gleichen Verhältnis substituierbar ist. Eine Lagerproduktion in der Instandhaltung kann z. B. die vorherige Aufarbeitung von Ressourcen sein, damit für spätere Instandhaltungsaufträge anstelle der Instandsetzung ein Austausch des zu reparierenden Produkts erfolgt.
