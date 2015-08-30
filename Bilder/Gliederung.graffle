@@ -62,8 +62,8 @@
 			<integer>33</integer>
 			<key>Points</key>
 			<array>
-				<string>{263.38449096679688, 662.99999411899762}</string>
-				<string>{263.38449096679688, 690.15026307106018}</string>
+				<string>{263.38449096679688, 679.28603537876324}</string>
+				<string>{263.38449096679688, 708.16290868251087}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -84,7 +84,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483893712286, 690.15026307106018}, {432, 52.207332611083984}}</string>
+			<string>{{47.884483893712286, 708.15026307106018}, {432, 52.207332611083984}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -124,7 +124,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483893712286, 463.03620322544293}, {432, 199.96379089355469}}</string>
+			<string>{{47.884483893712286, 463.03620322544293}, {432, 216.24983215332031}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -151,11 +151,11 @@
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\slleading40\pardirnatural
 
-\f0\b\fs28 \cf0 5. Ein exaktes L\'f6sungsverfahren f\'fcr Auftragsannahme- und Lagerhaltungsentscheidungen bei auftragsbezogenen Instandhaltungsprozessen
+\f0\b\fs28 \cf0 5. Eine Modellformulierung f\'fcr Auftragsannahme- und Lagerhaltungsentscheidungen bei auftragsbezogenen Instandhaltungsprozessen
 \f1\i\b0  \
 \pard\tx195\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li199\fi-200\slleading40\pardirnatural
-\cf0 -	Modellannahmen zur Ber\'fccksichtigung von Lagerhaltungsentscheidugnen.\
--	Mathematische Formulierung eines Modells f\'fcr Auftragsannahme- und Lagerhaltungsentscheidungen.\
+\cf0 -	Modellannahmen zur Ber\'fccksichtigung von Lagerhaltungsentscheidungen.\
+-	Mathematische Formulierung eines Modells zur Entscheidungsunterst\'fctzung bei Auftragsannahme- und Lagerhaltungsentscheidungen.\
 -	Grundlegendes zum L\'f6sen und Implementieren des Auftragsannahmeproblems.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
@@ -253,7 +253,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{-118.87997659047366, 588.92778245607087}, {279.7137451171875, 27.43069203694489}}</string>
+			<string>{{-127.95488198598147, 598.00268785157868}, {297.86355590820312, 27.43069203694489}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FontInfo</key>
@@ -481,8 +481,8 @@
 			<integer>26</integer>
 			<key>Points</key>
 			<array>
-				<string>{263.38448739051819, 742.1124632358551}</string>
-				<string>{263.38448739051819, 769.54315527280005}</string>
+				<string>{263.38448739051819, 760.1124632358551}</string>
+				<string>{263.38448739051819, 787.54315527280005}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -658,7 +658,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{47.884483575820823, 769.3090309653212}, {504, 40.000320434570312}}</string>
+			<string>{{47.884483575820823, 787.3090309653212}, {504, 40.000320434570312}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -794,7 +794,7 @@
 			<key>Points</key>
 			<array>
 				<string>{515.94225239753723, 435.88594055175781}</string>
-				<string>{515.94225239753723, 769.3090309653212}</string>
+				<string>{515.94225239753723, 787.3090309653212}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -861,7 +861,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-08-28 10:22:41 +0000</string>
+	<string>2015-08-30 15:47:37 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -942,7 +942,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{267, 50}, {770, 721}}</string>
+		<string>{{38, 55}, {615, 721}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -956,15 +956,15 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-11, 221.10091066051459}, {582.56878949969621, 531.19264428397491}}</string>
+		<string>{{-78, 0}, {716.41789260221856, 864.17908295142627}}</string>
 		<key>Zoom</key>
-		<real>1.0900000333786011</real>
+		<real>0.67000001668930054</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Arbeitsfläche 1</string>
-				<real>1.0900000333786011</real>
-				<real>1.0399999618530273</real>
+				<real>0.67000001668930054</real>
+				<real>0.63999998569488525</real>
 			</array>
 		</array>
 	</dict>

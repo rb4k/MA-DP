@@ -1,9 +1,9 @@
 % !TEX encoding = UTF-8 Unicode
-\chapter{Ein exaktes Lösungsverfahren für Auftragsannahme- und Lagerhaltungsentscheidungen bei auftragsbezogenen Instandhaltungsprozessen}\label{HauptteilDP}
+\chapter{Eine Modellformulierung für Auftragsannahme- und Lagerhaltungsentscheidungen bei auftragsbezogenen Instandhaltungsprozessen}\label{HauptteilDP}
 \markboth{5 Ein exaktes Lösungsverfahren zur Auftragsannahme- und Lagerhaltungsentscheidung}{}
-\setcounter{footnote}{7}
+\setcounter{footnote}{86}
 
-\section{Modellannahmen zur Berücksichtigungen von Lagerhaltungsentscheidungen}
+\section{Modellannahmen zur Berücksichtigung von Lagerhaltungsentscheidungen}
 
 %\subsection{Beachtung von Produktanfragen für nachfolgende Buchungsabschnitte}
 
@@ -31,7 +31,9 @@ Dem modifizierten Modell soll es erlaubt sein, durch Betrachten der Leistungsers
   \end{center}
 \end{figure}
 
-\section{Mathematische Formulierung eines Modells für Auftragsannahme- und Lagerhaltungsentscheidungen}\label{Umformung}
+
+
+\section{Mathematische Formulierung eines Modells zur Entscheidungsunterstützung bei Auftragsannahme- und Lagerhaltungsentscheidungen}\label{Umformung}
 
 % Neuer Terme
 Bei der Modellformulierung erfolgt die Anpassung der \textit{Bellman'schen Funktionsgleichung}  \eqref{DP} um die Lagerentnahme in Form des Terms $r_{j} + V(\textbf{c}^{\hat t}, \textbf{y}^{\hat t}-Y(\textbf{a}_j^{\hat t}, \hat t), t-1)$. Der Term beschreibt die Annahme mittels des Lagerbestands. Damit ist es dem Unternehmen möglich entweder die Kapazität oder den Lagerbestand zur Annahme einer Anfrage eines Instandhaltungsprozess in Anspruch zu nehmen. Die gewollte Ablehnung einer Anfrage $j$ zur Produktion eines Lagerbestand $y_h^{\hat t}$ wird mit dem Term $V(\textbf{c}^{\hat t}-\textbf{a}^{\hat t}_j, \textbf{y}^{\hat t}+Y(\textbf{a}^{\hat t}_j, \hat t +1), t-1)$ dargestellt. Für das Modellformulierung gilt weiterhin, dass eine Ressource und eine Einheit des Lagerbestands im gleichen Verhältnis substituierbar sind.
@@ -64,7 +66,9 @@ Es gelten die Grenzbedingungen \eqref{GB1} sowie \eqref{GB2} aus Kapitel \ref{Ka
          0, & \text{sonst}\end{array}\right. .
 \end{equation}
 
-Die \textit{Bellman'schen Funktionsgleichung} \eqref{time} zeigt ebenfalls den Term an, sofern keine Anfragen eintreffen. Bei der Auftragsannahme von Kundenaufträgen unter Berücksichtigung von Lagerhaltungsentscheidung muss beachtet werden, dass auch Entscheidungsalternativen beim Einreffen keiner Produktanfragen $j\in\mathcal{J} $ bestehen. Sofern keine Anfrage eintrifft, gibt es die Entscheidung über alle möglichen Produktanfragen $j\in\mathcal{J}$ die Lagerproduktion durch Inanspruchnahme der Kapazitäten durchzuführen. Damit existiert auch eine optimale Politik, sofern keine Anfrage $j\in\mathcal{J}$ zur Periode $t$ eintrifft. Für diese optimale Politik wird die Variable $d_0({\textbf{c}^{\hat t},\textbf{y}^{\hat t},t})$ verwendet. Es bestehen die gleichen Abhängigkeiten wie bei der Variable für die optimale Politik bei Auftragseingang ($d_j({\textbf{c}^{\hat t},\textbf{y}^{\hat t},t})$). Die Variable zeigt jedoch nicht einen Index über die optimale Entscheidung, sonder sie zeigt den Index der Produktanfrage $j$ die für die Lagerproduktion durch Verwendung des zugehörigen Ressourceneinsatzes bzw. Ausführungsmodus $\textbf a_j$ verwendet werden soll. Sofern keine Lagerproduktion erfolgt, nimmt die Variable den Wert $0$ an. Dabei wird für der optimalen Politik $d_0({\textbf{c}^{\hat t},\textbf{y}^{\hat t},t})$ zur Vereinfachung des Modells angenommen, dass nur dann eine Lagererhöhung erfolgen kann, sofern Anfragen nach Produkten $j\in\mathcal J$ möglich sind ($p_j(t)>0$). Damit wird die Variable wie folgt definiert:
+Die \textit{Bellman'schen Funktionsgleichung} \eqref{time} zeigt ebenfalls den Term an, sofern keine Anfragen eintreffen. Bei der Auftragsannahme von Kundenaufträgen unter Berücksichtigung von Lagerhaltungsentscheidung muss beachtet werden, dass auch Entscheidungsalternativen beim Einreffen keiner Produktanfragen $j\in\mathcal{J} $ bestehen. Sofern keine Anfrage eintrifft, gibt es die Entscheidung über alle möglichen Produktanfragen $j\in\mathcal{J}$ die Lagerproduktion durch Inanspruchnahme der Kapazitäten durchzuführen. Damit existiert auch eine optimale Politik, sofern keine Anfrage $j\in\mathcal{J}$ zur Periode $t$ eintrifft. Für diese optimale Politik wird die Variable $d_0({\textbf{c}^{\hat t},\textbf{y}^{\hat t},t})$ verwendet. Es bestehen die gleichen Abhängigkeiten wie bei der Variable für die optimale Politik bei Auftragseingang ($d_j({\textbf{c}^{\hat t},\textbf{y}^{\hat t},t})$). Die Variable zeigt jedoch nicht einen Index über die optimale Entscheidung, sonder sie zeigt den Index der Produktanfrage $j$ die für die Lagerproduktion durch Verwendung des zugehörigen Ressourceneinsatzes bzw. Ausführungsmodus $\textbf a_j$ verwendet werden soll. Sofern keine Lagerproduktion erfolgt, nimmt die Variable den Wert $0$ an. Dabei wird für der optimalen Politik $d_0({\textbf{c}^{\hat t},\textbf{y}^{\hat t},t})$ zur Vereinfachung des Modells angenommen, dass nur dann eine Lagererhöhung erfolgen kann, sofern Anfragen nach Produkten $j\in\mathcal J$ möglich sind ($p_j(t)>0$).
+
+Damit wird die Variable wie folgt definiert:
 \begin{equation}\label{GB4}
      d_{0}({\textbf{c}^{\hat t},\textbf{y}^{\hat t}, t}):=\left\{\begin{array}{ll}
          j, & \text{für }\{ j\; |\; \max_{\substack{j\in \mathcal{J},\\ p_j(t)>0}} -OC_{j}^{3}\}\\
@@ -73,7 +77,7 @@ Die \textit{Bellman'schen Funktionsgleichung} \eqref{time} zeigt ebenfalls den T
 
 
 
-Die Gleichung \eqref{time} kann analog der Gleichung \eqref{DP} umgeformt werden:
+Im nachfolgenden Schritt kann die Gleichung \eqref{time} analog der Gleichung \eqref{DP} umgeformt werden:
 %Umformung
 \begin{equation}\label{time2}
 \begin{alignat*}{2}
@@ -113,10 +117,10 @@ $\text{Startperiode } t=3, \; \text{Anzahl Leistungserstellungen } \hat{T}= 3$,
 \end{pmatrix}, 
   \]
   \[
-    \textbf{y}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
-    \textbf{y}^{max}=\begin{pmatrix} 2\\ 2\\ 2  \end{pmatrix}
-      \]\\[0.5cm]
-
+    \textbf{y}^{\hat t}= \begin{pmatrix} 0\\ 0\\ 0  \end{pmatrix}, \;
+    \textbf{y}^{\hat t, max}=\begin{pmatrix} 2\\ 2\\ 2  \end{pmatrix}
+      \]
+      
 Bei dem Beispiel wird ein Netzwerk mit drei Produktanfragen $j\in\mathcal{J}$ betrachtet. Es existieren drei Leistungserstellungszeitpunkte $\hat t$ für eine Ressource $h\in\mathcal{H}$. Die Annahmen der Produktanfragen $j\in\mathcal{J}$ generieren einen Ertrag in Höhe von $r_1=100, r_2=200$ und $r_3=5000$. Die Kapazitäten für die Ressourcen betragen $\textbf{c}^{\hat t}=(1,1,1)$ und die Bestandsveränderungen für die Anfragen betragen $\textbf{a}^{\hat t}_1=(1,0,0),\; \textbf{a}^{\hat t}_2=(0,1,0)$ sowie $\textbf{a}^{\hat t}_3=(0,0,2)$. Der Buchungshorizont beträgt $T=3$. Es existiert kein Lagerbestand $\textbf{y}^{\hat t}$ und es kann nur ein maximaler Lagerbestand $\textbf{y}^{\hat t, max}=(2, 2, 2)$ zu jeder Leistungserstellung aufgebaut werden. In diesem Beispiel sind nicht alle Produktanfragen $j\in\mathcal{J}$ zu jedem Zeitpunkt $t\in T$ möglich. Dies zeigt die Matrix $p_{j}(t)$ mit den Eintrittswahrscheinlichkeiten für jedes Produkt $j$ zum jeweiligen Zeitpunkt $t$. Für das Produkt $j=1$ treffen Anfragen zu den Zeitpunkten $t\in T$ mit den Wahrscheinlichkeiten $p_{1}(t)=(0.3, 0, 0)$ ein. Für die Produkte $j=2$ und $j=3$ betragen die Wahrscheinlichkeiten $p_{2}(t)=(0.3, 0.3, 0)$ bzw. $p_{3}(t)=(0.3, 0.3, 0.3)$. Bei den Wahrscheinlichkeiten $p_j(t)$ der Produktanfrage $j$ zum Zeitpunkt $t$ muss beachtet werden, dass der Buchungshorizont rückwärts verläuft. Abbildung \ref{B9} zeigt für das Beispiel die möglichen Systemzustände mit allen Übergängen. Dabei wird ein Systemzustand im Netzwerk als Zahlenfolge $[c^{\hat t=1}_1\;c^{\hat t=2}_1\;c_1^{\hat t=3}\;y_1^{\hat t=1}\;y_1^{\hat t=2}\;y_1^{\hat t=3}\;t]$ beschrieben.
 
 \begin{figure}[h!]

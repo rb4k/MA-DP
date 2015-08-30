@@ -208,18 +208,18 @@
     \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
         APS & Advanced Planning and Scheduling Systeme \\
         ATO & Assemble-to-Order (engl. Begriff für kundenindividuelle Fertigung mit standardisierten Komponenten)\\
-        DLP			& Deterministisch-lineares Programm\\
-        DP  			 & Dynamisches Programm zur Annahme von Aufträgen\\
-        DP-storage		    & Dynamisches Programm zur Annahme von Aufträgen unter Beachtung von Lagerbeständen\\
-        %GAMS 		& General Algebraic Modeling System\\
+        ATP & Available-to-promise (engl. Begriff für zusicherbarer Bestand)\\
+        DP  			 & Dynamische Programmierung\\
+        FCFS & First-come, first-served (engl. Begriff für einfache Reihenfolgeannahme bzw. Windhundverfahren) \\
         GE & Geldeinheiten \\
-        MRO & Maintenance-Repair-and-Overhaul (engl. Begriff für Instandhaltungsprozess)\\
+        KEP & Kundenentkopplungspunkt \\
+        MRO & Maintenance-Repair-and-Overhaul (engl. Begriff für Instandhaltungsprozesse)\\
      MTO & Make-to-Order (engl. Begriff für Auftragsfertigung) \\
      MTS & Make-to-Stock (engl. Begriff für Lagerfertigung)\\
      OK		    & Opportunitätskosten\\
-     RM		    & Revenue Management\\
+     RM		    & Revenue Management (engl. Begriff für Ertragsmanagement)\\
      SCM & Suppy Chain Management (engl. Begriff für Wertschöpfungslehre) \\
-    u. B. d. R. & unter Berücksichtigung der Randbedingungen\\
+  %  u. B. d. R. & unter Berücksichtigung der Randbedingungen\\
 	\end{tabular}
 	\end{flushleft}
 \end{table}
@@ -234,26 +234,65 @@
   \begin{flushleft}
     \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
     $\textbf{a}_{j}$ & Vektor des Ressourcenverbrauchs für Produktanfrage $j$\\
-    $a_{hj}$ &	Verbrauch der Ressource $h$ für Produktanfrage $j$\\
+    $a_{hj}$ &	Verbrauch bzw. Bestandsveränderung der Ressource $h$ für Produktanfrage $j$\\
    $\textbf{c}$ & Vektor der Ressourcenkapazität\\
    $c_{h}$ & Kapazität der Ressource $h$\\
-    $D_{jt}$ & Aggregierte erwartete Nachfrag nach Produkt $j$ zur Periode $t$\\
+   $d_0(\textbf{c},\textbf{y},t)$ & Optimale Politik in Abhängigkeit der Kapazitäten $\textbf{c}$ und des Lagerbestands \textbf{y}, sofern keine Anfrage zur Periode $t$ eintrifft\\
+   $d_0$ & Verkürzte Schreibweise für $d_0(\textbf{c},\textbf{y},t)$ \\
+            $\textbf{d}(\textbf{c},\textbf{y},t)$ & Vektor der optimalen Politik $d_j(\textbf{c},\textbf{y},t)$\\
+      $d_j(\textbf{c},\textbf{y},t)$ & Optimale Politik für Produktanfrage $j$ in Abhängigkeit der Kapazitäten $\textbf{c}$ und des Lagerbestands \textbf{y} zur Periode $t$\\
+      $d_j$ & Verkürzte Schreibweise für $d_j(\textbf{c},\textbf{y},t)$\\
     $h$	& Ressource aus der Menge $\mathcal{H}$\\
     $\mathcal{H}$ & Menge an Ressourcen\\
-    $i$ & ... $\mathcal{I}$\\
-    $\mathcal{I}$ & Gesamtmenge an möglichen Kombinationen ...\\
+    $i$ & Leistungserstellungszeitpunkt im klassischen Revenue Management\\
     $j$ & Produktanfrage aus der Menge $\mathcal{J}$\\
 $\mathcal{J}$ & Menge an möglichen Produktanfragen \\   
-$m$ & ... Ausführungsmodus aus der Menge $\mathcal{M}_{j}$\\
-    $\mathcal{M}_{j}$ & Menge an produktspezifisch-möglichen Ausführungsmodi für ein Produkt $j$\\
- $\pi_{h}$ & Bid-Preis der Ressource $h$\\
+$l$ & Anzahl der gesamten Ressourcen $h\in\mathcal{H}$\\
+$n$ & Anzahl der gesamten Produktanfragen $j\in\mathcal{J}$\\
+   $p_{0}(t)$ & Wahrscheinlichkeit, dass keine Anfrage in Periode $t$ eintrifft\\
    $p_{j}(t)$ & Wahrscheinlichkeit der Nachfrage nach Produkt $j$ in Periode $t$\\
-    $r_{j}$ & Erlös des Produkts $j$\\
-    $t$ & Periode des Buchungshorizonts $T$\\
-        $\tau$ & Endperiode $t=1$ im Buchungshorizont $T$\\ 
-        $T$ & Buchungshorizont\\
+    $r_{j}$ & Erlös der Anfrage $j$\\
+            $t$ & Periode des Buchungshorizonts $T$\\
+    $\hat t$ & Leistungserstellungszeitpunkt aus der Menge $\hat T$\\
+            $T$ & Buchungshorizont\\
+	\end{tabular}
+	\end{flushleft}
+\end{table}
+
+\begin{table}[t!]
+    \vspace*{-3mm}
+    \hspace*{2mm}
+  \renewcommand{\arraystretch}{1,5}
+  \begin{flushleft}
+    \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
+        $\hat T$ & Menge der Leistungserstellungszeitpunkte\\
    $V(\textbf{c},t)$ & Ertragsfunktion in Abhängigkeit der Kapazitäten $\textbf{c}$ in der Periode $t$\\
-    $x_{jm}$ & Anzahl der akzeptierten Anfragen nach Produkt $j$ im Ausführungsmodus $m$\\
+      $V(\textbf{c},\textbf{y},t)$ & Ertragsfunktion in Abhängigkeit der Kapazitäten $\textbf{c}$ und des Lagerbestands $\textbf{y}$ in der Periode $t$\\
+            $\textbf{y}$ & Vektor des Lagerbestands an reparierten Produkten\\
+      $y_h$ & Lagerbestand eines reparierten Produkts (Produkt ist durch Ressource $h$ substituierbar) \\
+        $\textbf{y}^{max}$ & Vektor des maximal möglicher Lagerbestands an reparierten Produkten \\
+            $y^{max}_h$ & Maximal möglicher Lagerbestand eines reparierten Produkts (Produkt ist durch Ressource $h$ substituierbar) \\
+                      $Y(\textbf{a}_{j},t)$ & Hilfsfunktion zur Ermittlung der Lagerveränderung durch den Parameter der Bestandsveränderung $\textbf{a}_{j}$ ab der Periode $t$\\
+                                  \\
+            \\
+            \\
+            \\
+            \\
+            \\
+                                              \\
+            \\
+            \\
+            \\
+            \\
+            \\
+                        \\
+            \\
+                                              \\
+            \\
+            \\
+            \\
+            \\
+            \\
 	\end{tabular}
 	\end{flushleft}
 \end{table}
