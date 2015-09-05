@@ -775,7 +775,7 @@
 
 \f0\b\fs28 \cf0 2. Grundlagen zu auftragsbezogenen Instandhaltungsprozessen\
 
-\f1\i\b0 Einordnung in die Produktionswirtschaft und Begriffsbestimmung sowie die Charakteristika und die Relevanz f\'fcr betriebliche Entscheidungen.}</string>
+\f1\i\b0 Einordnung in die Produktionswirtschaft und Begriffsbestimmung sowie die \'dcbersicht der Charakteristika und m\'f6glicher Entscheidungsunterst\'fctzungssysteme.}</string>
 				<key>VerticalPad</key>
 				<integer>10</integer>
 			</dict>
@@ -861,7 +861,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-08-30 15:47:37 +0000</string>
+	<string>2015-09-05 08:34:05 +0000</string>
 	<key>Modifier</key>
 	<string>Robert</string>
 	<key>NotesVisible</key>
@@ -942,7 +942,7 @@
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{38, 55}, {615, 721}}</string>
+		<string>{{318, 55}, {961, 721}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -956,15 +956,15 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{-78, 0}, {716.41789260221856, 864.17908295142627}}</string>
+		<string>{{-15, 0.71428572644992772}, {590.00001004764033, 413.57143561450812}}</string>
 		<key>Zoom</key>
-		<real>0.67000001668930054</real>
+		<real>1.3999999761581421</real>
 		<key>ZoomValues</key>
 		<array>
 			<array>
 				<string>Arbeitsfläche 1</string>
-				<real>0.67000001668930054</real>
-				<real>0.63999998569488525</real>
+				<real>1.3999999761581421</real>
+				<real>1.3600000143051147</real>
 			</array>
 		</array>
 	</dict>

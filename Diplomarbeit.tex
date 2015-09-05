@@ -208,7 +208,7 @@
   \renewcommand{\arraystretch}{1,5}
   \begin{flushleft}
     \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
-        APS & Advanced Planning and Scheduling Systeme \\
+        APS & Advanced Planning and Scheduling System \\
         ATO & Assemble-to-Order (engl. Begriff für kundenindividuelle Fertigung mit standardisierten Komponenten)\\
         ATP & Available-to-promise (engl. Begriff für zusicherbarer Bestand)\\
         DP  			 & Dynamische Programmierung\\
@@ -234,8 +234,8 @@
   \renewcommand{\arraystretch}{1,5}
   \begin{flushleft}
     \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
-    $\textbf{a}_{j}$ & Vektor des Ressourcenverbrauchs für Produktanfrage $j$\\
-    $a_{hj}$ &	Verbrauch bzw. Bestandsveränderung der Ressource $h$ für Produktanfrage $j$\\
+    $\textbf{a}_{j}$ & Vektor des Ressourcenverbrauchs bzw. der Bestandsveränderung der Produktanfrage $j$\\
+    $a_{hj}$ &	Verbrauch bzw. Bestandsveränderung der Ressource $h$ der Produkt\-anfrage $j$\\
    $\textbf{c}$ & Vektor der Ressourcenkapazität\\
    $c_{h}$ & Kapazität der Ressource $h$\\
    $d_0(\textbf{c},\textbf{y},t)$ & Optimale Politik in Abhängigkeit der Kapazitäten $\textbf{c}$ und des Lagerbestands \textbf{y}, sofern keine Anfrage zur Periode $t$ eintrifft\\
@@ -252,10 +252,9 @@ $l$ & Anzahl der gesamten Ressourcen $h\in\mathcal{H}$\\
 $n$ & Anzahl der gesamten Produktanfragen $j\in\mathcal{J}$\\
    $p_{0}(t)$ & Wahrscheinlichkeit, dass keine Anfrage in Periode $t$ eintrifft\\
    $p_{j}(t)$ & Wahrscheinlichkeit der Nachfrage nach Produkt $j$ in Periode $t$\\
-    $r_{j}$ & Erlös der Anfrage $j$\\
+    $r_{j}$ & Erlös der Produktanfrage $j$\\
             $t$ & Periode des Buchungshorizonts $T$\\
     $\hat t$ & Leistungserstellungszeitpunkt aus der Menge $\hat T$\\
-            $T$ & Buchungshorizont\\
 	\end{tabular}
 	\end{flushleft}
 \end{table}
@@ -266,14 +265,15 @@ $n$ & Anzahl der gesamten Produktanfragen $j\in\mathcal{J}$\\
   \renewcommand{\arraystretch}{1,5}
   \begin{flushleft}
     \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
+                $T$ & Buchungshorizont\\
         $\hat T$ & Menge der Leistungserstellungszeitpunkte\\
    $V(\textbf{c},t)$ & Ertragsfunktion in Abhängigkeit der Kapazitäten $\textbf{c}$ in der Periode $t$\\
       $V(\textbf{c},\textbf{y},t)$ & Ertragsfunktion in Abhängigkeit der Kapazitäten $\textbf{c}$ und des Lagerbestands $\textbf{y}$ in der Periode $t$\\
             $\textbf{y}$ & Vektor des Lagerbestands an reparierten Produkten\\
       $y_h$ & Lagerbestand eines reparierten Produkts (Produkt ist durch Ressource $h$ substituierbar) \\
-        $\textbf{y}^{max}$ & Vektor des maximal möglicher Lagerbestands an reparierten Produkten \\
+        $\textbf{y}^{max}$ & Vektor des maximal möglichen Lagerbestands an reparierten Produkten \\
             $y^{max}_h$ & Maximal möglicher Lagerbestand eines reparierten Produkts (Produkt ist durch Ressource $h$ substituierbar) \\
-                      $Y(\textbf{a}_{j},t)$ & Hilfsfunktion zur Ermittlung der Lagerveränderung durch den Parameter der Bestandsveränderung $\textbf{a}_{j}$ ab der Periode $t$\\
+                      $Y(\textbf{a}_{j},\hat t)$ & Hilfsfunktion zur Ermittlung der Lagerveränderung durch den Parameter der Bestandsveränderung $\textbf{a}_{j}$ ab der Leistungserstellung $\hat t$\\
                                   \\
             \\
             \\
