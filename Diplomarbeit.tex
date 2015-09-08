@@ -56,7 +56,7 @@
 	frame=single,
 	tabsize=4,
         extendedchars=true,
-        basicstyle=\footnotesize,
+        basicstyle=\scriptsize,
 	rulecolor=,
 	language=Python,
         upquote=true,
@@ -79,7 +79,7 @@
 	frame=single,
 	tabsize=4,
         extendedchars=true,
-        basicstyle=\footnotesize,
+        basicstyle=\scriptsize,
 	rulecolor=,
 	language=Java,
         upquote=true,
@@ -227,6 +227,7 @@
 
 %Symbolverzeichnis
 \chapter*{Symbolverzeichnis}
+\markboth{SYMBOLVERZEICHNIS}{}
 \addcontentsline{toc}{chapter}{Symbolverzeichnis}
 \begin{table}[h!]
     \vspace*{-3mm}
@@ -234,8 +235,8 @@
   \renewcommand{\arraystretch}{1,5}
   \begin{flushleft}
     \begin{tabular}{lp{11.5cm}}  %hier die Spaltenausrichtung und Anzahl eintragen
-    $\textbf{a}_{j}$ & Vektor des Ressourcenverbrauchs bzw. der Bestandsveränderung der Produktanfrage $j$\\
-    $a_{hj}$ &	Verbrauch bzw. Bestandsveränderung der Ressource $h$ der Produkt\-anfrage $j$\\
+    $\textbf{a}_{j}$ & Vektor des Ressourcenverbrauchs bzw. der Bestandsveränderung durch Produktanfrage $j$\\
+    $a_{hj}$ &	Verbrauch bzw. Bestandsveränderung der Ressource $h$ durch Produkt\-anfrage $j$\\
    $\textbf{c}$ & Vektor der Ressourcenkapazität\\
    $c_{h}$ & Kapazität der Ressource $h$\\
    $d_0(\textbf{c},\textbf{y},t)$ & Optimale Politik in Abhängigkeit der Kapazitäten $\textbf{c}$ und des Lagerbestands \textbf{y}, sofern keine Anfrage zur Periode $t$ eintrifft\\
@@ -302,7 +303,6 @@ $n$ & Anzahl der gesamten Produktanfragen $j\in\mathcal{J}$\\
 
 %\listofalgorithms
 %\newpage
-\pagenumbering{arabic}   %ab hier arabische Seitenzahlen beginnend mit 1
 
 %Abbildungsverzeichnis
 \begingroup
@@ -323,6 +323,8 @@ $n$ & Anzahl der gesamten Produktanfragen $j\in\mathcal{J}$\\
 \endgroup
 \renewcommand*\lstlistingname{Quellcode} 
 
+\newpage
+\pagenumbering{arabic}   %ab hier arabische Seitenzahlen beginnend mit 1
 %\include{Vorwort/Vorwort}
 \include{Einleitung/Einleitung}
 \include{Grundlagen/Grundlagen}
